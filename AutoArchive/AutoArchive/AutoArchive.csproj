@@ -7,6 +7,7 @@
     <ApplicationIcon>gouhuo.ico</ApplicationIcon>
 	<SelfContained>false</SelfContained>
 	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>
