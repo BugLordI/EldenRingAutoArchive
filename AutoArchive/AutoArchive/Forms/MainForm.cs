@@ -151,7 +151,7 @@ namespace AutoArchive.Forms
         /// </summary>
         private void initTask(Source source)
         {
-            this.periodTextBox.Text = source.Task.TaskPeriod.ToString();
+            this.periodTextBox.Text = source?.Task.TaskPeriod.ToString();
         }
 
         private void initTable(Source source)
