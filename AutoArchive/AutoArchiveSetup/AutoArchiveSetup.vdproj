@@ -15,13 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_A6076654142F4DA48F9C0A11B892E81A"
+        "MsmKey" = "8:_262CD8CF4E8D474EA60EE8C3C2DFF176"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_ABAA6F07B29042B0BB98F16C886EF224"
+        "MsmKey" = "8:_4576BBE13CE0431893DE408F1F48011B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -119,10 +127,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_ABAA6F07B29042B0BB98F16C886EF224"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4576BBE13CE0431893DE408F1F48011B"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\gouhuo.ico"
-            "TargetName" = "8:gouhuo"
+            "SourcePath" = "8:D:\\Users\\zhangmuyu\\Downloads\\gouhuo.ico"
+            "TargetName" = "8:gouhuo.ico"
             "Tag" = "8:"
             "Folder" = "8:_CBDC63FD1D504231B1F7E23920D89DB0"
             "Condition" = "8:"
@@ -196,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutoArchive"
         "ProductCode" = "8:{C0ED6555-4F4B-4C69-9F1B-6FF2ADF2610D}"
-        "PackageCode" = "8:{862E7288-EB7F-4C9C-A463-3BE2AF962C14}"
+        "PackageCode" = "8:{230C8EB0-55EC-42F5-80EA-D26C8C7F98C7}"
         "UpgradeCode" = "8:{127D5A8C-319D-484A-964A-2B4CC9CD6FD5}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -316,7 +324,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_67D51CB61CB54342BD0604E08187CD33"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_827212B1B1FD40AE9DB15E9E7219238F"
             {
             "Name" = "8:老贼盒子"
             "Arguments" = "8:"
@@ -324,10 +332,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_A6076654142F4DA48F9C0A11B892E81A"
+            "Target" = "8:_262CD8CF4E8D474EA60EE8C3C2DFF176"
             "Folder" = "8:_8AE627315337494EBF9500B4D3B7D2D8"
             "WorkingFolder" = "8:_CBDC63FD1D504231B1F7E23920D89DB0"
-            "Icon" = "8:_ABAA6F07B29042B0BB98F16C886EF224"
+            "Icon" = "8:_4576BBE13CE0431893DE408F1F48011B"
             "Feature" = "8:"
             }
         }
@@ -729,9 +737,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A6076654142F4DA48F9C0A11B892E81A"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_262CD8CF4E8D474EA60EE8C3C2DFF176"
             {
-            "SourcePath" = "8:..\\AutoArchive\\obj\\Release\\netcoreapp3.1\\win-x64\\apphost.exe"
+            "SourcePath" = "8:..\\AutoArchive\\obj\\Debug\\netcoreapp3.1\\win-x64\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CBDC63FD1D504231B1F7E23920D89DB0"
