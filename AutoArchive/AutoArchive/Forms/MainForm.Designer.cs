@@ -335,7 +335,7 @@ namespace AutoArchive.Forms
             this.projectNameLab.Name = "projectNameLab";
             this.projectNameLab.Size = new System.Drawing.Size(44, 17);
             this.projectNameLab.TabIndex = 6;
-            this.projectNameLab.Text = "工程：";
+            this.projectNameLab.Text = "游戏：";
             // 
             // toolTip
             // 

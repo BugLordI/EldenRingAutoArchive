@@ -13,6 +13,7 @@
  * ======================================
 *************************************************************************************/
 using AutoArchive.Entity;
+using AutoArchive.Tools;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,18 @@ namespace AutoArchive.Forms
             {
                 this.saveBtn.Enabled = false;
             }
+        }
+
+        /// <summary>
+        /// 帮助
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AppSetting appSetting = new AppSetting("appsettings.json");
+            String url = appSetting["Help:Url"];
+            System.Diagnostics.Process.Start("explorer.exe", url);
         }
     }
 }

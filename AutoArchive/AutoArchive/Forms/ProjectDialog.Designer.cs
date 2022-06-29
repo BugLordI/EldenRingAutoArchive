@@ -48,9 +48,9 @@ namespace AutoArchive.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.openProjectBtn = new System.Windows.Forms.Button();
             this.projectTable = new System.Windows.Forms.DataGridView();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.projectTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -101,15 +101,6 @@ namespace AutoArchive.Forms
             this.projectTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectTable_CellClick);
             this.projectTable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectTable_CellDoubleClick);
             // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.name.DefaultCellStyle = dataGridViewCellStyle1;
-            this.name.HeaderText = "工程";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -127,6 +118,15 @@ namespace AutoArchive.Forms
             this.newProject.Size = new System.Drawing.Size(60, 21);
             this.newProject.Text = "新建";
             this.newProject.Click += new System.EventHandler(this.newProject_Click);
+            // 
+            // name
+            // 
+            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.name.DefaultCellStyle = dataGridViewCellStyle1;
+            this.name.HeaderText = "游戏";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
             // 
             // ProjectDialog
             // 
@@ -157,9 +157,9 @@ namespace AutoArchive.Forms
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView projectTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newProject;
         private System.Windows.Forms.Button openProjectBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
     }
 }

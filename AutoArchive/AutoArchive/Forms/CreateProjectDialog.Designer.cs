@@ -88,6 +88,7 @@ namespace AutoArchive.Forms
             this.linkLabel1.TabIndex = 20;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "无法知道原始路径？";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // saveBtn
             // 
@@ -169,7 +170,7 @@ namespace AutoArchive.Forms
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 10;
-            this.label1.Text = "工程名：";
+            this.label1.Text = "游戏名：";
             // 
             // toolTip
             // 
