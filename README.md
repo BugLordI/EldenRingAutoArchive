@@ -16,7 +16,9 @@
 <li>存档恢复到指定的时间</li>
 </ul>
 <p>啊，现在全有了</p>
+<h3>许可证：</h3>
 <h3>下载地址：</h3>
+<a href="https://github.com/zhangmuyu1995/EldenRingAutoArchive/blob/master/LICENSE">LICENSE</a>
 <li><a href="https://github.com/zhangmuyu1995/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90/AutoArchiveSetup.msi">老贼盒子v1.0</a></li>
 </ul>
 
