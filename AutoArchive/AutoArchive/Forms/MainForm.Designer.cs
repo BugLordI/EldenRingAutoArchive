@@ -260,6 +260,7 @@ namespace AutoArchive.Forms
             // updateBtn
             // 
             this.updateBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.updateBtn.Enabled = false;
             this.updateBtn.Location = new System.Drawing.Point(386, 107);
             this.updateBtn.Name = "updateBtn";
             this.updateBtn.Size = new System.Drawing.Size(62, 29);
@@ -531,7 +532,7 @@ namespace AutoArchive.Forms
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "老贼盒子";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

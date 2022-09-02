@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32510.428
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoArchive", "AutoArchive\AutoArchive.csproj", "{B3AB1C35-28E5-4A21-8275-2FA9FF998360}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AutoArchiveSetup", "AutoArchiveSetup\AutoArchiveSetup.vdproj", "{564CE75F-B2E0-427A-85D5-4E54C1DB0772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +15,6 @@ Global
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Release|Any CPU.Build.0 = Release|Any CPU
-		{564CE75F-B2E0-427A-85D5-4E54C1DB0772}.Debug|Any CPU.ActiveCfg = Debug
-		{564CE75F-B2E0-427A-85D5-4E54C1DB0772}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

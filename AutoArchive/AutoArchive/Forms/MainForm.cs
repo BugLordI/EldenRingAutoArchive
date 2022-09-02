@@ -39,11 +39,6 @@ namespace AutoArchive.Forms
         private Source selectedProject;
 
         /// <summary>
-        /// 数据库相关
-        /// </summary>
-        private BaseMapper<Source> mapper;
-
-        /// <summary>
         /// 备份数据表选中的行
         /// </summary>
         private Target selectedRow;
@@ -71,36 +66,39 @@ namespace AutoArchive.Forms
         }
 
         /// <summary>
-        /// 窗口关闭时
+        /// OnFormClosing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //保存任务信息
+            //saveTask
             if (selectedProject != null && periodTextBox.Text.Length > 0)
             {
-                var exist = mapper.Entity.Find(this.selectedProject.Id).Task;
-                if (exist != null)
+                using (BaseMapper<Source> mapper = new BaseMapper<Source>())
                 {
-                    exist.IsOn = openTask.Checked;
-                    exist.TaskPeriod = Convert.ToInt32(periodTextBox.Text);
+                    var exist = mapper.Entity.Include(e => e.Task).ToList().Find(e => e.Id.Equals(this.selectedProject.Id)).Task;
+                    if (exist != null)
+                    {
+                        exist.IsOn = openTask.Checked;
+                        exist.TaskPeriod = Convert.ToInt32(periodTextBox.Text);
+                    }
+                    else
+                    {
+                        Task task = new Task();
+                        task.Id = Guid.NewGuid().ToString("N");
+                        task.SourceId = selectedProject.Id;
+                        task.TaskPeriod = Convert.ToInt32(periodTextBox.Text);
+                        task.IsOn = openTask.Checked;
+                        mapper.Entity.Find(this.selectedProject.Id).Task = task;
+                    }
+                    mapper.SaveChanges();
                 }
-                else
-                {
-                    Task task = new Task();
-                    task.Id = Guid.NewGuid().ToString("N");
-                    task.SourceId = selectedProject.Id;
-                    task.TaskPeriod = Convert.ToInt32(periodTextBox.Text);
-                    task.IsOn = openTask.Checked;
-                    mapper.Entity.Find(this.selectedProject.Id).Task = task;
-                }
-                mapper.SaveChanges();
             }
         }
 
         /// <summary>
-        /// 初始化信息
+        /// init main page project info
         /// </summary>
         private void init()
         {
@@ -113,15 +111,18 @@ namespace AutoArchive.Forms
                 des.Text = selectedProject.TarPath;
                 toolTip.SetToolTip(des, des.Text);
             }
+            updateBtn.Enabled = selectedProject != null;
         }
 
         /// <summary>
-        /// 查询所有工程
+        /// find all projects
         /// </summary>
         private void findProject()
         {
-            mapper = new BaseMapper<Source>();
-            projects = mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList();
+            using (BaseMapper<Source> mapper = new BaseMapper<Source>())
+            {
+                projects = mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList();
+            }
         }
 
         /// <summary>
@@ -142,8 +143,11 @@ namespace AutoArchive.Forms
         private List<Source> newProject(Source source)
         {
             source.Id = Guid.NewGuid().ToString("N");
-            mapper.add(source);
-            return mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList();
+            using (BaseMapper<Source> mapper = new BaseMapper<Source>())
+            {
+                mapper.add(source);
+                return mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList();
+            }
         }
 
         /// <summary>
@@ -203,30 +207,33 @@ namespace AutoArchive.Forms
         }
 
         /// <summary>
-        /// 开始任务
+        /// start auto-backup task
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void openTask_CheckedChanged(object sender, EventArgs e)
         {
-            periodTextBox.Enabled = !openTask.Checked;
-            if (openTask.Checked)
+            if (!String.IsNullOrEmpty(periodTextBox.Text))
             {
-                min = Convert.ToInt32(periodTextBox.Text);
-                if (min == 0 || min > 720)
+                periodTextBox.Enabled = !openTask.Checked;
+                if (openTask.Checked)
                 {
-                    openTask.Checked = false;
-                    closeTask.Checked = true;
-                    periodTextBox.Enabled = true;
-                    MessageBox.Show("时间需要大于0分钟并且小于720分钟", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    min = Convert.ToInt32(periodTextBox.Text);
+                    if (min == 0 || min > 720)
+                    {
+                        openTask.Checked = false;
+                        closeTask.Checked = true;
+                        periodTextBox.Enabled = true;
+                        MessageBox.Show("时间需要大于0分钟并且小于720分钟", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    countDownLb.Text = $"还剩{min}分钟";
+                    timer.Start();
                 }
-                countDownLb.Text = $"还剩{min}分钟";
-                timer.Start();
-            }
-            else
-            {
-                timer.Stop();
+                else
+                {
+                    timer.Stop();
+                }
             }
         }
 
@@ -243,20 +250,25 @@ namespace AutoArchive.Forms
                                                  now.ToString("yyyyMMddHHmmss"));
             if (FileUtil.copyDirectory(src, destinationPath))
             {
-                Target target = new Target();
-                target.Id = Guid.NewGuid().ToString("N");
-                target.SourceId = this.selectedProject.Id;
-                target.Remark = remark;
-                target.DateTimeStamp = DateUtil.toUnixTimestamp(now);
-                target.Path = destinationPath;
-                mapper.Entity.Find(this.selectedProject.Id).Targets.Add(target);
-                mapper.SaveChanges();
-                initTable(mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList().Find(
-                    e => e.Id.Equals(this.selectedProject.Id)
-                    ));
-                if (!isAuto)
+                using (BaseMapper<Source> mapper = new BaseMapper<Source>())
                 {
-                    MessageBox.Show("备份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Target target = new Target();
+                    target.Id = Guid.NewGuid().ToString("N");
+                    target.SourceId = this.selectedProject.Id;
+                    target.Remark = remark;
+                    target.DateTimeStamp = DateUtil.toUnixTimestamp(now);
+                    target.Path = destinationPath;
+                    var targets = mapper.Entity.Find(this.selectedProject.Id).Targets ?? new List<Target>();
+                    targets.Add(target);
+                    mapper.Entity.Find(this.selectedProject.Id).Targets = targets;
+                    mapper.SaveChanges();
+                    initTable(mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList().Find(
+                        e => e.Id.Equals(this.selectedProject.Id)
+                        ));
+                    if (!isAuto)
+                    {
+                        MessageBox.Show("备份成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             else
@@ -399,14 +411,18 @@ namespace AutoArchive.Forms
             {
                 DirectoryInfo di = new DirectoryInfo(selectedRow.Path);
                 di.Delete(true);
-                BaseMapper<Target> baseMapper = new BaseMapper<Target>();
-                baseMapper.Entity.Remove(selectedRow);
-                baseMapper.SaveChanges();
-                mapper = new BaseMapper<Source>();
-                initTable(mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList().Find(
-                    e => e.Id.Equals(this.selectedProject.Id)
-                    ));
-                MessageBox.Show("删除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (BaseMapper<Source> mapper = new BaseMapper<Source>())
+                {
+                    using (BaseMapper<Target> baseMapper = new BaseMapper<Target>())
+                    {
+                        baseMapper.Entity.Remove(selectedRow);
+                        baseMapper.SaveChanges();
+                        initTable(mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList().Find(
+                            e => e.Id.Equals(this.selectedProject.Id)
+                            ));
+                        MessageBox.Show("删除成功", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
 
