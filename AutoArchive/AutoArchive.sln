@@ -5,16 +5,25 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoArchive", "AutoArchive\AutoArchive.csproj", "{B3AB1C35-28E5-4A21-8275-2FA9FF998360}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		x64|Any CPU = x64|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.x64|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AB1C35-28E5-4A21-8275-2FA9FF998360}.x64|Any CPU.Build.0 = Release|Any CPU
+		{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}.Debug|Any CPU.ActiveCfg = Debug
+		{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}.Release|Any CPU.ActiveCfg = Release
+		{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}.x64|Any CPU.ActiveCfg = x64
+		{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}.x64|Any CPU.Build.0 = x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
