@@ -19,7 +19,7 @@
 <h3>许可证：</h3>
 <a href="https://github.com/zhangmuyu1995/EldenRingAutoArchive/blob/master/LICENSE">Apache License 2.0</a>
 <h3>运行环境下载：</h3>
-<a href="https://github.com/zhangmuyu1995/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90/windowsdesktop-runtime-3.1.25-win-x64.exe">NetCore 3.1.25</a>
+<a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-3.1.28-windows-x64-installer">NetCore 3.1.25(64位)</a>
 <p>Windows10 21H1(19043) 以上版本自带NetCore3.1和.NetFramework4.8运行环境</p>
 <h3>下载地址：</h3>
 <li>
