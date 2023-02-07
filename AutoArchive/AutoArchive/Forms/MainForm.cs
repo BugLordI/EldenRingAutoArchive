@@ -110,8 +110,8 @@ namespace AutoArchive.Forms
                 toolTip.SetToolTip(src, src.Text);
                 des.Text = selectedProject.TarPath;
                 toolTip.SetToolTip(des, des.Text);
+                openTask.Enabled = periodTextBox.Enabled = updateBtn.Enabled = remarkeTextBox.Enabled = true;
             }
-            updateBtn.Enabled = selectedProject != null;
         }
 
         /// <summary>
@@ -499,5 +499,30 @@ namespace AutoArchive.Forms
         {
             this.Close();
         }
+
+        private void tableContextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (selectedRow == null)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        #region 表格右键
+        private void recoverMenu_Click(object sender, EventArgs e)
+        {
+            recoverBtn_Click(null, null);
+        }
+
+        private void deleteMenu_Click(object sender, EventArgs e)
+        {
+            deleteBtn_Click(null, null);
+        }
+
+        private void openMenu_Click(object sender, EventArgs e)
+        {
+            openFileBtn_Click(null, null);
+        }
+        #endregion
     }
 }

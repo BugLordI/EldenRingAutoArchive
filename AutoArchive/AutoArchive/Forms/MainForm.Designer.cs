@@ -75,13 +75,17 @@ namespace AutoArchive.Forms
             this.remarkCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pathCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.recoverMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.openMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.recoverBtn = new System.Windows.Forms.ToolStripButton();
             this.deleteBtn = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.openFileBtn = new System.Windows.Forms.ToolStripButton();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.taskBarContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -91,8 +95,9 @@ namespace AutoArchive.Forms
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
+            this.tableContextMenuStrip.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-            this.contextMenuStrip.SuspendLayout();
+            this.taskBarContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -140,6 +145,7 @@ namespace AutoArchive.Forms
             this.remarkeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.remarkeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.remarkeTextBox.Enabled = false;
             this.remarkeTextBox.Location = new System.Drawing.Point(14, 28);
             this.remarkeTextBox.Name = "remarkeTextBox";
             this.remarkeTextBox.PlaceholderText = "输入备注后点击\"备份\"按钮进行备份";
@@ -208,6 +214,7 @@ namespace AutoArchive.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.openTask.AutoSize = true;
             this.openTask.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.openTask.Enabled = false;
             this.openTask.Location = new System.Drawing.Point(354, 47);
             this.openTask.Name = "openTask";
             this.openTask.Size = new System.Drawing.Size(55, 24);
@@ -219,6 +226,7 @@ namespace AutoArchive.Forms
             // 
             // periodTextBox
             // 
+            this.periodTextBox.Enabled = false;
             this.periodTextBox.Location = new System.Drawing.Point(119, 19);
             this.periodTextBox.Name = "periodTextBox";
             this.periodTextBox.Size = new System.Drawing.Size(62, 24);
@@ -411,6 +419,7 @@ namespace AutoArchive.Forms
             this.remarkCol,
             this.dateCol,
             this.pathCol});
+            this.dataTable.ContextMenuStrip = this.tableContextMenuStrip;
             this.dataTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataTable.Location = new System.Drawing.Point(3, 45);
             this.dataTable.MultiSelect = false;
@@ -445,6 +454,40 @@ namespace AutoArchive.Forms
             this.pathCol.HeaderText = "所在路径";
             this.pathCol.Name = "pathCol";
             this.pathCol.ReadOnly = true;
+            // 
+            // tableContextMenuStrip
+            // 
+            this.tableContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.recoverMenu,
+            this.deleteMenu,
+            this.openMenu});
+            this.tableContextMenuStrip.Name = "tableContextMenuStrip";
+            this.tableContextMenuStrip.Size = new System.Drawing.Size(181, 92);
+            this.tableContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.tableContextMenuStrip_Opening);
+            // 
+            // recoverMenu
+            // 
+            this.recoverMenu.Image = global::AutoArchive.Properties.Resources.恢复;
+            this.recoverMenu.Name = "recoverMenu";
+            this.recoverMenu.Size = new System.Drawing.Size(180, 22);
+            this.recoverMenu.Text = "恢复所选";
+            this.recoverMenu.Click += new System.EventHandler(this.recoverMenu_Click);
+            // 
+            // deleteMenu
+            // 
+            this.deleteMenu.Image = global::AutoArchive.Properties.Resources.删除;
+            this.deleteMenu.Name = "deleteMenu";
+            this.deleteMenu.Size = new System.Drawing.Size(180, 22);
+            this.deleteMenu.Text = "删除所选";
+            this.deleteMenu.Click += new System.EventHandler(this.deleteMenu_Click);
+            // 
+            // openMenu
+            // 
+            this.openMenu.Image = global::AutoArchive.Properties.Resources.打开文件夹;
+            this.openMenu.Name = "openMenu";
+            this.openMenu.Size = new System.Drawing.Size(180, 22);
+            this.openMenu.Text = "打开所在位置";
+            this.openMenu.Click += new System.EventHandler(this.openMenu_Click);
             // 
             // toolStrip1
             // 
@@ -500,17 +543,17 @@ namespace AutoArchive.Forms
             // 
             // notifyIcon
             // 
-            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.ContextMenuStrip = this.taskBarContextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "备份工具";
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
-            // contextMenuStrip
+            // taskBarContextMenuStrip
             // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.taskBarContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitMenu});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(125, 26);
+            this.taskBarContextMenuStrip.Name = "contextMenuStrip";
+            this.taskBarContextMenuStrip.Size = new System.Drawing.Size(125, 26);
             // 
             // exitMenu
             // 
@@ -547,9 +590,10 @@ namespace AutoArchive.Forms
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
+            this.tableContextMenuStrip.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            this.contextMenuStrip.ResumeLayout(false);
+            this.taskBarContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,7 +637,11 @@ namespace AutoArchive.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn pathCol;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ToolStripMenuItem hideIntoTray;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ContextMenuStrip taskBarContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem exitMenu;
+        private System.Windows.Forms.ContextMenuStrip tableContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem recoverMenu;
+        private System.Windows.Forms.ToolStripMenuItem deleteMenu;
+        private System.Windows.Forms.ToolStripMenuItem openMenu;
     }
 }
