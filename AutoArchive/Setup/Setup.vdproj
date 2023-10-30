@@ -50,6 +50,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -74,6 +82,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "x64"
@@ -177,7 +193,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_DB049F6F74844FE9969BCB2695A6E984"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -215,7 +231,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AutoArchive"
         "ProductCode" = "8:{CC9F9FCF-B1DC-4E7B-BA28-12F5FB961DBF}"
-        "PackageCode" = "8:{2AD6C404-DF21-4869-BBF5-E98D319B8628}"
+        "PackageCode" = "8:{10A3B9EC-D482-4FA8-BDE0-DAC36111738C}"
         "UpgradeCode" = "8:{52B4BD3F-BCB6-4D34-AEC8-6C435C2A64FD}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -225,7 +241,7 @@
         "ProductVersion" = "8:1.1"
         "Manufacturer" = "8:老贼盒子"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/BugLordI/EldenRingAutoArchive"
         "Title" = "8:AutoArchiveSetup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:BugLord"
@@ -633,8 +649,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1203"
+                            "Setting" = "3:2"
+                            "Value" = "8:此向导将会在您的计算机上安装“[Manufacturer] ”"
                             "DefaultValue" = "8:#1203"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -750,7 +766,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F0DF3AB57EAE4A3DA57B16DF0CC8B31E"
             {
-            "SourcePath" = "8:..\\AutoArchive\\obj\\Release\\netcoreapp3.1\\win-x64\\apphost.exe"
+            "SourcePath" = "8:..\\AutoArchive\\obj\\Debug\\netcoreapp3.1\\win-x64\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_DB049F6F74844FE9969BCB2695A6E984"

@@ -15,12 +15,7 @@
 using AutoArchive.Entity;
 using AutoArchive.Tools;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
 
 namespace AutoArchive.Forms
@@ -146,6 +141,11 @@ namespace AutoArchive.Forms
             AppSetting appSetting = new AppSetting("appsettings.json");
             String url = appSetting["Help:Url"];
             System.Diagnostics.Process.Start("explorer.exe", url);
+        }
+
+        private void projectName_TextChanged(object sender, EventArgs e)
+        {
+            checkEnable();
         }
     }
 }

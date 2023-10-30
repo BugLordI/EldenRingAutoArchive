@@ -27,7 +27,7 @@ namespace AutoArchive.Forms
     public partial class ProjectDialog : Form
     {
         private Action<Source> openProjectCallBack;
-        private Func<Source,List<Source>> newProjectCallBack;
+        private Func<Source, List<Source>> newProjectCallBack;
         private Source selected;
 
         /// <summary>
