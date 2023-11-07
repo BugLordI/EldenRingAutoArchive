@@ -29,6 +29,11 @@
 <li>
 <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/EldenRing/Setup.msi">
 老贼盒子v1.1
-</a>
+</a>   
+</li>
+<li>
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90/Setup.msi">
+        老贼盒子v1.2
+    </a>   
 </li>
 </ul>
