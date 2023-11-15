@@ -43,560 +43,552 @@ namespace AutoArchive.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.backupBtn = new System.Windows.Forms.Button();
-            this.remarkeTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.countDownLb = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.closeTask = new System.Windows.Forms.RadioButton();
-            this.openTask = new System.Windows.Forms.RadioButton();
-            this.periodTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.updateBtn = new System.Windows.Forms.Button();
-            this.des = new System.Windows.Forms.Label();
-            this.src = new System.Windows.Forms.Label();
-            this.projectName = new System.Windows.Forms.Label();
-            this.desLab = new System.Windows.Forms.Label();
-            this.srcLab = new System.Windows.Forms.Label();
-            this.projectNameLab = new System.Windows.Forms.Label();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.openProjectMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideIntoTray = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataTable = new System.Windows.Forms.DataGridView();
-            this.remarkCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pathCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.recoverMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.openMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.recoverBtn = new System.Windows.Forms.ToolStripButton();
-            this.deleteBtn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.openFileBtn = new System.Windows.Forms.ToolStripButton();
-            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
-            this.taskBarContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).BeginInit();
-            this.tableContextMenuStrip.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.taskBarContextMenuStrip.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new System.Windows.Forms.Panel();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            backupBtn = new System.Windows.Forms.Button();
+            remarkeTextBox = new System.Windows.Forms.TextBox();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            countDownLb = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            closeTask = new System.Windows.Forms.RadioButton();
+            openTask = new System.Windows.Forms.RadioButton();
+            periodTextBox = new System.Windows.Forms.TextBox();
+            label1 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            updateBtn = new System.Windows.Forms.Button();
+            des = new System.Windows.Forms.Label();
+            src = new System.Windows.Forms.Label();
+            projectName = new System.Windows.Forms.Label();
+            desLab = new System.Windows.Forms.Label();
+            srcLab = new System.Windows.Forms.Label();
+            projectNameLab = new System.Windows.Forms.Label();
+            toolTip = new System.Windows.Forms.ToolTip(components);
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            openProjectMenu = new System.Windows.Forms.ToolStripMenuItem();
+            hideIntoTray = new System.Windows.Forms.ToolStripMenuItem();
+            autoBackupMenu = new System.Windows.Forms.ToolStripMenuItem();
+            setAutoBackupTrue = new System.Windows.Forms.ToolStripMenuItem();
+            timer = new System.Windows.Forms.Timer(components);
+            panel2 = new System.Windows.Forms.Panel();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            dataTable = new System.Windows.Forms.DataGridView();
+            remarkCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pathCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            tableContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+            recoverMenu = new System.Windows.Forms.ToolStripMenuItem();
+            deleteMenu = new System.Windows.Forms.ToolStripMenuItem();
+            openMenu = new System.Windows.Forms.ToolStripMenuItem();
+            toolStrip1 = new System.Windows.Forms.ToolStrip();
+            recoverBtn = new System.Windows.Forms.ToolStripButton();
+            deleteBtn = new System.Windows.Forms.ToolStripButton();
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            openFileBtn = new System.Windows.Forms.ToolStripButton();
+            notifyIcon = new System.Windows.Forms.NotifyIcon(components);
+            taskBarContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
+            exitMenu = new System.Windows.Forms.ToolStripMenuItem();
+            panel1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox1.SuspendLayout();
+            menuStrip1.SuspendLayout();
+            panel2.SuspendLayout();
+            groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataTable).BeginInit();
+            tableContextMenuStrip.SuspendLayout();
+            toolStrip1.SuspendLayout();
+            taskBarContextMenuStrip.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(946, 149);
-            this.panel1.TabIndex = 0;
+            panel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panel1.BackColor = System.Drawing.Color.White;
+            panel1.Controls.Add(groupBox3);
+            panel1.Controls.Add(groupBox2);
+            panel1.Controls.Add(groupBox1);
+            panel1.Location = new System.Drawing.Point(0, 24);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(946, 149);
+            panel1.TabIndex = 0;
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.backupBtn);
-            this.groupBox3.Controls.Add(this.remarkeTextBox);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox3.Location = new System.Drawing.Point(464, 84);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(478, 62);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "操作";
+            groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox3.Controls.Add(backupBtn);
+            groupBox3.Controls.Add(remarkeTextBox);
+            groupBox3.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            groupBox3.Location = new System.Drawing.Point(464, 84);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(478, 62);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "操作";
             // 
             // backupBtn
             // 
-            this.backupBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.backupBtn.Enabled = false;
-            this.backupBtn.Location = new System.Drawing.Point(275, 25);
-            this.backupBtn.Name = "backupBtn";
-            this.backupBtn.Size = new System.Drawing.Size(62, 29);
-            this.backupBtn.TabIndex = 13;
-            this.backupBtn.Text = "备份";
-            this.backupBtn.UseVisualStyleBackColor = false;
-            this.backupBtn.Click += new System.EventHandler(this.backupBtn_Click);
+            backupBtn.BackColor = System.Drawing.SystemColors.Control;
+            backupBtn.Enabled = false;
+            backupBtn.Location = new System.Drawing.Point(275, 25);
+            backupBtn.Name = "backupBtn";
+            backupBtn.Size = new System.Drawing.Size(62, 29);
+            backupBtn.TabIndex = 13;
+            backupBtn.Text = "备份";
+            backupBtn.UseVisualStyleBackColor = false;
+            backupBtn.Click += backupBtn_Click;
             // 
             // remarkeTextBox
             // 
-            this.remarkeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.remarkeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.remarkeTextBox.Enabled = false;
-            this.remarkeTextBox.Location = new System.Drawing.Point(14, 28);
-            this.remarkeTextBox.Name = "remarkeTextBox";
-            this.remarkeTextBox.PlaceholderText = "输入备注后点击\"备份\"按钮进行备份";
-            this.remarkeTextBox.Size = new System.Drawing.Size(239, 24);
-            this.remarkeTextBox.TabIndex = 22;
-            this.remarkeTextBox.TextChanged += new System.EventHandler(this.remarkeTextBox_TextChanged);
+            remarkeTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            remarkeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            remarkeTextBox.Enabled = false;
+            remarkeTextBox.Location = new System.Drawing.Point(14, 28);
+            remarkeTextBox.Name = "remarkeTextBox";
+            remarkeTextBox.PlaceholderText = "输入备注后点击\"备份\"按钮进行备份";
+            remarkeTextBox.Size = new System.Drawing.Size(239, 24);
+            remarkeTextBox.TabIndex = 22;
+            remarkeTextBox.TextChanged += remarkeTextBox_TextChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.countDownLb);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.closeTask);
-            this.groupBox2.Controls.Add(this.openTask);
-            this.groupBox2.Controls.Add(this.periodTextBox);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(464, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(478, 77);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "任务";
+            groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox2.Controls.Add(countDownLb);
+            groupBox2.Controls.Add(label2);
+            groupBox2.Controls.Add(closeTask);
+            groupBox2.Controls.Add(openTask);
+            groupBox2.Controls.Add(periodTextBox);
+            groupBox2.Controls.Add(label1);
+            groupBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            groupBox2.Location = new System.Drawing.Point(464, 2);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(478, 77);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "任务";
             // 
             // countDownLb
             // 
-            this.countDownLb.AutoSize = true;
-            this.countDownLb.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.countDownLb.ForeColor = System.Drawing.Color.Red;
-            this.countDownLb.Location = new System.Drawing.Point(116, 52);
-            this.countDownLb.Name = "countDownLb";
-            this.countDownLb.Size = new System.Drawing.Size(0, 17);
-            this.countDownLb.TabIndex = 18;
+            countDownLb.AutoSize = true;
+            countDownLb.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            countDownLb.ForeColor = System.Drawing.Color.Red;
+            countDownLb.Location = new System.Drawing.Point(116, 52);
+            countDownLb.Name = "countDownLb";
+            countDownLb.Size = new System.Drawing.Size(0, 17);
+            countDownLb.TabIndex = 18;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(10, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 17);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "距离下一次备份：";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label2.ForeColor = System.Drawing.Color.Black;
+            label2.Location = new System.Drawing.Point(10, 52);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(104, 17);
+            label2.TabIndex = 17;
+            label2.Text = "距离下一次备份：";
             // 
             // closeTask
             // 
-            this.closeTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeTask.AutoSize = true;
-            this.closeTask.Checked = true;
-            this.closeTask.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closeTask.Location = new System.Drawing.Point(412, 47);
-            this.closeTask.Name = "closeTask";
-            this.closeTask.Size = new System.Drawing.Size(55, 24);
-            this.closeTask.TabIndex = 16;
-            this.closeTask.TabStop = true;
-            this.closeTask.Text = "关闭";
-            this.closeTask.UseVisualStyleBackColor = true;
+            closeTask.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            closeTask.AutoSize = true;
+            closeTask.Checked = true;
+            closeTask.Cursor = System.Windows.Forms.Cursors.Hand;
+            closeTask.Location = new System.Drawing.Point(412, 47);
+            closeTask.Name = "closeTask";
+            closeTask.Size = new System.Drawing.Size(55, 24);
+            closeTask.TabIndex = 16;
+            closeTask.TabStop = true;
+            closeTask.Text = "关闭";
+            closeTask.UseVisualStyleBackColor = true;
             // 
             // openTask
             // 
-            this.openTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openTask.AutoSize = true;
-            this.openTask.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.openTask.Enabled = false;
-            this.openTask.Location = new System.Drawing.Point(354, 47);
-            this.openTask.Name = "openTask";
-            this.openTask.Size = new System.Drawing.Size(55, 24);
-            this.openTask.TabIndex = 15;
-            this.openTask.TabStop = true;
-            this.openTask.Text = "开启";
-            this.openTask.UseVisualStyleBackColor = true;
-            this.openTask.CheckedChanged += new System.EventHandler(this.openTask_CheckedChanged);
+            openTask.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            openTask.AutoSize = true;
+            openTask.Cursor = System.Windows.Forms.Cursors.Hand;
+            openTask.Enabled = false;
+            openTask.Location = new System.Drawing.Point(354, 47);
+            openTask.Name = "openTask";
+            openTask.Size = new System.Drawing.Size(55, 24);
+            openTask.TabIndex = 15;
+            openTask.TabStop = true;
+            openTask.Text = "开启";
+            openTask.UseVisualStyleBackColor = true;
+            openTask.CheckedChanged += openTask_CheckedChanged;
             // 
             // periodTextBox
             // 
-            this.periodTextBox.Enabled = false;
-            this.periodTextBox.Location = new System.Drawing.Point(119, 19);
-            this.periodTextBox.Name = "periodTextBox";
-            this.periodTextBox.Size = new System.Drawing.Size(62, 24);
-            this.periodTextBox.TabIndex = 14;
-            this.periodTextBox.Text = "10";
-            this.periodTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.periodTextBox_KeyPress);
+            periodTextBox.Enabled = false;
+            periodTextBox.Location = new System.Drawing.Point(119, 19);
+            periodTextBox.Name = "periodTextBox";
+            periodTextBox.Size = new System.Drawing.Size(62, 24);
+            periodTextBox.TabIndex = 14;
+            periodTextBox.Text = "10";
+            periodTextBox.KeyPress += periodTextBox_KeyPress;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(10, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 17);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "定时备份(分钟)：";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label1.ForeColor = System.Drawing.Color.Black;
+            label1.Location = new System.Drawing.Point(10, 26);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(100, 17);
+            label1.TabIndex = 13;
+            label1.Text = "定时备份(分钟)：";
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.updateBtn);
-            this.groupBox1.Controls.Add(this.des);
-            this.groupBox1.Controls.Add(this.src);
-            this.groupBox1.Controls.Add(this.projectName);
-            this.groupBox1.Controls.Add(this.desLab);
-            this.groupBox1.Controls.Add(this.srcLab);
-            this.groupBox1.Controls.Add(this.projectNameLab);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.Location = new System.Drawing.Point(2, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 144);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "信息";
+            groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            groupBox1.BackColor = System.Drawing.Color.White;
+            groupBox1.Controls.Add(updateBtn);
+            groupBox1.Controls.Add(des);
+            groupBox1.Controls.Add(src);
+            groupBox1.Controls.Add(projectName);
+            groupBox1.Controls.Add(desLab);
+            groupBox1.Controls.Add(srcLab);
+            groupBox1.Controls.Add(projectNameLab);
+            groupBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            groupBox1.Location = new System.Drawing.Point(2, 2);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(456, 144);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "信息";
             // 
             // updateBtn
             // 
-            this.updateBtn.BackColor = System.Drawing.SystemColors.Control;
-            this.updateBtn.Enabled = false;
-            this.updateBtn.Location = new System.Drawing.Point(386, 107);
-            this.updateBtn.Name = "updateBtn";
-            this.updateBtn.Size = new System.Drawing.Size(62, 29);
-            this.updateBtn.TabIndex = 12;
-            this.updateBtn.Text = "修改";
-            this.updateBtn.UseVisualStyleBackColor = false;
-            this.updateBtn.Click += new System.EventHandler(this.updateBtnClicked);
+            updateBtn.BackColor = System.Drawing.SystemColors.Control;
+            updateBtn.Enabled = false;
+            updateBtn.Location = new System.Drawing.Point(386, 107);
+            updateBtn.Name = "updateBtn";
+            updateBtn.Size = new System.Drawing.Size(62, 29);
+            updateBtn.TabIndex = 12;
+            updateBtn.Text = "修改";
+            updateBtn.UseVisualStyleBackColor = false;
+            updateBtn.Click += updateBtnClicked;
             // 
             // des
             // 
-            this.des.AutoEllipsis = true;
-            this.des.AutoSize = true;
-            this.des.BackColor = System.Drawing.Color.White;
-            this.des.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.des.ForeColor = System.Drawing.Color.Black;
-            this.des.Location = new System.Drawing.Point(98, 83);
-            this.des.Name = "des";
-            this.des.Size = new System.Drawing.Size(0, 17);
-            this.des.TabIndex = 11;
+            des.AutoEllipsis = true;
+            des.AutoSize = true;
+            des.BackColor = System.Drawing.Color.White;
+            des.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            des.ForeColor = System.Drawing.Color.Black;
+            des.Location = new System.Drawing.Point(98, 83);
+            des.Name = "des";
+            des.Size = new System.Drawing.Size(0, 17);
+            des.TabIndex = 11;
             // 
             // src
             // 
-            this.src.AutoEllipsis = true;
-            this.src.AutoSize = true;
-            this.src.BackColor = System.Drawing.Color.White;
-            this.src.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.src.ForeColor = System.Drawing.Color.Black;
-            this.src.Location = new System.Drawing.Point(98, 55);
-            this.src.Name = "src";
-            this.src.Size = new System.Drawing.Size(0, 17);
-            this.src.TabIndex = 10;
+            src.AutoEllipsis = true;
+            src.AutoSize = true;
+            src.BackColor = System.Drawing.Color.White;
+            src.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            src.ForeColor = System.Drawing.Color.Black;
+            src.Location = new System.Drawing.Point(98, 55);
+            src.Name = "src";
+            src.Size = new System.Drawing.Size(0, 17);
+            src.TabIndex = 10;
             // 
             // projectName
             // 
-            this.projectName.AutoEllipsis = true;
-            this.projectName.AutoSize = true;
-            this.projectName.BackColor = System.Drawing.Color.White;
-            this.projectName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.projectName.ForeColor = System.Drawing.Color.Black;
-            this.projectName.Location = new System.Drawing.Point(98, 27);
-            this.projectName.Name = "projectName";
-            this.projectName.Size = new System.Drawing.Size(0, 17);
-            this.projectName.TabIndex = 9;
+            projectName.AutoEllipsis = true;
+            projectName.AutoSize = true;
+            projectName.BackColor = System.Drawing.Color.White;
+            projectName.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            projectName.ForeColor = System.Drawing.Color.Black;
+            projectName.Location = new System.Drawing.Point(98, 27);
+            projectName.Name = "projectName";
+            projectName.Size = new System.Drawing.Size(0, 17);
+            projectName.TabIndex = 9;
             // 
             // desLab
             // 
-            this.desLab.AutoSize = true;
-            this.desLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.desLab.ForeColor = System.Drawing.Color.Black;
-            this.desLab.Location = new System.Drawing.Point(10, 82);
-            this.desLab.Name = "desLab";
-            this.desLab.Size = new System.Drawing.Size(68, 17);
-            this.desLab.TabIndex = 8;
-            this.desLab.Text = "备份路径：";
+            desLab.AutoSize = true;
+            desLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            desLab.ForeColor = System.Drawing.Color.Black;
+            desLab.Location = new System.Drawing.Point(10, 82);
+            desLab.Name = "desLab";
+            desLab.Size = new System.Drawing.Size(68, 17);
+            desLab.TabIndex = 8;
+            desLab.Text = "备份路径：";
             // 
             // srcLab
             // 
-            this.srcLab.AutoSize = true;
-            this.srcLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.srcLab.ForeColor = System.Drawing.Color.Black;
-            this.srcLab.Location = new System.Drawing.Point(10, 54);
-            this.srcLab.Name = "srcLab";
-            this.srcLab.Size = new System.Drawing.Size(68, 17);
-            this.srcLab.TabIndex = 7;
-            this.srcLab.Text = "存档路径：";
+            srcLab.AutoSize = true;
+            srcLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            srcLab.ForeColor = System.Drawing.Color.Black;
+            srcLab.Location = new System.Drawing.Point(10, 54);
+            srcLab.Name = "srcLab";
+            srcLab.Size = new System.Drawing.Size(68, 17);
+            srcLab.TabIndex = 7;
+            srcLab.Text = "存档路径：";
             // 
             // projectNameLab
             // 
-            this.projectNameLab.AutoSize = true;
-            this.projectNameLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.projectNameLab.ForeColor = System.Drawing.Color.Black;
-            this.projectNameLab.Location = new System.Drawing.Point(10, 26);
-            this.projectNameLab.Name = "projectNameLab";
-            this.projectNameLab.Size = new System.Drawing.Size(44, 17);
-            this.projectNameLab.TabIndex = 6;
-            this.projectNameLab.Text = "游戏：";
+            projectNameLab.AutoSize = true;
+            projectNameLab.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            projectNameLab.ForeColor = System.Drawing.Color.Black;
+            projectNameLab.Location = new System.Drawing.Point(10, 26);
+            projectNameLab.Name = "projectNameLab";
+            projectNameLab.Size = new System.Drawing.Size(44, 17);
+            projectNameLab.TabIndex = 6;
+            projectNameLab.Text = "游戏：";
             // 
             // toolTip
             // 
-            this.toolTip.AutoPopDelay = 50000;
-            this.toolTip.InitialDelay = 50;
-            this.toolTip.ReshowDelay = 10;
+            toolTip.AutoPopDelay = 50000;
+            toolTip.InitialDelay = 50;
+            toolTip.ReshowDelay = 10;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openProjectMenu,
-            this.hideIntoTray});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(946, 25);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.BackColor = System.Drawing.SystemColors.Control;
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openProjectMenu, hideIntoTray, autoBackupMenu });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new System.Drawing.Size(946, 25);
+            menuStrip1.TabIndex = 1;
+            menuStrip1.Text = "menuStrip1";
             // 
             // openProjectMenu
             // 
-            this.openProjectMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.openProjectMenu.Name = "openProjectMenu";
-            this.openProjectMenu.Size = new System.Drawing.Size(44, 21);
-            this.openProjectMenu.Text = "打开";
-            this.openProjectMenu.Click += new System.EventHandler(this.openProjectMenu_Click);
+            openProjectMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            openProjectMenu.Name = "openProjectMenu";
+            openProjectMenu.Size = new System.Drawing.Size(44, 21);
+            openProjectMenu.Text = "打开";
+            openProjectMenu.Click += openProjectMenu_Click;
             // 
             // hideIntoTray
             // 
-            this.hideIntoTray.Name = "hideIntoTray";
-            this.hideIntoTray.Size = new System.Drawing.Size(80, 21);
-            this.hideIntoTray.Text = "隐藏到托盘";
-            this.hideIntoTray.Click += new System.EventHandler(this.hideIntoTray_Click);
+            hideIntoTray.Name = "hideIntoTray";
+            hideIntoTray.Size = new System.Drawing.Size(80, 21);
+            hideIntoTray.Text = "隐藏到托盘";
+            hideIntoTray.Click += hideIntoTray_Click;
+            // 
+            // autoBackupMenu
+            // 
+            autoBackupMenu.CheckOnClick = true;
+            autoBackupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { setAutoBackupTrue });
+            autoBackupMenu.Enabled = false;
+            autoBackupMenu.Name = "autoBackupMenu";
+            autoBackupMenu.Size = new System.Drawing.Size(128, 21);
+            autoBackupMenu.Text = "存档变更时自动备份";
+            // 
+            // setAutoBackupTrue
+            // 
+            setAutoBackupTrue.CheckOnClick = true;
+            setAutoBackupTrue.Name = "setAutoBackupTrue";
+            setAutoBackupTrue.Size = new System.Drawing.Size(180, 22);
+            setAutoBackupTrue.Text = "打开";
+            setAutoBackupTrue.CheckedChanged += setAutoBackupTrue_CheckedChanged;
             // 
             // timer
             // 
-            this.timer.Interval = 60000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            timer.Interval = 60000;
+            timer.Tick += timer_Tick;
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.groupBox4);
-            this.panel2.Location = new System.Drawing.Point(0, 173);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(946, 361);
-            this.panel2.TabIndex = 2;
+            panel2.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            panel2.Controls.Add(groupBox4);
+            panel2.Location = new System.Drawing.Point(0, 173);
+            panel2.Name = "panel2";
+            panel2.Size = new System.Drawing.Size(946, 361);
+            panel2.TabIndex = 2;
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.dataTable);
-            this.groupBox4.Controls.Add(this.toolStrip1);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox4.Location = new System.Drawing.Point(2, 0);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(940, 361);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "备份数据";
+            groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            groupBox4.Controls.Add(dataTable);
+            groupBox4.Controls.Add(toolStrip1);
+            groupBox4.Font = new System.Drawing.Font("Microsoft YaHei UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            groupBox4.Location = new System.Drawing.Point(2, 0);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new System.Drawing.Size(940, 361);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "备份数据";
             // 
             // dataTable
             // 
-            this.dataTable.AllowUserToAddRows = false;
-            this.dataTable.BackgroundColor = System.Drawing.Color.White;
-            this.dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.remarkCol,
-            this.dateCol,
-            this.pathCol});
-            this.dataTable.ContextMenuStrip = this.tableContextMenuStrip;
-            this.dataTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataTable.Location = new System.Drawing.Point(3, 45);
-            this.dataTable.MultiSelect = false;
-            this.dataTable.Name = "dataTable";
-            this.dataTable.ReadOnly = true;
-            this.dataTable.RowHeadersVisible = false;
-            this.dataTable.RowTemplate.Height = 25;
-            this.dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataTable.Size = new System.Drawing.Size(934, 313);
-            this.dataTable.TabIndex = 1;
-            this.dataTable.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataTable_CellClick);
-            this.dataTable.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dataTable_RowsRemoved);
-            this.dataTable.SelectionChanged += new System.EventHandler(this.dataTable_SelectionChanged);
+            dataTable.AllowUserToAddRows = false;
+            dataTable.BackgroundColor = System.Drawing.Color.White;
+            dataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { remarkCol, dateCol, pathCol });
+            dataTable.ContextMenuStrip = tableContextMenuStrip;
+            dataTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataTable.Location = new System.Drawing.Point(3, 45);
+            dataTable.MultiSelect = false;
+            dataTable.Name = "dataTable";
+            dataTable.ReadOnly = true;
+            dataTable.RowHeadersVisible = false;
+            dataTable.RowTemplate.Height = 25;
+            dataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataTable.Size = new System.Drawing.Size(934, 313);
+            dataTable.TabIndex = 1;
+            dataTable.CellClick += dataTable_CellClick;
+            dataTable.RowsRemoved += dataTable_RowsRemoved;
+            dataTable.SelectionChanged += dataTable_SelectionChanged;
             // 
             // remarkCol
             // 
-            this.remarkCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.remarkCol.HeaderText = "备注";
-            this.remarkCol.Name = "remarkCol";
-            this.remarkCol.ReadOnly = true;
+            remarkCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            remarkCol.HeaderText = "备注";
+            remarkCol.Name = "remarkCol";
+            remarkCol.ReadOnly = true;
             // 
             // dateCol
             // 
-            this.dateCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dateCol.HeaderText = "日期";
-            this.dateCol.Name = "dateCol";
-            this.dateCol.ReadOnly = true;
+            dateCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dateCol.HeaderText = "日期";
+            dateCol.Name = "dateCol";
+            dateCol.ReadOnly = true;
             // 
             // pathCol
             // 
-            this.pathCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.pathCol.HeaderText = "所在路径";
-            this.pathCol.Name = "pathCol";
-            this.pathCol.ReadOnly = true;
+            pathCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            pathCol.HeaderText = "所在路径";
+            pathCol.Name = "pathCol";
+            pathCol.ReadOnly = true;
             // 
             // tableContextMenuStrip
             // 
-            this.tableContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.recoverMenu,
-            this.deleteMenu,
-            this.openMenu});
-            this.tableContextMenuStrip.Name = "tableContextMenuStrip";
-            this.tableContextMenuStrip.Size = new System.Drawing.Size(181, 92);
-            this.tableContextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.tableContextMenuStrip_Opening);
+            tableContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { recoverMenu, deleteMenu, openMenu });
+            tableContextMenuStrip.Name = "tableContextMenuStrip";
+            tableContextMenuStrip.Size = new System.Drawing.Size(149, 70);
+            tableContextMenuStrip.Opening += tableContextMenuStrip_Opening;
             // 
             // recoverMenu
             // 
-            this.recoverMenu.Image = global::AutoArchive.Properties.Resources.恢复;
-            this.recoverMenu.Name = "recoverMenu";
-            this.recoverMenu.Size = new System.Drawing.Size(180, 22);
-            this.recoverMenu.Text = "恢复所选";
-            this.recoverMenu.Click += new System.EventHandler(this.recoverMenu_Click);
+            recoverMenu.Image = Properties.Resources.恢复;
+            recoverMenu.Name = "recoverMenu";
+            recoverMenu.Size = new System.Drawing.Size(148, 22);
+            recoverMenu.Text = "恢复所选";
+            recoverMenu.Click += recoverMenu_Click;
             // 
             // deleteMenu
             // 
-            this.deleteMenu.Image = global::AutoArchive.Properties.Resources.删除;
-            this.deleteMenu.Name = "deleteMenu";
-            this.deleteMenu.Size = new System.Drawing.Size(180, 22);
-            this.deleteMenu.Text = "删除所选";
-            this.deleteMenu.Click += new System.EventHandler(this.deleteMenu_Click);
+            deleteMenu.Image = Properties.Resources.删除;
+            deleteMenu.Name = "deleteMenu";
+            deleteMenu.Size = new System.Drawing.Size(148, 22);
+            deleteMenu.Text = "删除所选";
+            deleteMenu.Click += deleteMenu_Click;
             // 
             // openMenu
             // 
-            this.openMenu.Image = global::AutoArchive.Properties.Resources.打开文件夹;
-            this.openMenu.Name = "openMenu";
-            this.openMenu.Size = new System.Drawing.Size(180, 22);
-            this.openMenu.Text = "打开所在位置";
-            this.openMenu.Click += new System.EventHandler(this.openMenu_Click);
+            openMenu.Image = Properties.Resources.打开文件夹;
+            openMenu.Name = "openMenu";
+            openMenu.Size = new System.Drawing.Size(148, 22);
+            openMenu.Text = "打开所在位置";
+            openMenu.Click += openMenu_Click;
             // 
             // toolStrip1
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.recoverBtn,
-            this.deleteBtn,
-            this.toolStripSeparator1,
-            this.openFileBtn});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 20);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(934, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { recoverBtn, deleteBtn, toolStripSeparator1, openFileBtn });
+            toolStrip1.Location = new System.Drawing.Point(3, 20);
+            toolStrip1.Name = "toolStrip1";
+            toolStrip1.Size = new System.Drawing.Size(934, 25);
+            toolStrip1.TabIndex = 0;
+            toolStrip1.Text = "toolStrip1";
             // 
             // recoverBtn
             // 
-            this.recoverBtn.Enabled = false;
-            this.recoverBtn.Image = global::AutoArchive.Properties.Resources.恢复;
-            this.recoverBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.recoverBtn.Name = "recoverBtn";
-            this.recoverBtn.Size = new System.Drawing.Size(76, 22);
-            this.recoverBtn.Text = "恢复所选";
-            this.recoverBtn.ToolTipText = "使用选中的存档进行恢复";
-            this.recoverBtn.Click += new System.EventHandler(this.recoverBtn_Click);
+            recoverBtn.Enabled = false;
+            recoverBtn.Image = Properties.Resources.恢复;
+            recoverBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            recoverBtn.Name = "recoverBtn";
+            recoverBtn.Size = new System.Drawing.Size(76, 22);
+            recoverBtn.Text = "恢复所选";
+            recoverBtn.ToolTipText = "使用选中的存档进行恢复";
+            recoverBtn.Click += recoverBtn_Click;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Enabled = false;
-            this.deleteBtn.Image = global::AutoArchive.Properties.Resources.删除;
-            this.deleteBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(52, 22);
-            this.deleteBtn.Text = "删除";
-            this.deleteBtn.ToolTipText = "删除选中的存档";
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            deleteBtn.Enabled = false;
+            deleteBtn.Image = Properties.Resources.删除;
+            deleteBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            deleteBtn.Name = "deleteBtn";
+            deleteBtn.Size = new System.Drawing.Size(52, 22);
+            deleteBtn.Text = "删除";
+            deleteBtn.ToolTipText = "删除选中的存档";
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // openFileBtn
             // 
-            this.openFileBtn.Enabled = false;
-            this.openFileBtn.Image = global::AutoArchive.Properties.Resources.打开文件夹;
-            this.openFileBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openFileBtn.Name = "openFileBtn";
-            this.openFileBtn.Size = new System.Drawing.Size(100, 22);
-            this.openFileBtn.Text = "打开所在位置";
-            this.openFileBtn.ToolTipText = "打开存档所在位置";
-            this.openFileBtn.Click += new System.EventHandler(this.openFileBtn_Click);
+            openFileBtn.Enabled = false;
+            openFileBtn.Image = Properties.Resources.打开文件夹;
+            openFileBtn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            openFileBtn.Name = "openFileBtn";
+            openFileBtn.Size = new System.Drawing.Size(100, 22);
+            openFileBtn.Text = "打开所在位置";
+            openFileBtn.ToolTipText = "打开存档所在位置";
+            openFileBtn.Click += openFileBtn_Click;
             // 
             // notifyIcon
             // 
-            this.notifyIcon.ContextMenuStrip = this.taskBarContextMenuStrip;
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "备份工具";
-            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
+            notifyIcon.ContextMenuStrip = taskBarContextMenuStrip;
+            notifyIcon.Icon = (System.Drawing.Icon)resources.GetObject("notifyIcon.Icon");
+            notifyIcon.Text = "备份工具";
+            notifyIcon.MouseDoubleClick += notifyIcon_MouseDoubleClick;
             // 
             // taskBarContextMenuStrip
             // 
-            this.taskBarContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitMenu});
-            this.taskBarContextMenuStrip.Name = "contextMenuStrip";
-            this.taskBarContextMenuStrip.Size = new System.Drawing.Size(125, 26);
+            taskBarContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { exitMenu });
+            taskBarContextMenuStrip.Name = "contextMenuStrip";
+            taskBarContextMenuStrip.Size = new System.Drawing.Size(125, 26);
             // 
             // exitMenu
             // 
-            this.exitMenu.Name = "exitMenu";
-            this.exitMenu.Size = new System.Drawing.Size(124, 22);
-            this.exitMenu.Text = "退出程序";
-            this.exitMenu.Click += new System.EventHandler(this.exitMenu_Click);
+            exitMenu.Name = "exitMenu";
+            exitMenu.Size = new System.Drawing.Size(124, 22);
+            exitMenu.Text = "退出程序";
+            exitMenu.Click += exitMenu_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(946, 534);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "老贼盒子";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.panel1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable)).EndInit();
-            this.tableContextMenuStrip.ResumeLayout(false);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.taskBarContextMenuStrip.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackColor = System.Drawing.Color.White;
+            ClientSize = new System.Drawing.Size(946, 534);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
+            Controls.Add(menuStrip1);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Name = "MainForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "老贼盒子";
+            FormClosing += MainForm_FormClosing;
+            panel1.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            panel2.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataTable).EndInit();
+            tableContextMenuStrip.ResumeLayout(false);
+            toolStrip1.ResumeLayout(false);
+            toolStrip1.PerformLayout();
+            taskBarContextMenuStrip.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -643,5 +635,7 @@ namespace AutoArchive.Forms
         private System.Windows.Forms.ToolStripMenuItem recoverMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteMenu;
         private System.Windows.Forms.ToolStripMenuItem openMenu;
+        private System.Windows.Forms.ToolStripMenuItem autoBackupMenu;
+        private System.Windows.Forms.ToolStripMenuItem setAutoBackupTrue;
     }
 }

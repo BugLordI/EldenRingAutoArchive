@@ -44,21 +44,17 @@ namespace AutoArchive.Forms
             srcPath.Text = source.SrcPath;
             desPath.Text = source.TarPath;
             projectName.Text = source.Name;
+            newProject = source;
         }
 
         private void CreateProjectDialog_Load(object sender, EventArgs e)
         {
-            init();
-        }
-
-        /// <summary>
-        /// 初始化默认备份目录
-        /// </summary>
-        private void init()
-        {
-            String des = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
-            desPath.Text = des;
-            this.toolTip.SetToolTip(this.desPath, des);
+            if (newProject == null)
+            {
+                String des = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
+                desPath.Text = des;
+            }
+            this.toolTip.SetToolTip(this.desPath, desPath.Text);
             this.toolTip.SetToolTip(this.srcPath, srcPath.Text);
         }
 
@@ -106,12 +102,11 @@ namespace AutoArchive.Forms
         /// <param name="e"></param>
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            newProject = new Source()
-            {
-                Name = projectName.Text,
-                SrcPath = srcPath.Text,
-                TarPath = desPath.Text
-            };
+            // bug fix
+            newProject ??= new Source();
+            newProject.Name = projectName.Text;
+            newProject.SrcPath = srcPath.Text;
+            newProject.TarPath = desPath.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

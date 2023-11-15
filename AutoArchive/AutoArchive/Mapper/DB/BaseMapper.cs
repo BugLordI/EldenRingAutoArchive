@@ -33,41 +33,6 @@ namespace AutoArchive.Mapper.DB
         public override DbSet<T> Entity { set; get; }
 
         /// <summary>
-        /// 根据ID修改表记录
-        /// </summary>
-        /// <param name="entity">数据库表实体类</param>
-        /// <returns>受影响的行数</returns>
-        public int update(T entity)
-        {
-            int effectRows = 0;
-            T one = Entity.Find(entity.Id);
-            if (one != null)
-            {
-                Entity.Remove(one);
-                Entity.Add(entity);
-                effectRows = SaveChanges();
-            }
-            return effectRows;
-        }
-
-        /// <summary>
-        /// 根据Id删除记录
-        /// </summary>
-        /// <param name="id">Id</param>
-        /// <returns>受影响的行数</returns>
-        public int delete(String id)
-        {
-            int effectRows = 0;
-            T one = Entity.Find(id);
-            if (one != null)
-            {
-                Entity.Remove(one);
-                effectRows = SaveChanges();
-            }
-            return effectRows;
-        }
-
-        /// <summary>
         /// 添加记录
         /// </summary>
         /// <param name="entity">数据库表实体类</param>

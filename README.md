@@ -3,6 +3,7 @@
     <img src="https://img.shields.io/badge/Elden Ring-老头环-gold" alt="vue">
     <img src="https://img.shields.io/badge/Dark Soul-黑暗之魂-black" alt="vue">
     <img src="https://img.shields.io/badge/Sekiro Shadows Die Twice-只狼影逝二度-orange" alt="vue">
+    <img src="https://img.shields.io/badge/The%20Lords%20of%20the%20Fallen-%E5%A0%95%E8%90%BD%E4%B9%8B%E4%B8%BB-darkblue" alt="vue">
 </p>
 <p style="text-indent: 2em">Yes indeed,你是否还在为魂1的十万八千里路而烦恼？是否在为没有黑骑士戟而烦恼？是否在为魂2的半条血而烦恼？
 是否还在为魂3没有699而烦恼？是否还在为苇名的龙咳而烦恼？即刻起拥有老贼的游戏盒，这些都不再是问题!!!

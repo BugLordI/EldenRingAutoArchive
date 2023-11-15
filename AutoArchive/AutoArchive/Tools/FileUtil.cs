@@ -14,6 +14,7 @@
 *************************************************************************************/
 using System;
 using System.IO;
+using System.Net;
 
 namespace AutoArchive.Tools
 {
@@ -29,28 +30,24 @@ namespace AutoArchive.Tools
         /// <param name="destinationPath">目标文件夹</param>
         /// <param name="isOverwrite">目标文件已存在是否覆盖</param>
         /// <returns>是否复制成功</returns>
-        public static bool copyDirectory(String sourcePath, String destinationPath, bool isOverwrite=true)
+        public static bool copyDirectory(String sourcePath, String destinationPath, bool isOverwrite = true)
         {
             bool ret = false;
             try
             {
                 sourcePath = sourcePath.EndsWith(@"\") ? sourcePath : sourcePath + @"\";
                 destinationPath = destinationPath.EndsWith(@"\") ? destinationPath : destinationPath + @"\";
-                //源文件夹是否存在
                 if (Directory.Exists(sourcePath))
                 {
-                    //目标文件夹是否存在，不存在则创建
                     if (!Directory.Exists(destinationPath))
                     {
                         Directory.CreateDirectory(destinationPath);
                     }
-                    //将源文件夹下的文件复制过去
                     foreach (String fls in Directory.GetFiles(sourcePath))
                     {
                         FileInfo flinfo = new FileInfo(fls);
                         flinfo.CopyTo(destinationPath + flinfo.Name, isOverwrite);
                     }
-                    //复制源文件夹下的子文件夹内容
                     foreach (String drs in Directory.GetDirectories(sourcePath))
                     {
                         DirectoryInfo drinfo = new DirectoryInfo(drs);
@@ -59,8 +56,8 @@ namespace AutoArchive.Tools
                             ret = false;
                         }
                     }
+                    ret = true;
                 }
-                ret = true;
             }
             catch (Exception ex)
             {

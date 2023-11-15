@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace AutoArchive.Forms
@@ -47,6 +46,8 @@ namespace AutoArchive.Forms
         /// 任务倒计时(分钟)
         /// </summary>
         private int min;
+
+        private FileSystemWatcher watcher;
 
         public MainForm()
         {
@@ -110,7 +111,7 @@ namespace AutoArchive.Forms
                 toolTip.SetToolTip(src, src.Text);
                 des.Text = selectedProject.TarPath;
                 toolTip.SetToolTip(des, des.Text);
-                openTask.Enabled = periodTextBox.Enabled = updateBtn.Enabled = remarkeTextBox.Enabled = true;
+                openTask.Enabled = periodTextBox.Enabled = updateBtn.Enabled = remarkeTextBox.Enabled = autoBackupMenu.Enabled = true;
             }
         }
 
@@ -160,6 +161,10 @@ namespace AutoArchive.Forms
 
         private void initTable(Source source)
         {
+            // bug fix
+            if (source == null) {
+                return;
+            }
             //初始化表格
             List<Target> targets = source.Targets;
             int count = targets.Count;
@@ -191,6 +196,15 @@ namespace AutoArchive.Forms
             {
                 this.selectedProject = createProject.NewProject;
                 init();
+                // bug fix
+                using (BaseMapper<Source> mapper = new BaseMapper<Source>())
+                {
+                    Source s = mapper.Entity.Include(e => e.Targets).Include(e => e.Task).ToList().Find(e => e.Id.Equals(this.selectedProject.Id));
+                    s.TarPath = this.selectedProject.TarPath;
+                    s.SrcPath = this.selectedProject.SrcPath;
+                    s.Name = this.selectedProject.Name;
+                    mapper.SaveChanges();
+                }
             }
         }
 
@@ -293,6 +307,7 @@ namespace AutoArchive.Forms
             }
         }
 
+
         /// <summary>
         /// 备注
         /// </summary>
@@ -301,6 +316,29 @@ namespace AutoArchive.Forms
         private void remarkeTextBox_TextChanged(object sender, EventArgs e)
         {
             backupBtn.Enabled = remarkeTextBox.Text.Length > 0;
+        }
+
+        /// <summary>
+        /// auto backup menu checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void setAutoBackupTrue_CheckedChanged(object sender, EventArgs e)
+        {
+            ToolStripMenuItem autoBackupMenuItem = sender as ToolStripMenuItem;
+            if (autoBackupMenuItem.Checked)
+            {
+                watcher = FileWatcherTool.startWatch(this.selectedProject.SrcPath, autoBackup);
+            }
+            else
+            {
+                watcher?.Dispose();
+            }
+        }
+
+        private void autoBackup(object o, FileSystemEventArgs file)
+        {
+            backup("检测到存档变动，自动备份", true);
         }
 
         /// <summary>
@@ -410,7 +448,11 @@ namespace AutoArchive.Forms
             if (result == DialogResult.Yes)
             {
                 DirectoryInfo di = new DirectoryInfo(selectedRow.Path);
-                di.Delete(true);
+                // bug fix
+                if(di.Exists)
+                {
+                    di.Delete(true);
+                }
                 using (BaseMapper<Source> mapper = new BaseMapper<Source>())
                 {
                     using (BaseMapper<Target> baseMapper = new BaseMapper<Target>())
@@ -507,7 +549,6 @@ namespace AutoArchive.Forms
                 e.Cancel = true;
             }
         }
-
         #region 表格右键
         private void recoverMenu_Click(object sender, EventArgs e)
         {
@@ -524,5 +565,6 @@ namespace AutoArchive.Forms
             openFileBtn_Click(null, null);
         }
         #endregion
+
     }
 }
