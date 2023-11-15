@@ -111,7 +111,9 @@ namespace AutoArchive.Forms
                 toolTip.SetToolTip(src, src.Text);
                 des.Text = selectedProject.TarPath;
                 toolTip.SetToolTip(des, des.Text);
-                openTask.Enabled = periodTextBox.Enabled = updateBtn.Enabled = remarkeTextBox.Enabled = autoBackupMenu.Enabled = true;
+                openTask.Enabled = periodTextBox.Enabled = updateBtn.Enabled = remarkeTextBox.Enabled = true;
+                //TODO bug fix
+                // autoBackupMenu.Enabled = true;
             }
         }
 
@@ -338,7 +340,10 @@ namespace AutoArchive.Forms
 
         private void autoBackup(object o, FileSystemEventArgs file)
         {
-            backup("检测到存档变动，自动备份", true);
+            this.Invoke(new Action(() =>
+            {
+                backup("检测到存档变动，自动备份", true);
+            }));
         }
 
         /// <summary>
