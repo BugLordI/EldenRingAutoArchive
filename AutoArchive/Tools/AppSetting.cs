@@ -3,21 +3,14 @@
  * 文 件 名:   AppSetting.cs
  * 描    述:   工程配置文件工具类
  * 
- * 版    本：  V1.0
- * 创 建 者：  ZhangMuYu 
+ * 创 建 者：  BugLord 
  * 创建时间：  2022/06/18 13:03:52
- * ======================================
- * 历史更新记录
- * 版本：          修改时间：         修改人：
- * 修改内容：
- * ======================================
 *************************************************************************************/
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Text;
-using System.Windows.Forms;
 
 namespace AutoArchive.Tools
 {
@@ -34,8 +27,7 @@ namespace AutoArchive.Tools
         /// <param name="configFile">配置文件名(JSON)</param>
         public AppSetting(String configFile)
         {
-            String path = Path.Combine(Application.StartupPath, configFile);
-            token = readJson(path, Encoding.UTF8);
+            token = readJson(configFile, Encoding.UTF8);
         }
 
         /// <summary>

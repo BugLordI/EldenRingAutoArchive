@@ -4,7 +4,7 @@
  * 描    述:   Target.cs
  * 
  * 版    本：  V1.0
- * 创 建 者：  ZhangMuYu 
+ * 创 建 者：  BugLord 
  * 创建时间：  2022/6/18 14:48:28
  * ======================================
  * 历史更新记录
@@ -12,10 +12,9 @@
  * 修改内容：
  * ======================================
 *************************************************************************************/
+using AutoArchive.DataBase;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace AutoArchive.Entity
 {

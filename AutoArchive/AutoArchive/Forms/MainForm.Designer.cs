@@ -4,7 +4,7 @@
  * 描    述:   主界面
  * 
  * 版    本：  V1.0
- * 创 建 者：  ZhangMuYu 
+ * 创 建 者：  BugLord 
  * 创建时间：  2022/6/19 14:25:52
  * ======================================
  * 历史更新记录
@@ -68,8 +68,6 @@ namespace AutoArchive.Forms
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             openProjectMenu = new System.Windows.Forms.ToolStripMenuItem();
             hideIntoTray = new System.Windows.Forms.ToolStripMenuItem();
-            autoBackupMenu = new System.Windows.Forms.ToolStripMenuItem();
-            setAutoBackupTrue = new System.Windows.Forms.ToolStripMenuItem();
             timer = new System.Windows.Forms.Timer(components);
             panel2 = new System.Windows.Forms.Panel();
             groupBox4 = new System.Windows.Forms.GroupBox();
@@ -348,7 +346,7 @@ namespace AutoArchive.Forms
             // menuStrip1
             // 
             menuStrip1.BackColor = System.Drawing.SystemColors.Control;
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openProjectMenu, hideIntoTray, autoBackupMenu });
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { openProjectMenu, hideIntoTray });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new System.Drawing.Size(946, 25);
@@ -369,23 +367,6 @@ namespace AutoArchive.Forms
             hideIntoTray.Size = new System.Drawing.Size(80, 21);
             hideIntoTray.Text = "隐藏到托盘";
             hideIntoTray.Click += hideIntoTray_Click;
-            // 
-            // autoBackupMenu
-            // 
-            autoBackupMenu.CheckOnClick = true;
-            autoBackupMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { setAutoBackupTrue });
-            autoBackupMenu.Enabled = false;
-            autoBackupMenu.Name = "autoBackupMenu";
-            autoBackupMenu.Size = new System.Drawing.Size(128, 21);
-            autoBackupMenu.Text = "存档变更时自动备份";
-            // 
-            // setAutoBackupTrue
-            // 
-            setAutoBackupTrue.CheckOnClick = true;
-            setAutoBackupTrue.Name = "setAutoBackupTrue";
-            setAutoBackupTrue.Size = new System.Drawing.Size(180, 22);
-            setAutoBackupTrue.Text = "打开";
-            setAutoBackupTrue.CheckedChanged += setAutoBackupTrue_CheckedChanged;
             // 
             // timer
             // 
@@ -635,7 +616,5 @@ namespace AutoArchive.Forms
         private System.Windows.Forms.ToolStripMenuItem recoverMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteMenu;
         private System.Windows.Forms.ToolStripMenuItem openMenu;
-        private System.Windows.Forms.ToolStripMenuItem autoBackupMenu;
-        private System.Windows.Forms.ToolStripMenuItem setAutoBackupTrue;
     }
 }

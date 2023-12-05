@@ -4,7 +4,7 @@
  * 描    述:   CreateProjectDialog
  * 
  * 版    本：  V1.0
- * 创 建 者：  ZhangMuYu 
+ * 创 建 者：  BugLord 
  * 创建时间：  2022/6/18 17:06:28
  * ======================================
  * 历史更新记录
@@ -133,7 +133,8 @@ namespace AutoArchive.Forms
         /// <param name="e"></param>
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            AppSetting appSetting = new AppSetting("appsettings.json");
+            String path = Path.Combine(Application.StartupPath, "appsettings.json");
+            AppSetting appSetting = new AppSetting(path);
             String url = appSetting["Help:Url"];
             System.Diagnostics.Process.Start("explorer.exe", url);
         }

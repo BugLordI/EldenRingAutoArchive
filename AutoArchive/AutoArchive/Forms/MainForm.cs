@@ -4,7 +4,7 @@
  * 描    述:   主界面
  * 
  * 版    本：  V1.0
- * 创 建 者：  ZhangMuYu 
+ * 创 建 者：  BugLord 
  * 创建时间：  2022/6/19 14:25:52
  * ======================================
  * 历史更新记录
@@ -13,7 +13,7 @@
  * ======================================
 *************************************************************************************/
 using AutoArchive.Entity;
-using AutoArchive.Mapper.DB;
+using AutoArchive.Mapper;
 using AutoArchive.Tools;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -46,8 +46,6 @@ namespace AutoArchive.Forms
         /// 任务倒计时(分钟)
         /// </summary>
         private int min;
-
-        private FileSystemWatcher watcher;
 
         public MainForm()
         {
@@ -164,7 +162,8 @@ namespace AutoArchive.Forms
         private void initTable(Source source)
         {
             // bug fix
-            if (source == null) {
+            if (source == null)
+            {
                 return;
             }
             //初始化表格
@@ -320,24 +319,6 @@ namespace AutoArchive.Forms
             backupBtn.Enabled = remarkeTextBox.Text.Length > 0;
         }
 
-        /// <summary>
-        /// auto backup menu checked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void setAutoBackupTrue_CheckedChanged(object sender, EventArgs e)
-        {
-            ToolStripMenuItem autoBackupMenuItem = sender as ToolStripMenuItem;
-            if (autoBackupMenuItem.Checked)
-            {
-                watcher = FileWatcherTool.startWatch(this.selectedProject.SrcPath, autoBackup);
-            }
-            else
-            {
-                watcher?.Dispose();
-            }
-        }
-
         private void autoBackup(object o, FileSystemEventArgs file)
         {
             this.Invoke(new Action(() =>
@@ -454,7 +435,7 @@ namespace AutoArchive.Forms
             {
                 DirectoryInfo di = new DirectoryInfo(selectedRow.Path);
                 // bug fix
-                if(di.Exists)
+                if (di.Exists)
                 {
                     di.Delete(true);
                 }
