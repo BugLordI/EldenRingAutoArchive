@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoArchive", "AutoArchive\
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{11D3E686-8B79-4BE0-8E3D-2AA5600AE379}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoArchivePlus", "AutoArchivePlus\AutoArchivePlus.csproj", "{3F5869B1-D37A-4FC1-AC33-C617A36897B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoArchivePlus", "AutoArchivePlus\AutoArchivePlus.csproj", "{3F5869B1-D37A-4FC1-AC33-C617A36897B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{60B86EBB-0204-4C53-B0F3-570D1C04338F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{60B86EBB-0204-4C53-B0F3-570D1C04338F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DataBase\DataBase.csproj", "{36244959-1B33-496A-B73B-E9FA819A6EC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{36244959-1B33-496A-B73B-E9FA819A6EC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +53,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_CultureCountyOverrides = en=en-BI
+		RESX_ConfirmAddLanguageFile = True
+		RESX_NeutralResourcesLanguage = zh-CN
 		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 	EndGlobalSection
 EndGlobal

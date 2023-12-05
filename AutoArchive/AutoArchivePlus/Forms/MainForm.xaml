@@ -1,0 +1,29 @@
+﻿<Window x:Class="AutoArchivePlus.Forms.MainForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoArchivePlus.Language"
+        mc:Ignorable="d"
+        Title="{Binding [MainFormTitle], Source={x:Static local:LanguageManager.Instance}}"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+        Height="583" 
+        Width="982" WindowStartupLocation="CenterScreen" MinHeight="583" MinWidth="982">
+    <WindowChrome.WindowChrome>
+        <WindowChrome NonClientFrameEdges="None" CaptionHeight="39" ResizeBorderThickness="10" GlassFrameThickness="0" UseAeroCaptionButtons="True"/>
+    </WindowChrome.WindowChrome>
+    <Grid Margin="10">
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.8" Color="#AAAAAA"/>
+        </Grid.Effect>
+        <DockPanel LastChildFill="False">
+            <DockPanel.Background>
+                <SolidColorBrush Color="White" Opacity="0.85"/>
+            </DockPanel.Background>
+            <StackPanel Height="39" Background="#FFF8F8F9" DockPanel.Dock="Top"/>
+        </DockPanel>
+
+    </Grid>
+</Window>
