@@ -106,4 +106,7 @@
   <data name="MainFormTitle" xml:space="preserve">
     <value>存档自动备份</value>
   </data>
+  <data name="TitleBarDefaultName" xml:space="preserve">
+    <value>标题栏</value>
+  </data>
 </root>

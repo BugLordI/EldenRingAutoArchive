@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="AutoArchivePlus.Component.FormTitleBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             x:Name="Root"
+             MinWidth="962"
+             Height="39"
+            >
+    <StackPanel Height="39" Orientation="Horizontal">
+        <StackPanel.Background>
+            <SolidColorBrush Color="White" Opacity="1"/>
+        </StackPanel.Background>
+        <Label  MaxWidth="350" VerticalAlignment="Center">
+            <Label.Content>
+                <DockPanel>
+                    <Image Width="25" Height="25" DockPanel.Dock="Left" Source="../Resources/xinwang-ds3-ico.png"></Image>
+                    <TextBlock Text="{Binding Title, ElementName=Root}" 
+                    DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF0078D4"/>
+                </DockPanel>
+            </Label.Content>
+        </Label>
+    </StackPanel>
+</UserControl>

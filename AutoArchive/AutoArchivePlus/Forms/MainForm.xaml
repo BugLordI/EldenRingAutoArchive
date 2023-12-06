@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AutoArchivePlus.Language"
+        xmlns:language="clr-namespace:AutoArchivePlus.Language"
+        xmlns:component="clr-namespace:AutoArchivePlus.Component"
         mc:Ignorable="d"
-        Title="{Binding [MainFormTitle], Source={x:Static local:LanguageManager.Instance}}"
+        Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
         AllowsTransparency="True"
         Background="Transparent"
         WindowStyle="None"
@@ -20,9 +21,11 @@
         </Grid.Effect>
         <DockPanel LastChildFill="False">
             <DockPanel.Background>
-                <SolidColorBrush Color="White" Opacity="0.85"/>
+                <SolidColorBrush Color="White" Opacity="0.8"/>
             </DockPanel.Background>
-            <StackPanel Height="39" Background="#FFF8F8F9" DockPanel.Dock="Top"/>
+            <component:FormTitleBar DockPanel.Dock="Top" x:Name="titleBar" 
+                                Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"/>
+            <StackPanel Height="180" MinWidth="962" Background="Gray" DockPanel.Dock="Top"/>
         </DockPanel>
 
     </Grid>

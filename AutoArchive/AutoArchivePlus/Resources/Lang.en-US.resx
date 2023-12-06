@@ -126,4 +126,7 @@
   <data name="MainFormTitle" xml:space="preserve">
     <value>Archive automatic backup</value>
   </data>
+  <data name="TitleBarDefaultName" xml:space="preserve">
+    <value>TilteBar</value>
+  </data>
 </root>

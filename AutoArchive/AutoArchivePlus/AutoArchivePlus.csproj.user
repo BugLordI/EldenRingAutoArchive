@@ -2,12 +2,21 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Component\FormTitleBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\MainForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Component\FormTitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Forms\MainForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Dictionary.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
