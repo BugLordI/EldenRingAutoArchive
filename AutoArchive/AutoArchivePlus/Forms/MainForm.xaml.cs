@@ -12,9 +12,9 @@ namespace AutoArchivePlus.Forms
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void titleBar_cloesBtnmouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            titleBar.Title = "hahhaha";
+            this.Close();
         }
     }
 }

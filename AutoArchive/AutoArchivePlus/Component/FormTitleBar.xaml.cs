@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AutoArchivePlus.Component
 {
@@ -10,9 +11,14 @@ namespace AutoArchivePlus.Component
     {
         public static readonly DependencyProperty TitleProperty;
 
+        public static readonly DependencyProperty ShowCloseProperty;
+
+        public event MouseButtonEventHandler cloesBtnmouseDown;
+
         static FormTitleBar()
         {
             TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
+            ShowCloseProperty= DependencyProperty.Register("ShowClose", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
         }
 
         public FormTitleBar()
@@ -20,9 +26,6 @@ namespace AutoArchivePlus.Component
             InitializeComponent();
         }
 
-        /// <summary>
-        /// 标题
-        /// </summary>
         public string Title {
             get {
                 return (string)GetValue(TitleProperty);
@@ -31,6 +34,32 @@ namespace AutoArchivePlus.Component
             {
                 SetValue(TitleProperty, value);
             }
+        }
+
+        /// <summary>
+        /// set value is "true" or "false"
+        /// </summary>
+        public string ShowClose
+        {
+            get
+            {
+                return (string)GetValue(ShowCloseProperty);
+            }
+            set
+            {
+                if (value.ToLower() == "true")
+                {
+                    SetValue(ShowCloseProperty, "Visible");
+                }
+                else {
+                    SetValue(ShowCloseProperty, "Hidden");
+                }
+            }
+        }
+
+        private void closeBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            cloesBtnmouseDown(sender, e);
         }
     }
 }

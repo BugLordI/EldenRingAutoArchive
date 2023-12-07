@@ -7,19 +7,47 @@
              x:Name="Root"
              MinWidth="962"
              Height="39"
+             Background="White" 
+             IsHitTestVisible="True"
             >
-    <StackPanel Height="39" Orientation="Horizontal">
-        <StackPanel.Background>
-            <SolidColorBrush Color="White" Opacity="1"/>
-        </StackPanel.Background>
-        <Label  MaxWidth="350" VerticalAlignment="Center">
-            <Label.Content>
-                <DockPanel>
-                    <Image Width="25" Height="25" DockPanel.Dock="Left" Source="../Resources/xinwang-ds3-ico.png"></Image>
-                    <TextBlock Text="{Binding Title, ElementName=Root}" 
-                    DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF0078D4"/>
-                </DockPanel>
-            </Label.Content>
-        </Label>
-    </StackPanel>
+    <Grid Width="Auto">
+        <DockPanel Width="Auto">
+            <Label VerticalAlignment="Center">
+                <Label.Content>
+                    <DockPanel>
+                        <Image Width="25" Height="25" DockPanel.Dock="Left" Source="../Resources/xinwang-ds3-ico.png"></Image>
+                        <TextBlock Text="{Binding Title, ElementName=Root}" 
+            DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF0078D4"/>
+                    </DockPanel>
+                </Label.Content>
+            </Label>
+            <DockPanel HorizontalAlignment="Right">
+                <Label 
+                    x:Name="closeBtn"
+                    HorizontalContentAlignment="Center" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center" 
+                    VerticalContentAlignment="Center" 
+                    Margin="5,0,5,0" 
+                    Visibility="{Binding ShowClose, ElementName=Root}" 
+                    MouseDown="closeBtn_MouseDown"
+                    >
+                    <Label VerticalAlignment="Center" Width="24" Height="24" Background="Transparent" VerticalContentAlignment="Center">
+                        <Label.Content>
+                            <Path Fill="#FF0078D4" Stroke="#FF0078D4" Data="M 0 0 L 24 24 M 0 24 L 24 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Label.Content>
+                    </Label>
+                    <Label.Style>
+                        <Style TargetType="Label">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Label.Style>
+                </Label>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
 </UserControl>
