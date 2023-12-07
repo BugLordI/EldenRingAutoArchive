@@ -22,7 +22,7 @@
                 </Label.Content>
             </Label>
             <DockPanel HorizontalAlignment="Right">
-                <Label 
+                <Button
                     x:Name="closeBtn"
                     HorizontalContentAlignment="Center" 
                     HorizontalAlignment="Center" 
@@ -30,23 +30,33 @@
                     VerticalContentAlignment="Center" 
                     Margin="5,0,5,0" 
                     Visibility="{Binding ShowClose, ElementName=Root}" 
-                    MouseDown="closeBtn_MouseDown"
+                    Click="closeBtn_MouseDown"
                     >
                     <Label VerticalAlignment="Center" Width="24" Height="24" Background="Transparent" VerticalContentAlignment="Center">
                         <Label.Content>
                             <Path Fill="#FF0078D4" Stroke="#FF0078D4" Data="M 0 0 L 24 24 M 0 24 L 24 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Label.Content>
                     </Label>
-                    <Label.Style>
-                        <Style TargetType="Label">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="{x:Null}"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Background" Value="Red"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
-                    </Label.Style>
-                </Label>
+                    </Button.Style>
+                </Button>
             </DockPanel>
         </DockPanel>
     </Grid>

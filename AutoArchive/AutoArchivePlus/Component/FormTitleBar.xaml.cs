@@ -13,7 +13,7 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ShowCloseProperty;
 
-        public event MouseButtonEventHandler cloesBtnmouseDown;
+        public event RoutedEventHandler closeBtnClickHandler;
 
         static FormTitleBar()
         {
@@ -57,9 +57,9 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        private void closeBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        private void closeBtn_MouseDown(object sender, RoutedEventArgs e)
         {
-            cloesBtnmouseDown(sender, e);
+            closeBtnClickHandler(sender, e);
         }
     }
 }
