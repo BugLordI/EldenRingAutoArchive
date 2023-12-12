@@ -40,6 +40,7 @@
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
                 CloseButtonClick="titleBar_CloseButtonClick"
                 ParentWindow="{Binding ElementName=mainWindow}"
+                ShowMaximize="Hidden"
                />
             <StackPanel Height="151" MinWidth="962" Background="Gray" DockPanel.Dock="Top"/>
         </DockPanel>

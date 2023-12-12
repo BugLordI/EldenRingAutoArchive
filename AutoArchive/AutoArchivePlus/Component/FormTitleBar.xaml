@@ -29,18 +29,16 @@
                     </DockPanel>
                 </Label.Content>
             </Label>
-            <DockPanel HorizontalAlignment="Right" Height="Auto">
+            <DockPanel Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto">
                 <Button
                      ToolTip="{Binding [MinimizeBtnName], Source={x:Static language:LanguageManager.Instance}}"
                      WindowChrome.IsHitTestVisibleInChrome="True"
                      x:Name="minimizeBtn"
                      HorizontalContentAlignment="Center" 
-                     HorizontalAlignment="Center" 
                      VerticalAlignment="Center" 
                      VerticalContentAlignment="Center" 
-                     Margin="5,0,5,0" 
-                     Visibility="{Binding ShowClose, ElementName=Root}" 
-                     Click="maximizeBtn_Click"
+                     Visibility="{Binding ShowMinimize, ElementName=Root}" 
+                     Click="minimizeBtn_Click"
                      Style="{StaticResource TitleBarBtn}"
                      Height="39"
                      Width="39"
@@ -54,15 +52,13 @@
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     x:Name="closeBtn"
                     HorizontalContentAlignment="Center" 
-                    HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
                     VerticalContentAlignment="Center" 
-                    Margin="5,0,5,0" 
-                    Visibility="{Binding ShowClose, ElementName=Root}" 
+                    Visibility="{Binding ShowMaximize, ElementName=Root}" 
                     Click="maximizeBtn_Click"
                     Style="{StaticResource TitleBarBtn}"
                     Height="39"
-                    Width="39"
+                    Width="39" 
                     >
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
                         <Rectangle  Stroke="#FF0078D4" Width="14" Height="14" />
@@ -73,10 +69,8 @@
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     x:Name="maximizeBtn"
                     HorizontalContentAlignment="Center" 
-                    HorizontalAlignment="Center" 
                     VerticalAlignment="Center" 
                     VerticalContentAlignment="Center" 
-                    Margin="5,0,5,0" 
                     Visibility="{Binding ShowClose, ElementName=Root}" 
                     Click="closeBtn_Click"
                     Style="{StaticResource TitleBarCloseBtn}"
