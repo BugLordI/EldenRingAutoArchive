@@ -11,7 +11,7 @@
              IsHitTestVisible="True"
             >
     <Grid Width="Auto">
-        <DockPanel Width="Auto">
+        <DockPanel Width="Auto"  MouseDown="Grid_MouseDown" Background="White" Opacity="0.9">
             <Label VerticalAlignment="Center">
                 <Label.Content>
                     <DockPanel>
@@ -23,6 +23,7 @@
             </Label>
             <DockPanel HorizontalAlignment="Right">
                 <Button
+                    WindowChrome.IsHitTestVisibleInChrome="True"
                     x:Name="closeBtn"
                     HorizontalContentAlignment="Center" 
                     HorizontalAlignment="Center" 
@@ -30,7 +31,7 @@
                     VerticalContentAlignment="Center" 
                     Margin="5,0,5,0" 
                     Visibility="{Binding ShowClose, ElementName=Root}" 
-                    Click="closeBtn_MouseDown"
+                    Click="closeBtn_Click"
                     >
                     <Label VerticalAlignment="Center" Width="24" Height="24" Background="Transparent" VerticalContentAlignment="Center">
                         <Label.Content>

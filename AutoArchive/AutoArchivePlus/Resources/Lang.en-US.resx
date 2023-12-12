@@ -129,4 +129,7 @@
   <data name="TitleBarDefaultName" xml:space="preserve">
     <value>TilteBar</value>
   </data>
+  <data name="CloseAppConfirmation" xml:space="preserve">
+    <value>Are you sure you want to exit the Application?!</value>
+  </data>
 </root>

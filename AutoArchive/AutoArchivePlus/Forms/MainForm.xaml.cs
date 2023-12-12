@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AutoArchivePlus.Language;
+using System.Windows;
 
 namespace AutoArchivePlus.Forms
 {
@@ -12,9 +13,18 @@ namespace AutoArchivePlus.Forms
             InitializeComponent();
         }
 
-        private void titleBar_cloesBtnmouseDown(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// close window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void titleBar_CloseButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ret == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

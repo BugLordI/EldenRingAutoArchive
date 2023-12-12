@@ -109,4 +109,7 @@
   <data name="TitleBarDefaultName" xml:space="preserve">
     <value>标题栏</value>
   </data>
+  <data name="CloseAppConfirmation" xml:space="preserve">
+    <value>是否确认退出程序？</value>
+  </data>
 </root>

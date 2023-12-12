@@ -13,12 +13,17 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ShowCloseProperty;
 
-        public event RoutedEventHandler closeBtnClickHandler;
+        public static readonly DependencyProperty ParentWindowProperty;
+
+        public event RoutedEventHandler CloseButtonClick;
+
+        public event MouseButtonEventHandler DragMove;
 
         static FormTitleBar()
         {
             TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
-            ShowCloseProperty= DependencyProperty.Register("ShowClose", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
+            ShowCloseProperty= DependencyProperty.Register("ShowClose", typeof(Visibility), typeof(FormTitleBar));
+            ParentWindowProperty = DependencyProperty.Register("ParentWindow", typeof(Window), typeof(FormTitleBar));
         }
 
         public FormTitleBar()
@@ -37,29 +42,63 @@ namespace AutoArchivePlus.Component
         }
 
         /// <summary>
-        /// set value is "true" or "false"
+        /// ShowCloseBtn
         /// </summary>
-        public string ShowClose
+        public Visibility ShowClose
         {
             get
             {
-                return (string)GetValue(ShowCloseProperty);
+                return (Visibility)GetValue(ShowCloseProperty);
             }
             set
             {
-                if (value.ToLower() == "true")
-                {
-                    SetValue(ShowCloseProperty, "Visible");
-                }
-                else {
-                    SetValue(ShowCloseProperty, "Hidden");
-                }
+                SetValue(ShowCloseProperty, value);
             }
         }
 
-        private void closeBtn_MouseDown(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// ParentWindow
+        /// </summary>
+        public Window ParentWindow
         {
-            closeBtnClickHandler(sender, e);
+            get
+            {
+                return (Window)GetValue(ParentWindowProperty);
+            }
+            set
+            {
+                SetValue(ParentWindowProperty, value);
+            }
+        }
+
+        /// <summary>
+        /// On close Btn click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (CloseButtonClick != null)
+            {
+                CloseButtonClick?.Invoke(sender, e);
+            }
+            else
+            {
+                ParentWindow?.Close();
+            }
+        }
+
+        /// <summary>
+        /// Drag Move the parentWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                DragMove?.Invoke(sender, e);
+            }
         }
     }
 }

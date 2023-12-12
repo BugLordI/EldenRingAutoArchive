@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:language="clr-namespace:AutoArchivePlus.Language"
         xmlns:component="clr-namespace:AutoArchivePlus.Component"
+        xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
         mc:Ignorable="d"
         Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
         AllowsTransparency="True"
@@ -13,7 +14,18 @@
         WindowStyle="None"
         Height="583" 
         Width="982" WindowStartupLocation="CenterScreen" MinHeight="583" MinWidth="982">
-    <Grid Margin="10">
+    <Window.DataContext>
+        <vm:MainFormViewModel/>
+    </Window.DataContext>
+    <WindowChrome.WindowChrome>
+        <WindowChrome 
+            GlassFrameThickness="0" 
+            CaptionHeight="39" 
+            NonClientFrameEdges="None"    
+            CornerRadius="0"
+            ResizeBorderThickness="10"/>
+    </WindowChrome.WindowChrome>
+    <Grid x:Name="grid" Margin="10">
         <Grid.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
         </Grid.Effect>
@@ -25,8 +37,9 @@
                 IsHitTestVisible="True"
                 DockPanel.Dock="Top" 
                 x:Name="titleBar" 
-                closeBtnClickHandler="titleBar_cloesBtnmouseDown"
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
+                CloseButtonClick="titleBar_CloseButtonClick"
+                ParentWindow="{Binding ElementName=mainWindow}"
                />
             <StackPanel Height="151" MinWidth="962" Background="Gray" DockPanel.Dock="Top"/>
         </DockPanel>
