@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AutoArchivePlus.Language;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -17,7 +18,8 @@ namespace AutoArchivePlus.Component
 
         public event RoutedEventHandler CloseButtonClick;
 
-        public event MouseButtonEventHandler DragMove;
+        public event RoutedEventHandler MaximizeButtonClick;
+
 
         static FormTitleBar()
         {
@@ -80,7 +82,7 @@ namespace AutoArchivePlus.Component
         {
             if (CloseButtonClick != null)
             {
-                CloseButtonClick?.Invoke(sender, e);
+                CloseButtonClick.Invoke(sender, e);
             }
             else
             {
@@ -88,16 +90,27 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        /// <summary>
-        /// Drag Move the parentWindow
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void maximizeBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
+            if (MaximizeButtonClick != null)
             {
-                DragMove?.Invoke(sender, e);
+                MaximizeButtonClick.Invoke(sender, e);
+            }
+            else
+            {
+                if (ParentWindow != null)
+                {
+                    if(ParentWindow.WindowState == WindowState.Maximized)
+                    {
+                        ParentWindow.WindowState=WindowState.Normal;
+                        closeBtn.ToolTip = LanguageManager.Instance["MaximizeBtnName"];
+                    }
+                    else
+                    {
+                        ParentWindow.WindowState = WindowState.Maximized;
+                        closeBtn.ToolTip = LanguageManager.Instance["RestoreBtnName"];
+                    }
+                }
             }
         }
     }

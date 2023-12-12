@@ -112,4 +112,16 @@
   <data name="CloseAppConfirmation" xml:space="preserve">
     <value>是否确认退出程序？</value>
   </data>
+  <data name="MaximizeBtnName" xml:space="preserve">
+    <value>最大化</value>
+  </data>
+  <data name="MinimizeBtnName" xml:space="preserve">
+    <value>最小化</value>
+  </data>
+  <data name="RestoreBtnName" xml:space="preserve">
+    <value>还原</value>
+  </data>
+  <data name="CloseBtnName" xml:space="preserve">
+    <value>关闭</value>
+  </data>
 </root>

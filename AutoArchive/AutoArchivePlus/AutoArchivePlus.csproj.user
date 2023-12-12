@@ -16,7 +16,7 @@
     <Page Update="Forms\MainForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resources\Dictionary.xaml">
+    <Page Update="Resources\Styles\TitleBarStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

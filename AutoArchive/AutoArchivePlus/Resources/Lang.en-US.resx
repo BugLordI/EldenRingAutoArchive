@@ -132,4 +132,16 @@
   <data name="CloseAppConfirmation" xml:space="preserve">
     <value>Are you sure you want to exit the Application?!</value>
   </data>
+  <data name="MaximizeBtnName" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="MinimizeBtnName" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="RestoreBtnName" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="CloseBtnName" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>
