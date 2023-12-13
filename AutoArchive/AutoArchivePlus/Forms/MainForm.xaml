@@ -46,8 +46,30 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <DockPanel Grid.Column="0" Background="Gray" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
-                <DockPanel Grid.Column="1" Background="Green" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
+                <DockPanel Grid.Column="0" 
+                           Width="Auto" 
+                           Height="{Binding ActualHeight, ElementName=PCInfoPanel}"
+                           >
+                    <StackPanel Width="250" Height="75" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
+                        <Image Width="74"
+                               Height="74"
+                               Source="/Resources/img/xinwang-ds3-ico.jpg"
+                               >                
+                            <Image.Clip>
+                                <EllipseGeometry Center="37,37" RadiusX="37" RadiusY="37" />
+                            </Image.Clip>
+                        </Image>
+                        <StackPanel Height="56">
+                            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,0,0,0">
+                                上午好！
+                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,2,0,0">
+                                ZhangMuYu
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DockPanel>
+                <DockPanel Grid.Column="1" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
             </Grid>
         </DockPanel>
 
