@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AutoArchivePlus.Component
 {
@@ -10,7 +11,13 @@ namespace AutoArchivePlus.Component
     /// </summary>
     public partial class FormTitleBar : UserControl
     {
+        #region Properties
+
         public static readonly DependencyProperty TitleProperty;
+
+        public static readonly DependencyProperty IconProperty;
+
+        public static readonly DependencyProperty ShowIconProperty;
 
         public static readonly DependencyProperty ShowCloseProperty;
 
@@ -20,17 +27,22 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ParentWindowProperty;
 
+        #endregion
+
+        #region Events
         public event RoutedEventHandler CloseButtonClick;
 
         public event RoutedEventHandler MaximizeButtonClick;
 
         public event RoutedEventHandler MinimizeButtonClick;
-
+        #endregion
 
         static FormTitleBar()
         {
             TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
-            ShowCloseProperty= DependencyProperty.Register("ShowClose", typeof(Visibility), typeof(FormTitleBar));
+            IconProperty= DependencyProperty.Register("Icon", typeof(ImageSource), typeof(FormTitleBar));
+            ShowIconProperty= DependencyProperty.Register("ShowIcon", typeof(Visibility), typeof(FormTitleBar));
+            ShowCloseProperty = DependencyProperty.Register("ShowClose", typeof(Visibility), typeof(FormTitleBar));
             ShowMaximizeProperty = DependencyProperty.Register("ShowMaximize", typeof(Visibility), typeof(FormTitleBar));
             ShowMinimizeProperty = DependencyProperty.Register("ShowMinimize", typeof(Visibility), typeof(FormTitleBar));
             ParentWindowProperty = DependencyProperty.Register("ParentWindow", typeof(Window), typeof(FormTitleBar));
@@ -40,6 +52,8 @@ namespace AutoArchivePlus.Component
         {
             InitializeComponent();
         }
+
+        #region Properties
 
         public string Title {
             get {
@@ -51,9 +65,30 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        /// <summary>
-        /// ShowCloseBtn
-        /// </summary>
+        public ImageSource Icon
+        {
+            get
+            {
+                return (ImageSource)GetValue(IconProperty);
+            }
+            set
+            {
+                SetValue(IconProperty, value);
+            }
+        }
+
+        public Visibility ShowIcon
+        {
+            get
+            {
+                return (Visibility)GetValue(ShowIconProperty);
+            }
+            set
+            {
+                SetValue(ShowIconProperty, value);
+            }
+        }
+
         public Visibility ShowClose
         {
             get
@@ -66,9 +101,6 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        /// <summary>
-        /// ShowMaximize
-        /// </summary>
         public Visibility ShowMaximize
         {
             get
@@ -81,9 +113,6 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        /// <summary>
-        /// ShowMinimize
-        /// </summary>
         public Visibility ShowMinimize
         {
             get
@@ -96,9 +125,6 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        /// <summary>
-        /// ParentWindow
-        /// </summary>
         public Window ParentWindow
         {
             get
@@ -110,6 +136,10 @@ namespace AutoArchivePlus.Component
                 SetValue(ParentWindowProperty, value);
             }
         }
+
+        #endregion
+
+        #region Events
 
         /// <summary>
         /// On close Btn click
@@ -176,5 +206,6 @@ namespace AutoArchivePlus.Component
                 }
             }
         }
+        #endregion
     }
 }

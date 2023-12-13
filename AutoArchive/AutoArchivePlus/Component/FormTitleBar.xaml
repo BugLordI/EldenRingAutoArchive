@@ -23,7 +23,12 @@
             <Label VerticalAlignment="Center">
                 <Label.Content>
                     <DockPanel>
-                        <Image Width="25" Height="25" DockPanel.Dock="Left" Source="../Resources/xinwang-ds3-ico.png"></Image>
+                        <Image 
+                            Width="25" 
+                            Height="25" 
+                            DockPanel.Dock="Left" 
+                            Source="{Binding Icon,  ElementName=Root}"
+                            Visibility="{Binding ShowIcon, ElementName=Root}"/>
                         <TextBlock Text="{Binding Title, ElementName=Root}" 
             DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="#FF0078D4"/>
                     </DockPanel>
@@ -44,7 +49,7 @@
                      Width="39"
                      >
                     <Label Width="24" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" >
-                        <Line  Stroke="#FF0078D4" X1="0" Y1="12" X2="24" Y2="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <Line StrokeThickness="1" Stroke="#FF0078D4" X1="0" Y1="12" X2="24" Y2="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Label>
                 </Button>
                 <Button
@@ -61,7 +66,7 @@
                     Width="39" 
                     >
                     <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
-                        <Rectangle  Stroke="#FF0078D4" Width="14" Height="14" />
+                        <Rectangle StrokeThickness="1"  Stroke="#FF0078D4" Width="12" Height="12" />
                     </Label>
                 </Button>
                 <Button
@@ -77,9 +82,9 @@
                     Height="39"
                     Width="39"
                     >
-                    <Label VerticalAlignment="Center" Width="24" Height="24" Background="Transparent" VerticalContentAlignment="Center">
+                    <Label VerticalAlignment="Center" Width="22" Height="22" Background="Transparent" VerticalContentAlignment="Center">
                         <Label.Content>
-                            <Path Fill="#FF0078D4" Stroke="#FF0078D4" Data="M 0 0 L 24 24 M 0 24 L 24 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Path StrokeThickness="1" Fill="#FF0078D4" Stroke="#FF0078D4" Data="M 0 0 L 24 24 M 0 24 L 24 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Label.Content>
                     </Label>
                 </Button>

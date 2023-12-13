@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\xinwang-ds3-ico.png">
+    <Resource Include="Resources\img\xinwang-ds3-ico.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

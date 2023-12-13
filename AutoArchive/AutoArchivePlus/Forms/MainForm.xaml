@@ -39,10 +39,16 @@
                 x:Name="titleBar" 
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
                 CloseButtonClick="titleBar_CloseButtonClick"
-                ParentWindow="{Binding ElementName=mainWindow}"
-                ShowMaximize="Hidden"
+                ParentWindow="{Binding ElementName=mainWindow}" Icon="/Resources/img/xinwang-ds3-ico.jpg" 
                />
-            <StackPanel Height="151" MinWidth="962" Background="Gray" DockPanel.Dock="Top"/>
+            <Grid MinHeight="145" MinWidth="962"  DockPanel.Dock="Top" Height="121" x:Name="PCInfoPanel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0" Background="Gray" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
+                <DockPanel Grid.Column="1" Background="Green" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
+            </Grid>
         </DockPanel>
 
     </Grid>
