@@ -144,4 +144,7 @@
   <data name="CloseBtnName" xml:space="preserve">
     <value>Close</value>
   </data>
+  <data name="OpenSelected" xml:space="preserve">
+    <value>OpenSelected</value>
+  </data>
 </root>

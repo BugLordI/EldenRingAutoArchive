@@ -124,4 +124,7 @@
   <data name="CloseBtnName" xml:space="preserve">
     <value>关闭</value>
   </data>
+  <data name="OpenSelected" xml:space="preserve">
+    <value>打开选择</value>
+  </data>
 </root>

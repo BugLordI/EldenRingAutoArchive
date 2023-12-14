@@ -13,7 +13,14 @@
         Background="Transparent"
         WindowStyle="None"
         Height="583" 
-        Width="982" WindowStartupLocation="CenterScreen" MinHeight="583" MinWidth="982">
+        Width="982" WindowStartupLocation="CenterScreen" MinHeight="583" MinWidth="982" Icon="/Resources/img/xinwang-ds3-ico.jpg">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Styles/MainFormStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Window.DataContext>
         <vm:MainFormViewModel/>
     </Window.DataContext>
@@ -25,7 +32,7 @@
             CornerRadius="0"
             ResizeBorderThickness="10"/>
     </WindowChrome.WindowChrome>
-    <Grid x:Name="grid" Margin="10">
+    <Grid x:Name="grid" Margin="10" Background="White">
         <Grid.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
         </Grid.Effect>
@@ -33,27 +40,32 @@
             <DockPanel.Background>
                 <SolidColorBrush Color="White" Opacity="0.95"/>
             </DockPanel.Background>
-            <component:FormTitleBar 
+            <component:FormTitleBar
+                Background="Gray"
                 IsHitTestVisible="True"
                 DockPanel.Dock="Top" 
                 x:Name="titleBar" 
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
                 CloseButtonClick="titleBar_CloseButtonClick"
                 ParentWindow="{Binding ElementName=mainWindow}" Icon="/Resources/img/xinwang-ds3-ico.jpg" 
+                BorderBrush="#FF3BBAFD" 
+                BorderThickness="0,0,0,1" 
                />
             <Grid MinHeight="145" MinWidth="962"  DockPanel.Dock="Top" Height="121" x:Name="PCInfoPanel">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <DockPanel Grid.Column="0" 
+                <DockPanel Grid.Column="1" 
                            Width="Auto" 
                            Height="{Binding ActualHeight, ElementName=PCInfoPanel}"
                            >
-                    <StackPanel Width="250" Height="75" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,0,0,0">
+                    <StackPanel Height="75" Orientation="Horizontal" HorizontalAlignment="Left">
                         <Image Width="74"
                                Height="74"
-                               Source="/Resources/img/xinwang-ds3-ico.jpg"
+                               Source="{Binding GetUserPicture}"
                                >                
                             <Image.Clip>
                                 <EllipseGeometry Center="37,37" RadiusX="37" RadiusY="37" />
@@ -63,13 +75,21 @@
                             <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,0,0,0">
                                 上午好！
                             </TextBlock>
-                            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,2,0,0">
-                                ZhangMuYu
-                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Right" 
+                                       VerticalAlignment="Center" 
+                                       Margin="12,2,0,0"
+                                       Text="{Binding GetUserName}"
+                                       />
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>
-                <DockPanel Grid.Column="1" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}"></DockPanel>
+                <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}">
+                    <Button Style="{StaticResource CommonBtnWithBorder}" 
+                            Content="{Binding [OpenSelected], Source={x:Static language:LanguageManager.Instance}}" 
+                            Width="100" 
+                            Height="37"
+                            />
+                </DockPanel>
             </Grid>
         </DockPanel>
 

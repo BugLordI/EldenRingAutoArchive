@@ -1,5 +1,7 @@
 ﻿using AutoArchivePlus.Language;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AutoArchivePlus.Forms
 {
