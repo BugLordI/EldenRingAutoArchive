@@ -21,9 +21,15 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ShowCloseProperty;
 
+        public static readonly DependencyProperty CloseButtonToolTipProperty;
+
         public static readonly DependencyProperty ShowMaximizeProperty;
 
+        public static readonly DependencyProperty MaximizeButtonToolTipProperty;
+
         public static readonly DependencyProperty ShowMinimizeProperty;
+
+        public static readonly DependencyProperty MinimizeButtonToolTipProperty;
 
         public static readonly DependencyProperty ParentWindowProperty;
 
@@ -40,11 +46,14 @@ namespace AutoArchivePlus.Component
         static FormTitleBar()
         {
             TitleProperty = DependencyProperty.Register("Title", typeof(string), typeof(FormTitleBar), new PropertyMetadata(""));
-            IconProperty= DependencyProperty.Register("Icon", typeof(ImageSource), typeof(FormTitleBar));
-            ShowIconProperty= DependencyProperty.Register("ShowIcon", typeof(Visibility), typeof(FormTitleBar));
+            IconProperty = DependencyProperty.Register("Icon", typeof(ImageSource), typeof(FormTitleBar));
+            ShowIconProperty = DependencyProperty.Register("ShowIcon", typeof(Visibility), typeof(FormTitleBar));
             ShowCloseProperty = DependencyProperty.Register("ShowClose", typeof(Visibility), typeof(FormTitleBar));
+            CloseButtonToolTipProperty = DependencyProperty.Register("CloseButtonToolTip", typeof(string), typeof(FormTitleBar));
             ShowMaximizeProperty = DependencyProperty.Register("ShowMaximize", typeof(Visibility), typeof(FormTitleBar));
+            MaximizeButtonToolTipProperty = DependencyProperty.Register("MaximizeButtonToolTip", typeof(string), typeof(FormTitleBar));
             ShowMinimizeProperty = DependencyProperty.Register("ShowMinimize", typeof(Visibility), typeof(FormTitleBar));
+            MinimizeButtonToolTipProperty = DependencyProperty.Register("MinimizeButtonToolTip", typeof(string), typeof(FormTitleBar));
             ParentWindowProperty = DependencyProperty.Register("ParentWindow", typeof(Window), typeof(FormTitleBar));
         }
 
@@ -101,6 +110,18 @@ namespace AutoArchivePlus.Component
             }
         }
 
+        public string CloseButtonToolTip
+        {
+            get
+            {
+                return (string)GetValue(CloseButtonToolTipProperty);
+            }
+            set
+            {
+                SetValue(CloseButtonToolTipProperty, value);
+            }
+        }
+
         public Visibility ShowMaximize
         {
             get
@@ -113,6 +134,18 @@ namespace AutoArchivePlus.Component
             }
         }
 
+        public string MaximizeButtonToolTip
+        {
+            get
+            {
+                return (string)GetValue(MaximizeButtonToolTipProperty);
+            }
+            set
+            {
+                SetValue(MaximizeButtonToolTipProperty, value);
+            }
+        }
+
         public Visibility ShowMinimize
         {
             get
@@ -122,6 +155,18 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(ShowMinimizeProperty, value);
+            }
+        }
+
+        public string MinimizeButtonToolTip
+        {
+            get
+            {
+                return (string)GetValue(MinimizeButtonToolTipProperty);
+            }
+            set
+            {
+                SetValue(MinimizeButtonToolTipProperty, value);
             }
         }
 
@@ -176,12 +221,10 @@ namespace AutoArchivePlus.Component
                     if(ParentWindow.WindowState == WindowState.Maximized)
                     {
                         ParentWindow.WindowState=WindowState.Normal;
-                        closeBtn.ToolTip = LanguageManager.Instance["MaximizeBtnName"];
                     }
                     else
                     {
                         ParentWindow.WindowState = WindowState.Maximized;
-                        closeBtn.ToolTip = LanguageManager.Instance["RestoreBtnName"];
                     }
                 }
             }

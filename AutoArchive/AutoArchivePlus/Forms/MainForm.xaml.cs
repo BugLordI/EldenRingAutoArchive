@@ -13,6 +13,9 @@ namespace AutoArchivePlus.Forms
         public MainForm()
         {
             InitializeComponent();
+            titleBar.MinimizeButtonToolTip = LanguageManager.Instance["MinimizeBtnName"];
+            titleBar.MaximizeButtonToolTip = LanguageManager.Instance["MaximizeBtnName"];
+            titleBar.CloseButtonToolTip = LanguageManager.Instance["CloseBtnName"];
         }
 
         /// <summary>
@@ -26,6 +29,19 @@ namespace AutoArchivePlus.Forms
             if (ret == MessageBoxResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            Window window = sender as Window;
+            if (window.WindowState == WindowState.Maximized)
+            {
+                titleBar.MaximizeButtonToolTip = LanguageManager.Instance["RestoreBtnName"];
+            }
+            else
+            {
+                titleBar.MaximizeButtonToolTip = LanguageManager.Instance["MaximizeBtnName"];
             }
         }
     }

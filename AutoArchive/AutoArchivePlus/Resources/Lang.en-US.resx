@@ -147,4 +147,19 @@
   <data name="OpenSelected" xml:space="preserve">
     <value>OpenSelected</value>
   </data>
+  <data name="StartProgramTogether" xml:space="preserve">
+    <value>StartProgramTogether</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>GoodMorning!</value>
+  </data>
+  <data name="Noon" xml:space="preserve">
+    <value>GoodNoon!</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>GoodAfternoon！</value>
+  </data>
+  <data name="Evening" xml:space="preserve">
+    <value>GoodEvening!</value>
+  </data>
 </root>

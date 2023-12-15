@@ -6,13 +6,6 @@ namespace Tools
 {
     public class OS
     {
-        /// <summary>
-        /// //TODO bugFix
-        /// </summary>
-        /// <param name="username"></param>
-        /// <param name="whatever"></param>
-        /// <param name="picpath"></param>
-        /// <param name="maxLength"></param>
         [DllImport("shell32.dll", EntryPoint = "#261", CharSet = CharSet.Unicode)]
         public static extern void GetUserTilePath(string username,UInt32 whatever, StringBuilder picpath, int maxLength);
 

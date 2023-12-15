@@ -36,7 +36,7 @@
             </Label>
             <DockPanel Height="Auto" HorizontalAlignment="Right" VerticalAlignment="Center" Width="Auto">
                 <Button
-                     ToolTip="{Binding [MinimizeBtnName], Source={x:Static language:LanguageManager.Instance}}"
+                     ToolTip="{Binding MinimizeButtonToolTip,ElementName=Root}"
                      WindowChrome.IsHitTestVisibleInChrome="True"
                      x:Name="minimizeBtn"
                      HorizontalContentAlignment="Center" 
@@ -53,7 +53,7 @@
                     </Label>
                 </Button>
                 <Button
-                    ToolTip="{Binding [MaximizeBtnName], Source={x:Static language:LanguageManager.Instance}}"
+                    ToolTip="{Binding MaximizeButtonToolTip,ElementName=Root}"
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     x:Name="closeBtn"
                     HorizontalContentAlignment="Center" 
@@ -70,7 +70,7 @@
                     </Label>
                 </Button>
                 <Button
-                    ToolTip="{Binding [CloseBtnName], Source={x:Static language:LanguageManager.Instance}}"
+                    ToolTip="{Binding CloseButtonToolTip,ElementName=Root}"
                     WindowChrome.IsHitTestVisibleInChrome="True"
                     x:Name="maximizeBtn"
                     HorizontalContentAlignment="Center" 

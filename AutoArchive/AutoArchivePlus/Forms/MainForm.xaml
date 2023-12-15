@@ -13,7 +13,11 @@
         Background="Transparent"
         WindowStyle="None"
         Height="583" 
-        Width="982" WindowStartupLocation="CenterScreen" MinHeight="583" MinWidth="982" Icon="/Resources/img/xinwang-ds3-ico.jpg">
+        Width="982" 
+        WindowStartupLocation="CenterScreen" 
+        MinHeight="583" 
+        MinWidth="982" 
+        Icon="/Resources/img/xinwang-ds3-ico.jpg" SizeChanged="mainWindow_SizeChanged">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -72,23 +76,31 @@
                             </Image.Clip>
                         </Image>
                         <StackPanel Height="56">
-                            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="12,0,0,0">
-                                上午好！
-                            </TextBlock>
                             <TextBlock DockPanel.Dock="Right" 
                                        VerticalAlignment="Center" 
-                                       Margin="12,2,0,0"
+                                       Margin="12,4,0,0"
+                                       Text="{Binding GetGreeting}"/>
+                            <TextBlock DockPanel.Dock="Right" 
+                                       VerticalAlignment="Center" 
+                                       Margin="12,9,0,0"
                                        Text="{Binding GetUserName}"
                                        />
                         </StackPanel>
                     </StackPanel>
                 </DockPanel>
-                <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}">
+                <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}" HorizontalAlignment="Center">
                     <Button Style="{StaticResource CommonBtnWithBorder}" 
                             Content="{Binding [OpenSelected], Source={x:Static language:LanguageManager.Instance}}" 
                             Width="100" 
                             Height="37"
+                            IsEnabled="{Binding OpenButtonIsEnabled}"
                             />
+                    <CheckBox Content="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}" 
+                              Width="Auto" 
+                              HorizontalAlignment="Center" 
+                              HorizontalContentAlignment="Center" 
+                              VerticalAlignment="Center" 
+                              VerticalContentAlignment="Center" Margin="4,0,0,0" IsChecked="True"/>
                 </DockPanel>
             </Grid>
         </DockPanel>

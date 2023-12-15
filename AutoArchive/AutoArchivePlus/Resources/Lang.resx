@@ -127,4 +127,19 @@
   <data name="OpenSelected" xml:space="preserve">
     <value>打开选择</value>
   </data>
+  <data name="StartProgramTogether" xml:space="preserve">
+    <value>并启动程序</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>上午好！</value>
+  </data>
+  <data name="Noon" xml:space="preserve">
+    <value>中午好！</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>下午好！</value>
+  </data>
+  <data name="Evening" xml:space="preserve">
+    <value>晚上好！</value>
+  </data>
 </root>
