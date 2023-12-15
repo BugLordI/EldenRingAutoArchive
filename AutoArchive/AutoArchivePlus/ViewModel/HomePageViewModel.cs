@@ -12,7 +12,7 @@ using Tools;
 
 namespace AutoArchivePlus.ViewModel
 {
-    internal class MainFormViewModel : INotifyPropertyChanged
+    internal class HomePageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:language="clr-namespace:AutoArchivePlus.Language"
         xmlns:component="clr-namespace:AutoArchivePlus.Component"
-        xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+        xmlns:page="clr-namespace:AutoArchivePlus.Forms"
         mc:Ignorable="d"
         Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
         AllowsTransparency="True"
@@ -25,9 +25,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Window.DataContext>
-        <vm:MainFormViewModel/>
-    </Window.DataContext>
     <WindowChrome.WindowChrome>
         <WindowChrome 
             GlassFrameThickness="0" 
@@ -55,63 +52,26 @@
                 BorderBrush="#FF3BBAFD" 
                 BorderThickness="0,0,0,1" 
                />
-            <Grid MinHeight="145" MinWidth="962"  DockPanel.Dock="Top" Height="121" x:Name="PCInfoPanel">
+            <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="196"></ColumnDefinition>
+                    <ColumnDefinition Width="0.8*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <DockPanel Grid.Column="1" 
-                           Width="Auto" 
-                           Height="{Binding ActualHeight, ElementName=PCInfoPanel}"
-                           >
-                    <StackPanel Height="75" Orientation="Horizontal" HorizontalAlignment="Left">
-                        <Image Width="74"
-                               Height="74"
-                               Source="{Binding GetUserPicture}"
-                               >                
-                            <Image.Clip>
-                                <EllipseGeometry Center="37,37" RadiusX="37" RadiusY="37" />
-                            </Image.Clip>
-                        </Image>
-                        <StackPanel Height="56">
-                            <TextBlock DockPanel.Dock="Right" 
-                                       VerticalAlignment="Center" 
-                                       Margin="12,4,0,0"
-                                       TextTrimming="WordEllipsis"
-                                       Text="{Binding GetGreeting}"/>
-                            <TextBlock DockPanel.Dock="Right"
-                                       TextTrimming="WordEllipsis"
-                                       VerticalAlignment="Center" 
-                                       Margin="12,9,0,0"
-                                       Text="{Binding GetUserName}"
-                                       />
-                        </StackPanel>
-                    </StackPanel>
+                <DockPanel Grid.Column="0">
+                    <TreeView Width="auto" Background="#FFEDEDED" BorderThickness="0,0,0,0">
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <TextBlock>123</TextBlock>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                    </TreeView>
                 </DockPanel>
-                <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource CommonBtnWithBorder}" 
-                            Content="{Binding [OpenSelected], Source={x:Static language:LanguageManager.Instance}}" 
-                            Width="90" 
-                            Height="37"
-                            IsEnabled="{Binding OpenButtonIsEnabled}"
-                            />
-                    <CheckBox Width="Auto" 
-                              HorizontalAlignment="Center" 
-                              HorizontalContentAlignment="Center" 
-                              VerticalAlignment="Center" 
-                              VerticalContentAlignment="Center" Margin="4,0,0,0" IsChecked="True">
-                        <CheckBox.Content>
-                            <TextBlock x:Name="startProgramTogetherCBX"
-                                       Text="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}"
-                                       TextTrimming="WordEllipsis"
-                                       ToolTip="{Binding Text,ElementName=startProgramTogetherCBX,Mode=TwoWay}"/>
-                        </CheckBox.Content>
-                    </CheckBox>
-                </DockPanel>
+                <Frame x:Name="navigation"  Grid.Column="1" >
+                    <Frame.Content>
+                        <page:HomePage/>
+                    </Frame.Content>
+                </Frame>
             </Grid>
         </DockPanel>
-
     </Grid>
 </Window>
