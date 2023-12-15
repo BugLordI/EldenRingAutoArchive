@@ -124,7 +124,7 @@
     <value>Launch failed, app already started!!</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
-    <value>Archive automatic backup</value>
+    <value>Archive Automatic Backup</value>
   </data>
   <data name="TitleBarDefaultName" xml:space="preserve">
     <value>TilteBar</value>
@@ -151,15 +151,15 @@
     <value>StartProgramTogether</value>
   </data>
   <data name="Morning" xml:space="preserve">
-    <value>GoodMorning!</value>
+    <value>Good Morning!</value>
   </data>
   <data name="Noon" xml:space="preserve">
-    <value>GoodNoon!</value>
+    <value>Good Noon!</value>
   </data>
   <data name="Afternoon" xml:space="preserve">
-    <value>GoodAfternoon！</value>
+    <value>Good Afternoon！</value>
   </data>
   <data name="Evening" xml:space="preserve">
-    <value>GoodEvening!</value>
+    <value>Good Evening!</value>
   </data>
 </root>

@@ -13,10 +13,10 @@
         Background="Transparent"
         WindowStyle="None"
         Height="583" 
-        Width="982" 
+        Width="996" 
         WindowStartupLocation="CenterScreen" 
         MinHeight="583" 
-        MinWidth="982" 
+        MinWidth="996" 
         Icon="/Resources/img/xinwang-ds3-ico.jpg" SizeChanged="mainWindow_SizeChanged">
     <Window.Resources>
         <ResourceDictionary>
@@ -79,8 +79,10 @@
                             <TextBlock DockPanel.Dock="Right" 
                                        VerticalAlignment="Center" 
                                        Margin="12,4,0,0"
+                                       TextTrimming="WordEllipsis"
                                        Text="{Binding GetGreeting}"/>
-                            <TextBlock DockPanel.Dock="Right" 
+                            <TextBlock DockPanel.Dock="Right"
+                                       TextTrimming="WordEllipsis"
                                        VerticalAlignment="Center" 
                                        Margin="12,9,0,0"
                                        Text="{Binding GetUserName}"
@@ -91,16 +93,22 @@
                 <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}" HorizontalAlignment="Center">
                     <Button Style="{StaticResource CommonBtnWithBorder}" 
                             Content="{Binding [OpenSelected], Source={x:Static language:LanguageManager.Instance}}" 
-                            Width="100" 
+                            Width="90" 
                             Height="37"
                             IsEnabled="{Binding OpenButtonIsEnabled}"
                             />
-                    <CheckBox Content="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}" 
-                              Width="Auto" 
+                    <CheckBox Width="Auto" 
                               HorizontalAlignment="Center" 
                               HorizontalContentAlignment="Center" 
                               VerticalAlignment="Center" 
-                              VerticalContentAlignment="Center" Margin="4,0,0,0" IsChecked="True"/>
+                              VerticalContentAlignment="Center" Margin="4,0,0,0" IsChecked="True">
+                        <CheckBox.Content>
+                            <TextBlock x:Name="startProgramTogetherCBX"
+                                       Text="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}"
+                                       TextTrimming="WordEllipsis"
+                                       ToolTip="{Binding Text,ElementName=startProgramTogetherCBX,Mode=TwoWay}"/>
+                        </CheckBox.Content>
+                    </CheckBox>
                 </DockPanel>
             </Grid>
         </DockPanel>
