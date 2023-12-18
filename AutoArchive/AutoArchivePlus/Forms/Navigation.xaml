@@ -20,38 +20,18 @@
             <RowDefinition Height="0.17*" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="Auto" x:Name="menu">
-            <Button Style="{StaticResource NavigationBtn}" 
-                        Height="38"
-                        Width="{Binding ActualWidth,ElementName=root}"
-                        x:Name="defaultMenu">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal" 
-                                    Background="Transparent"
-                                    Width="{Binding ActualWidth,ElementName=root}"
-                                    Height="{Binding ActualHeight,ElementName=defaultMenu}">
-                        <Image Source="/Resources/img/home.png" Style="{StaticResource NavigationIcon}"/>
-                        <TextBlock Text="{Binding [Home], Source={x:Static language:LanguageManager.Instance}}" 
-                                   Style="{StaticResource NavigationText}" />
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+            <component:NavigationMenuItem 
+                ItemName="{Binding [Home], Source={x:Static language:LanguageManager.Instance}}"
+                ItemIcon="/Resources/img/home.png"
+                ItemSelected="#FFEAEAEA" Margin="0,1,0,0"
+                />
         </StackPanel>
         <StackPanel Grid.Row="1" Height="Auto" VerticalAlignment="Bottom">
-            <Button Style="{StaticResource NavigationBtn}" 
-                    Height="38"
-                    Width="{Binding ActualWidth,ElementName=root}"
-                    x:Name="setting">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal" 
-                                Background="Transparent"
-                                Width="{Binding ActualWidth,ElementName=root}"
-                                Height="{Binding ActualHeight,ElementName=setting}">
-                        <Image Source="/Resources/img/setup.png" Style="{StaticResource NavigationIcon}"/>
-                        <TextBlock Text="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
-                                   Style="{StaticResource NavigationText}" />
-                    </StackPanel>
-                </Button.Content>
-            </Button>
+            <component:NavigationMenuItem 
+                 ItemName="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
+                 ItemIcon="/Resources/img/setup.png"
+                />
+            <!--特殊处理-->
             <Button Style="{StaticResource NavigationBtn}" 
                     Height="38"
                     Width="{Binding ActualWidth,ElementName=root}"

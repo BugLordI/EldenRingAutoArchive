@@ -15,32 +15,26 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ItemIconProperty;
 
-        public static readonly DependencyProperty TestProperty;
+        public static readonly DependencyProperty ItemIconWidthProperty;
+
+        public static readonly DependencyProperty ItemIconHeightProperty;
+
+        public static readonly DependencyProperty ItemSelectedProperty;
 
         #endregion
 
         static NavigationMenuItem()
         {
-            ItemNameProperty = DependencyProperty.Register("ItemName", typeof(string), typeof(FormTitleBar));
-            ItemIconProperty = DependencyProperty.Register("ItemIcon", typeof(ImageSource), typeof(FormTitleBar));
-            TestProperty= DependencyProperty.Register("Test", typeof(string), typeof(FormTitleBar));
+            ItemNameProperty = DependencyProperty.Register("ItemName", typeof(string), typeof(NavigationMenuItem));
+            ItemIconProperty = DependencyProperty.Register("ItemIcon", typeof(ImageSource), typeof(NavigationMenuItem));
+            ItemIconWidthProperty= DependencyProperty.Register("ItemIconWidth", typeof(double), typeof(NavigationMenuItem));
+            ItemIconHeightProperty = DependencyProperty.Register("ItemIconHeight", typeof(double), typeof(NavigationMenuItem));
+            ItemSelectedProperty = DependencyProperty.Register("ItemSelected", typeof(Brush), typeof(NavigationMenuItem));
         }
 
         public NavigationMenuItem()
         {
             InitializeComponent();
-        }
-
-        public string Test
-        {
-            get
-            {
-                return (string)GetValue(TestProperty);
-            }
-            set
-            {
-                SetValue(TestProperty, value);
-            }
         }
 
         public string ItemName
@@ -64,6 +58,42 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(ItemIconProperty, value);
+            }
+        }
+
+        public double ItemIconWidth
+        {
+            get
+            {
+                return (double)GetValue(ItemIconWidthProperty);
+            }
+            set
+            {
+                SetValue(ItemIconWidthProperty, value);
+            }
+        }
+
+        public double ItemIconHeight
+        {
+            get
+            {
+                return (double)GetValue(ItemIconHeightProperty);
+            }
+            set
+            {
+                SetValue(ItemIconHeightProperty, value);
+            }
+        }
+
+        public Brush ItemSelected
+        {
+            get
+            {
+                return (Brush)GetValue(ItemSelectedProperty);
+            }
+            set
+            {
+                SetValue(ItemSelectedProperty, value);
             }
         }
     }

@@ -6,7 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="38" 
              d:DesignWidth="196"
-             x:Name="self">
+             x:Name="self"
+             Background="{Binding ItemSelected,ElementName=self}">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,22 +15,20 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <!--<Button Style="{StaticResource NavigationBtn}" 
+    <Button Style="{StaticResource NavigationBtn}" 
              Height="38"
              x:Name="defaultMenu">
         <Button.Content>
             <StackPanel Orientation="Horizontal" 
-                         Background="Transparent"
-                         Width="196"
-                         Height="38">
+                 Background="Transparent"
+                 Width="{Binding ActualWidth,ElementName=defaultMenu}"
+                 Height="{Binding ActualHeight,ElementName=defaultMenu}">
                 <Image Source="{Binding ItemIcon,ElementName=self}" 
-                       Style="{StaticResource NavigationIcon}"/>
+                       Style="{StaticResource NavigationIcon}"
+                     />
                 <TextBlock Text="{Binding ItemName,ElementName=self}" 
-                        Style="{StaticResource NavigationText}" />
+                Style="{StaticResource NavigationText}" />
             </StackPanel>
         </Button.Content>
-    </Button> -->
-    <StackPanel>
-        <Button Height="38" Content="{Binding Test,ElementName=self}"></Button>
-    </StackPanel>
+    </Button>
 </UserControl>
