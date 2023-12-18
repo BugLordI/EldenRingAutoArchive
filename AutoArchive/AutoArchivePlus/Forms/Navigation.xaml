@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="AutoArchivePlus.Forms.Navigation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:language="clr-namespace:AutoArchivePlus.Language"
+             xmlns:component="clr-namespace:AutoArchivePlus.Component"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="196">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid x:Name="root">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.83*"/>
+            <RowDefinition Height="0.17*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Height="Auto" x:Name="menu">
+            <Button Style="{StaticResource NavigationBtn}" 
+                        Height="38"
+                        Width="{Binding ActualWidth,ElementName=root}"
+                        x:Name="defaultMenu">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" 
+                                    Background="Transparent"
+                                    Width="{Binding ActualWidth,ElementName=root}"
+                                    Height="{Binding ActualHeight,ElementName=defaultMenu}">
+                        <Image Source="/Resources/img/home.png" Style="{StaticResource NavigationIcon}"/>
+                        <TextBlock Text="{Binding [Home], Source={x:Static language:LanguageManager.Instance}}" 
+                                   Style="{StaticResource NavigationText}" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Height="Auto" VerticalAlignment="Bottom">
+            <Button Style="{StaticResource NavigationBtn}" 
+                    Height="38"
+                    Width="{Binding ActualWidth,ElementName=root}"
+                    x:Name="setting">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" 
+                                Background="Transparent"
+                                Width="{Binding ActualWidth,ElementName=root}"
+                                Height="{Binding ActualHeight,ElementName=setting}">
+                        <Image Source="/Resources/img/setup.png" Style="{StaticResource NavigationIcon}"/>
+                        <TextBlock Text="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
+                                   Style="{StaticResource NavigationText}" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Style="{StaticResource NavigationBtn}" 
+                    Height="38"
+                    Width="{Binding ActualWidth,ElementName=root}"
+                    x:Name="about">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" 
+                                Background="Transparent"
+                                Width="{Binding ActualWidth,ElementName=root}"
+                                Height="{Binding ActualHeight,ElementName=about}">
+                        <Image Source="/Resources/img/about.png" 
+                               Style="{StaticResource NavigationIcon}"
+                               Width="18"
+                               Height="18"
+                               Margin="9,0,0,0"/>
+                        <TextBlock Text="{Binding [About], Source={x:Static language:LanguageManager.Instance}}" 
+                                   Style="{StaticResource NavigationText}" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

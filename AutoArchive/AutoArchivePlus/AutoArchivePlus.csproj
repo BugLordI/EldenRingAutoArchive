@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\img\about.png" />
+    <None Remove="Resources\img\home.png" />
+    <None Remove="Resources\img\setup.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="xinwang-ds3-ico.ico" />
   </ItemGroup>
 
@@ -17,6 +23,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\img\about.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\img\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\img\setup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\img\xinwang-ds3-ico.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>

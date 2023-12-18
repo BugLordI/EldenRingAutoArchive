@@ -142,4 +142,13 @@
   <data name="Evening" xml:space="preserve">
     <value>晚上好！</value>
   </data>
+  <data name="Setting" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
 </root>

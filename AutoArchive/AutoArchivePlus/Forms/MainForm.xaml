@@ -12,8 +12,8 @@
         IsHitTestVisible="True"
         Background="Transparent"
         WindowStyle="None"
-        Height="583" 
-        Width="996" 
+        Height="613" 
+        Width="1190" 
         WindowStartupLocation="CenterScreen" 
         MinHeight="583" 
         MinWidth="996" 
@@ -21,7 +21,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/Styles/MainFormStyle.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -58,15 +58,9 @@
                     <ColumnDefinition Width="0.8*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Column="0">
-                    <TreeView Width="auto" Background="#FFEDEDED" BorderThickness="0,0,0,0">
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <TextBlock>123</TextBlock>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                    </TreeView>
+                    <page:Navigation />
                 </DockPanel>
-                <Frame x:Name="navigation"  Grid.Column="1" >
+                <Frame x:Name="navigation"  Grid.Column="1" Background="#FFEAEAEA">
                     <Frame.Content>
                         <page:HomePage/>
                     </Frame.Content>

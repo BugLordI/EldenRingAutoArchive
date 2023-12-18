@@ -162,4 +162,13 @@
   <data name="Evening" xml:space="preserve">
     <value>Good Evening!</value>
   </data>
+  <data name="Setting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
 </root>

@@ -41,38 +41,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type ComboBox}" x:Key="CommonComboBox">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid>
-                        <ToggleButton  
-                                  Focusable="false"   
-                                  IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"   
-                                  ClickMode="Press">
-                            <ToggleButton.Template>
-                                <ControlTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="20"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Border Grid.Column="0"   
-                                            Background="{TemplateBinding Background}"   
-                                            BorderBrush="{TemplateBinding BorderBrush}"   
-                                            BorderThickness="1"/>
-                                        <Path Grid.Column="1"   
-                                          Fill="#FF1BBBFA"   
-                                          Data="M0,0 L3.5,3 L7,0 Z"   
-                                          HorizontalAlignment="Center"   
-                                          VerticalAlignment="Center"/>
-                                    </Grid>
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>
