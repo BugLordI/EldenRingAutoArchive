@@ -7,7 +7,8 @@
              d:DesignHeight="38" 
              d:DesignWidth="196"
              x:Name="self"
-             Background="{Binding ItemSelected,ElementName=self}">
+             Background="{Binding ItemSelected,ElementName=self}"
+             >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +18,7 @@
     </UserControl.Resources>
     <Button Style="{StaticResource NavigationBtn}" 
              Height="38"
-             x:Name="defaultMenu">
+             x:Name="defaultMenu" Click="defaultMenu_Click">
         <Button.Content>
             <StackPanel Orientation="Horizontal" 
                  Background="Transparent"
@@ -25,6 +26,9 @@
                  Height="{Binding ActualHeight,ElementName=defaultMenu}">
                 <Image Source="{Binding ItemIcon,ElementName=self}" 
                        Style="{StaticResource NavigationIcon}"
+                       Width="{Binding ItemIconWidth,ElementName=self}"
+                       Height="{Binding ItemIconHeight,ElementName=self}"
+                       x:Name="icon"
                      />
                 <TextBlock Text="{Binding ItemName,ElementName=self}" 
                 Style="{StaticResource NavigationText}" />

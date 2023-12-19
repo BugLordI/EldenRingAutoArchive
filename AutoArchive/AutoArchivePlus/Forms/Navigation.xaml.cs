@@ -1,16 +1,8 @@
 ﻿using AutoArchivePlus.Component;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutoArchivePlus.Forms
 {
@@ -19,9 +11,15 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class Navigation : UserControl
     {
+        private Control selectedItem;
+
+        private Color defaultSelectedColor = Color.FromRgb(234, 234, 234);
+
         public Navigation()
         {
             InitializeComponent();
+            // set default selected
+            selectedItem = homeMenuItem;
         }
 
         public void addMenu(String menuName, String icon = "pack://application:,,,/Resources/img/xinwang-ds3-ico.jpg")
@@ -29,6 +27,18 @@ namespace AutoArchivePlus.Forms
             NavigationMenuItem navigationMenuItem = new NavigationMenuItem();
             navigationMenuItem.ItemName = menuName;
             menu.Children.Add(navigationMenuItem);
+        }
+
+        private void changeSelected(Control clicked)
+        {
+            selectedItem.Background = Brushes.Transparent;
+            clicked.Background = new SolidColorBrush(defaultSelectedColor);
+            this.selectedItem = clicked;
+        }
+
+        private void itemClicked(object sender, RoutedEventArgs e)
+        {
+            changeSelected((Control)sender);
         }
     }
 }

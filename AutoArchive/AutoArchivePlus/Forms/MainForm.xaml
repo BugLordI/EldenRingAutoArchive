@@ -49,7 +49,7 @@
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
                 CloseButtonClick="titleBar_CloseButtonClick"
                 ParentWindow="{Binding ElementName=mainWindow}" Icon="/Resources/img/xinwang-ds3-ico.jpg" 
-                BorderBrush="#FF3BBAFD" 
+                BorderBrush="LightGray" 
                 BorderThickness="0,0,0,1" 
                />
             <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}">
@@ -58,7 +58,8 @@
                     <ColumnDefinition Width="0.8*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Column="0">
-                    <page:Navigation />
+                    <page:Navigation  BorderBrush="NavajoWhite" 
+                                      BorderThickness="0,0,1,0" />
                 </DockPanel>
                 <Frame x:Name="navigation"  Grid.Column="1" Background="#FFEAEAEA">
                     <Frame.Content>
