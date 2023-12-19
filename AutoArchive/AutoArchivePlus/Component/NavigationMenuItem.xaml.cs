@@ -38,9 +38,9 @@ namespace AutoArchivePlus.Component
             TypeNameProperty = DependencyProperty.Register("TypeName", typeof(string), typeof(NavigationMenuItem));
             ItemNameProperty = DependencyProperty.Register("ItemName", typeof(string), typeof(NavigationMenuItem));
             ItemIconProperty = DependencyProperty.Register("ItemIcon", typeof(ImageSource), typeof(NavigationMenuItem));
-            ItemIconWidthProperty= DependencyProperty.Register("ItemIconWidth", typeof(double), typeof(NavigationMenuItem));
+            ItemIconWidthProperty = DependencyProperty.Register("ItemIconWidth", typeof(double), typeof(NavigationMenuItem));
             ItemIconHeightProperty = DependencyProperty.Register("ItemIconHeight", typeof(double), typeof(NavigationMenuItem));
-            ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7,0,0,0)));
+            ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7, 0, 0, 0)));
             ItemSelectedProperty = DependencyProperty.Register("ItemSelected", typeof(Brush), typeof(NavigationMenuItem));
         }
 

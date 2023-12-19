@@ -35,7 +35,8 @@ namespace AutoArchivePlus
             var local = "--local:";
             foreach (var item in args)
             {
-                if (item.Contains(local)) {
+                if (item.Contains(local))
+                {
                     var lan = item.Substring(local.Length);
                     LanguageManager.Instance.ChangeLanguage(new CultureInfo(lan));
                     break;

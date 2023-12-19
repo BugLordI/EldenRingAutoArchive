@@ -16,6 +16,12 @@ namespace AutoArchivePlus.Forms
             titleBar.CloseButtonToolTip = LanguageManager.Instance["CloseBtnName"];
         }
 
+        private void mainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            //OS.LoadInstalledApps();
+
+        }
+
         /// <summary>
         /// close window
         /// </summary>

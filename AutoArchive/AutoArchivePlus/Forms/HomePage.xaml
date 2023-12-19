@@ -80,6 +80,17 @@
                 <RowDefinition Height="46"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock FontSize="13" Grid.Column="0" Padding="10,0,0,0">已支持列表:</TextBlock>
+                </Grid>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Background="Gray">
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Page>

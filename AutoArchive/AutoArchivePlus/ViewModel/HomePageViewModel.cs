@@ -1,12 +1,8 @@
-﻿using AutoArchivePlus.Command;
-using AutoArchivePlus.Language;
+﻿using AutoArchivePlus.Language;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Tools;
 
@@ -44,7 +40,7 @@ namespace AutoArchivePlus.ViewModel
         {
             get
             {
-               return OS.GetCurrentUserName();
+                return OS.GetCurrentUserName();
             }
         }
 

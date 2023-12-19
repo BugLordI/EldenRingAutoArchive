@@ -10,7 +10,7 @@ namespace AutoArchivePlus.Language
         private readonly ResourceManager _resourceManager;
 
         private static readonly Lazy<LanguageManager> _lazy = new Lazy<LanguageManager>(() => new LanguageManager());
-        
+
         public static LanguageManager Instance => _lazy.Value;
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -17,7 +17,7 @@
         WindowStartupLocation="CenterScreen" 
         MinHeight="583" 
         MinWidth="996" 
-        Icon="/Resources/img/xinwang-ds3-ico.jpg" SizeChanged="mainWindow_SizeChanged">
+        Icon="/Resources/img/xinwang-ds3-ico.jpg" SizeChanged="mainWindow_SizeChanged" Loaded="mainWindow_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -63,7 +63,10 @@
                                       Height="{Binding ActualHeight,ElementName=navigation}"
                                       />
                 </DockPanel>
-                <Frame  Grid.Column="1" Background="#FFEAEAEA">
+                <Frame  Grid.Column="1">
+                    <Frame.Background>
+                        <SolidColorBrush Color="#FFEAEAEA" Opacity="0.87"/>
+                    </Frame.Background>
                     <Frame.Content>
                         <page:HomePage/>
                     </Frame.Content>

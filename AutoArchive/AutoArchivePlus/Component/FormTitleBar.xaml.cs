@@ -1,7 +1,5 @@
-﻿using AutoArchivePlus.Language;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AutoArchivePlus.Component
@@ -64,8 +62,10 @@ namespace AutoArchivePlus.Component
 
         #region Properties
 
-        public string Title {
-            get {
+        public string Title
+        {
+            get
+            {
                 return (string)GetValue(TitleProperty);
             }
             set
@@ -218,9 +218,9 @@ namespace AutoArchivePlus.Component
             {
                 if (ParentWindow != null)
                 {
-                    if(ParentWindow.WindowState == WindowState.Maximized)
+                    if (ParentWindow.WindowState == WindowState.Maximized)
                     {
-                        ParentWindow.WindowState=WindowState.Normal;
+                        ParentWindow.WindowState = WindowState.Normal;
                     }
                     else
                     {
