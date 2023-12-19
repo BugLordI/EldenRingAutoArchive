@@ -6,7 +6,8 @@
              xmlns:language="clr-namespace:AutoArchivePlus.Language"
              xmlns:component="clr-namespace:AutoArchivePlus.Component"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="196">
+             d:DesignHeight="450" 
+             d:DesignWidth="196">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,10 +17,10 @@
     </UserControl.Resources>
     <Grid x:Name="root">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.93*"/>
-            <RowDefinition Height="0.07*" />
+            <RowDefinition/>
+            <RowDefinition Height="0.078*" MaxHeight="34" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Height="Auto" x:Name="menu">
+        <StackPanel Grid.Row="0" Height="Auto" x:Name="menu" >
             <component:NavigationMenuItem 
                 ItemName="{Binding [Home], Source={x:Static language:LanguageManager.Instance}}"
                 ItemIcon="../Resources/img/home.png"
@@ -29,14 +30,19 @@
                 TypeName="home" ItemIconHeight="21" ItemIconWidth="21"
                 />
         </StackPanel>
-        <StackPanel Grid.Row="1" Width="{Binding ActualWidth,ElementName=root}" HorizontalAlignment="Center">
+        <StackPanel 
+                    Grid.Row="1" 
+                    Width="{Binding ActualWidth,ElementName=root}" 
+                    HorizontalAlignment="Center" VerticalAlignment="Top">
             <component:NavigationMenuItem
                  ItemName="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
                  ItemIcon="../Resources/img/setup.png"
                  ItemClicked="itemClicked"
                  x:Name="setting"
                  TypeName="setting"
-                 ItemIconHeight="21" ItemIconWidth="21" 
+                 ItemIconHeight="21" 
+                 ItemIconWidth="21"
+                 MaxHeight="33"
                 />
         </StackPanel>
     </Grid>

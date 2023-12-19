@@ -75,5 +75,11 @@
                 </CheckBox>
             </DockPanel>
         </Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="46"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        </Grid>
     </DockPanel>
 </Page>

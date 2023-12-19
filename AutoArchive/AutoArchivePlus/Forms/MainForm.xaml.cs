@@ -1,7 +1,5 @@
 ﻿using AutoArchivePlus.Language;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace AutoArchivePlus.Forms
 {
@@ -37,6 +35,8 @@ namespace AutoArchivePlus.Forms
             Window window = sender as Window;
             if (window.WindowState == WindowState.Maximized)
             {
+                this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+                this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
                 titleBar.MaximizeButtonToolTip = LanguageManager.Instance["RestoreBtnName"];
             }
             else

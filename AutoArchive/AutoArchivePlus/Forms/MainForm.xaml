@@ -52,16 +52,18 @@
                 BorderBrush="LightGray" 
                 BorderThickness="0,0,0,1" 
                />
-            <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}">
+            <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}" x:Name="navigation">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="196"></ColumnDefinition>
                     <ColumnDefinition Width="0.8*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Column="0">
                     <page:Navigation  BorderBrush="NavajoWhite" 
-                                      BorderThickness="0,0,1,0" />
+                                      BorderThickness="0,0,1,0" 
+                                      Height="{Binding ActualHeight,ElementName=navigation}"
+                                      />
                 </DockPanel>
-                <Frame x:Name="navigation"  Grid.Column="1" Background="#FFEAEAEA">
+                <Frame  Grid.Column="1" Background="#FFEAEAEA">
                     <Frame.Content>
                         <page:HomePage/>
                     </Frame.Content>
