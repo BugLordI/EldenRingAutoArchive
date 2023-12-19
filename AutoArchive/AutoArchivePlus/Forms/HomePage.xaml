@@ -89,8 +89,20 @@
                     <TextBlock FontSize="13" Grid.Column="0" Padding="10,0,0,0">已支持列表:</TextBlock>
                 </Grid>
             </StackPanel>
-            <StackPanel Grid.Row="1" Background="Gray">
-            </StackPanel>
+            <ScrollViewer Grid.Row="1">
+                <Grid  ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                       ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                    <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition MaxHeight="65" MinHeight="65"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </ScrollViewer>
         </Grid>
     </DockPanel>
 </Page>

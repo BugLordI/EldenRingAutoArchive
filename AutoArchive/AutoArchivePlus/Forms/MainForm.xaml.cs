@@ -1,5 +1,6 @@
 ﻿using AutoArchivePlus.Language;
 using System.Windows;
+using Tools;
 
 namespace AutoArchivePlus.Forms
 {
@@ -18,7 +19,7 @@ namespace AutoArchivePlus.Forms
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //OS.LoadInstalledApps();
+          var appList = OS.LoadInstalledApps();
 
         }
 
