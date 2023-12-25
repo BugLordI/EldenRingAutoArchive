@@ -51,7 +51,8 @@ namespace Tools
                         RegistryKey sk = installedApps.OpenSubKey(skName);
                         String displayName = sk.GetValue("DisplayName") as string;
                         String path = sk.GetValue("UninstallString") as String;
-                        appInfos.Add((displayName, Path.GetDirectoryName(path)));
+                        String installLocation = sk.GetValue("InstallLocation") as string;
+                        appInfos.Add((displayName, Path.GetFullPath(path)));
                     }
                     catch { }
                 }

@@ -12,6 +12,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/ScrollerViewerStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
@@ -93,16 +94,16 @@
                 <Grid  ScrollViewer.VerticalScrollBarVisibility="Auto" 
                        ScrollViewer.HorizontalScrollBarVisibility="Auto">
                     <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition MaxHeight="65" MinHeight="65"/>
-                        </Grid.RowDefinitions>
-                    </Grid>
-                </ScrollViewer>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition MaxHeight="65" MinHeight="65"/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </DockPanel>
 </Page>

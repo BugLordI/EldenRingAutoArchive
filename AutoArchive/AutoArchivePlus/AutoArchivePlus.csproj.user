@@ -34,6 +34,9 @@
     <Page Update="Resources\Styles\CommonStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\Styles\ScrollerViewerStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\Styles\TitleBarStyle.xaml">
       <SubType>Designer</SubType>
     </Page>
