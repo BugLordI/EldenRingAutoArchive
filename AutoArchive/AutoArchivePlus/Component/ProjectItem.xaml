@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="AutoArchivePlus.Component.ProjectItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:language="clr-namespace:AutoArchivePlus.Language"
+             mc:Ignorable="d" 
+             d:DesignHeight="65" 
+             d:DesignWidth="270"
+             BorderThickness="1"
+             Background="White"
+             MouseEnter="self_MouseEnter"
+             MouseLeave="self_MouseLeave"
+             Margin="2"
+             x:Name="self">
+    <UserControl.Effect>
+        <DropShadowEffect ShadowDepth="3" BlurRadius="5" Opacity="0.9" Color="#D4D3D1" />
+    </UserControl.Effect>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.7*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" x:Name="defaultShow" Visibility="Collapsed">
+            <TextBlock Cursor="Hand" 
+                       Text="{Binding [ClickToAddNewGame],Source={x:Static language:LanguageManager.Instance}}"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" 
+                       FontStyle="Italic" 
+                       FontSize="15"
+                       Foreground="#FF7296ED"
+                       x:Name="defaultShowText"
+                       MouseDown="defaultShowText_MouseDown"
+                      />
+        </StackPanel>
+        <Image Grid.Column="0"
+               Width="50"
+               Height="50" 
+               Source="/Resources/img/xinwang-ds3-ico.jpg"
+               >
+            <Image.Clip>
+                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
+            </Image.Clip>
+        </Image>
+    </Grid>
+</UserControl>

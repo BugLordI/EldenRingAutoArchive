@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <None Remove="Resources\img\about.png" />
+    <None Remove="Resources\img\default-project.png" />
     <None Remove="Resources\img\home.png" />
     <None Remove="Resources\img\setup.png" />
   </ItemGroup>
@@ -28,6 +29,9 @@
 
   <ItemGroup>
     <Resource Include="Resources\img\about.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\img\default-project.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\img\home.png">

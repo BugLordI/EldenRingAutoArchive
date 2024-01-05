@@ -30,10 +30,15 @@ namespace AutoArchivePlus.Forms
         /// <param name="e"></param>
         private void titleBar_CloseButtonClick(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (ret == MessageBoxResult.Yes)
+            if (ret == MessageBoxResult.No)
             {
-                this.Close();
+                e.Cancel = true;
             }
         }
 

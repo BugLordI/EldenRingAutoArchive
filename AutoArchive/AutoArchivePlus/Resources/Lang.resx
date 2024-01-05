@@ -151,4 +151,10 @@
   <data name="Home" xml:space="preserve">
     <value>首页</value>
   </data>
+  <data name="ListOfSupported" xml:space="preserve">
+    <value>已支持的列表：</value>
+  </data>
+  <data name="ClickToAddNewGame" xml:space="preserve">
+    <value>点击添加新的游戏</value>
+  </data>
 </root>

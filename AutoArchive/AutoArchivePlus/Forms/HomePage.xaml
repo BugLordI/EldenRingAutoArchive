@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
       xmlns:language="clr-namespace:AutoArchivePlus.Language"
+      xmlns:component="clr-namespace:AutoArchivePlus.Component"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
      >
@@ -87,12 +88,16 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="13" Grid.Column="0" Padding="10,0,0,0">已支持列表:</TextBlock>
+                    <TextBlock FontSize="13" 
+                               Grid.Column="0" 
+                               Padding="10,0,0,0"
+                               Text="{Binding [ListOfSupported],Source={x:Static language:LanguageManager.Instance}}"/>
                 </Grid>
             </StackPanel>
             <ScrollViewer Grid.Row="1">
                 <Grid  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                       ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                       x:Name="supportList">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -101,7 +106,9 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition MaxHeight="65" MinHeight="65"/>
+                        <RowDefinition MaxHeight="65" MinHeight="65"/>
                     </Grid.RowDefinitions>
+                    <component:ProjectItem Grid.Column="0" Grid.Row="0"/>
                 </Grid>
             </ScrollViewer>
         </Grid>

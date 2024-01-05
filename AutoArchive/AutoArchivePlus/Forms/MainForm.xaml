@@ -13,13 +13,21 @@
         Background="Transparent"
         WindowStyle="None"
         Height="613" 
-        Width="1190" 
+        Width="996" 
         WindowStartupLocation="CenterScreen" 
         MinHeight="583" 
         MinWidth="996" 
-        Icon="/Resources/img/xinwang-ds3-ico.jpg" SizeChanged="mainWindow_SizeChanged" Loaded="mainWindow_Loaded">
+        Icon="/Resources/img/xinwang-ds3-ico.jpg" 
+        SizeChanged="mainWindow_SizeChanged" 
+        Loaded="mainWindow_Loaded"
+        Closing="mainWindow_Closing">
     <Window.Resources>
         <ResourceDictionary>
+            <WindowChrome x:Key="WindowChromeKey">
+                <WindowChrome.ResizeBorderThickness>
+                    <Thickness>5</Thickness>
+                </WindowChrome.ResizeBorderThickness>
+            </WindowChrome>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -28,12 +36,12 @@
     <WindowChrome.WindowChrome>
         <WindowChrome 
             GlassFrameThickness="0" 
-            CaptionHeight="39" 
+            CaptionHeight="31" 
             NonClientFrameEdges="None"    
             CornerRadius="0"
             ResizeBorderThickness="10"/>
     </WindowChrome.WindowChrome>
-    <Grid x:Name="grid" Margin="10" Background="White">
+    <Grid x:Name="grid" Margin="5" Background="White">
         <Grid.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
         </Grid.Effect>

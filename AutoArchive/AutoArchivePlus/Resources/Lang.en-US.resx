@@ -171,4 +171,10 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="ListOfSupported" xml:space="preserve">
+    <value>List of supported:</value>
+  </data>
+  <data name="ClickToAddNewGame" xml:space="preserve">
+    <value>Click here to add a new game</value>
+  </data>
 </root>
