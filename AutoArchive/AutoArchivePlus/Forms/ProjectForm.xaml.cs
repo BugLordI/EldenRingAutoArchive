@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace AutoArchivePlus.Forms
@@ -20,6 +16,27 @@ namespace AutoArchivePlus.Forms
         public ProjectForm()
         {
             InitializeComponent();
+        }
+
+        private void projectForm_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(gameBackupPath.Text))
+            {
+                String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
+                gameBackupPath.Text = des;
+            }
+        }
+
+        private void commonLink_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Foreground=new SolidColorBrush(Colors.Red);
+        }
+
+        private void commonLink_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Foreground = new SolidColorBrush(Color.FromRgb(64, 158, 255));
         }
     }
 }

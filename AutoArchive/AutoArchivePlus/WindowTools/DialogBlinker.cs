@@ -63,7 +63,7 @@ namespace AutoArchivePlus.WindowTools
         {
             DropShadowEffect dropShadowEffect = new DropShadowEffect();
             dropShadowEffect.BlurRadius = 8;
-            dropShadowEffect.ShadowDepth = 0;
+            dropShadowEffect.ShadowDepth = 2;
             dropShadowEffect.Direction = 0;
             dropShadowEffect.Color = System.Windows.Media.Colors.Black;
             return dropShadowEffect;

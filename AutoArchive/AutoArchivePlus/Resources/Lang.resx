@@ -157,4 +157,28 @@
   <data name="ClickToAddNewGame" xml:space="preserve">
     <value>点击添加新的游戏</value>
   </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>游戏名称:</value>
+  </data>
+  <data name="GameInstallPath" xml:space="preserve">
+    <value>游戏路径:</value>
+  </data>
+  <data name="GameArchivePath" xml:space="preserve">
+    <value>存档路径:</value>
+  </data>
+  <data name="GameBackupPath" xml:space="preserve">
+    <value>备份路径:</value>
+  </data>
+  <data name="ChooseGamePath" xml:space="preserve">
+    <value>选择游戏路径</value>
+  </data>
+  <data name="ChooseArchivePath" xml:space="preserve">
+    <value>选择存档路径</value>
+  </data>
+  <data name="ChooseBackupPath" xml:space="preserve">
+    <value>选择备份路径</value>
+  </data>
 </root>

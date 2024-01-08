@@ -177,4 +177,28 @@
   <data name="ClickToAddNewGame" xml:space="preserve">
     <value>Click here to add a new game</value>
   </data>
+  <data name="NewProject" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="GameName" xml:space="preserve">
+    <value>GameName:</value>
+  </data>
+  <data name="GameInstallPath" xml:space="preserve">
+    <value>GameInstallPath:</value>
+  </data>
+  <data name="GameArchivePath" xml:space="preserve">
+    <value>GameArchivePath:</value>
+  </data>
+  <data name="GameBackupPath" xml:space="preserve">
+    <value>GameBackupPath:</value>
+  </data>
+  <data name="ChooseGamePath" xml:space="preserve">
+    <value>ChooseGamePath</value>
+  </data>
+  <data name="ChooseArchivePath" xml:space="preserve">
+    <value>ChooseArchivePath</value>
+  </data>
+  <data name="ChooseBackupPath" xml:space="preserve">
+    <value>ChooseBackupPath</value>
+  </data>
 </root>
