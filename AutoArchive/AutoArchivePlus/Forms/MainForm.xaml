@@ -13,10 +13,12 @@
         Background="Transparent"
         WindowStyle="None"
         Height="613" 
-        Width="996" 
+        Width="1006" 
         WindowStartupLocation="CenterScreen" 
         MinHeight="583" 
-        MinWidth="996" 
+        MinWidth="996"
+        MaxWidth="1426"
+        MaxHeight="837"
         Icon="/Resources/img/xinwang-ds3-ico.jpg" 
         SizeChanged="mainWindow_SizeChanged" 
         Loaded="mainWindow_Loaded"
@@ -59,6 +61,7 @@
                 ParentWindow="{Binding ElementName=mainWindow}" Icon="/Resources/img/xinwang-ds3-ico.jpg" 
                 BorderBrush="LightGray" 
                 BorderThickness="0,0,0,1" 
+                ShowMaximize="Collapsed"
                />
             <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}" x:Name="navigation">
                 <Grid.ColumnDefinitions>

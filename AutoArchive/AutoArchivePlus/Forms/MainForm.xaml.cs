@@ -47,8 +47,8 @@ namespace AutoArchivePlus.Forms
             Window window = sender as Window;
             if (window.WindowState == WindowState.Maximized)
             {
-                this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-                this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+                //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+                //this.MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
                 titleBar.MaximizeButtonToolTip = LanguageManager.Instance["RestoreBtnName"];
             }
             else

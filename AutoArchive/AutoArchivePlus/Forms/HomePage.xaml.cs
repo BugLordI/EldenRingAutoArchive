@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AutoArchivePlus.Forms
 {
@@ -10,6 +12,11 @@ namespace AutoArchivePlus.Forms
         public HomePage()
         {
             InitializeComponent();
+        }
+
+        private void ProjectItem_newProjectClicked(object sender,MouseButtonEventArgs e)
+        {
+
         }
     }
 }

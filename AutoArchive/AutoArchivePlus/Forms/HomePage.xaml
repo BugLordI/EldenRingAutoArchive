@@ -34,8 +34,7 @@
                        >
                 <StackPanel Height="75" Orientation="Horizontal" HorizontalAlignment="Left">
                     <Image Width="74"
-                           Height="74"
-                           Source="{Binding GetUserPicture}"
+                           Height="74" Source="{Binding GetUserPicture}"
                          >
                         <Image.Clip>
                             <EllipseGeometry Center="37,37" RadiusX="37" RadiusY="37" />
@@ -95,21 +94,14 @@
                 </Grid>
             </StackPanel>
             <ScrollViewer Grid.Row="1">
-                <Grid  ScrollViewer.VerticalScrollBarVisibility="Auto" 
-                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                       x:Name="supportList">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition MaxHeight="65" MinHeight="65"/>
-                        <RowDefinition MaxHeight="65" MinHeight="65"/>
-                    </Grid.RowDefinitions>
-                    <component:ProjectItem Grid.Column="0" Grid.Row="0"/>
-                </Grid>
+                <WrapPanel HorizontalAlignment="Center" x:Name="projectItemPanel">
+                    <component:ProjectItem MaxWidth="200" 
+                                           MaxHeight="65" 
+                                           Width="200"
+                                           Height="65"
+                                           newProjectClicked="ProjectItem_newProjectClicked" 
+                                           />
+                </WrapPanel>
             </ScrollViewer>
         </Grid>
     </DockPanel>

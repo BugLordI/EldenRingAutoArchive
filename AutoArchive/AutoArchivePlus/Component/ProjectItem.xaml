@@ -11,10 +11,11 @@
              Background="White"
              MouseEnter="self_MouseEnter"
              MouseLeave="self_MouseLeave"
+             Loaded="self_Loaded"
              Margin="2"
              x:Name="self">
     <UserControl.Effect>
-        <DropShadowEffect ShadowDepth="3" BlurRadius="5" Opacity="0.9" Color="#D4D3D1" />
+        <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="0.9" Color="#D4D3D1" RenderingBias="Quality" />
     </UserControl.Effect>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -27,20 +28,35 @@
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center" 
                        FontStyle="Italic" 
-                       FontSize="15"
-                       Foreground="#FF7296ED"
+                       FontSize="13"
+                       Foreground="Blue"
                        x:Name="defaultShowText"
                        MouseDown="defaultShowText_MouseDown"
+                       MouseEnter="defaultShowText_MouseEnter"
+                       MouseLeave="defaultShowText_MouseLeave"
                       />
         </StackPanel>
         <Image Grid.Column="0"
                Width="50"
                Height="50" 
-               Source="/Resources/img/xinwang-ds3-ico.jpg"
+               Source="{Binding ProjectIconLocation,ElementName=self}"
+               x:Name="projectIcon"
                >
             <Image.Clip>
                 <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
             </Image.Clip>
         </Image>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" x:Name="projectInfo">
+            <TextBlock 
+                       VerticalAlignment="Center" 
+                       TextTrimming="WordEllipsis"
+                       Text="{Binding ProjectTitle,ElementName=self}"
+                       x:Name="projectTitle"/>
+            <TextBlock TextTrimming="WordEllipsis"
+                       VerticalAlignment="Center" 
+                       Text="{Binding projectBackupLocation,ElementName=self}"
+                       x:Name="projectBackupLocation"
+            />
+        </StackPanel>
     </Grid>
 </UserControl>
