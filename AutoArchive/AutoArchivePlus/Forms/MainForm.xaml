@@ -43,15 +43,16 @@
             CornerRadius="0"
             ResizeBorderThickness="10"/>
     </WindowChrome.WindowChrome>
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
+    </Window.Effect>
     <Grid x:Name="grid" Margin="5" Background="White">
-        <Grid.Effect>
-            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
-        </Grid.Effect>
         <DockPanel LastChildFill="False" IsHitTestVisible="True">
             <DockPanel.Background>
                 <SolidColorBrush Color="White" Opacity="0.95"/>
             </DockPanel.Background>
             <component:FormTitleBar
+                Width="{Binding ActualWidth,ElementName=grid}"
                 Background="Gray"
                 IsHitTestVisible="True"
                 DockPanel.Dock="Top" 
@@ -79,7 +80,7 @@
                         <SolidColorBrush Color="#FFEAEAEA" Opacity="0.87"/>
                     </Frame.Background>
                     <Frame.Content>
-                        <page:HomePage/>
+                        <page:HomePage x:Name="homePage"/>
                     </Frame.Content>
                 </Frame>
             </Grid>

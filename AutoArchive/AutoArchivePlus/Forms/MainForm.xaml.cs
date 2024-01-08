@@ -1,6 +1,9 @@
 ﻿using AutoArchivePlus.Language;
+using System;
 using System.Windows;
+using System.Windows.Interop;
 using Tools;
+using AutoArchivePlus.WindowTools;
 
 namespace AutoArchivePlus.Forms
 {
@@ -9,19 +12,38 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class MainForm : Window
     {
+        private const int WM_SETCURSOR = 0x20;
+
         public MainForm()
         {
             InitializeComponent();
             titleBar.MinimizeButtonToolTip = LanguageManager.Instance["MinimizeBtnName"];
             titleBar.MaximizeButtonToolTip = LanguageManager.Instance["MaximizeBtnName"];
             titleBar.CloseButtonToolTip = LanguageManager.Instance["CloseBtnName"];
+            homePage.ParentWindow = this;
         }
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-          var appList = OS.LoadInstalledApps();
-
+            IntPtr hwnd = new WindowInteropHelper(this).Handle;
+            HwndSource.FromHwnd(hwnd).AddHook(new HwndSourceHook(WndProc));
         }
+
+        IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WM_SETCURSOR)
+            {
+                if (lParam.ToInt32() == 0x202fffe || lParam.ToInt32() == 0x201fffe)
+                {
+                    foreach (Window child in this.OwnedWindows)
+                    {
+                        child.Blink();
+                    }
+                }
+            }
+            return IntPtr.Zero;
+        }
+
 
         /// <summary>
         /// close window

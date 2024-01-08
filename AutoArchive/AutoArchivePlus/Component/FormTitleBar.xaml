@@ -6,7 +6,7 @@
              xmlns:language="clr-namespace:AutoArchivePlus.Language"
              mc:Ignorable="d" 
              x:Name="Root"
-             MinWidth="962"
+              d:DesignWidth="962"
              Height="39"
              Background="White" 
              IsHitTestVisible="True"

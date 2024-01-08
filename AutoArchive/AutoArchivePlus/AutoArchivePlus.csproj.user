@@ -17,6 +17,9 @@
     <Compile Update="Forms\Navigation.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\ProjectForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Component\FormTitleBar.xaml">
@@ -32,6 +35,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\Navigation.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\ProjectForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Resources\Styles\NavigationBarStyle.xaml">

@@ -1,7 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -36,29 +33,6 @@ namespace Tools
             //IntPtr hBitmap = bmp.GetHbitmap();
             //System.Windows.Media.ImageSource WpfBitmap = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
             //img.Source = WpfBitmap;
-        }
-
-        public static List<(String, String)> LoadInstalledApps()
-        {
-            List<(String, String)> appInfos = new List<(String, String)>();
-            try
-            {
-                RegistryKey installedApps = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall");
-                foreach (string skName in installedApps.GetSubKeyNames())
-                {
-                    try
-                    {
-                        RegistryKey sk = installedApps.OpenSubKey(skName);
-                        String displayName = sk.GetValue("DisplayName") as string;
-                        String path = sk.GetValue("UninstallString") as String;
-                        String installLocation = sk.GetValue("InstallLocation") as string;
-                        appInfos.Add((displayName, Path.GetFullPath(path)));
-                    }
-                    catch { }
-                }
-            }
-            catch{}
-            return appInfos;
         }
     }
 }

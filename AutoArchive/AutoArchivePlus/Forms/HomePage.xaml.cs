@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -9,14 +9,20 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class HomePage : Page
     {
+        private Window parentWindow;
+
         public HomePage()
         {
             InitializeComponent();
         }
 
-        private void ProjectItem_newProjectClicked(object sender,MouseButtonEventArgs e)
-        {
+        public Window ParentWindow{ get => parentWindow; set => parentWindow = value; }
 
+        private void ProjectItem_newProjectClicked(object sender, MouseButtonEventArgs e)
+        {
+            ProjectForm projectForm = new ProjectForm();
+            projectForm.Owner = ParentWindow;
+            projectForm.ShowDialog();
         }
     }
 }
