@@ -181,4 +181,7 @@
   <data name="ChooseBackupPath" xml:space="preserve">
     <value>选择备份路径</value>
   </data>
+  <data name="SaveProject" xml:space="preserve">
+    <value>保存</value>
+  </data>
 </root>

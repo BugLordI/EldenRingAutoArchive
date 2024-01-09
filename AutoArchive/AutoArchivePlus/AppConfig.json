@@ -1,4 +1,7 @@
 {
   "BackupConfig": {
+  },
+  "ConnectionStrings": {
+    "DBConnection": "Data Source=data.db"
   }
 }

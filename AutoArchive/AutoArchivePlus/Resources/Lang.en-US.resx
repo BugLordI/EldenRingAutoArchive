@@ -201,4 +201,7 @@
   <data name="ChooseBackupPath" xml:space="preserve">
     <value>ChooseBackupPath</value>
   </data>
+  <data name="SaveProject" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

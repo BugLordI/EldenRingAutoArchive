@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using AutoArchivePlus.ViewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace AutoArchivePlus.Forms
 {
@@ -20,11 +19,18 @@ namespace AutoArchivePlus.Forms
 
         private void projectForm_Loaded(object sender, RoutedEventArgs e)
         {
+            ProjectFormViewModel dc = DataContext as ProjectFormViewModel;
             if (String.IsNullOrEmpty(gameBackupPath.Text))
             {
                 String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
-                gameBackupPath.Text = des;
+                dc.GameBackupPath = des;
             }
+            dc.CloseRequest += CloseRequest;
+        }
+
+        private void CloseRequest()
+        {
+            this.Close();
         }
 
         private void commonLink_MouseEnter(object sender, MouseEventArgs e)
