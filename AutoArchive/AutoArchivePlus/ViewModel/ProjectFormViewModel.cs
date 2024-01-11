@@ -6,7 +6,6 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using System.Xml.Linq;
 
 namespace AutoArchivePlus.ViewModel
 {
@@ -35,7 +34,7 @@ namespace AutoArchivePlus.ViewModel
 
         #region Commands
 
-        public ICommand SaveProject => new ControlCommand(obj =>
+        public ICommand SaveProject => new ControlCommand(_ =>
         {
             using BaseContext<Project> baseContext = new DBContext<Project>();
             Project project = new Project()

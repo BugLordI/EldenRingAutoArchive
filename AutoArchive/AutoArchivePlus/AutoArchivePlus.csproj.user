@@ -5,6 +5,9 @@
     <Compile Update="Component\FormTitleBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Component\NotificationWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Component\ProjectItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,6 +26,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Component\FormTitleBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Component\NotificationWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Component\ProjectItem.xaml">

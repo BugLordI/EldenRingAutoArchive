@@ -1,0 +1,34 @@
+﻿<Window x:Class="AutoArchivePlus.Component.NotificationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="NotificationWindow" 
+        Height="60" 
+        Width="300" 
+        ResizeMode="NoResize" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent" 
+        Loaded="window_Loaded" Left="100"
+        x:Name="self"
+        >
+    <Window.Resources>
+        <Storyboard x:Key="NotificationStoryboard">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="self" Storyboard.TargetProperty="(Window.Left)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" 
+                                      Value="700"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01" 
+                                       Value="{Binding StartX,ElementName=self}"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="8" Color="#FFE2DEDE" Direction="521" />
+        </Grid.Effect>
+        <Border Margin="2" CornerRadius="8" Background="White">
+        </Border>
+    </Grid>
+</Window>

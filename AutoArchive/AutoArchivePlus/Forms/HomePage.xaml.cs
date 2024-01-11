@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AutoArchivePlus.Component;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -20,9 +21,11 @@ namespace AutoArchivePlus.Forms
 
         private void ProjectItem_newProjectClicked(object sender, MouseButtonEventArgs e)
         {
-            ProjectForm projectForm = new ProjectForm();
-            projectForm.Owner = ParentWindow;
-            projectForm.ShowDialog();
+            //ProjectForm projectForm = new ProjectForm();
+            //projectForm.Owner = ParentWindow;
+            //projectForm.ShowDialog();
+            NotificationWindow notification = new NotificationWindow();
+            notification.Show();
         }
     }
 }
