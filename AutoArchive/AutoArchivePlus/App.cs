@@ -1,6 +1,10 @@
-﻿using AutoArchivePlus.Forms;
+﻿using AutoArchive.DataBase;
+using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
+using AutoArchivePlus.Mapper;
+using AutoArchivePlus.Model;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -17,6 +21,7 @@ namespace AutoArchivePlus
         [STAThread]
         static void Main(string[] args)
         {
+            dbInit();
             setLanguage(args);
             Boolean ret;
             Mutex mutex = new Mutex(true, PRODUCT_NAME, out ret);
@@ -54,6 +59,13 @@ namespace AutoArchivePlus
                     break;
                 }
             }
+        }
+
+        static void dbInit()
+        {
+            using BaseContext<Project> baseContext = new DBContext<Project>();
+            var data = baseContext.Entity.ToList()[0];
+            Trace.WriteLine(data);
         }
     }
 }

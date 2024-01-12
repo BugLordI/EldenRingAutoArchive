@@ -21,10 +21,9 @@ namespace AutoArchivePlus.Forms
 
         private void ProjectItem_newProjectClicked(object sender, MouseButtonEventArgs e)
         {
-            //ProjectForm projectForm = new ProjectForm();
-            //projectForm.Owner = ParentWindow;
-            //projectForm.ShowDialog();
-            App.GlobalMessage("你好啊");
+            ProjectForm projectForm = new ProjectForm();
+            projectForm.Owner = ParentWindow;
+            projectForm.ShowDialog();
         }
     }
 }

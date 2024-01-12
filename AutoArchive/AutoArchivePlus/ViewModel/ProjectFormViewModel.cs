@@ -47,6 +47,7 @@ namespace AutoArchivePlus.ViewModel
             };
             baseContext.Entity.Add(project);
             baseContext.SaveChanges();
+            App.GlobalMessage("数据保存成功");
             CloseRequest?.Invoke();
         });
 
