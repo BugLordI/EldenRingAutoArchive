@@ -37,6 +37,11 @@ namespace AutoArchivePlus
             return mainForm;
         }
 
+        public static void GlobalMessage(String msg)
+        {
+            mainForm?.Message(msg);
+        }
+
         static void setLanguage(string[] args)
         {
             var local = "--local:";

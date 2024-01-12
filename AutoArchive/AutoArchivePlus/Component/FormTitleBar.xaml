@@ -20,7 +20,7 @@
     </UserControl.Resources>
     <Grid Width="Auto">
         <DockPanel Width="Auto" Background="White" Opacity="0.9">
-            <Label VerticalAlignment="Center">
+            <Label VerticalAlignment="Center" Style="{x:Null}">
                 <Label.Content>
                     <DockPanel>
                         <Image 
@@ -48,7 +48,7 @@
                      Height="39"
                      Width="39"
                      >
-                    <Label Width="24" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" >
+                    <Label Style="{x:Null}" Width="24" Height="24" VerticalAlignment="Top" HorizontalAlignment="Center" HorizontalContentAlignment="Center" >
                         <Line StrokeThickness="1" Stroke="#FF0078D4" X1="0" Y1="12" X2="24" Y2="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Label>
                 </Button>
@@ -65,7 +65,7 @@
                     Height="39"
                     Width="39" 
                     >
-                    <Label HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
+                    <Label Style="{x:Null}" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center">
                         <Rectangle StrokeThickness="1"  Stroke="#FF0078D4" Width="12" Height="12" />
                     </Label>
                 </Button>
@@ -82,7 +82,7 @@
                     Height="39"
                     Width="39"
                     >
-                    <Label VerticalAlignment="Center" Width="22" Height="22" Background="Transparent" VerticalContentAlignment="Center">
+                    <Label Style="{x:Null}" VerticalAlignment="Center" Width="22" Height="22" Background="Transparent" VerticalContentAlignment="Center">
                         <Label.Content>
                             <Path StrokeThickness="1" Fill="#FF0078D4" Stroke="#FF0078D4" Data="M 0 0 L 24 24 M 0 24 L 24 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         </Label.Content>

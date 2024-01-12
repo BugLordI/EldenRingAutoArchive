@@ -24,8 +24,7 @@ namespace AutoArchivePlus.Forms
             //ProjectForm projectForm = new ProjectForm();
             //projectForm.Owner = ParentWindow;
             //projectForm.ShowDialog();
-            NotificationWindow notification = new NotificationWindow();
-            notification.Show();
+            App.GlobalMessage("你好啊");
         }
     }
 }

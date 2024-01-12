@@ -31,6 +31,8 @@
                 </WindowChrome.ResizeBorderThickness>
             </WindowChrome>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -83,6 +85,14 @@
                         <page:HomePage x:Name="homePage"/>
                     </Frame.Content>
                 </Frame>
+                <Canvas Grid.Column="1" 
+                        Width="220" 
+                        HorizontalAlignment="Right"
+                       >
+                    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+                        <StackPanel x:Name="globalMessagePanel" VerticalAlignment="Top" Margin="0,10,10,10"/>
+                    </ScrollViewer>
+                </Canvas>
             </Grid>
         </DockPanel>
     </Grid>

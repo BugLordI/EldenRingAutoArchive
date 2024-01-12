@@ -4,6 +4,9 @@ using System.Windows;
 using System.Windows.Interop;
 using Tools;
 using AutoArchivePlus.WindowTools;
+using HandyControl.Controls;
+using Window = System.Windows.Window;
+using MessageBox = System.Windows.MessageBox;
 
 namespace AutoArchivePlus.Forms
 {
@@ -21,6 +24,11 @@ namespace AutoArchivePlus.Forms
             titleBar.MaximizeButtonToolTip = LanguageManager.Instance["MaximizeBtnName"];
             titleBar.CloseButtonToolTip = LanguageManager.Instance["CloseBtnName"];
             homePage.ParentWindow = this;
+        }
+
+        public void Message(String message)
+        {
+            globalMessagePanel.ShowMessage(message);
         }
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
