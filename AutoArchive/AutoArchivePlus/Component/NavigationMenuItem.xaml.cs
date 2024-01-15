@@ -31,6 +31,12 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ItemSelectedProperty;
 
+        public static readonly DependencyProperty FontColorProperty;
+
+        public static readonly DependencyProperty IsSelectProperty;
+
+        public static readonly DependencyProperty BorderRootThicknessProperty;
+
         #endregion
 
         static NavigationMenuItem()
@@ -42,11 +48,15 @@ namespace AutoArchivePlus.Component
             ItemIconHeightProperty = DependencyProperty.Register("ItemIconHeight", typeof(double), typeof(NavigationMenuItem));
             ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7, 0, 0, 0)));
             ItemSelectedProperty = DependencyProperty.Register("ItemSelected", typeof(Brush), typeof(NavigationMenuItem));
+            FontColorProperty = DependencyProperty.Register("FontColor", typeof(Brush), typeof(NavigationMenuItem));
+            IsSelectProperty = DependencyProperty.Register("IsSelect", typeof(bool), typeof(NavigationMenuItem));
+            //BorderRootThicknessProperty = DependencyProperty.Register("BorderRootThickness", typeof(Thickness), typeof(NavigationMenuItem));
         }
 
         public NavigationMenuItem()
         {
             InitializeComponent();
+            FontColor = Brushes.Black;
         }
 
         public string TypeName
@@ -130,6 +140,49 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(ItemSelectedProperty, value);
+            }
+        }
+
+        public Brush FontColor
+        {
+            get
+            {
+                return (Brush)GetValue(FontColorProperty);
+            }
+            set
+            {
+                SetValue(FontColorProperty, value);
+            }
+        }
+
+        public bool IsSelect
+        {
+            get
+            {
+                return (bool)GetValue(IsSelectProperty);
+            }
+            set
+            {
+                SetValue(IsSelectProperty, value);
+            }
+        }
+
+        public Thickness BorderRootThickness
+        {
+            get
+            {
+                if (IsSelect)
+                {
+                    return new Thickness(3, 2, 0, 0);
+                }
+                else
+                {
+                    return new Thickness(0, 0, 0, 0);
+                }
+            }
+            private set
+            {
+                SetValue(BorderRootThicknessProperty, value);
             }
         }
 

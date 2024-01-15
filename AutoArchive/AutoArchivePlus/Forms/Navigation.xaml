@@ -27,7 +27,11 @@
                 ItemSelected="#FFEAEAEA"
                 x:Name="homeMenuItem" 
                 ItemClicked="itemClicked" 
-                TypeName="home" ItemIconHeight="21" ItemIconWidth="21"
+                TypeName="home" 
+                ItemIconHeight="21" 
+                ItemIconWidth="21"
+                FontColor="#409EFF"
+                IsSelect="True"
                 />
         </StackPanel>
         <StackPanel 

@@ -1,16 +1,10 @@
 ﻿using HandyControl.Controls;
 using HandyControl.Data;
-using HandyControl.Tools;
-using Microsoft.EntityFrameworkCore.Internal;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Window = System.Windows.Window;
 
 namespace AutoArchivePlus.WindowTools
 {

@@ -204,4 +204,7 @@
   <data name="SaveProject" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="DataSavedSuccess" xml:space="preserve">
+    <value>Data Saved Success</value>
+  </data>
 </root>

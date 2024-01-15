@@ -184,4 +184,7 @@
   <data name="SaveProject" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="DataSavedSuccess" xml:space="preserve">
+    <value>数据保存成功</value>
+  </data>
 </root>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:windowTools="clr-namespace:AutoArchivePlus.WindowTools"
              mc:Ignorable="d" 
              d:DesignHeight="38" 
              d:DesignWidth="196"
@@ -11,6 +12,7 @@
              >
     <UserControl.Resources>
         <ResourceDictionary>
+            <windowTools:BorderShowConvert x:Key="convert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -20,19 +22,27 @@
              Height="38"
              x:Name="defaultMenu" Click="defaultMenu_Click">
         <Button.Content>
-            <StackPanel Orientation="Horizontal" 
-                 Background="Transparent"
-                 Width="{Binding ActualWidth,ElementName=defaultMenu}"
-                 Height="{Binding ActualHeight,ElementName=defaultMenu}">
-                <Image Source="{Binding ItemIcon,ElementName=self}" 
-                       Style="{StaticResource NavigationIcon}"
-                       Width="{Binding ItemIconWidth,ElementName=self}"
-                       Height="{Binding ItemIconHeight,ElementName=self}"
-                       x:Name="icon"
+            <Border
+                    BorderThickness="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"
+                    BorderBrush="#409EFF">
+                <StackPanel Orientation="Horizontal" 
+                            Background="Transparent"
+                            Width="{Binding ActualWidth,ElementName=defaultMenu}"
+                            Height="{Binding ActualHeight,ElementName=defaultMenu}"
+                            >
+                    <Image Source="{Binding ItemIcon,ElementName=self}" 
+                           Style="{StaticResource NavigationIcon}"
+                           Width="{Binding ItemIconWidth,ElementName=self}"
+                           Height="{Binding ItemIconHeight,ElementName=self}"
+                           x:Name="icon"
                      />
-                <TextBlock Text="{Binding ItemName,ElementName=self}" 
-                Style="{StaticResource NavigationText}" />
-            </StackPanel>
+                    <TextBlock Text="{Binding ItemName,ElementName=self}" 
+                               Style="{StaticResource NavigationText}" 
+                               FontSize="13"
+                               Foreground="{Binding FontColor,ElementName=self}"
+                     />
+                </StackPanel>
+            </Border>
         </Button.Content>
     </Button>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using AutoArchive.DataBase;
 using AutoArchivePlus.Command;
+using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using System;
@@ -47,7 +48,7 @@ namespace AutoArchivePlus.ViewModel
             };
             baseContext.Entity.Add(project);
             baseContext.SaveChanges();
-            App.GlobalMessage("数据保存成功");
+            App.GlobalMessage(LanguageManager.Instance["DataSavedSuccess"]);
             CloseRequest?.Invoke();
         });
 

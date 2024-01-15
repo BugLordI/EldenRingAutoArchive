@@ -11,7 +11,7 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class Navigation : UserControl
     {
-        private Control selectedItem;
+        private NavigationMenuItem selectedItem;
 
         private Color defaultSelectedColor = Color.FromRgb(234, 234, 234);
 
@@ -32,8 +32,13 @@ namespace AutoArchivePlus.Forms
         private void changeSelected(Control clicked)
         {
             selectedItem.Background = Brushes.Transparent;
-            clicked.Background = new SolidColorBrush(defaultSelectedColor);
-            this.selectedItem = clicked;
+            selectedItem.FontColor = Brushes.Black;
+            selectedItem.IsSelect = false;
+            NavigationMenuItem menuItem = clicked as NavigationMenuItem;
+            menuItem.Background = new SolidColorBrush(defaultSelectedColor);
+            menuItem.FontColor = new SolidColorBrush(Color.FromRgb(64, 158, 255));
+            menuItem.IsSelect = true;
+            this.selectedItem = menuItem;
         }
 
         private void itemClicked(object sender, RoutedEventArgs e)
