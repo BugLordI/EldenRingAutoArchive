@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
         Title="ProjectForm" 
         Height="350" 
@@ -22,6 +23,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -74,7 +77,7 @@
                        FontSize="14"
                        Text="{Binding [GameName],Source={x:Static language:LanguageManager.Instance}}" TextAlignment="Right"
                        /> 
-            <TextBox Grid.Column="2"
+            <hc:TextBox Grid.Column="2"
                      Grid.Row="0"
                      Height="26" 
                      Margin="10,0,14,0" 

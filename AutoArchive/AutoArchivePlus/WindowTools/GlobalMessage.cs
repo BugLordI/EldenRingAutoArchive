@@ -10,7 +10,7 @@ namespace AutoArchivePlus.WindowTools
 {
     public static class GlobalMessage
     {
-        public static void ShowMessage(this Panel panel, String message)
+        public static void ShowSuccessMessage(this Panel panel, String message)
         {
             Application.Current.Dispatcher?.Invoke(delegate
             {
@@ -32,7 +32,7 @@ namespace AutoArchivePlus.WindowTools
                     //_waitTime = Math.Max(growlInfo.WaitTime, 2)
                 };
                 UnsafeOp(growl, "_showCloseButton", true);
-                UnsafeOp(growl, "_waitTime", 2);
+                UnsafeOp(growl, "_waitTime", 3);
                 panel.Children.Insert(0, growl);
             });
         }

@@ -28,7 +28,7 @@ namespace AutoArchivePlus.Forms
 
         public void Message(String message)
         {
-            globalMessagePanel.ShowMessage(message);
+            globalMessagePanel.ShowSuccessMessage(message);
         }
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
