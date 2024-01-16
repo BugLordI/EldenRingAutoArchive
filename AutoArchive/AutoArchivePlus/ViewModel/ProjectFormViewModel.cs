@@ -6,10 +6,14 @@ using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AutoArchivePlus.ViewModel
 {

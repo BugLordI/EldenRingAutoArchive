@@ -65,7 +65,7 @@ namespace AutoArchivePlus
         static void dbInit()
         {
             using BaseContext<Project> baseContext = new DBContext<Project>();
-            var data = baseContext.Entity.ToList()[0];
+            var data = baseContext.Entity.ToList();
             Trace.WriteLine(data);
         }
     }

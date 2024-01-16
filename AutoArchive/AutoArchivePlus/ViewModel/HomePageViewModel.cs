@@ -7,11 +7,14 @@ using AutoArchivePlus.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Tools;
 
@@ -32,8 +35,29 @@ namespace AutoArchivePlus.ViewModel
 
         public HomePageViewModel()
         {
+            initList();
+        }
+
+        private void initList()
+        {
             using BaseContext<Project> baseContext = new DBContext<Project>();
             Projects = new ObservableCollection<Project>(baseContext.Entity);
+            // 新建按钮
+            Projects.Insert(0, new Project());
+            foreach (var item in Projects)
+            {
+                item.Ico = extraIcon(item.InstallPath);
+            }
+        }
+
+        public ImageSource extraIcon(String installPath)
+        {
+            if (installPath == null)
+                return null;
+            Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
+            Bitmap bmp = icon.ToBitmap();
+            IntPtr hBitmap = bmp.GetHbitmap();
+            return Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         #region Propertites
@@ -111,8 +135,7 @@ namespace AutoArchivePlus.ViewModel
             ProjectForm projectForm = new ProjectForm();
             projectForm.Owner = obj as Window;
             projectForm.ShowDialog();
-            using BaseContext<Project> baseContext = new DBContext<Project>();
-            Projects = new ObservableCollection<Project>(baseContext.Entity);
+            initList();
         });
 
         #endregion

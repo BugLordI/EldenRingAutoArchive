@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace AutoArchivePlus.Model
 {
@@ -13,6 +14,7 @@ namespace AutoArchivePlus.Model
         private String installPath;
         private String archivePath;
         private String backupPath;
+        private ImageSource ico;
         private List<Backup> backups;
 
         public String Name { get => name; set => name = value; }
@@ -20,5 +22,7 @@ namespace AutoArchivePlus.Model
         public String BackupPath { get => backupPath; set => backupPath = value; }
         public String InstallPath { get => installPath; set => installPath = value; }
         public List<Backup> Backups { get => backups; set => backups = value; }
+        [NotMapped]
+        public ImageSource Ico { get => ico; set => ico = value; }
     }
 }

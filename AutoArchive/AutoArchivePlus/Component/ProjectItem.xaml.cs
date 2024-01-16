@@ -28,8 +28,8 @@ namespace AutoArchivePlus.Component
         static ProjectItem()
         {
             projectTitleProperty = DependencyProperty.Register("ProjectTitle", typeof(string), typeof(ProjectItem));
-            projectBackupLocationProperty = DependencyProperty.Register("projectBackupLocation", typeof(string), typeof(ProjectItem));
-            projectIconProperty = DependencyProperty.Register("ProjectIconLocation", typeof(BitmapImage), typeof(ProjectItem));
+            projectBackupLocationProperty = DependencyProperty.Register("ProjectBackupLocation", typeof(string), typeof(ProjectItem));
+            projectIconProperty = DependencyProperty.Register("ProjectIconLocation", typeof(ImageSource), typeof(ProjectItem));
             newProjectCommandProperty = DependencyProperty.Register("NewProjectCommand", typeof(ICommand), typeof(ProjectItem));
             newProjectCommandParamsProperty = DependencyProperty.Register("NewProjectCommandParams", typeof(Object), typeof(ProjectItem));
         }
@@ -41,7 +41,7 @@ namespace AutoArchivePlus.Component
 
         private void self_Loaded(object sender, RoutedEventArgs e)
         {
-            if (ProjectTitle == null || ProjectBackupLocation == null)
+            if (String.IsNullOrEmpty(ProjectTitle) || String.IsNullOrEmpty(ProjectBackupLocation))
             {
                 defaultShow.Visibility = Visibility.Visible;
                 projectIcon.Visibility = Visibility.Collapsed;
@@ -82,11 +82,11 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        public BitmapImage ProjectIconLocation
+        public ImageSource ProjectIconLocation
         {
             get
             {
-                return (BitmapImage)GetValue(projectIconProperty);
+                return (ImageSource)GetValue(projectIconProperty);
             }
             set
             {

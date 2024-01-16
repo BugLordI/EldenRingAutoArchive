@@ -37,14 +37,11 @@
                       />
         </StackPanel>
         <Image Grid.Column="0"
-               Width="50"
-               Height="50" 
+               Width="48"
+               Height="48" 
                Source="{Binding ProjectIconLocation,ElementName=self}"
                x:Name="projectIcon"
                >
-            <Image.Clip>
-                <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" />
-            </Image.Clip>
         </Image>
         <StackPanel Grid.Column="1" VerticalAlignment="Center" x:Name="projectInfo">
             <TextBlock 
@@ -54,7 +51,7 @@
                        x:Name="projectTitle"/>
             <TextBlock TextTrimming="WordEllipsis"
                        VerticalAlignment="Center" 
-                       Text="{Binding projectBackupLocation,ElementName=self}"
+                       Text="{Binding ProjectBackupLocation,ElementName=self}"
                        x:Name="projectBackupLocation"
             />
         </StackPanel>
