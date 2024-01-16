@@ -205,6 +205,18 @@
     <value>Save</value>
   </data>
   <data name="DataSavedSuccess" xml:space="preserve">
-    <value>Data Saved Success</value>
+    <value>Data saved success</value>
+  </data>
+  <data name="ProjectNameCannotEmpty" xml:space="preserve">
+    <value>Project name cannot be empty</value>
+  </data>
+  <data name="ProjectInstallPathCannotEmpty" xml:space="preserve">
+    <value>Project install path cannot be empty</value>
+  </data>
+  <data name="ChooseDataSourcePath" xml:space="preserve">
+    <value>Please choose data-source(archive) path</value>
+  </data>
+  <data name="ChooseBackupSavePath" xml:space="preserve">
+    <value>Please choose backup path</value>
   </data>
 </root>

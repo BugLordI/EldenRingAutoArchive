@@ -1,4 +1,5 @@
 ﻿using AutoArchivePlus.ViewModel;
+using AutoArchivePlus.WindowTools;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,12 +26,6 @@ namespace AutoArchivePlus.Forms
                 String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
                 dc.GameBackupPath = des;
             }
-            dc.CloseRequest += CloseRequest;
-        }
-
-        private void CloseRequest()
-        {
-            this.Close();
         }
 
         private void commonLink_MouseEnter(object sender, MouseEventArgs e)
@@ -43,6 +38,36 @@ namespace AutoArchivePlus.Forms
         {
             TextBlock textBlock = sender as TextBlock;
             textBlock.Foreground = new SolidColorBrush(Color.FromRgb(64, 158, 255));
+        }
+
+        private void chooseBackupPath_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            var result = folderBrowser.ShowDialog(this.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                gameBackupPath.Text = folderBrowser.SelectedPath;
+            }
+        }
+
+        private void chooseArchivePath_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            var result = folderBrowser.ShowDialog(this.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                gameArchivePath.Text = folderBrowser.SelectedPath;
+            }
+        }
+
+        private void chooseGamePath_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            var result = openFileDialog.ShowDialog(this.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                gameInstallPath.Text = openFileDialog.FileName;
+            }
         }
     }
 }

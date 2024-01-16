@@ -8,14 +8,13 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace AutoArchivePlus.ViewModel
 {
     internal class ProjectFormViewModel : INotifyPropertyChanged
     {
-        public event Action CloseRequest;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         private String gameName;
@@ -53,7 +52,7 @@ namespace AutoArchivePlus.ViewModel
                 baseContext.Entity.Add(project);
                 baseContext.SaveChanges();
                 App.GlobalMessage(LanguageManager.Instance["DataSavedSuccess"]);
-                CloseRequest?.Invoke();
+                ((Window)_).Close();
             }
         });
 
@@ -64,21 +63,24 @@ namespace AutoArchivePlus.ViewModel
             StringBuilder msg = new StringBuilder();
             if (string.IsNullOrEmpty(gameName))
             {
-                msg.Append("名称不能为空").Append("\n");
+                msg.Append(LanguageManager.Instance["ProjectNameCannotEmpty"]).Append("\n");
             }
             if (string.IsNullOrEmpty(gameInstallPath))
             {
-                msg.Append("安装路径不能为空").Append("\n");
+                msg.Append(LanguageManager.Instance["ProjectInstallPathCannotEmpty"]).Append("\n");
             }
             if (string.IsNullOrEmpty(gameArchivePath))
             {
-                msg.Append("请选择源路径").Append("\n");
+                msg.Append(LanguageManager.Instance["ChooseDataSourcePath"]).Append("\n");
             }
             if (String.IsNullOrEmpty(gameBackupPath))
             {
-                msg.Append("请选择备份路径").Append("\n");
+                msg.Append(LanguageManager.Instance["ChooseBackupSavePath"]).Append("\n");
             }
-            App.GlobalMessage(msg.ToString(),MessageTypeEnum.ERROR);
+            if (msg.Length > 0)
+            {
+                App.GlobalMessage(msg.ToString(), MessageTypeEnum.ERROR);
+            }
             return msg.Length == 0;
         }
 

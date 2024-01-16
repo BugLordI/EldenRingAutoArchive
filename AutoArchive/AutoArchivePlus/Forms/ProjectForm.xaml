@@ -155,6 +155,7 @@
                        x:Name="chooseGamePath" Margin="0,6,0,0"
                        MouseEnter="commonLink_MouseEnter"
                        MouseLeave="commonLink_MouseLeave"
+                       MouseDown="chooseGamePath_MouseDown"
                        >
                 <Underline>
                     <Run Text="{Binding [ChooseGamePath],Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}"/>
@@ -172,6 +173,7 @@
                        Margin="0,6,0,0"
                        MouseEnter="commonLink_MouseEnter"
                        MouseLeave="commonLink_MouseLeave"
+                       MouseDown="chooseArchivePath_MouseDown"
            >
                  <Underline>
                      <Run Text="{Binding [ChooseArchivePath],Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}"/>
@@ -189,6 +191,7 @@
                        Margin="0,6,0,0"
                        MouseEnter="commonLink_MouseEnter"
                        MouseLeave="commonLink_MouseLeave"
+                       MouseDown="chooseBackupPath_MouseDown"
 >
                 <Underline>
                     <Run Text="{Binding [ChooseBackupPath],Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}"/>
@@ -201,6 +204,7 @@
                     Height="32"
                     Content="{Binding [SaveProject],Source={x:Static language:LanguageManager.Instance}}"
                     Command="{Binding SaveProject}"
+                    CommandParameter="{Binding ElementName=projectForm}"
                     />
         </Grid>
     </Grid>

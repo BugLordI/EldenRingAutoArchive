@@ -187,4 +187,16 @@
   <data name="DataSavedSuccess" xml:space="preserve">
     <value>数据保存成功</value>
   </data>
+  <data name="ProjectNameCannotEmpty" xml:space="preserve">
+    <value>名称不能为空</value>
+  </data>
+  <data name="ProjectInstallPathCannotEmpty" xml:space="preserve">
+    <value>安装路径不能为空</value>
+  </data>
+  <data name="ChooseDataSourcePath" xml:space="preserve">
+    <value>请选择数据源(存档)路径</value>
+  </data>
+  <data name="ChooseBackupSavePath" xml:space="preserve">
+    <value>请选择备份路径</value>
+  </data>
 </root>

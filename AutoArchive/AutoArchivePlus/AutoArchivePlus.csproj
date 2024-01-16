@@ -8,6 +8,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
 	 <SelfContained>false</SelfContained>
 	 <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+	 <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
