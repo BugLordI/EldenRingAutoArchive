@@ -86,12 +86,23 @@
                     </Frame.Content>
                 </Frame>
                 <Canvas Grid.Column="1" 
-                        Width="220" 
+                        Width="230" 
                         HorizontalAlignment="Right"
+                        x:Name="msgPanel"
                        >
-                    <ScrollViewer VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
-                        <StackPanel x:Name="globalMessagePanel" VerticalAlignment="Top" Margin="0,10,10,10"/>
-                    </ScrollViewer>
+                    <Grid Height="{Binding ActualHeight,ElementName=msgPanel}"
+                          Width="{Binding ActualWidth,ElementName=msgPanel}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="130"/>
+                        </Grid.RowDefinitions>
+                        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+                            <StackPanel x:Name="globalMessagePanel" VerticalAlignment="Top" Margin="0,10,0,10"/>
+                        </ScrollViewer>
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel x:Name="globalErrorMessagePanel" VerticalAlignment="Top" Margin="0,10,0,10"/>
+                        </ScrollViewer>
+                    </Grid>
                 </Canvas>
             </Grid>
         </DockPanel>

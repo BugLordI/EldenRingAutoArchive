@@ -1,4 +1,5 @@
 ﻿using AutoArchive.DataBase;
+using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
@@ -42,9 +43,9 @@ namespace AutoArchivePlus
             return mainForm;
         }
 
-        public static void GlobalMessage(String msg)
+        public static void GlobalMessage(String msg, MessageTypeEnum messageType = MessageTypeEnum.INFO)
         {
-            mainForm?.Message(msg);
+            mainForm?.Message(msg, messageType);
         }
 
         static void setLanguage(string[] args)

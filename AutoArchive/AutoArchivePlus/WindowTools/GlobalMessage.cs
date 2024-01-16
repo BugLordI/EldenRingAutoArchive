@@ -37,6 +37,28 @@ namespace AutoArchivePlus.WindowTools
             });
         }
 
+        public static void ShowErrorMessage(this Panel panel, String message)
+        {
+            Application.Current.Dispatcher?.Invoke(delegate
+            {
+                Growl growl = new Growl
+                {
+                    Height = panel.Height,
+                    Width = 200,
+                    Message = message,
+                    Time = DateTime.Now,
+                    Icon = panel.TryFindResource("ErrorGeometry") as Geometry,
+                    IconBrush = panel.TryFindResource("DangerBrush") as Brush,
+                    ShowDateTime = true,
+                    Type = InfoType.Success,
+                };
+                UnsafeOp(growl, "_showCloseButton", true);
+                UnsafeOp(growl, "_waitTime", 3);
+                UnsafeOp(growl, "_staysOpen", true);
+                panel.Children.Insert(0, growl);
+            });
+        }
+
         private static void UnsafeOp(Growl growl, String fieldName, Object value)
         {
             FieldInfo field = growl.GetType().GetField(fieldName, BindingFlags.NonPublic | BindingFlags.Instance);

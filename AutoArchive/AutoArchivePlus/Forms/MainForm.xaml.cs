@@ -7,6 +7,7 @@ using AutoArchivePlus.WindowTools;
 using HandyControl.Controls;
 using Window = System.Windows.Window;
 using MessageBox = System.Windows.MessageBox;
+using AutoArchivePlus.Common;
 
 namespace AutoArchivePlus.Forms
 {
@@ -26,9 +27,15 @@ namespace AutoArchivePlus.Forms
             homePage.ParentWindow = this;
         }
 
-        public void Message(String message)
+        public void Message(String message, MessageTypeEnum messageType = MessageTypeEnum.INFO)
         {
-            globalMessagePanel.ShowSuccessMessage(message);
+            switch (messageType)
+            {
+                case MessageTypeEnum.ERROR: globalErrorMessagePanel.ShowErrorMessage(message); break;
+                case MessageTypeEnum.WARNING: globalMessagePanel.ShowSuccessMessage(message); break;
+                case MessageTypeEnum.INFO:
+                default: globalMessagePanel.ShowSuccessMessage(message); break;
+            }
         }
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)

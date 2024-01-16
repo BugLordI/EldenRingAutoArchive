@@ -1,5 +1,6 @@
 ﻿using AutoArchive.DataBase;
 using AutoArchivePlus.Command;
+using AutoArchivePlus.Common;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
@@ -77,7 +78,7 @@ namespace AutoArchivePlus.ViewModel
             {
                 msg.Append("请选择备份路径").Append("\n");
             }
-            App.GlobalMessage(msg.ToString());
+            App.GlobalMessage(msg.ToString(),MessageTypeEnum.ERROR);
             return msg.Length == 0;
         }
 
