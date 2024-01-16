@@ -15,17 +15,13 @@ namespace AutoArchivePlus.Component
     /// </summary>
     public partial class ProjectItem : UserControl
     {
-        #region events
-
-        public event MouseButtonEventHandler newProjectClicked;
-
-        #endregion
-
         #region properties
 
         public static readonly DependencyProperty projectTitleProperty;
         public static readonly DependencyProperty projectBackupLocationProperty;
         public static readonly DependencyProperty projectIconProperty;
+        public static readonly DependencyProperty newProjectCommandProperty;
+        public static readonly DependencyProperty newProjectCommandParamsProperty;
 
         #endregion
 
@@ -34,6 +30,8 @@ namespace AutoArchivePlus.Component
             projectTitleProperty = DependencyProperty.Register("ProjectTitle", typeof(string), typeof(ProjectItem));
             projectBackupLocationProperty = DependencyProperty.Register("projectBackupLocation", typeof(string), typeof(ProjectItem));
             projectIconProperty = DependencyProperty.Register("ProjectIconLocation", typeof(BitmapImage), typeof(ProjectItem));
+            newProjectCommandProperty = DependencyProperty.Register("NewProjectCommand", typeof(ICommand), typeof(ProjectItem));
+            newProjectCommandParamsProperty = DependencyProperty.Register("NewProjectCommandParams", typeof(Object), typeof(ProjectItem));
         }
 
         public ProjectItem()
@@ -96,6 +94,30 @@ namespace AutoArchivePlus.Component
             }
         }
 
+        public ICommand NewProjectCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(newProjectCommandProperty);
+            }
+            set
+            {
+                SetValue(newProjectCommandProperty, value);
+            }
+        }
+
+        public Object NewProjectCommandParams
+        {
+            get
+            {
+                return GetValue(newProjectCommandParamsProperty);
+            }
+            set
+            {
+                SetValue(newProjectCommandParamsProperty, value);
+            }
+        }
+
         #endregion
 
         #region events
@@ -122,7 +144,7 @@ namespace AutoArchivePlus.Component
 
         private void defaultShowText_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            newProjectClicked?.Invoke(sender, e);
+            NewProjectCommand?.Execute(NewProjectCommandParams);
         }
 
         private void defaultShowText_MouseEnter(object sender, MouseEventArgs e)

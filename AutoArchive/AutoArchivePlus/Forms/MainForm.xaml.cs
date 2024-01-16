@@ -24,7 +24,6 @@ namespace AutoArchivePlus.Forms
             titleBar.MinimizeButtonToolTip = LanguageManager.Instance["MinimizeBtnName"];
             titleBar.MaximizeButtonToolTip = LanguageManager.Instance["MaximizeBtnName"];
             titleBar.CloseButtonToolTip = LanguageManager.Instance["CloseBtnName"];
-            homePage.ParentWindow = this;
         }
 
         public void Message(String message, MessageTypeEnum messageType = MessageTypeEnum.INFO)

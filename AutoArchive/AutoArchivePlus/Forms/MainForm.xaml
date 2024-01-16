@@ -1,4 +1,4 @@
-﻿<Window x:Name="mainWindow" x:Class="AutoArchivePlus.Forms.MainForm"
+﻿<Window x:Class="AutoArchivePlus.Forms.MainForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -22,7 +22,8 @@
         Icon="/Resources/img/xinwang-ds3-ico.jpg" 
         SizeChanged="mainWindow_SizeChanged" 
         Loaded="mainWindow_Loaded"
-        Closing="mainWindow_Closing">
+        Closing="mainWindow_Closing"
+        x:Name="mainWindow">
     <Window.Resources>
         <ResourceDictionary>
             <WindowChrome x:Key="WindowChromeKey">
@@ -77,14 +78,13 @@
                                       Height="{Binding ActualHeight,ElementName=navigation}"
                                       />
                 </DockPanel>
-                <Frame  Grid.Column="1">
-                    <Frame.Background>
-                        <SolidColorBrush Color="#FFEAEAEA" Opacity="0.87"/>
-                    </Frame.Background>
-                    <Frame.Content>
-                        <page:HomePage x:Name="homePage"/>
-                    </Frame.Content>
-                </Frame>
+                <Border Grid.Column="1">
+                    <page:HomePage Grid.Column="1"
+                                   x:Name="homePage"
+                                   ParentWindow="{Binding ElementName=mainWindow}"
+                                   Background="#FFEAEAEA"
+                                   />
+                </Border>
                 <Canvas Grid.Column="1" 
                         Width="230" 
                         HorizontalAlignment="Right"

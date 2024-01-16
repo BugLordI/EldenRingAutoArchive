@@ -1,8 +1,12 @@
-﻿using AutoArchivePlus.Language;
+﻿using AutoArchivePlus.Command;
+using AutoArchivePlus.Forms;
+using AutoArchivePlus.Language;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Tools;
 
@@ -73,5 +77,16 @@ namespace AutoArchivePlus.ViewModel
                 return LanguageManager.Instance[greetingStr];
             }
         }
+
+        #region commands
+
+        public ICommand NewProject => new ControlCommand(obj =>
+        {
+            ProjectForm projectForm = new ProjectForm();
+            projectForm.Owner = obj as Window;
+            projectForm.ShowDialog();
+        });
+
+        #endregion
     }
 }
