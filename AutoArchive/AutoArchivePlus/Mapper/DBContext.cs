@@ -2,8 +2,8 @@
 using AutoArchive.Tools;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.IO;
+using System.Windows;
 
 namespace AutoArchivePlus.Mapper
 {
@@ -18,7 +18,8 @@ namespace AutoArchivePlus.Mapper
         {
             if (connStr == null)
             {
-                AppSetting appSetting = new AppSetting("AppConfig.json");
+                string path = AppDomain.CurrentDomain.BaseDirectory;
+                AppSetting appSetting = new AppSetting(Path.Combine(path, "AppConfig.json"));
                 connStr = appSetting["ConnectionStrings:DBConnection"];
             }
             optionsBuilder.UseSqlite(connStr ?? "Data Source=save.db");

@@ -1,9 +1,14 @@
-﻿using AutoArchivePlus.Command;
+﻿using AutoArchive.DataBase;
+using AutoArchivePlus.Command;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
+using AutoArchivePlus.Mapper;
+using AutoArchivePlus.Model;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
@@ -18,11 +23,20 @@ namespace AutoArchivePlus.ViewModel
 
         private bool openButtonIsEnabled = false;
 
+        private ObservableCollection<Project> projects;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public HomePageViewModel()
+        {
+            using BaseContext<Project> baseContext = new DBContext<Project>();
+            Projects = new ObservableCollection<Project>(baseContext.Entity);
+        }
+
+        #region Propertites
         public BitmapImage GetUserPicture
         {
             get
@@ -78,6 +92,18 @@ namespace AutoArchivePlus.ViewModel
             }
         }
 
+        public ObservableCollection<Project> Projects
+        {
+            get => projects;
+            set
+            {
+                projects = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region commands
 
         public ICommand NewProject => new ControlCommand(obj =>
@@ -85,6 +111,8 @@ namespace AutoArchivePlus.ViewModel
             ProjectForm projectForm = new ProjectForm();
             projectForm.Owner = obj as Window;
             projectForm.ShowDialog();
+            using BaseContext<Project> baseContext = new DBContext<Project>();
+            Projects = new ObservableCollection<Project>(baseContext.Entity);
         });
 
         #endregion

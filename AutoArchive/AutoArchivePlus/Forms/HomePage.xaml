@@ -106,6 +106,17 @@
                                            NewProjectCommandParams="{Binding ParentWindow,ElementName=self}"
                                            x:Name="test"
                                            />
+                    <ItemsControl ItemsSource="{Binding Projects}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <component:ProjectItem MaxWidth="200" 
+                                                       MaxHeight="65" 
+                                                       Width="200"
+                                                       Height="65"
+                                                       />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </WrapPanel>
             </ScrollViewer>
         </Grid>
