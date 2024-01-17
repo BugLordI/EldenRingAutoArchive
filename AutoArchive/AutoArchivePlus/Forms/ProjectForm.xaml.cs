@@ -13,9 +13,17 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class ProjectForm : Window
     {
+        public bool dataHasChanged;
+
         public ProjectForm()
         {
             InitializeComponent();
+        }
+
+        public new bool ShowDialog()
+        {
+            base.ShowDialog();
+            return dataHasChanged;
         }
 
         private void projectForm_Loaded(object sender, RoutedEventArgs e)

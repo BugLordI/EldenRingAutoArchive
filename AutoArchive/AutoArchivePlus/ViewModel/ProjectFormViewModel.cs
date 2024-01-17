@@ -1,19 +1,18 @@
 ﻿using AutoArchive.DataBase;
 using AutoArchivePlus.Command;
 using AutoArchivePlus.Common;
+using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace AutoArchivePlus.ViewModel
 {
@@ -52,13 +51,26 @@ namespace AutoArchivePlus.ViewModel
                     InstallPath = gameInstallPath,
                     ArchivePath = gameArchivePath,
                     BackupPath = gameBackupPath,
+                    IcoLocation = extraIcon(gameInstallPath, gameName)
                 };
                 baseContext.Entity.Add(project);
                 baseContext.SaveChanges();
                 App.GlobalMessage(LanguageManager.Instance["DataSavedSuccess"]);
-                ((Window)_).Close();
+                ((ProjectForm)_).dataHasChanged = true;
+                ((ProjectForm)_).Close();
             }
         });
+
+        public String extraIcon(String installPath, String name)
+        {
+            if (installPath == null)
+                return null;
+            Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
+            String iconLocation = App.ICON_PATH + $"\\{name}.ico";
+            using (FileStream fs = new FileStream(iconLocation, FileMode.Create))
+                icon.Save(fs);
+            return iconLocation;
+        }
 
         #endregion
 

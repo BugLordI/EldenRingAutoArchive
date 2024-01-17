@@ -7,6 +7,7 @@ using AutoArchivePlus.Model;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -15,13 +16,22 @@ namespace AutoArchivePlus
 {
     public class App : Application
     {
-        const String PRODUCT_NAME = "AUTO_ARCHIVE";
+        private const String PRODUCT_NAME = "AUTO_ARCHIVE";
+
+        private static String iconPath = "Icons";
 
         private static MainForm mainForm = new MainForm();
+
+        public static string ICON_PATH { get => iconPath; }
 
         [STAThread]
         static void Main(string[] args)
         {
+            iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconPath);
+            if (!Directory.Exists(iconPath))
+            {
+                Directory.CreateDirectory(iconPath);
+            }
             dbInit();
             setLanguage(args);
             Boolean ret;

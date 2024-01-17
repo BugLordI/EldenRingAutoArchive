@@ -40,25 +40,15 @@ namespace AutoArchivePlus.ViewModel
 
         private void initList()
         {
-            using BaseContext<Project> baseContext = new DBContext<Project>();
-            Projects = new ObservableCollection<Project>(baseContext.Entity);
+            using (BaseContext<Project> baseContext = new DBContext<Project>())
+            {
+                Projects = new ObservableCollection<Project>(baseContext.Entity);
+                baseContext.Dispose();
+            }
             // 新建按钮
             Projects.Insert(0, new Project());
-            foreach (var item in Projects)
-            {
-                item.Ico = extraIcon(item.InstallPath);
-            }
         }
 
-        public ImageSource extraIcon(String installPath)
-        {
-            if (installPath == null)
-                return null;
-            Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
-            Bitmap bmp = icon.ToBitmap();
-            IntPtr hBitmap = bmp.GetHbitmap();
-            return Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-        }
 
         #region Propertites
         public BitmapImage GetUserPicture
@@ -134,8 +124,11 @@ namespace AutoArchivePlus.ViewModel
         {
             ProjectForm projectForm = new ProjectForm();
             projectForm.Owner = obj as Window;
-            projectForm.ShowDialog();
-            initList();
+            if (projectForm.ShowDialog())
+            {
+                initList();
+            }
+            GC.Collect();
         });
 
         #endregion

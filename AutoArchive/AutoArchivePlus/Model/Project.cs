@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Windows.Documents;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AutoArchivePlus.Model
 {
@@ -14,6 +16,7 @@ namespace AutoArchivePlus.Model
         private String installPath;
         private String archivePath;
         private String backupPath;
+        private String icoLocation;
         private ImageSource ico;
         private List<Backup> backups;
 
@@ -23,6 +26,20 @@ namespace AutoArchivePlus.Model
         public String InstallPath { get => installPath; set => installPath = value; }
         public List<Backup> Backups { get => backups; set => backups = value; }
         [NotMapped]
-        public ImageSource Ico { get => ico; set => ico = value; }
+        public ImageSource Ico
+        {
+            get
+            {
+                if (File.Exists(IcoLocation))
+                {
+                    return new BitmapImage(new Uri(IcoLocation));
+                }
+                else
+                {
+                    return new BitmapImage(new Uri("pack://application:,,,/Resources/img/xinwang-ds3-ico.jpg"));
+                }
+            }
+        }
+        public string IcoLocation { get => icoLocation; set => icoLocation = value; }
     }
 }
