@@ -1,12 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using Tools;
 
 namespace AutoArchivePlus.Component
 {
@@ -22,8 +19,11 @@ namespace AutoArchivePlus.Component
         public static readonly DependencyProperty projectIconProperty;
         public static readonly DependencyProperty newProjectCommandProperty;
         public static readonly DependencyProperty newProjectCommandParamsProperty;
+        public static readonly DependencyProperty selectedCommandProperty;
 
         #endregion
+
+        private bool clicked;
 
         static ProjectItem()
         {
@@ -32,6 +32,7 @@ namespace AutoArchivePlus.Component
             projectIconProperty = DependencyProperty.Register("ProjectIconLocation", typeof(ImageSource), typeof(ProjectItem));
             newProjectCommandProperty = DependencyProperty.Register("NewProjectCommand", typeof(ICommand), typeof(ProjectItem));
             newProjectCommandParamsProperty = DependencyProperty.Register("NewProjectCommandParams", typeof(Object), typeof(ProjectItem));
+            selectedCommandProperty = DependencyProperty.Register("SelectedCommand", typeof(ICommand), typeof(ProjectItem));
         }
 
         public ProjectItem()
@@ -118,6 +119,20 @@ namespace AutoArchivePlus.Component
             }
         }
 
+        public ICommand SelectedCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(selectedCommandProperty);
+            }
+            set
+            {
+                SetValue(selectedCommandProperty, value);
+            }
+        }
+
+        public bool Clicked { get => clicked; set => clicked = value; }
+
         #endregion
 
         #region events
@@ -129,7 +144,10 @@ namespace AutoArchivePlus.Component
             shadow.BlurRadius = 5; 
             shadow.Color = Color.FromRgb(212, 211, 209);
             self.Effect = shadow;
-            self.BorderBrush = new SolidColorBrush(Colors.Gold);
+            if (!clicked)
+            {
+                self.BorderBrush = new SolidColorBrush(Colors.Gold);
+            }
         }
 
         private void self_MouseLeave(object sender, MouseEventArgs e)
@@ -139,12 +157,28 @@ namespace AutoArchivePlus.Component
             shadow.BlurRadius = 5;
             shadow.Color = Color.FromRgb(212, 211, 209);
             self.Effect = shadow;
-            self.BorderBrush = null;
+            if (!clicked)
+            {
+                self.BorderBrush = null;
+            }
         }
 
-        private void defaultShowText_MouseDown(object sender, MouseButtonEventArgs e)
+        private void self_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            NewProjectCommand?.Execute(NewProjectCommandParams);
+            if (!String.IsNullOrEmpty(ProjectTitle) && !String.IsNullOrEmpty(ProjectBackupLocation))
+            {
+                clicked = !clicked;
+                self.BorderBrush = new SolidColorBrush(Colors.Blue);
+                SelectedCommand?.Execute(self);
+            }
+        }
+
+        private void defaultShowText_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                NewProjectCommand?.Execute(NewProjectCommandParams);
+            }
         }
 
         private void defaultShowText_MouseEnter(object sender, MouseEventArgs e)
@@ -158,6 +192,5 @@ namespace AutoArchivePlus.Component
         }
 
         #endregion
-
     }
 }

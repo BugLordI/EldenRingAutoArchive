@@ -115,6 +115,7 @@
                                                        ProjectBackupLocation="{Binding BackupPath}"
                                                        ProjectTitle="{Binding Name}"
                                                        ProjectIconLocation="{Binding Ico}"
+                                                       SelectedCommand="{Binding ProjectSelected,ElementName=dc}"
                                                        />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

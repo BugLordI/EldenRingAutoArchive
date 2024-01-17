@@ -1,5 +1,6 @@
 ﻿using AutoArchive.DataBase;
 using AutoArchivePlus.Command;
+using AutoArchivePlus.Component;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
@@ -7,14 +8,10 @@ using AutoArchivePlus.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Tools;
 
@@ -27,6 +24,8 @@ namespace AutoArchivePlus.ViewModel
         private bool openButtonIsEnabled = false;
 
         private ObservableCollection<Project> projects;
+
+        private ProjectItem selected;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -129,6 +128,20 @@ namespace AutoArchivePlus.ViewModel
                 initList();
             }
             GC.Collect();
+        });
+
+        public ICommand ProjectSelected => new ControlCommand(obj =>
+        {
+            if (obj is ProjectItem projectItem)
+            {
+                if (selected != null && selected != projectItem)
+                {
+                    selected.BorderBrush = null;
+                    selected.Clicked = false;
+                }
+                selected = projectItem;
+                OpenButtonIsEnabled = selected.Clicked;
+            }
         });
 
         #endregion

@@ -51,7 +51,7 @@ namespace AutoArchivePlus.ViewModel
                     InstallPath = gameInstallPath,
                     ArchivePath = gameArchivePath,
                     BackupPath = gameBackupPath,
-                    IcoLocation = extraIcon(gameInstallPath, gameName)
+                    ImageLocation = extraIcon(gameInstallPath, gameName)
                 };
                 baseContext.Entity.Add(project);
                 baseContext.SaveChanges();

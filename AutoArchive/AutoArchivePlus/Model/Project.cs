@@ -16,8 +16,7 @@ namespace AutoArchivePlus.Model
         private String installPath;
         private String archivePath;
         private String backupPath;
-        private String icoLocation;
-        private ImageSource ico;
+        private String imageLocation;
         private List<Backup> backups;
 
         public String Name { get => name; set => name = value; }
@@ -25,14 +24,16 @@ namespace AutoArchivePlus.Model
         public String BackupPath { get => backupPath; set => backupPath = value; }
         public String InstallPath { get => installPath; set => installPath = value; }
         public List<Backup> Backups { get => backups; set => backups = value; }
+        public string ImageLocation { get => imageLocation; set => imageLocation = value; }
+
         [NotMapped]
         public ImageSource Ico
         {
             get
             {
-                if (File.Exists(IcoLocation))
+                if (File.Exists(ImageLocation))
                 {
-                    return new BitmapImage(new Uri(IcoLocation));
+                    return new BitmapImage(new Uri(ImageLocation));
                 }
                 else
                 {
@@ -40,6 +41,5 @@ namespace AutoArchivePlus.Model
                 }
             }
         }
-        public string IcoLocation { get => icoLocation; set => icoLocation = value; }
     }
 }

@@ -11,6 +11,7 @@
              Background="White"
              MouseEnter="self_MouseEnter"
              MouseLeave="self_MouseLeave"
+             MouseDown="self_MouseDown"
              Loaded="self_Loaded"
              Margin="2"
              x:Name="self">
@@ -31,7 +32,7 @@
                        FontSize="13"
                        Foreground="Blue"
                        x:Name="defaultShowText"
-                       MouseDown="defaultShowText_MouseDown"
+                       MouseUp="defaultShowText_MouseUp"
                        MouseEnter="defaultShowText_MouseEnter"
                        MouseLeave="defaultShowText_MouseLeave"
                       />
