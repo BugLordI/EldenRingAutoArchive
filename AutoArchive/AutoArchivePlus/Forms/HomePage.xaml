@@ -6,12 +6,14 @@
       xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
       xmlns:language="clr-namespace:AutoArchivePlus.Language"
       xmlns:component="clr-namespace:AutoArchivePlus.Component"
+      xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       x:Name="zmy"
      >
     <UserControl.Resources>
         <ResourceDictionary>
+            <converter:HomePageRunBtnConvert x:Key="convert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
                 <ResourceDictionary Source="../Resources/Styles/ScrollerViewerStyle.xaml" />
@@ -60,16 +62,19 @@
             </DockPanel>
             <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}" HorizontalAlignment="Center">
                 <Button Style="{StaticResource CommonBtnWithBorder}" 
-                        Content="{Binding [OpenSelected], Source={x:Static language:LanguageManager.Instance}}" 
+                        Content="{Binding IsRunning,Converter={StaticResource convert}}" 
                         Width="90" 
                         Height="37"
                         IsEnabled="{Binding OpenButtonIsEnabled}"
+                        Command="{Binding OpenProject}"
                         />
                 <CheckBox Width="Auto" 
                           HorizontalAlignment="Center" 
                           HorizontalContentAlignment="Center" 
                           VerticalAlignment="Center" 
-                          VerticalContentAlignment="Center" Margin="4,0,0,0" IsChecked="True">
+                          VerticalContentAlignment="Center" 
+                          Margin="4,0,0,0" 
+                          IsChecked="{Binding StartAndOpen}">
                     <CheckBox.Content>
                         <TextBlock x:Name="startProgramTogetherCBX"
                                    Text="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}"

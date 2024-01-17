@@ -1,23 +1,23 @@
-﻿using System;
+﻿using AutoArchivePlus.Language;
+using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 
-namespace AutoArchivePlus.WindowTools
+namespace AutoArchivePlus.Converter
 {
-    public class BorderShowConvert : IValueConverter
+    public class HomePageRunBtnConvert : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool v && targetType == typeof(Thickness))
+            if (value is bool v)
             {
-                if (v)
+                if (!v)
                 {
-                    return new Thickness(3, 0, 0, 0);
+                    return LanguageManager.Instance["OpenSelected"];
                 }
                 else
                 {
-                    return new Thickness(0, 0, 0, 0);
+                    return LanguageManager.Instance["IsRunning"];
                 }
             }
             return null;

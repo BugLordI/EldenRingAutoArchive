@@ -5,7 +5,9 @@ using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
+using ProjectAutoManagement.Utils;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -26,6 +28,10 @@ namespace AutoArchivePlus.ViewModel
         private ObservableCollection<Project> projects;
 
         private ProjectItem selected;
+
+        private bool startAndOpen = true;
+
+        private bool isRunning;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -115,6 +121,26 @@ namespace AutoArchivePlus.ViewModel
             }
         }
 
+        public bool StartAndOpen
+        {
+            get => startAndOpen;
+            set
+            {
+                startAndOpen = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool IsRunning
+        {
+            get => isRunning;
+            set
+            {
+                isRunning = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region commands
@@ -140,9 +166,48 @@ namespace AutoArchivePlus.ViewModel
                     selected.Clicked = false;
                 }
                 selected = projectItem;
-                OpenButtonIsEnabled = selected.Clicked;
+                Project project = selected.DataContext as Project;
+                if (RunningProjectsManager.IsRunning(project))
+                {
+                    OpenButtonIsEnabled = false;
+                    IsRunning = true;
+                }
+                else
+                {
+                    OpenButtonIsEnabled = selected.Clicked;
+                    IsRunning = false;
+                }
             }
         });
+
+        public ICommand OpenProject => new ControlCommand(obj =>
+        {
+            if (selected != null && selected.Clicked)
+            {
+                //TODO open new page
+                Project project = selected.DataContext as Project;
+                IntPtr handle = Program.execute(project.InstallPath, onProgramExit, onExecuteError);
+                IsRunning = handle != IntPtr.Zero;
+                OpenButtonIsEnabled = handle == IntPtr.Zero;
+                if (IsRunning)
+                {
+                    RunningProjectsManager.Add(project);
+                }
+            }
+        });
+
+        #endregion
+
+        #region private methods
+
+        private void onProgramExit(object sender, EventArgs args)
+        {
+
+        }
+
+        private void onExecuteError(Exception e)
+        {
+        }
 
         #endregion
     }

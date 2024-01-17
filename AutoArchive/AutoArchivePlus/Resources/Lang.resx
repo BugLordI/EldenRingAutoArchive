@@ -199,4 +199,7 @@
   <data name="ChooseBackupSavePath" xml:space="preserve">
     <value>请选择备份路径</value>
   </data>
+  <data name="IsRunning" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
 </root>
