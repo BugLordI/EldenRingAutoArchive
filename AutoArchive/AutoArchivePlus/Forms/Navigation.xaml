@@ -47,6 +47,8 @@
                             TypeName="{Binding Name}"
                             ItemIconHeight="21" 
                             ItemIconWidth="21"
+                            ItemSelected="#FFEAEAEA"
+                            IsSelect="True"
                             />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
