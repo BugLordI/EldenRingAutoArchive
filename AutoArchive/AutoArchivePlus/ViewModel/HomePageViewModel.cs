@@ -185,11 +185,13 @@ namespace AutoArchivePlus.ViewModel
         {
             if (selected != null && selected.Clicked)
             {
-                //TODO open new page
                 Project project = selected.DataContext as Project;
-                IntPtr handle = Program.execute(project.InstallPath, onProgramExit, onExecuteError);
-                IsRunning = handle != IntPtr.Zero;
-                OpenButtonIsEnabled = handle == IntPtr.Zero;
+                if (StartAndOpen)
+                {
+                    Program.execute(project.InstallPath, onProgramExit, onExecuteError);
+                }
+                IsRunning = true;
+                OpenButtonIsEnabled = false;
                 if (IsRunning)
                 {
                     RunningProjectsManager.Add(project);

@@ -22,13 +22,6 @@ namespace AutoArchivePlus.Forms
             selectedItem = homeMenuItem;
         }
 
-        public void addMenu(String menuName, String icon = "pack://application:,,,/Resources/img/xinwang-ds3-ico.jpg")
-        {
-            NavigationMenuItem navigationMenuItem = new NavigationMenuItem();
-            navigationMenuItem.ItemName = menuName;
-            menu.Children.Add(navigationMenuItem);
-        }
-
         private void changeSelected(Control clicked)
         {
             selectedItem.Background = Brushes.Transparent;

@@ -8,6 +8,7 @@ namespace AutoArchivePlus
     {
         private static List<Project> runningList = new List<Project>();
         private static List<Action<Project>> onStopSubscriber=new List<Action<Project>>();
+        private static List<Action<Project>> onRunningSubscriber = new List<Action<Project>>();
 
         private RunningProjectsManager()
         {
@@ -18,6 +19,7 @@ namespace AutoArchivePlus
             if (project != null)
             {
                 runningList.Add(project);
+                runningNotification(project);
             }
         }
 
@@ -38,9 +40,26 @@ namespace AutoArchivePlus
             }
         }
 
+        public static void OnRunningSubscribe(Action<Project> action)
+        {
+            if (action != null)
+            {
+                onRunningSubscriber.Add(action);
+            }
+        }
+
+
         public static bool IsRunning(Project project)
         {
             return runningList.Contains(project);
+        }
+
+        private static void runningNotification(Project project)
+        {
+            foreach (var item in onRunningSubscriber)
+            {
+                item.Invoke(project);
+            }
         }
 
     }

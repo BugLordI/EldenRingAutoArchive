@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:language="clr-namespace:AutoArchivePlus.Language"
              xmlns:component="clr-namespace:AutoArchivePlus.Component"
+             xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="196">
@@ -15,6 +16,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <UserControl.DataContext>
+        <vm:NavigationViewModel/>
+    </UserControl.DataContext>
     <Grid x:Name="root">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -33,6 +37,20 @@
                 FontColor="#409EFF"
                 IsSelect="True"
                 />
+            <ItemsControl ItemsSource="{Binding Projects}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <component:NavigationMenuItem 
+                            ItemName="{Binding Name}"
+                            ItemIcon="{Binding Ico}"
+                            ItemClicked="itemClicked"
+                            TypeName="{Binding Name}"
+                            ItemIconHeight="21" 
+                            ItemIconWidth="21"
+                            />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
         <StackPanel 
                     Grid.Row="1" 
