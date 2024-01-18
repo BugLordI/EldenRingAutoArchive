@@ -121,6 +121,10 @@
                                                        ProjectTitle="{Binding Name}"
                                                        ProjectIconLocation="{Binding Ico}"
                                                        SelectedCommand="{Binding ProjectSelected,ElementName=dc}"
+                                                       DeleteCommand="{Binding DeleteProject ,ElementName=dc}"
+                                                       OpenInstallPathCommand="{Binding OpenInstallPath ,ElementName=dc}"
+                                                       OpenArchivePathCommand="{Binding OpenArchivePath ,ElementName=dc}"
+                                                       OpenBackupPathCommand="{Binding OpenBackupPath ,ElementName=dc}"
                                                        >
                                 </component:ProjectItem>
                             </DataTemplate>

@@ -14,7 +14,8 @@
              MouseDown="self_MouseDown"
              Loaded="self_Loaded"
              Margin="2"
-             x:Name="self" ContextMenuOpening="self_ContextMenuOpening">
+             x:Name="self" 
+             ContextMenuOpening="self_ContextMenuOpening">
     <UserControl.Effect>
         <DropShadowEffect ShadowDepth="1" BlurRadius="5" Opacity="0.9" Color="#D4D3D1" RenderingBias="Quality" />
     </UserControl.Effect>
@@ -23,23 +24,31 @@
         <Image x:Key="install" Source="/Resources/img/install.png"/>
         <Image x:Key="archive" Source="/Resources/img/archive.png"/>
         <Image x:Key="backup" Source="/Resources/img/backup.png"/>
-        <ContextMenu x:Key="ContextMenu">
-            <MenuItem Width="160" 
-                      Header="{Binding [OpenProgramPath],Source={x:Static language:LanguageManager.Instance}}"
-                      Icon="{StaticResource install}"/>
-            <MenuItem Width="160" 
-                      Header="{Binding [OpenArchivePath],Source={x:Static language:LanguageManager.Instance}}"
-                      Icon="{StaticResource archive}"/>
-            <MenuItem Width="160" 
-                      Header="{Binding [OpenBackupPath],Source={x:Static language:LanguageManager.Instance}}"
-                      Icon="{StaticResource backup}"/>
-            <Separator></Separator>
-            <MenuItem Width="160" 
-                      Header="{Binding [Delete],Source={x:Static language:LanguageManager.Instance}}"
-                      Icon="{StaticResource delete}"/>
-        </ContextMenu>
     </UserControl.Resources>
-    <Grid ContextMenu="{StaticResource ContextMenu}">
+    <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Width="160" 
+                          Header="{Binding [OpenProgramPath],Source={x:Static language:LanguageManager.Instance}}"
+                          Icon="{StaticResource install}"
+                          x:Name="openProgramMenu"/>
+                <MenuItem Width="160" 
+                          Header="{Binding [OpenArchivePath],Source={x:Static language:LanguageManager.Instance}}"
+                          Icon="{StaticResource archive}"
+                          x:Name="openArchivMenu"/>
+                <MenuItem Width="160" 
+                          Header="{Binding [OpenBackupPath],Source={x:Static language:LanguageManager.Instance}}"
+                          Icon="{StaticResource backup}"
+                          x:Name="openBackupMenu"
+                          />
+                <Separator></Separator>
+                <MenuItem Width="160" 
+                          Header="{Binding [Delete],Source={x:Static language:LanguageManager.Instance}}"
+                          Icon="{StaticResource delete}"
+                          x:Name="deleteMenu"
+                          />
+            </ContextMenu>
+        </Grid.ContextMenu>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"/>
             <ColumnDefinition Width="0.7*"/>

@@ -7,7 +7,6 @@ using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using ProjectAutoManagement.Utils;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
@@ -16,6 +15,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using Tools;
+using Window = System.Windows.Window;
 
 namespace AutoArchivePlus.ViewModel
 {
@@ -32,6 +32,7 @@ namespace AutoArchivePlus.ViewModel
         private bool startAndOpen = true;
 
         private bool isRunning;
+
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -193,6 +194,54 @@ namespace AutoArchivePlus.ViewModel
                 {
                     RunningProjectsManager.Add(project);
                 }
+            }
+        });
+
+        public ICommand DeleteProject => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                var result = MessageBox.Show(LanguageManager.Instance["DeleteProjectTip"],
+                                   LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    using (BaseContext<Project> baseContext = new DBContext<Project>())
+                    {
+                        using (DBContext<Backup> backupDbcontext = new DBContext<Backup>())
+                        {
+                            backupDbcontext.RemoveAll(e => e.ProjectId == project.Id);
+                            baseContext.Entity.Remove(project);
+                            backupDbcontext.SaveChanges();
+                            baseContext.SaveChanges();
+                            App.GlobalMessage(LanguageManager.Instance["DeleteSuccessTip"]);
+                            initList();
+                        }
+                    }
+                }
+            }
+        });
+
+        public ICommand OpenInstallPath => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                OS.OpenAndSelect(project.InstallPath);
+            }
+        });
+
+        public ICommand OpenArchivePath => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                OS.OpenAndSelect(project.ArchivePath);
+            }
+        });
+
+        public ICommand OpenBackupPath => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                OS.OpenAndSelect(project.BackupPath);
             }
         });
 

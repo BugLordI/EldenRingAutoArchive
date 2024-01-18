@@ -20,6 +20,11 @@ namespace AutoArchivePlus.Component
         public static readonly DependencyProperty newProjectCommandProperty;
         public static readonly DependencyProperty newProjectCommandParamsProperty;
         public static readonly DependencyProperty selectedCommandProperty;
+        // context menu
+        public static readonly DependencyProperty openInstallPathCommandProperty;
+        public static readonly DependencyProperty openArchivePathCommandProperty;
+        public static readonly DependencyProperty openBackupPathCommandProperty;
+        public static readonly DependencyProperty deleteCommandProperty;
 
         #endregion
 
@@ -33,6 +38,11 @@ namespace AutoArchivePlus.Component
             newProjectCommandProperty = DependencyProperty.Register("NewProjectCommand", typeof(ICommand), typeof(ProjectItem));
             newProjectCommandParamsProperty = DependencyProperty.Register("NewProjectCommandParams", typeof(Object), typeof(ProjectItem));
             selectedCommandProperty = DependencyProperty.Register("SelectedCommand", typeof(ICommand), typeof(ProjectItem));
+            // context menu
+            openInstallPathCommandProperty = DependencyProperty.Register("OpenInstallPathCommand", typeof(ICommand), typeof(ProjectItem));
+            openArchivePathCommandProperty = DependencyProperty.Register("OpenArchivePathCommand", typeof(ICommand), typeof(ProjectItem));
+            openBackupPathCommandProperty = DependencyProperty.Register("OpenBackupPathCommand", typeof(ICommand), typeof(ProjectItem));
+            deleteCommandProperty = DependencyProperty.Register("DeleteCommand", typeof(ICommand), typeof(ProjectItem));
         }
 
         public ProjectItem()
@@ -55,6 +65,14 @@ namespace AutoArchivePlus.Component
                 projectInfo.Visibility = Visibility.Visible;
                 self.ToolTip = ProjectTitle + "\n" + ProjectBackupLocation;
             }
+            deleteMenu.Command = DeleteCommand;
+            deleteMenu.CommandParameter = this.DataContext;
+            openBackupMenu.Command = OpenBackupPathCommand;
+            openBackupMenu.CommandParameter = this.DataContext;
+            openArchivMenu.Command = OpenArchivePathCommand;
+            openArchivMenu.CommandParameter = this.DataContext;
+            openProgramMenu.Command = OpenInstallPathCommand;
+            openProgramMenu.CommandParameter = this.DataContext;
         }
 
         #region properties
@@ -132,6 +150,54 @@ namespace AutoArchivePlus.Component
         }
 
         public bool Clicked { get => clicked; set => clicked = value; }
+
+        public ICommand OpenInstallPathCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(openInstallPathCommandProperty);
+            }
+            set
+            {
+                SetValue(openInstallPathCommandProperty, value);
+            }
+        }
+
+        public ICommand OpenArchivePathCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(openArchivePathCommandProperty);
+            }
+            set
+            {
+                SetValue(openArchivePathCommandProperty, value);
+            }
+        }
+
+        public ICommand OpenBackupPathCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(openBackupPathCommandProperty);
+            }
+            set
+            {
+                SetValue(openBackupPathCommandProperty, value);
+            }
+        }
+
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(deleteCommandProperty);
+            }
+            set
+            {
+                SetValue(deleteCommandProperty, value);
+            }
+        }
 
         #endregion
 

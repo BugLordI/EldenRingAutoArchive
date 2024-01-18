@@ -234,4 +234,10 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteProjectTip" xml:space="preserve">
+    <value>Are you sure to delete this item? The data will not be recoverable after deletion.</value>
+  </data>
+  <data name="DeleteSuccessTip" xml:space="preserve">
+    <value>Deleted Success</value>
+  </data>
 </root>

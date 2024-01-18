@@ -24,5 +24,16 @@ namespace AutoArchivePlus.Mapper
             }
             optionsBuilder.UseSqlite(connStr ?? "Data Source=save.db");
         }
+
+        public void RemoveAll(Func<T, bool> func)
+        {
+            foreach (var item in Entity)
+            {
+                if (func(item))
+                {
+                    Entity.Remove(item);
+                }
+            }
+        }
     }
 }

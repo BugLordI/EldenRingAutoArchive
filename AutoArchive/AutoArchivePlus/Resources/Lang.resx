@@ -214,4 +214,10 @@
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="DeleteProjectTip" xml:space="preserve">
+    <value>是否确认删除此项目？删除后数据将不可恢复</value>
+  </data>
+  <data name="DeleteSuccessTip" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
 </root>
