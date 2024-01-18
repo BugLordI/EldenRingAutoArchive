@@ -20,7 +20,8 @@
     </UserControl.Resources>
     <Button Style="{StaticResource NavigationBtn}" 
              Height="38"
-             x:Name="defaultMenu" Click="defaultMenu_Click">
+             x:Name="defaultMenu" Click="defaultMenu_Click"
+            >
         <Button.Content>
             <Border
                     BorderThickness="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"

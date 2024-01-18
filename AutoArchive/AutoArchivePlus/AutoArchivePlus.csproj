@@ -21,8 +21,12 @@
 
   <ItemGroup>
     <None Remove="Resources\img\about.png" />
+    <None Remove="Resources\img\archive.png" />
+    <None Remove="Resources\img\backup.png" />
     <None Remove="Resources\img\default-project.png" />
+    <None Remove="Resources\img\delete.png" />
     <None Remove="Resources\img\home.png" />
+    <None Remove="Resources\img\install.png" />
     <None Remove="Resources\img\setup.png" />
   </ItemGroup>
 
@@ -44,10 +48,22 @@
     <Resource Include="Resources\img\about.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\img\archive.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\img\backup.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\img\default-project.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\img\delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\img\home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\img\install.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\img\setup.png">

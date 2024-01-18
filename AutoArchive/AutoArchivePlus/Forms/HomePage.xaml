@@ -121,7 +121,8 @@
                                                        ProjectTitle="{Binding Name}"
                                                        ProjectIconLocation="{Binding Ico}"
                                                        SelectedCommand="{Binding ProjectSelected,ElementName=dc}"
-                                                       />
+                                                       >
+                                </component:ProjectItem>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

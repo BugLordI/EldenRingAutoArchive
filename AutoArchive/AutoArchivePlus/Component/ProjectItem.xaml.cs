@@ -165,11 +165,14 @@ namespace AutoArchivePlus.Component
 
         private void self_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!String.IsNullOrEmpty(ProjectTitle) && !String.IsNullOrEmpty(ProjectBackupLocation))
+            if (e.ChangedButton == MouseButton.Left)
             {
-                clicked = !clicked;
-                self.BorderBrush = new SolidColorBrush(Colors.Blue);
-                SelectedCommand?.Execute(self);
+                if (!String.IsNullOrEmpty(ProjectTitle) && !String.IsNullOrEmpty(ProjectBackupLocation))
+                {
+                    clicked = !clicked;
+                    self.BorderBrush = new SolidColorBrush(Colors.Blue);
+                    SelectedCommand?.Execute(self);
+                }
             }
         }
 
@@ -189,6 +192,14 @@ namespace AutoArchivePlus.Component
         private void defaultShowText_MouseLeave(object sender, MouseEventArgs e)
         {
             defaultShowText.Foreground = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void self_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (String.IsNullOrEmpty(ProjectTitle) || String.IsNullOrEmpty(ProjectBackupLocation))
+            {
+                e.Handled = true;
+            }
         }
 
         #endregion

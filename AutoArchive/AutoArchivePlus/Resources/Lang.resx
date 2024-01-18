@@ -202,4 +202,16 @@
   <data name="IsRunning" xml:space="preserve">
     <value>正在运行</value>
   </data>
+  <data name="OpenProgramPath" xml:space="preserve">
+    <value>打开安装路径</value>
+  </data>
+  <data name="OpenArchivePath" xml:space="preserve">
+    <value>打开存档路径</value>
+  </data>
+  <data name="OpenBackupPath" xml:space="preserve">
+    <value>打开备份路径</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
 </root>

@@ -222,4 +222,16 @@
   <data name="IsRunning" xml:space="preserve">
     <value>Is Running</value>
   </data>
+  <data name="OpenProgramPath" xml:space="preserve">
+    <value>Open Install Path</value>
+  </data>
+  <data name="OpenArchivePath" xml:space="preserve">
+    <value>Open Archive Path</value>
+  </data>
+  <data name="OpenBackupPath" xml:space="preserve">
+    <value>Open Backup Path</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>
