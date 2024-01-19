@@ -18,7 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <vm:NavigationViewModel />
+        <vm:NavigationViewModel x:Name="dc" />
     </UserControl.DataContext>
     <Grid x:Name="root">
         <Grid.RowDefinitions>
@@ -32,7 +32,7 @@
                         <component:NavigationMenuItem 
                             ItemName="{Binding Name}"
                             ItemIcon="{Binding Ico}"
-                            ItemClicked="itemClicked"
+                            ItemClickedCommand="{Binding ItemClicked,ElementName=dc}"
                             TypeName="{Binding Name}"
                             ItemIconHeight="21" 
                             ItemIconWidth="21"
@@ -49,7 +49,7 @@
             <component:NavigationMenuItem
                  ItemName="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
                  ItemIcon="../Resources/img/setup.png"
-                 ItemClicked="itemClicked"
+                 ItemClickedCommand="{Binding ItemClicked,ElementName=dc}"
                  x:Name="setting"
                  TypeName="setting"
                  ItemIconHeight="21" 

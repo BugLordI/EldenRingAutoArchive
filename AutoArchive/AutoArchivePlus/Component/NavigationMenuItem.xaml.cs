@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace AutoArchivePlus.Component
@@ -9,12 +10,6 @@ namespace AutoArchivePlus.Component
     /// </summary>
     public partial class NavigationMenuItem : UserControl
     {
-        #region events
-
-        public event RoutedEventHandler ItemClicked;
-
-        #endregion
-
         #region Properties
 
         public static readonly DependencyProperty TypeNameProperty;
@@ -31,7 +26,7 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty IsSelectProperty;
 
-        public static readonly DependencyProperty BorderRootThicknessProperty;
+        public static readonly DependencyProperty ItemClickedCommandProperty;
 
         #endregion
 
@@ -44,7 +39,7 @@ namespace AutoArchivePlus.Component
             ItemIconHeightProperty = DependencyProperty.Register("ItemIconHeight", typeof(double), typeof(NavigationMenuItem));
             ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7, 0, 0, 0)));
             IsSelectProperty = DependencyProperty.Register("IsSelect", typeof(bool), typeof(NavigationMenuItem));
-            //BorderRootThicknessProperty = DependencyProperty.Register("BorderRootThickness", typeof(Thickness), typeof(NavigationMenuItem));
+            ItemClickedCommandProperty = DependencyProperty.Register("ItemClickedCommand", typeof(ICommand), typeof(NavigationMenuItem));
         }
 
         public NavigationMenuItem()
@@ -136,28 +131,16 @@ namespace AutoArchivePlus.Component
             }
         }
 
-        public Thickness BorderRootThickness
+        public ICommand ItemClickedCommand
         {
             get
             {
-                if (IsSelect)
-                {
-                    return new Thickness(3, 2, 0, 0);
-                }
-                else
-                {
-                    return new Thickness(0, 0, 0, 0);
-                }
+                return (ICommand)GetValue(ItemClickedCommandProperty);
             }
-            private set
+            set
             {
-                SetValue(BorderRootThicknessProperty, value);
+                SetValue(ItemClickedCommandProperty, value);
             }
-        }
-
-        private void defaultMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ItemClicked?.Invoke(this, e);
         }
     }
 }
