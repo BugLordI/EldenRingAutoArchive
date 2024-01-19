@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:language="clr-namespace:AutoArchivePlus.Language"
         xmlns:component="clr-namespace:AutoArchivePlus.Component"
+        xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
         xmlns:page="clr-namespace:AutoArchivePlus.Forms"
+        xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
         mc:Ignorable="d"
         Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
         AllowsTransparency="True"
@@ -24,8 +26,12 @@
         Loaded="mainWindow_Loaded"
         Closing="mainWindow_Closing"
         x:Name="mainWindow">
+    <Window.DataContext>
+        <vm:MainFormViewModel x:Name="dc"/>
+    </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
+            <converter:ShowProjectInfoConvert x:Key="mconvert"/>
             <WindowChrome x:Key="WindowChromeKey">
                 <WindowChrome.ResizeBorderThickness>
                     <Thickness>5</Thickness>
@@ -79,11 +85,16 @@
                                       />
                 </DockPanel>
                 <Border Grid.Column="1">
-                    <page:HomePage Grid.Column="1"
+                    <Grid>
+                        <page:HomePage 
                                    x:Name="homePage"
                                    ParentWindow="{Binding ElementName=mainWindow}"
                                    Background="#FFEAEAEA"
+                                   Visibility="{Binding ShowHomePage,Converter={StaticResource mconvert},ElementName=dc}"
                                    />
+                        <page:ProjectInfoPage Grid.Column="1"
+                                              Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"/>
+                    </Grid>
                 </Border>
                 <Canvas Grid.Column="1" 
                         Width="230" 

@@ -16,48 +16,146 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <UserControl.Effect>
+        <DropShadowEffect ShadowDepth="1" BlurRadius="10" Opacity="0.9" Color="#FFE3EDE4" />
+    </UserControl.Effect>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="133"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <ToolBarTray Grid.Row="0" VerticalAlignment="Center" IsLocked="True" x:Name="toolBar">
-                <ToolBar Header="EldenRing" Width="{Binding ActualWidth,ElementName=toolBar}">
-                    <Separator Margin="10,0,0,0"/>
-                    <CheckBox IsChecked="True" Margin="13,0,0,0" Content="定时任务"/>
-                    <CheckBox IsChecked="True" Margin="13,0,0,0" Content="存档变更时自动备份"/>
-                    <Separator Margin="10,0,0,0"/>
-                </ToolBar>
-            </ToolBarTray>
-            <ToolBarTray  Grid.Row="0" VerticalAlignment="Center" IsLocked="True" HorizontalAlignment="Right">
-                <ToolBar >
-                    <Button Margin="10,0,0,0" Content="退出" Style="{StaticResource ButtonPrimary.Small}"/>
-                </ToolBar>
-            </ToolBarTray>
-            <Grid Grid.Row="1">
-                <StackPanel>
-                    <hc:WaveProgressBar Value="30"
-                                        ShowText="False"
-                                        Height="88"
-                                        Width="88"
-                                        >
-                        <hc:WaveProgressBar.WaveFill>
-                            <SolidColorBrush Color="#e25822" Opacity="0.60"/>
-                        </hc:WaveProgressBar.WaveFill>
-                        <hc:WaveProgressBar.Background>
-                            <ImageBrush ImageSource="/Resources/img/xinwang-ds3-ico.jpg" />
-                        </hc:WaveProgressBar.Background>
-                    </hc:WaveProgressBar>
-                </StackPanel>
-            </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <Border  Grid.Column="0"
+                     BorderBrush="#4C409EFF"
+                     BorderThickness="1"
+                     x:Name="projectInfoPanel"
+                     >
+                    <StackPanel HorizontalAlignment="Left"
+                                Orientation="Horizontal"
+                                Height="130"
+                                >
+                        <hc:WaveProgressBar Value="30"
+                                            ShowText="False"
+                                            Height="79"
+                                            Width="79"
+                                            Margin="5,0,0,0"
+                                                >
+                            <hc:WaveProgressBar.WaveFill>
+                                <SolidColorBrush Color="#e25822" Opacity="0.60"/>
+                            </hc:WaveProgressBar.WaveFill>
+                            <hc:WaveProgressBar.Background>
+                                <ImageBrush ImageSource="../Resources/img/xinwang-ds3-ico.jpg" />
+                            </hc:WaveProgressBar.Background>
+                        </hc:WaveProgressBar>
+                        <StackPanel Height="66">
+                            <TextBlock Text="黑暗之魂3" 
+                                       VerticalAlignment="Center"
+                                       FontSize="13"
+                                       Margin="3" 
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="210"
+                                       x:Name="projectName"
+                                       ToolTip="{Binding Text,ElementName=projectName}"
+                                       />
+                            <TextBlock Text="D:\20231030\EldenRingAutoArchive123213123" 
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Margin="3" 
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="210"
+                                       FontStyle="Italic"
+                                       Cursor="Hand"
+                                       x:Name="backupPath"
+                                       ToolTip="{Binding Text,ElementName=backupPath}"
+                                       MouseEnter="onMouseEnter"
+                                       MouseLeave="onMouseLeave"
+                                       />
+                            <TextBlock Text="D:\20231030\EldenRingAutoArchive123213123" 
+                                       VerticalAlignment="Center"
+                                       FontSize="12"
+                                       Margin="3" 
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="210"
+                                       FontStyle="Italic"
+                                       Cursor="Hand"
+                                       x:Name="archivePath"
+                                       ToolTip="{Binding Text,ElementName=archivePath}"
+                                       MouseEnter="onMouseEnter"
+                                       MouseLeave="onMouseLeave"
+                                       />
+                        </StackPanel>
+                    </StackPanel>
+            </Border>
+            <Border Grid.Column="2"
+                    BorderThickness="1"
+                    BorderBrush="#4C409EFF">
+                <Grid>
+                    <hc:TextBox Height="31"
+                                hc:InfoElement.Title="备注"
+                                hc:TitleElement.TitlePlacement="Left" 
+                                Margin="5,5,5,0"
+                                Text="手动备份"
+                                />
+                    <StackPanel VerticalAlignment="Bottom"
+                                Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Content="备份" 
+                                Margin="0,5,5,5" 
+                                HorizontalAlignment="Right" 
+                                Style="{StaticResource ButtonPrimary}"
+                                Width="60"
+                                Cursor="Hand"/>
+                        <Button Content="退出" 
+                                Margin="0,5,5,5" 
+                                HorizontalAlignment="Right" 
+                                Style="{StaticResource ButtonDanger}"
+                                Width="60"
+                                Cursor="Hand"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border  Grid.Column="1"
+                     BorderBrush="#4C409EFF"
+                     BorderThickness="1"
+                     x:Name="projectTask"
+                     >
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <hc:TextBox Width="120"
+                                    Height="31"
+                                    hc:InfoElement.Title="时间间隔(秒)"
+                                    hc:TitleElement.TitlePlacement="Left" 
+                                    Margin="5,0,0,0"
+                                    Text="180"
+                                    />
+                        <CheckBox Content="开启定时任务" Margin="9,0,0,0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
         </Grid>
         <StackPanel Grid.Row="1">
-            
+            <DataGrid HeadersVisibility="All" 
+                      ColumnHeaderHeight="20" 
+                      AutoGenerateColumns="False" 
+                      RowHeight="22"
+                      Margin="0,5,0,0">
+                <DataGrid.RowHeaderTemplate>
+                    <DataTemplate>
+                        <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
+                    </DataTemplate>
+                </DataGrid.RowHeaderTemplate>
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Width="80" CanUserResize="False" Binding="{Binding Index}" Header="序号"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Name}" Header="名称"/>
+                    <DataGridTextColumn Width="1*" CanUserResize="False" Binding="{Binding IsSelected}" Header="日期"/>
+                    <DataGridTextColumn Width="1*" CanUserResize="False" Binding="{Binding IsSelected}" Header="路径"/>
+                    <DataGridTextColumn Width="1*" Binding="{Binding Remark}" Header="操作"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </StackPanel>
     </Grid>
 </UserControl>
