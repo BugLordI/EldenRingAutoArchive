@@ -8,19 +8,22 @@
              d:DesignHeight="38" 
              d:DesignWidth="196"
              x:Name="self"
-             Background="{Binding ItemSelected,ElementName=self}"
              >
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:BorderShowConvert x:Key="convert"/>
+            <converter:NavigationMenuItemConvert x:Key="convert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <UserControl.Background>
+        <SolidColorBrush Color="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"/>
+    </UserControl.Background>
     <Button Style="{StaticResource NavigationBtn}" 
-             Height="38"
-             x:Name="defaultMenu" Click="defaultMenu_Click"
+            Height="38"
+            x:Name="defaultMenu" 
+            Click="defaultMenu_Click"
             >
         <Button.Content>
             <Border
@@ -40,7 +43,7 @@
                     <TextBlock Text="{Binding ItemName,ElementName=self}" 
                                Style="{StaticResource NavigationText}" 
                                FontSize="13"
-                               Foreground="{Binding FontColor,ElementName=self}"
+                               Foreground="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"
                      />
                 </StackPanel>
             </Border>

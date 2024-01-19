@@ -1,4 +1,6 @@
-﻿using AutoArchivePlus.Model;
+﻿using AutoArchivePlus.Language;
+using AutoArchivePlus.Model;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -18,7 +20,15 @@ namespace AutoArchivePlus.ViewModel
 
         public NavigationViewModel()
         {
-            projects = new ObservableCollection<Project>();
+            projects = new ObservableCollection<Project>
+            {
+                new Project
+                {
+                    Name = LanguageManager.Instance["Home"],
+                    ImageLocation="pack://application:,,,/Resources/img/home.png",
+                    IsSelect = true,
+                }
+            };
             RunningProjectsManager.OnRunningSubscribe(OnRunningProject);
         }
 
@@ -38,6 +48,11 @@ namespace AutoArchivePlus.ViewModel
 
         private void OnRunningProject(Project project)
         {
+            project.IsSelect = true;
+            foreach (var pro in Projects)
+            {
+                pro.IsSelect = false;
+            }
             Projects.Add(project);
         }
     }

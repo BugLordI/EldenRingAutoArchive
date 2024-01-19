@@ -1,4 +1,5 @@
 ﻿using AutoArchivePlus.Component;
+using AutoArchivePlus.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,23 +14,23 @@ namespace AutoArchivePlus.Forms
     {
         private NavigationMenuItem selectedItem;
 
-        private Color defaultSelectedColor = Color.FromRgb(234, 234, 234);
-
         public Navigation()
         {
             InitializeComponent();
-            // set default selected
-            selectedItem = homeMenuItem;
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationViewModel navigationViewModel = this.DataContext as NavigationViewModel;
         }
 
         private void changeSelected(Control clicked)
         {
-            selectedItem.Background = Brushes.Transparent;
-            selectedItem.FontColor = Brushes.Black;
-            selectedItem.IsSelect = false;
+            if (selectedItem != null)
+            {
+                selectedItem.IsSelect = false;
+            }
             NavigationMenuItem menuItem = clicked as NavigationMenuItem;
-            menuItem.Background = new SolidColorBrush(defaultSelectedColor);
-            menuItem.FontColor = new SolidColorBrush(Color.FromRgb(64, 158, 255));
             menuItem.IsSelect = true;
             this.selectedItem = menuItem;
         }

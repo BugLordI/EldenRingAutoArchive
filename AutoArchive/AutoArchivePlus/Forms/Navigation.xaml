@@ -8,7 +8,8 @@
              xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
-             d:DesignWidth="196">
+             d:DesignWidth="196" 
+             Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +18,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <vm:NavigationViewModel/>
+        <vm:NavigationViewModel />
     </UserControl.DataContext>
     <Grid x:Name="root">
         <Grid.RowDefinitions>
@@ -25,18 +26,6 @@
             <RowDefinition Height="0.078*" MaxHeight="34" />
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Height="Auto" x:Name="menu" >
-            <component:NavigationMenuItem 
-                ItemName="{Binding [Home], Source={x:Static language:LanguageManager.Instance}}"
-                ItemIcon="../Resources/img/home.png"
-                ItemSelected="#FFEAEAEA"
-                x:Name="homeMenuItem" 
-                ItemClicked="itemClicked" 
-                TypeName="home" 
-                ItemIconHeight="21" 
-                ItemIconWidth="21"
-                FontColor="#409EFF"
-                IsSelect="True"
-                />
             <ItemsControl ItemsSource="{Binding Projects}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -47,8 +36,7 @@
                             TypeName="{Binding Name}"
                             ItemIconHeight="21" 
                             ItemIconWidth="21"
-                            ItemSelected="#FFEAEAEA"
-                            IsSelect="True"
+                            IsSelect="{Binding IsSelect}"
                             />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

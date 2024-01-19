@@ -29,10 +29,6 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ItemIconMarginProperty;
 
-        public static readonly DependencyProperty ItemSelectedProperty;
-
-        public static readonly DependencyProperty FontColorProperty;
-
         public static readonly DependencyProperty IsSelectProperty;
 
         public static readonly DependencyProperty BorderRootThicknessProperty;
@@ -47,8 +43,6 @@ namespace AutoArchivePlus.Component
             ItemIconWidthProperty = DependencyProperty.Register("ItemIconWidth", typeof(double), typeof(NavigationMenuItem));
             ItemIconHeightProperty = DependencyProperty.Register("ItemIconHeight", typeof(double), typeof(NavigationMenuItem));
             ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7, 0, 0, 0)));
-            ItemSelectedProperty = DependencyProperty.Register("ItemSelected", typeof(Brush), typeof(NavigationMenuItem));
-            FontColorProperty = DependencyProperty.Register("FontColor", typeof(Brush), typeof(NavigationMenuItem));
             IsSelectProperty = DependencyProperty.Register("IsSelect", typeof(bool), typeof(NavigationMenuItem));
             //BorderRootThicknessProperty = DependencyProperty.Register("BorderRootThickness", typeof(Thickness), typeof(NavigationMenuItem));
         }
@@ -56,7 +50,6 @@ namespace AutoArchivePlus.Component
         public NavigationMenuItem()
         {
             InitializeComponent();
-            FontColor = Brushes.Black;
         }
 
         public string TypeName
@@ -128,30 +121,6 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(ItemIconMarginProperty, value);
-            }
-        }
-
-        public Brush ItemSelected
-        {
-            get
-            {
-                return (Brush)GetValue(ItemSelectedProperty);
-            }
-            set
-            {
-                SetValue(ItemSelectedProperty, value);
-            }
-        }
-
-        public Brush FontColor
-        {
-            get
-            {
-                return (Brush)GetValue(FontColorProperty);
-            }
-            set
-            {
-                SetValue(FontColorProperty, value);
             }
         }
 

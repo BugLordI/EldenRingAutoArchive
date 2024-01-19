@@ -18,6 +18,7 @@ namespace AutoArchivePlus.Model
         private String backupPath;
         private String imageLocation;
         private List<Backup> backups;
+        private bool isSelect;
 
         public String Name { get => name; set => name = value; }
         public String ArchivePath { get => archivePath; set => archivePath = value; }
@@ -31,7 +32,7 @@ namespace AutoArchivePlus.Model
         {
             get
             {
-                if (File.Exists(ImageLocation))
+                if (File.Exists(ImageLocation) || (ImageLocation != null && ImageLocation.Contains("pack:")))
                 {
                     return new BitmapImage(new Uri(ImageLocation));
                 }
@@ -39,6 +40,20 @@ namespace AutoArchivePlus.Model
                 {
                     return new BitmapImage(new Uri("pack://application:,,,/Resources/img/xinwang-ds3-ico.jpg"));
                 }
+            }
+        }
+
+        [NotMapped]
+        public bool IsSelect
+        {
+            get
+            {
+                return isSelect;
+            }
+            set
+            {
+                isSelect = value;
+                OnPropertyChanged();
             }
         }
     }
