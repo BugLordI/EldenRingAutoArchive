@@ -42,6 +42,7 @@ namespace AutoArchivePlus.ViewModel
         public HomePageViewModel()
         {
             initList();
+            RunningProjectsManager.OnStopSubscribe(onProjectClosed);
         }
 
         private void initList()
@@ -260,6 +261,15 @@ namespace AutoArchivePlus.ViewModel
         {
         }
 
+        private void onProjectClosed(Project project)
+        {
+            Project pro = selected.DataContext as Project;
+            if (pro.Equals(project))
+            {
+                OpenButtonIsEnabled = true;
+                IsRunning = false;
+            }
+        }
         #endregion
     }
 }

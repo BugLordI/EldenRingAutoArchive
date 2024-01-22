@@ -93,7 +93,9 @@
                                    Visibility="{Binding ShowHomePage,Converter={StaticResource mconvert},ElementName=dc}"
                                    />
                         <page:ProjectInfoPage Grid.Column="1"
-                                              Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"/>
+                                              Background="#FFEAEAEA"
+                                              Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"
+                                              />
                     </Grid>
                 </Border>
                 <Canvas Grid.Column="1" 

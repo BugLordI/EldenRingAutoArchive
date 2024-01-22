@@ -9,6 +9,7 @@ namespace AutoArchivePlus
         private static List<Project> runningList = new List<Project>();
         private static List<Action<Project>> onStopSubscriber=new List<Action<Project>>();
         private static List<Action<Project>> onRunningSubscriber = new List<Action<Project>>();
+        private static List<Action<Project>> onChangedSubscriber = new List<Action<Project>>();
 
         private RunningProjectsManager()
         {
@@ -28,7 +29,18 @@ namespace AutoArchivePlus
             if (project != null)
             {
                 runningList.Remove(project);
-                //TODO Subscribe call
+                foreach (var item in onStopSubscriber)
+                {
+                    item.Invoke(project);
+                }
+            }
+        }
+
+        public static void ChangeProject(Project project)
+        {
+            foreach (var item in onChangedSubscriber)
+            {
+                item.Invoke(project);
             }
         }
 
@@ -45,6 +57,14 @@ namespace AutoArchivePlus
             if (action != null)
             {
                 onRunningSubscriber.Add(action);
+            }
+        }
+
+        public static void OnChangedSubscribe(Action<Project> action)
+        {
+            if (action != null)
+            {
+                onChangedSubscriber.Add(action);
             }
         }
 

@@ -4,10 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
+             xmlns:language="clr-namespace:AutoArchivePlus.Language"
              mc:Ignorable="d" 
              d:DesignHeight="38" 
              d:DesignWidth="196"
-             x:Name="self"
+             x:Name="self" Loaded="self_Loaded"
              >
     <UserControl.Resources>
         <ResourceDictionary>
@@ -24,8 +25,17 @@
             Height="38"
             x:Name="defaultMenu"
             Command="{Binding ItemClickedCommand,ElementName=self}"
-            CommandParameter="{Binding DataContext,ElementName=self}"
+            CommandParameter="{Binding DataContext,ElementName=self}" 
+            ContextMenuOpening="defaultMenu_ContextMenuOpening"
             >
+        <Button.ContextMenu>
+            <ContextMenu>
+                <MenuItem Width="160" 
+                          Header="{Binding [CloseProjectTab],Source={x:Static language:LanguageManager.Instance}}"
+                          x:Name="closeProgramMenu"
+                         />
+            </ContextMenu>
+        </Button.ContextMenu>
         <Button.Content>
             <Border
                     BorderThickness="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"

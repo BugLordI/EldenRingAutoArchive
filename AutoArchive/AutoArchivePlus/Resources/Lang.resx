@@ -220,4 +220,7 @@
   <data name="DeleteSuccessTip" xml:space="preserve">
     <value>删除成功</value>
   </data>
+  <data name="CloseProjectTab" xml:space="preserve">
+    <value>关闭</value>
+  </data>
 </root>

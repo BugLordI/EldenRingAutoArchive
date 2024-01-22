@@ -61,10 +61,32 @@ namespace AutoArchivePlus.ViewModel
                     if (pro.Id == project.Id)
                     {
                         pro.IsSelect = true;
+                        RunningProjectsManager.ChangeProject(pro);
                     }
                     else
                     {
                         pro.IsSelect = false;
+                    }
+                }
+            }
+        });
+
+        public ICommand ClosePeoject => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                Projects.Remove(project);
+                RunningProjectsManager.Remove(project);
+                for (int i = Projects.Count - 1; i >= 0; i--)
+                {
+                    if (i == Projects.Count - 1)
+                    {
+                        Projects[i].IsSelect = true;
+                        RunningProjectsManager.ChangeProject(Projects[i]);
+                    }
+                    else
+                    {
+                        Projects[i].IsSelect = false;
                     }
                 }
             }

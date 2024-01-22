@@ -33,6 +33,7 @@
                             ItemName="{Binding Name}"
                             ItemIcon="{Binding Ico}"
                             ItemClickedCommand="{Binding ItemClicked,ElementName=dc}"
+                            CloseMenuCommand="{Binding ClosePeoject,ElementName=dc}"
                             TypeName="{Binding Name}"
                             ItemIconHeight="21" 
                             ItemIconWidth="21"

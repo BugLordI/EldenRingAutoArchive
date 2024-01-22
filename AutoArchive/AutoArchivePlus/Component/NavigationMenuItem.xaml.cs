@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using AutoArchivePlus.Language;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -28,6 +29,8 @@ namespace AutoArchivePlus.Component
 
         public static readonly DependencyProperty ItemClickedCommandProperty;
 
+        public static readonly DependencyProperty CloseMenuCommandProperty;
+
         #endregion
 
         static NavigationMenuItem()
@@ -40,11 +43,19 @@ namespace AutoArchivePlus.Component
             ItemIconMarginProperty = DependencyProperty.Register(" ItemIconMargin", typeof(Thickness), typeof(NavigationMenuItem), new PropertyMetadata(new Thickness(7, 0, 0, 0)));
             IsSelectProperty = DependencyProperty.Register("IsSelect", typeof(bool), typeof(NavigationMenuItem));
             ItemClickedCommandProperty = DependencyProperty.Register("ItemClickedCommand", typeof(ICommand), typeof(NavigationMenuItem));
+            CloseMenuCommandProperty = DependencyProperty.Register("CloseMenuCommand", typeof(ICommand), typeof(NavigationMenuItem));
         }
 
         public NavigationMenuItem()
         {
             InitializeComponent();
+        }
+
+
+        private void self_Loaded(object sender, RoutedEventArgs e)
+        {
+            closeProgramMenu.Command = CloseMenuCommand;
+            closeProgramMenu.CommandParameter = this.DataContext;
         }
 
         public string TypeName
@@ -140,6 +151,26 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(ItemClickedCommandProperty, value);
+            }
+        }
+
+        public ICommand CloseMenuCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(CloseMenuCommandProperty);
+            }
+            set
+            {
+                SetValue(CloseMenuCommandProperty, value);
+            }
+        }
+
+        private void defaultMenu_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (TypeName == LanguageManager.Instance["Home"])
+            {
+                e.Handled = true;
             }
         }
     }

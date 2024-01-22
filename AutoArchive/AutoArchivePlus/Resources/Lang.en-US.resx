@@ -240,4 +240,7 @@
   <data name="DeleteSuccessTip" xml:space="preserve">
     <value>Deleted Success</value>
   </data>
+  <data name="CloseProjectTab" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>

@@ -1,4 +1,5 @@
-﻿using AutoArchivePlus.Model;
+﻿using AutoArchivePlus.Language;
+using AutoArchivePlus.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,7 @@ namespace AutoArchivePlus.ViewModel
         public MainFormViewModel()
         {
             RunningProjectsManager.OnRunningSubscribe(OnRunningProject);
+            RunningProjectsManager.OnChangedSubscribe(OnChangedProject);
         }
 
         public bool ShowProjectInfo
@@ -57,6 +59,11 @@ namespace AutoArchivePlus.ViewModel
         private void OnRunningProject(Project project)
         {
             ShowProjectInfo = true;
+        }
+
+        private void OnChangedProject(Project project)
+        {
+            ShowProjectInfo = project.Name != LanguageManager.Instance["Home"];
         }
     }
 }
