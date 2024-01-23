@@ -16,6 +16,8 @@ namespace AutoArchivePlus.ViewModel
 
         private bool showHomePage = true;
 
+        private Project currentProject;
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -56,14 +58,26 @@ namespace AutoArchivePlus.ViewModel
             }
         }
 
+        public Project CurrentProject
+        {
+            get => currentProject;
+            set
+            {
+                currentProject = value;
+                OnPropertyChanged();
+            }
+        }
+
         private void OnRunningProject(Project project)
         {
             ShowProjectInfo = true;
+            CurrentProject = project;
         }
 
         private void OnChangedProject(Project project)
         {
             ShowProjectInfo = project.Name != LanguageManager.Instance["Home"];
+            CurrentProject = project;
         }
     }
 }

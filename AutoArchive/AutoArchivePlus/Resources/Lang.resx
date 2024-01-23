@@ -223,4 +223,19 @@
   <data name="CloseProjectTab" xml:space="preserve">
     <value>关闭</value>
   </data>
+  <data name="RemarkTextLabel" xml:space="preserve">
+    <value>备注：</value>
+  </data>
+  <data name="RemarkPlaceholder" xml:space="preserve">
+    <value>输入备注</value>
+  </data>
+  <data name="BackupButtonLabel" xml:space="preserve">
+    <value>备份</value>
+  </data>
+  <data name="TimeIntervalLabel" xml:space="preserve">
+    <value>时间间隔(秒)</value>
+  </data>
+  <data name="StartTask" xml:space="preserve">
+    <value>开启定时任务</value>
+  </data>
 </root>

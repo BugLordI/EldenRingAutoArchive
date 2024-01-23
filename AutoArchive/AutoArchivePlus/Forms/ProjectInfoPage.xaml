@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:language="clr-namespace:AutoArchivePlus.Language"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
@@ -35,24 +36,24 @@
                      BorderThickness="0"
                      x:Name="projectInfoPanel"
                      >
-                    <StackPanel Orientation="Horizontal"
+                <StackPanel Orientation="Horizontal"
                                 Height="130" HorizontalAlignment="Center"
                                 >
-                        <hc:WaveProgressBar Value="30"
+                    <hc:WaveProgressBar Value="30"
                                             ShowText="False"
                                             Height="79"
                                             Width="79"
                                             Margin="5,0,0,0"
                                                 >
-                            <hc:WaveProgressBar.WaveFill>
-                                <SolidColorBrush Color="#e25822" Opacity="0.60"/>
-                            </hc:WaveProgressBar.WaveFill>
-                            <hc:WaveProgressBar.Background>
-                                <ImageBrush ImageSource="../Resources/img/xinwang-ds3-ico.jpg" />
-                            </hc:WaveProgressBar.Background>
-                        </hc:WaveProgressBar>
-                        <StackPanel Height="66">
-                            <TextBlock Text="黑暗之魂3" 
+                        <hc:WaveProgressBar.WaveFill>
+                            <SolidColorBrush Color="#e25822" Opacity="0.60"/>
+                        </hc:WaveProgressBar.WaveFill>
+                        <hc:WaveProgressBar.Background>
+                            <ImageBrush ImageSource="{Binding ProjectIcon,ElementName=self}" />
+                        </hc:WaveProgressBar.Background>
+                    </hc:WaveProgressBar>
+                    <StackPanel Height="66">
+                        <TextBlock Text="{Binding ElementName=self,Path=ProjectName}" 
                                        VerticalAlignment="Center"
                                        FontSize="13"
                                        Margin="3" 
@@ -61,7 +62,7 @@
                                        x:Name="projectName"
                                        ToolTip="{Binding Text,ElementName=projectName}"
                                        />
-                            <TextBlock Text="D:\20231030\EldenRingAutoArchive123213123" 
+                        <TextBlock Text="{Binding ElementName=self,Path=BackupPath}" 
                                        VerticalAlignment="Center"
                                        FontSize="12"
                                        Margin="3" 
@@ -74,7 +75,7 @@
                                        MouseEnter="onMouseEnter"
                                        MouseLeave="onMouseLeave"
                                        />
-                            <TextBlock Text="D:\20231030\EldenRingAutoArchive123213123" 
+                        <TextBlock Text="{Binding ElementName=self,Path=ArchivePath}" 
                                        VerticalAlignment="Center"
                                        FontSize="12"
                                        Margin="3" 
@@ -87,8 +88,8 @@
                                        MouseEnter="onMouseEnter"
                                        MouseLeave="onMouseLeave"
                                        />
-                        </StackPanel>
                     </StackPanel>
+                </StackPanel>
             </Border>
             <Border  Grid.Column="1"
                      BorderBrush="#4C409EFF"
@@ -97,7 +98,7 @@
                      >
                 <Grid HorizontalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
-                       
+
                     </StackPanel>
                 </Grid>
             </Border>
@@ -111,21 +112,24 @@
                 <DockPanel Margin="5,0,5,0">
                     <hc:TextBox Width="253"
                                 Height="22"
-                                hc:InfoElement.Title="备注："
+                                hc:InfoElement.Title="{Binding [RemarkTextLabel], Source={x:Static language:LanguageManager.Instance}}"
                                 hc:TitleElement.TitlePlacement="Left" 
                                 Margin="5,0,0,0"
-                                Text="输入备注"
+                                Text="{Binding [RemarkPlaceholder], Source={x:Static language:LanguageManager.Instance},Mode=OneTime}"
                                 />
-                    <Button  Content="备份" Style="{StaticResource ButtonPrimary}" Margin="5,0,0,0" Height="28"/>
+                    <Button  Content="{Binding [BackupButtonLabel], Source={x:Static language:LanguageManager.Instance}}" 
+                             Style="{StaticResource ButtonPrimary}" 
+                             Margin="5,0,0,0" 
+                             Height="28"/>
                     <DockPanel HorizontalAlignment="Right">
                         <hc:TextBox Width="120"
                                 Height="22"
-                                hc:InfoElement.Title="时间间隔(秒)"
+                                hc:InfoElement.Title="{Binding [TimeIntervalLabel], Source={x:Static language:LanguageManager.Instance}}"
                                 hc:TitleElement.TitlePlacement="Left" 
                                 Margin="5,0,0,0"
                                 Text="180"
                                 />
-                        <CheckBox Content="开启定时任务" Margin="9,0,0,0"/>
+                        <CheckBox Content="{Binding [StartTask], Source={x:Static language:LanguageManager.Instance}}" Margin="9,0,0,0"/>
                     </DockPanel>
                 </DockPanel>
                 <DataGrid HeadersVisibility="All" 

@@ -95,6 +95,10 @@
                         <page:ProjectInfoPage Grid.Column="1"
                                               Background="#FFEAEAEA"
                                               Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"
+                                              ProjectName="{Binding CurrentProject.Name}"
+                                              BackupPath="{Binding CurrentProject.BackupPath}"
+                                              ArchivePath="{Binding CurrentProject.ArchivePath}"
+                                              ProjectIcon="{Binding CurrentProject.Ico}"
                                               />
                     </Grid>
                 </Border>
