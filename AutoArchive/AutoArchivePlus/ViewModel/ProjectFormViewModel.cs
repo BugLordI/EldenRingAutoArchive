@@ -16,10 +16,8 @@ using System.Windows.Input;
 
 namespace AutoArchivePlus.ViewModel
 {
-    internal class ProjectFormViewModel : INotifyPropertyChanged
+    internal class ProjectFormViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private String gameName;
 
         private String gameInstallPath;
@@ -27,11 +25,6 @@ namespace AutoArchivePlus.ViewModel
         private String gameArchivePath;
 
         private String gameBackupPath;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public ProjectFormViewModel()
         {

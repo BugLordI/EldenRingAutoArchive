@@ -238,4 +238,25 @@
   <data name="StartTask" xml:space="preserve">
     <value>开启定时任务</value>
   </data>
+  <data name="RemarkCol" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="DateCol" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="PathCol" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="OpCol" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="RecoverAction" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="OpenPathAction" xml:space="preserve">
+    <value>打开路径</value>
+  </data>
+  <data name="DelateAction" xml:space="preserve">
+    <value>删除</value>
+  </data>
 </root>

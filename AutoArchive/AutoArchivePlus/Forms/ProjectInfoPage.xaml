@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:language="clr-namespace:AutoArchivePlus.Language"
+             xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="800"
-             x:Name="self">
+             x:Name="self" 
+             >
     <UserControl.Resources>
         <ResourceDictionary>
+            <converter:LongTimeDateConvert x:Key="pconvert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
@@ -91,17 +94,6 @@
                     </StackPanel>
                 </StackPanel>
             </Border>
-            <Border  Grid.Column="1"
-                     BorderBrush="#4C409EFF"
-                     BorderThickness="0"
-                     x:Name="projectTask"
-                     >
-                <Grid HorizontalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-
-                    </StackPanel>
-                </Grid>
-            </Border>
         </Grid>
         <StackPanel Grid.Row="1">
             <Grid>
@@ -116,11 +108,15 @@
                                 hc:TitleElement.TitlePlacement="Left" 
                                 Margin="5,0,0,0"
                                 Text="{Binding [RemarkPlaceholder], Source={x:Static language:LanguageManager.Instance},Mode=OneTime}"
+                                x:Name="remarkTxt"
                                 />
                     <Button  Content="{Binding [BackupButtonLabel], Source={x:Static language:LanguageManager.Instance}}" 
                              Style="{StaticResource ButtonPrimary}" 
                              Margin="5,0,0,0" 
-                             Height="28"/>
+                             Height="28"
+                             Command="{Binding BackupButtonCommand,ElementName=self}"
+                             CommandParameter="{Binding Text,ElementName=remarkTxt}"
+                            />
                     <DockPanel HorizontalAlignment="Right">
                         <hc:TextBox Width="120"
                                 Height="22"
@@ -132,23 +128,68 @@
                         <CheckBox Content="{Binding [StartTask], Source={x:Static language:LanguageManager.Instance}}" Margin="9,0,0,0"/>
                     </DockPanel>
                 </DockPanel>
-                <DataGrid HeadersVisibility="All" 
-                          ColumnHeaderHeight="20" 
+                <DataGrid 
                           AutoGenerateColumns="False" 
-                          RowHeight="22"
+                          RowHeight="32"
                           Grid.Row="1"
-                          Background="White" Margin="0,5,0,0">
-                    <DataGrid.RowHeaderTemplate>
-                        <DataTemplate>
-                            <CheckBox IsChecked="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
-                        </DataTemplate>
-                    </DataGrid.RowHeaderTemplate>
+                          Margin="0,5,0,0"
+                          ItemsSource="{Binding Backups}" 
+                          EnableColumnVirtualization="True" 
+                          GridLinesVisibility="None" 
+                          HorizontalGridLinesBrush="#FFA6BFE0" 
+                          VerticalGridLinesBrush="#FFE2DDDD" 
+                          IsTextSearchEnabled="True" 
+                          IsReadOnly="True" 
+                          SelectionMode="Single"
+                          >
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Height" Value="32"/>
+                            <Setter Property="Background" Value="Gainsboro"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn IsReadOnly="True" Width="80" CanUserResize="False" Binding="{Binding Index}" Header="序号"/>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Name}" Header="名称"/>
-                        <DataGridTextColumn Width="1*" CanUserResize="False" Binding="{Binding IsSelected}" Header="日期"/>
-                        <DataGridTextColumn Width="1*" CanUserResize="False" Binding="{Binding IsSelected}" Header="路径"/>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" Header="操作"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" Header="{Binding [RemarkCol], Source={x:Static language:LanguageManager.Instance}}"/>
+                        <DataGridTextColumn Width="1*" 
+                                            Binding="{Binding DateTimeStamp,Converter={StaticResource pconvert}}" 
+                                            Header="{Binding [DateCol], Source={x:Static language:LanguageManager.Instance}}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Path}" Header="{Binding [PathCol], Source={x:Static language:LanguageManager.Instance}}"/>
+                        <DataGridTemplateColumn Header="{Binding [OpCol], Source={x:Static language:LanguageManager.Instance}}" Width="1*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <hc:Divider Orientation="Vertical"/>
+                                        <TextBlock Text="{Binding [RecoverAction], Source={x:Static language:LanguageManager.Instance}}" 
+                                                   TextAlignment="Center" 
+                                                   VerticalAlignment="Center"
+                                                   Foreground="Green"
+                                                   Cursor="Hand"
+                                                   MouseEnter="OpButton_MouseEnter"
+                                                   MouseLeave="OpButton_MouseLeave"
+                                                   />
+                                        <hc:Divider Orientation="Vertical"/>
+                                        <TextBlock Text="{Binding [OpenPathAction], Source={x:Static language:LanguageManager.Instance}}" 
+                                                   TextAlignment="Center" 
+                                                   VerticalAlignment="Center"
+                                                   Foreground="#409EFF"
+                                                   Cursor="Hand"
+                                                   MouseEnter="OpButton_MouseEnter"
+                                                   MouseLeave="OpButton_MouseLeave"
+                                                   />
+                                        <hc:Divider Orientation="Vertical"/>
+                                        <TextBlock Text="{Binding [DelateAction], Source={x:Static language:LanguageManager.Instance}}" 
+                                                   TextAlignment="Center" 
+                                                   VerticalAlignment="Center"
+                                                   Foreground="Red"
+                                                   Cursor="Hand"
+                                                   MouseEnter="OpButton_MouseEnter"
+                                                   MouseLeave="OpButton_MouseLeave"
+                                                   />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

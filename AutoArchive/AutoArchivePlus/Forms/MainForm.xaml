@@ -95,10 +95,13 @@
                         <page:ProjectInfoPage Grid.Column="1"
                                               Background="#FFEAEAEA"
                                               Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"
-                                              ProjectName="{Binding CurrentProject.Name}"
-                                              BackupPath="{Binding CurrentProject.BackupPath}"
-                                              ArchivePath="{Binding CurrentProject.ArchivePath}"
-                                              ProjectIcon="{Binding CurrentProject.Ico}"
+                                              ProjectName="{Binding CurrentProject.Name,ElementName=dc}"
+                                              BackupPath="{Binding CurrentProject.BackupPath,ElementName=dc}"
+                                              ArchivePath="{Binding CurrentProject.ArchivePath,ElementName=dc}"
+                                              ProjectIcon="{Binding CurrentProject.Ico,ElementName=dc}"
+                                              ProjectId="{Binding CurrentProject.Id,ElementName=dc}"
+                                              Backups="{Binding Backups,ElementName=dc}"
+                                              BackupButtonCommand="{Binding BackupCommand,ElementName=dc}"
                                               />
                     </Grid>
                 </Border>

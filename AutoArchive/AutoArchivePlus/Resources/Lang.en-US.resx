@@ -258,4 +258,25 @@
   <data name="StartTask" xml:space="preserve">
     <value>Start Task</value>
   </data>
+  <data name="RemarkCol" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="DateCol" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="PathCol" xml:space="preserve">
+    <value>Path</value>
+  </data>
+  <data name="OpCol" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="RecoverAction" xml:space="preserve">
+    <value>Recover</value>
+  </data>
+  <data name="OpenPathAction" xml:space="preserve">
+    <value>Open Path</value>
+  </data>
+  <data name="DelateAction" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

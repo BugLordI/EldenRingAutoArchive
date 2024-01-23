@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AutoArchivePlus.Forms
 {
@@ -20,19 +14,27 @@ namespace AutoArchivePlus.Forms
     {
         #region properties
 
+        public static readonly DependencyProperty projectIdProperty;
         public static readonly DependencyProperty projectNameProperty;
         public static readonly DependencyProperty backupPathProperty;
         public static readonly DependencyProperty archivePathProperty;
         public static readonly DependencyProperty projectIconProperty;
+        public static readonly DependencyProperty backupsProperty;
+        public static readonly DependencyProperty backupButtonCommandProperty;
 
         #endregion
 
+        private SolidColorBrush beforeEnter;
+
         static ProjectInfoPage()
         {
+            projectIdProperty = DependencyProperty.Register("ProjectId", typeof(String), typeof(ProjectInfoPage));
             projectNameProperty = DependencyProperty.Register("ProjectName", typeof(String), typeof(ProjectInfoPage));
             backupPathProperty = DependencyProperty.Register("BackupPath", typeof(String), typeof(ProjectInfoPage));
             archivePathProperty = DependencyProperty.Register("ArchivePath", typeof(String), typeof(ProjectInfoPage));
-            projectIconProperty = DependencyProperty.Register("ProjectIcon", typeof(String), typeof(ProjectInfoPage));
+            projectIconProperty = DependencyProperty.Register("ProjectIcon", typeof(ImageSource), typeof(ProjectInfoPage));
+            backupsProperty= DependencyProperty.Register("Backups", typeof(ObservableCollection<Object>), typeof(ProjectInfoPage));
+            backupButtonCommandProperty = DependencyProperty.Register("BackupButtonCommand", typeof(ICommand), typeof(ProjectInfoPage));
         }
 
         public ProjectInfoPage()
@@ -41,6 +43,18 @@ namespace AutoArchivePlus.Forms
         }
 
         #region properties
+
+        public String ProjectId
+        {
+            get
+            {
+                return (String)GetValue(projectIdProperty);
+            }
+            set
+            {
+                SetValue(projectIdProperty, value);
+            }
+        }
 
         public String ProjectName
         {
@@ -90,6 +104,30 @@ namespace AutoArchivePlus.Forms
             }
         }
 
+        public ObservableCollection<Object> Backups
+        {
+            get
+            {
+                return (ObservableCollection<Object>)GetValue(projectIconProperty);
+            }
+            set
+            {
+                SetValue(projectIconProperty, value);
+            }
+        }
+
+        public ICommand BackupButtonCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(backupButtonCommandProperty);
+            }
+            set
+            {
+                SetValue(backupButtonCommandProperty, value);
+            }
+        }
+
         #endregion
 
         private void onMouseEnter(object sender, MouseEventArgs e)
@@ -102,6 +140,19 @@ namespace AutoArchivePlus.Forms
         {
             TextBlock textBlock = sender as TextBlock;
             textBlock.Foreground = Brushes.Black;
+        }
+
+        private void OpButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            beforeEnter = (SolidColorBrush)textBlock.Foreground;
+            textBlock.Foreground = new SolidColorBrush(Colors.Blue);
+        }
+
+        private void OpButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            textBlock.Foreground = beforeEnter;
         }
     }
 }

@@ -19,10 +19,8 @@ using Window = System.Windows.Window;
 
 namespace AutoArchivePlus.ViewModel
 {
-    internal class HomePageViewModel : INotifyPropertyChanged
+    internal class HomePageViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private bool openButtonIsEnabled = false;
 
         private ObservableCollection<Project> projects;
@@ -32,12 +30,6 @@ namespace AutoArchivePlus.ViewModel
         private bool startAndOpen = true;
 
         private bool isRunning;
-
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public HomePageViewModel()
         {

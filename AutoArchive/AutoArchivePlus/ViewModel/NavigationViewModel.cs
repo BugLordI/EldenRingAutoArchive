@@ -10,16 +10,9 @@ using System.Windows.Input;
 
 namespace AutoArchivePlus.ViewModel
 {
-    public class NavigationViewModel : INotifyPropertyChanged
+    public class NavigationViewModel : BaseViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         private ObservableCollection<Project> projects;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         public NavigationViewModel()
         {
@@ -30,7 +23,7 @@ namespace AutoArchivePlus.ViewModel
                     Name = LanguageManager.Instance["Home"],
                     ImageLocation="pack://application:,,,/Resources/img/home.png",
                     IsSelect = true,
-                    Id="1"
+                    Id=Constant.HOME_PAGE_ID
                 }
             };
             RunningProjectsManager.OnRunningSubscribe(OnRunningProject);
