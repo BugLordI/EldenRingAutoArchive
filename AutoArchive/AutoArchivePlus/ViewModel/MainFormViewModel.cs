@@ -6,8 +6,11 @@ using AutoArchivePlus.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
+using Tools;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoArchivePlus.ViewModel
@@ -86,10 +89,11 @@ namespace AutoArchivePlus.ViewModel
         public ICommand BackupCommand => new ControlCommand(obj =>
         {
             DateTime now = DateTime.Now;
+            String desPath = Path.Combine(CurrentProject.BackupPath, CurrentProject.Name, now.ToString("yyyyMMddHHmmss"));
             Backup backup = new Backup()
             {
                 Id = Guid.NewGuid().ToString(),
-                Path = CurrentProject.BackupPath,
+                Path = desPath,
                 Remark = obj as string,
                 ProjectId = CurrentProject.Id,
                 DateTimeStamp = DateUtil.toUnixTimestamp(now),
@@ -97,7 +101,52 @@ namespace AutoArchivePlus.ViewModel
             using DBContext<Backup> dbContext = new DBContext<Backup>();
             dbContext.Entity.Add(backup);
             dbContext.SaveChanges();
+            FileUtil.copyDirectory(CurrentProject.ArchivePath, desPath);
             readBackups(CurrentProject.Id);
+        });
+
+        public ICommand RecoverCommand => new ControlCommand(obj =>
+        {
+            if (obj is Backup backup)
+            {
+                var result = MessageBox.Show(String.Format(LanguageManager.Instance["ArchiveRecoverTip"], backup.Remark),
+                                  LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    FileUtil.copyDirectory(backup.Path, CurrentProject.ArchivePath);
+                    App.GlobalMessage(LanguageManager.Instance["ArchiveRecoverSuccessTip"]);
+                }
+            }
+        });
+
+        public ICommand OpenBackupPathCommand => new ControlCommand(obj =>
+        {
+            if (obj is Backup backup)
+            {
+                OS.OpenAndSelect(backup.Path);
+            }
+        });
+
+        public ICommand DeleteBackupCommand => new ControlCommand(obj =>
+        {
+            if (obj is Backup backup)
+            {
+                var result = MessageBox.Show(String.Format(LanguageManager.Instance["DeleteBackupTip"], backup.Remark),
+                                 LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DirectoryInfo dir = new DirectoryInfo(backup.Path);
+                    if (dir.Exists)
+                    {
+                        dir.Delete(true);
+                    }
+                    using DBContext<Backup> dBContext = new DBContext<Backup>();
+                    dBContext.Entity.Remove(backup);
+                    dBContext.SaveChanges();
+                    App.GlobalMessage(LanguageManager.Instance["DeleteBackupSuccessTip"]);
+                    readBackups(CurrentProject.Id);
+                }
+            }
         });
 
         #endregion

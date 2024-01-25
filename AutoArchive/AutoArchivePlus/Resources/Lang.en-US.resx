@@ -279,4 +279,16 @@
   <data name="DelateAction" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="ArchiveRecoverTip" xml:space="preserve">
+    <value>Are you sure you want to restore using the archive of "{0}"?</value>
+  </data>
+  <data name="ArchiveRecoverSuccessTip" xml:space="preserve">
+    <value>Archive recovery successful!</value>
+  </data>
+  <data name="DeleteBackupTip" xml:space="preserve">
+    <value>Are you sure you want to delete the backup of "{0}"?</value>
+  </data>
+  <data name="DeleteBackupSuccessTip" xml:space="preserve">
+    <value>Delete backup successful!</value>
+  </data>
 </root>

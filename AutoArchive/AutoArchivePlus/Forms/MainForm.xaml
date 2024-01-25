@@ -102,6 +102,9 @@
                                               ProjectId="{Binding CurrentProject.Id,ElementName=dc}"
                                               Backups="{Binding Backups,ElementName=dc}"
                                               BackupButtonCommand="{Binding BackupCommand,ElementName=dc}"
+                                              RecoverButtonCommand="{Binding RecoverCommand}"
+                                              OpenPathButtonCommand="{Binding OpenBackupPathCommand}"
+                                              DeleteButtonCommand="{Binding DeleteBackupCommand}"
                                               />
                     </Grid>
                 </Border>

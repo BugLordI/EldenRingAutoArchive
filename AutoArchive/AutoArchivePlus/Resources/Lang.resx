@@ -259,4 +259,16 @@
   <data name="DelateAction" xml:space="preserve">
     <value>删除</value>
   </data>
+  <data name="ArchiveRecoverTip" xml:space="preserve">
+    <value>确认使用“{0}”的存档进行恢复？</value>
+  </data>
+  <data name="ArchiveRecoverSuccessTip" xml:space="preserve">
+    <value>存档恢复成功！</value>
+  </data>
+  <data name="DeleteBackupTip" xml:space="preserve">
+    <value>确认删除“{0}”的备份吗？</value>
+  </data>
+  <data name="DeleteBackupSuccessTip" xml:space="preserve">
+    <value>删除备份成功！</value>
+  </data>
 </root>

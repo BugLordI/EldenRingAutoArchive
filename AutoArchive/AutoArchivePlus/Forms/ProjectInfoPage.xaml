@@ -14,11 +14,10 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converter:LongTimeDateConvert x:Key="pconvert"/>
-            <converter:DataGridCellValueConvert x:Key="dataGridCellValueConvert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-                <ResourceDictionary Source="/Resources/Styles/CommonStyle.xaml" />
+                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -176,6 +175,8 @@
                                                    Cursor="Hand"
                                                    MouseEnter="OpButton_MouseEnter"
                                                    MouseLeave="OpButton_MouseLeave"
+                                                   MouseLeftButtonDown="recoverBtn_MouseLeftButtonDown"
+                                                   Tag="{Binding}"
                                                    />
                                         <hc:Divider Orientation="Vertical"/>
                                         <TextBlock Text="{Binding [OpenPathAction], Source={x:Static language:LanguageManager.Instance}}" 
@@ -185,6 +186,8 @@
                                                    Cursor="Hand"
                                                    MouseEnter="OpButton_MouseEnter"
                                                    MouseLeave="OpButton_MouseLeave"
+                                                   MouseLeftButtonDown="openPathBtn_MouseLeftButtonDown"
+                                                   Tag="{Binding}"
                                                    />
                                         <hc:Divider Orientation="Vertical"/>
                                         <TextBlock Text="{Binding [DelateAction], Source={x:Static language:LanguageManager.Instance}}" 
@@ -194,6 +197,8 @@
                                                    Cursor="Hand"
                                                    MouseEnter="OpButton_MouseEnter"
                                                    MouseLeave="OpButton_MouseLeave"
+                                                   MouseLeftButtonDown="deleteBtn_MouseLeftButtonDown"
+                                                   Tag="{Binding}"
                                                    />
                                     </StackPanel>
                                 </DataTemplate>

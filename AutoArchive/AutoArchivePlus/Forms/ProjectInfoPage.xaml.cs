@@ -21,6 +21,9 @@ namespace AutoArchivePlus.Forms
         public static readonly DependencyProperty projectIconProperty;
         public static readonly DependencyProperty backupsProperty;
         public static readonly DependencyProperty backupButtonCommandProperty;
+        public static readonly DependencyProperty recoverButtonCommandProperty;
+        public static readonly DependencyProperty openPathButtonCommandProperty;
+        public static readonly DependencyProperty deleteButtonCommandProperty;
 
         #endregion
 
@@ -35,6 +38,9 @@ namespace AutoArchivePlus.Forms
             projectIconProperty = DependencyProperty.Register("ProjectIcon", typeof(ImageSource), typeof(ProjectInfoPage));
             backupsProperty= DependencyProperty.Register("Backups", typeof(ObservableCollection<Object>), typeof(ProjectInfoPage));
             backupButtonCommandProperty = DependencyProperty.Register("BackupButtonCommand", typeof(ICommand), typeof(ProjectInfoPage));
+            recoverButtonCommandProperty = DependencyProperty.Register("RecoverButtonCommand", typeof(ICommand), typeof(ProjectInfoPage));
+            openPathButtonCommandProperty = DependencyProperty.Register("OpenPathButtonCommand", typeof(ICommand), typeof(ProjectInfoPage));
+            deleteButtonCommandProperty = DependencyProperty.Register("DeleteButtonCommand", typeof(ICommand), typeof(ProjectInfoPage));
         }
 
         public ProjectInfoPage()
@@ -128,6 +134,42 @@ namespace AutoArchivePlus.Forms
             }
         }
 
+        public ICommand RecoverButtonCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(recoverButtonCommandProperty);
+            }
+            set
+            {
+                SetValue(recoverButtonCommandProperty, value);
+            }
+        }
+
+        public ICommand OpenPathButtonCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(openPathButtonCommandProperty);
+            }
+            set
+            {
+                SetValue(openPathButtonCommandProperty, value);
+            }
+        }
+
+        public ICommand DeleteButtonCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(deleteButtonCommandProperty);
+            }
+            set
+            {
+                SetValue(deleteButtonCommandProperty, value);
+            }
+        }
+
         #endregion
 
         private void onMouseEnter(object sender, MouseEventArgs e)
@@ -153,6 +195,24 @@ namespace AutoArchivePlus.Forms
         {
             TextBlock textBlock = sender as TextBlock;
             textBlock.Foreground = beforeEnter;
+        }
+
+        private void recoverBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            RecoverButtonCommand?.Execute(textBlock.Tag);
+        }
+
+        private void openPathBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            OpenPathButtonCommand?.Execute(textBlock.Tag);
+        }
+
+        private void deleteBtn_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            DeleteButtonCommand?.Execute(textBlock.Tag);
         }
     }
 }
