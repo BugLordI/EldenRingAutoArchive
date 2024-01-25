@@ -32,12 +32,17 @@
 <h3>下载地址：</h3>
 <li>
 <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/EldenRing/Setup.msi">
-老贼盒子v1.1
+老贼盒子 v1.1
 </a>   
 </li>
 <li>
     <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90/Setup.msi">
-        老贼盒子v1.2
+        老贼盒子 v1.2
+    </a>   
+</li>
+<li>
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90Plus1.0/AutoArchivePlusSetup.exe">
+        老贼盒子Plusv 1.0
     </a>   
 </li>
 </ul>
