@@ -8,10 +8,10 @@ using System;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Timers;
 using System.Windows;
 using System.Windows.Input;
 using Tools;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AutoArchivePlus.ViewModel
 {
@@ -24,6 +24,8 @@ namespace AutoArchivePlus.ViewModel
         private Project currentProject;
 
         private ObservableCollection<Object> backups;
+
+        private Timer timer;
 
         public MainFormViewModel()
         {
@@ -173,7 +175,7 @@ namespace AutoArchivePlus.ViewModel
             {
                 using DBContext<Project> dBContext = new DBContext<Project>();
                 var project = dBContext.Entity.Include(e => e.Backups).Where(e => e.Id == id).FirstOrDefault();
-                Backups = new ObservableCollection<Object>(project.Backups);
+                Backups = new ObservableCollection<Object>(project.Backups.OrderBy(e=>e.DateTimeStamp).Reverse());
             }
             else
             {

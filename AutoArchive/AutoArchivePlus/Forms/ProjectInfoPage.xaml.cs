@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Threading;
+using Tools;
 
 namespace AutoArchivePlus.Forms
 {
@@ -24,10 +26,17 @@ namespace AutoArchivePlus.Forms
         public static readonly DependencyProperty recoverButtonCommandProperty;
         public static readonly DependencyProperty openPathButtonCommandProperty;
         public static readonly DependencyProperty deleteButtonCommandProperty;
-
         #endregion
 
         private SolidColorBrush beforeEnter;
+
+        private DispatcherTimer timer;
+
+        private int timing = 0;
+
+        private int taskInterval;
+
+        private double progressStep;
 
         static ProjectInfoPage()
         {
@@ -46,6 +55,23 @@ namespace AutoArchivePlus.Forms
         public ProjectInfoPage()
         {
             InitializeComponent();
+            timer = new DispatcherTimer();
+            timer.Interval = new TimeSpan(0, 0, 1);
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (timing == taskInterval)
+            {
+                BackupButtonCommand?.Execute("自动备份");
+                timing = 0;
+            }
+            else
+            {
+                timing++;
+                progress.Value = timing / progressStep;
+            }
         }
 
         #region properties
@@ -169,8 +195,9 @@ namespace AutoArchivePlus.Forms
                 SetValue(deleteButtonCommandProperty, value);
             }
         }
-
         #endregion
+
+        #region events
 
         private void onMouseEnter(object sender, MouseEventArgs e)
         {
@@ -214,5 +241,37 @@ namespace AutoArchivePlus.Forms
             TextBlock textBlock = sender as TextBlock;
             DeleteButtonCommand?.Execute(textBlock.Tag);
         }
+
+        private void openPath_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = sender as TextBlock;
+            OS.OpenAndSelect(textBlock.Tag as String);
+        }
+
+        private void scheduledTask_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if ((bool)checkBox.IsChecked)
+            {
+                if (!int.TryParse(intervalText.Text, out taskInterval))
+                {
+                    intervalText.Text = "180";
+                    taskInterval = 180;
+                }
+                progress.Value = 0;
+                progressStep = taskInterval / 100.00;
+                timer.Start();
+            }
+        }
+
+        private void scheduledTask_UnChecked(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            timing = 0;
+            progress.Value = 0;
+        }
+
+        #endregion
+
     }
 }

@@ -271,4 +271,7 @@
   <data name="DeleteBackupSuccessTip" xml:space="preserve">
     <value>删除备份成功！</value>
   </data>
+  <data name="OpenPathTip" xml:space="preserve">
+    <value>单击打开路径</value>
+  </data>
 </root>

@@ -291,4 +291,7 @@
   <data name="DeleteBackupSuccessTip" xml:space="preserve">
     <value>Delete backup successful!</value>
   </data>
+  <data name="OpenPathTip" xml:space="preserve">
+    <value>Click to open path</value>
+  </data>
 </root>

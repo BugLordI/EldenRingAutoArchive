@@ -1,97 +1,135 @@
-﻿<UserControl x:Class="AutoArchivePlus.Forms.ProjectInfoPage"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:hc="https://handyorg.github.io/handycontrol"
-             xmlns:language="clr-namespace:AutoArchivePlus.Language"
-             xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="800"
-             x:Name="self" 
-             >
+﻿<UserControl
+    x:Class="AutoArchivePlus.Forms.ProjectInfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="self"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:LongTimeDateConvert x:Key="pconvert"/>
+            <converter:LongTimeDateConvert x:Key="pconvert" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.Effect>
-        <DropShadowEffect ShadowDepth="1" BlurRadius="10" Opacity="0.9" Color="#FFE3EDE4" />
+        <DropShadowEffect
+            BlurRadius="10"
+            Opacity="0.9"
+            ShadowDepth="1"
+            Color="#FFE3EDE4" />
     </UserControl.Effect>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="133"/>
-            <RowDefinition/>
+            <RowDefinition Height="133" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" VerticalAlignment="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="0.5*" />
             </Grid.ColumnDefinitions>
-            <Border  Grid.Column="0"
-                     Grid.ColumnSpan="2"
-                     BorderBrush="#4C409EFF"
-                     BorderThickness="0"
-                     x:Name="projectInfoPanel"
-                     >
-                <StackPanel Orientation="Horizontal"
-                                Height="130" HorizontalAlignment="Center"
-                                >
-                    <hc:WaveProgressBar Value="30"
-                                            ShowText="False"
-                                            Height="79"
-                                            Width="79"
-                                            Margin="5,0,0,0"
-                                                >
+            <Border
+                x:Name="projectInfoPanel"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                BorderBrush="#4C409EFF"
+                BorderThickness="0">
+                <StackPanel
+                    Height="130"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <hc:WaveProgressBar
+                        x:Name="progress"
+                        Width="79"
+                        Height="79"
+                        Margin="5,0,5,0"
+                        ShowText="False"
+                        Value="0">
                         <hc:WaveProgressBar.WaveFill>
-                            <SolidColorBrush Color="#e25822" Opacity="0.60"/>
+                            <SolidColorBrush Opacity="0.60" Color="#e25822" />
                         </hc:WaveProgressBar.WaveFill>
                         <hc:WaveProgressBar.Background>
-                            <ImageBrush ImageSource="{Binding ProjectIcon,ElementName=self}" />
+                            <ImageBrush ImageSource="{Binding ProjectIcon, ElementName=self}" />
                         </hc:WaveProgressBar.Background>
                     </hc:WaveProgressBar>
                     <StackPanel Height="66">
-                        <TextBlock Text="{Binding ElementName=self,Path=ProjectName}" 
-                                       VerticalAlignment="Center"
-                                       FontSize="13"
-                                       Margin="3" 
-                                       TextTrimming="CharacterEllipsis"
-                                       MaxWidth="300"
-                                       x:Name="projectName"
-                                       ToolTip="{Binding Text,ElementName=projectName}"
-                                       />
-                        <TextBlock Text="{Binding ElementName=self,Path=BackupPath}" 
-                                       VerticalAlignment="Center"
-                                       FontSize="12"
-                                       Margin="3" 
-                                       TextTrimming="CharacterEllipsis"
-                                       MaxWidth="300"
-                                       FontStyle="Italic"
-                                       Cursor="Hand"
-                                       x:Name="backupPath"
-                                       ToolTip="{Binding Text,ElementName=backupPath}"
-                                       MouseEnter="onMouseEnter"
-                                       MouseLeave="onMouseLeave"
-                                       />
-                        <TextBlock Text="{Binding ElementName=self,Path=ArchivePath}" 
-                                       VerticalAlignment="Center"
-                                       FontSize="12"
-                                       Margin="3" 
-                                       TextTrimming="CharacterEllipsis"
-                                       MaxWidth="300"
-                                       FontStyle="Italic"
-                                       Cursor="Hand"
-                                       x:Name="archivePath"
-                                       ToolTip="{Binding Text,ElementName=archivePath}"
-                                       MouseEnter="onMouseEnter"
-                                       MouseLeave="onMouseLeave"
-                                       />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Width="60"
+                                VerticalAlignment="Center"
+                                Text="{Binding [GameName], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
+                            <TextBlock
+                                x:Name="projectName"
+                                MaxWidth="300"
+                                Margin="3"
+                                VerticalAlignment="Center"
+                                FontSize="13"
+                                Text="{Binding ElementName=self, Path=ProjectName}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding Text, ElementName=projectName}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Width="60"
+                                VerticalAlignment="Center"
+                                Cursor="Hand"
+                                Foreground="#409EFF"
+                                MouseUp="openPath_MouseUp"
+                                Tag="{Binding ElementName=self, Path=BackupPath}"
+                                ToolTip="{Binding [OpenPathTip], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}">
+                                <Underline>
+                                    <Run Text="{Binding [GameBackupPath], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
+                                </Underline>
+                            </TextBlock>
+                            <TextBlock
+                                x:Name="backupPath"
+                                MaxWidth="300"
+                                Margin="3"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                FontStyle="Italic"
+                                MouseEnter="onMouseEnter"
+                                MouseLeave="onMouseLeave"
+                                Text="{Binding ElementName=self, Path=BackupPath}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding Text, ElementName=backupPath}" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Width="60"
+                                VerticalAlignment="Center"
+                                Cursor="Hand"
+                                Foreground="#409EFF"
+                                MouseUp="openPath_MouseUp"
+                                Tag="{Binding ElementName=self, Path=ArchivePath}"
+                                ToolTip="{Binding [OpenPathTip], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}">
+                                <Underline>
+                                    <Run Text="{Binding [GameArchivePath], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
+                                </Underline>
+                            </TextBlock>
+                            <TextBlock
+                                x:Name="archivePath"
+                                MaxWidth="300"
+                                Margin="3"
+                                VerticalAlignment="Center"
+                                FontSize="12"
+                                FontStyle="Italic"
+                                MouseEnter="onMouseEnter"
+                                MouseLeave="onMouseLeave"
+                                Text="{Binding ElementName=self, Path=ArchivePath}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding Text, ElementName=archivePath}" />
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -99,107 +137,116 @@
         <StackPanel Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="32"/>
-                    <RowDefinition/>
+                    <RowDefinition Height="32" />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 <DockPanel Margin="5,0,5,0">
-                    <hc:TextBox Width="253"
-                                Height="22"
-                                hc:InfoElement.Title="{Binding [RemarkTextLabel], Source={x:Static language:LanguageManager.Instance}}"
-                                hc:TitleElement.TitlePlacement="Left" 
-                                Margin="5,0,0,0"
-                                Text="{Binding [RemarkPlaceholder], Source={x:Static language:LanguageManager.Instance},Mode=OneTime}"
-                                x:Name="remarkTxt"
-                                />
-                    <Button  Content="{Binding [BackupButtonLabel], Source={x:Static language:LanguageManager.Instance}}" 
-                             Style="{StaticResource ButtonPrimary}" 
-                             Margin="5,0,0,0" 
-                             Height="28"
-                             Command="{Binding BackupButtonCommand,ElementName=self}"
-                             CommandParameter="{Binding Text,ElementName=remarkTxt}"
-                            />
+                    <hc:TextBox
+                        x:Name="remarkTxt"
+                        Width="253"
+                        Height="22"
+                        Margin="5,0,0,0"
+                        hc:InfoElement.Title="{Binding [RemarkTextLabel], Source={x:Static language:LanguageManager.Instance}}"
+                        hc:TitleElement.TitlePlacement="Left"
+                        Text="{Binding [RemarkPlaceholder], Source={x:Static language:LanguageManager.Instance}, Mode=OneTime}" />
+                    <Button
+                        Height="28"
+                        Margin="5,0,0,0"
+                        Command="{Binding BackupButtonCommand, ElementName=self}"
+                        CommandParameter="{Binding Text, ElementName=remarkTxt}"
+                        Content="{Binding [BackupButtonLabel], Source={x:Static language:LanguageManager.Instance}}"
+                        Style="{StaticResource ButtonPrimary}" />
                     <DockPanel HorizontalAlignment="Right">
-                        <hc:TextBox Width="120"
-                                Height="22"
-                                hc:InfoElement.Title="{Binding [TimeIntervalLabel], Source={x:Static language:LanguageManager.Instance}}"
-                                hc:TitleElement.TitlePlacement="Left" 
-                                Margin="5,0,0,0"
-                                Text="180"
-                                />
-                        <CheckBox Content="{Binding [StartTask], Source={x:Static language:LanguageManager.Instance}}" Margin="9,0,0,0"/>
+                        <hc:TextBox
+                            x:Name="intervalText"
+                            Width="120"
+                            Height="22"
+                            Margin="5,0,0,0"
+                            hc:InfoElement.Title="{Binding [TimeIntervalLabel], Source={x:Static language:LanguageManager.Instance}}"
+                            hc:TitleElement.TitlePlacement="Left"
+                            Text="180" />
+                        <CheckBox
+                            Margin="9,0,0,0"
+                            Checked="scheduledTask_Checked"
+                            Content="{Binding [StartTask], Source={x:Static language:LanguageManager.Instance}}"
+                            Unchecked="scheduledTask_UnChecked" />
                     </DockPanel>
                 </DockPanel>
-                <DataGrid 
-                          AutoGenerateColumns="False" 
-                          RowHeight="32"
-                          Grid.Row="1"
-                          Margin="0,5,0,0"
-                          ItemsSource="{Binding Backups}" 
-                          EnableColumnVirtualization="True" 
-                          GridLinesVisibility="None" 
-                          IsTextSearchEnabled="True" 
-                          IsReadOnly="True" 
-                          SelectionMode="Single"
-                          RowStyle="{StaticResource CommonDataGridRow}"
-                          >
+                <DataGrid
+                    Grid.Row="1"
+                    Margin="0,5,0,0"
+                    AutoGenerateColumns="False"
+                    EnableColumnVirtualization="True"
+                    GridLinesVisibility="None"
+                    IsReadOnly="True"
+                    IsTextSearchEnabled="True"
+                    ItemsSource="{Binding Backups}"
+                    RowHeight="32"
+                    RowStyle="{StaticResource CommonDataGridRow}"
+                    SelectionMode="Single">
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                            <Setter Property="Height" Value="32"/>
-                            <Setter Property="Background" Value="Gainsboro"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                            <Setter Property="Height" Value="32" />
+                            <Setter Property="Background" Value="Gainsboro" />
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" 
-                                            Header="{Binding [RemarkCol], Source={x:Static language:LanguageManager.Instance}}"
-                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
-                        <DataGridTextColumn Width="1*" 
-                                            Binding="{Binding DateTimeStamp,Converter={StaticResource pconvert}}" 
-                                            Header="{Binding [DateCol], Source={x:Static language:LanguageManager.Instance}}"
-                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Path}" Header="{Binding [PathCol], Source={x:Static language:LanguageManager.Instance}}"
-                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
-                        <DataGridTemplateColumn Header="{Binding [OpCol], Source={x:Static language:LanguageManager.Instance}}" 
-                                                Width="1*"
-                                                CellStyle="{StaticResource CommonDataGridCell}">
+                        <DataGridTextColumn
+                            Width="1*"
+                            Binding="{Binding Remark}"
+                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"
+                            Header="{Binding [RemarkCol], Source={x:Static language:LanguageManager.Instance}}" />
+                        <DataGridTextColumn
+                            Width="1*"
+                            Binding="{Binding DateTimeStamp, Converter={StaticResource pconvert}}"
+                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"
+                            Header="{Binding [DateCol], Source={x:Static language:LanguageManager.Instance}}" />
+                        <DataGridTextColumn
+                            Width="1*"
+                            Binding="{Binding Path}"
+                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"
+                            Header="{Binding [PathCol], Source={x:Static language:LanguageManager.Instance}}" />
+                        <DataGridTemplateColumn
+                            Width="1*"
+                            CellStyle="{StaticResource CommonDataGridCell}"
+                            Header="{Binding [OpCol], Source={x:Static language:LanguageManager.Instance}}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" 
-                                                HorizontalAlignment="Center"
-                                                >
-                                        <hc:Divider Orientation="Vertical"/>
-                                        <TextBlock Text="{Binding [RecoverAction], Source={x:Static language:LanguageManager.Instance}}" 
-                                                   TextAlignment="Center" 
-                                                   VerticalAlignment="Center"
-                                                   Foreground="Green"
-                                                   Cursor="Hand"
-                                                   MouseEnter="OpButton_MouseEnter"
-                                                   MouseLeave="OpButton_MouseLeave"
-                                                   MouseLeftButtonDown="recoverBtn_MouseLeftButtonDown"
-                                                   Tag="{Binding}"
-                                                   />
-                                        <hc:Divider Orientation="Vertical"/>
-                                        <TextBlock Text="{Binding [OpenPathAction], Source={x:Static language:LanguageManager.Instance}}" 
-                                                   TextAlignment="Center" 
-                                                   VerticalAlignment="Center"
-                                                   Foreground="#409EFF"
-                                                   Cursor="Hand"
-                                                   MouseEnter="OpButton_MouseEnter"
-                                                   MouseLeave="OpButton_MouseLeave"
-                                                   MouseLeftButtonDown="openPathBtn_MouseLeftButtonDown"
-                                                   Tag="{Binding}"
-                                                   />
-                                        <hc:Divider Orientation="Vertical"/>
-                                        <TextBlock Text="{Binding [DelateAction], Source={x:Static language:LanguageManager.Instance}}" 
-                                                   TextAlignment="Center" 
-                                                   VerticalAlignment="Center"
-                                                   Foreground="Red"
-                                                   Cursor="Hand"
-                                                   MouseEnter="OpButton_MouseEnter"
-                                                   MouseLeave="OpButton_MouseLeave"
-                                                   MouseLeftButtonDown="deleteBtn_MouseLeftButtonDown"
-                                                   Tag="{Binding}"
-                                                   />
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                        <hc:Divider Orientation="Vertical" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            Foreground="Green"
+                                            MouseEnter="OpButton_MouseEnter"
+                                            MouseLeave="OpButton_MouseLeave"
+                                            MouseLeftButtonDown="recoverBtn_MouseLeftButtonDown"
+                                            Tag="{Binding}"
+                                            Text="{Binding [RecoverAction], Source={x:Static language:LanguageManager.Instance}}"
+                                            TextAlignment="Center" />
+                                        <hc:Divider Orientation="Vertical" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            Foreground="#409EFF"
+                                            MouseEnter="OpButton_MouseEnter"
+                                            MouseLeave="OpButton_MouseLeave"
+                                            MouseLeftButtonDown="openPathBtn_MouseLeftButtonDown"
+                                            Tag="{Binding}"
+                                            Text="{Binding [OpenPathAction], Source={x:Static language:LanguageManager.Instance}}"
+                                            TextAlignment="Center" />
+                                        <hc:Divider Orientation="Vertical" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            Cursor="Hand"
+                                            Foreground="Red"
+                                            MouseEnter="OpButton_MouseEnter"
+                                            MouseLeave="OpButton_MouseLeave"
+                                            MouseLeftButtonDown="deleteBtn_MouseLeftButtonDown"
+                                            Tag="{Binding}"
+                                            Text="{Binding [DelateAction], Source={x:Static language:LanguageManager.Instance}}"
+                                            TextAlignment="Center" />
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
