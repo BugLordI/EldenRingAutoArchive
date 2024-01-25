@@ -14,9 +14,11 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converter:LongTimeDateConvert x:Key="pconvert"/>
+            <converter:DataGridCellValueConvert x:Key="dataGridCellValueConvert"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/CommonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -136,11 +138,10 @@
                           ItemsSource="{Binding Backups}" 
                           EnableColumnVirtualization="True" 
                           GridLinesVisibility="None" 
-                          HorizontalGridLinesBrush="#FFA6BFE0" 
-                          VerticalGridLinesBrush="#FFE2DDDD" 
                           IsTextSearchEnabled="True" 
                           IsReadOnly="True" 
                           SelectionMode="Single"
+                          RowStyle="{StaticResource CommonDataGridRow}"
                           >
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -150,15 +151,23 @@
                         </Style>
                     </DataGrid.ColumnHeaderStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" Header="{Binding [RemarkCol], Source={x:Static language:LanguageManager.Instance}}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Remark}" 
+                                            Header="{Binding [RemarkCol], Source={x:Static language:LanguageManager.Instance}}"
+                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
                         <DataGridTextColumn Width="1*" 
                                             Binding="{Binding DateTimeStamp,Converter={StaticResource pconvert}}" 
-                                            Header="{Binding [DateCol], Source={x:Static language:LanguageManager.Instance}}"/>
-                        <DataGridTextColumn Width="1*" Binding="{Binding Path}" Header="{Binding [PathCol], Source={x:Static language:LanguageManager.Instance}}"/>
-                        <DataGridTemplateColumn Header="{Binding [OpCol], Source={x:Static language:LanguageManager.Instance}}" Width="1*">
+                                            Header="{Binding [DateCol], Source={x:Static language:LanguageManager.Instance}}"
+                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
+                        <DataGridTextColumn Width="1*" Binding="{Binding Path}" Header="{Binding [PathCol], Source={x:Static language:LanguageManager.Instance}}"
+                                            CellStyle="{StaticResource DataGridTextCellWithTooltip}"/>
+                        <DataGridTemplateColumn Header="{Binding [OpCol], Source={x:Static language:LanguageManager.Instance}}" 
+                                                Width="1*"
+                                                CellStyle="{StaticResource CommonDataGridCell}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" 
+                                                HorizontalAlignment="Center"
+                                                >
                                         <hc:Divider Orientation="Vertical"/>
                                         <TextBlock Text="{Binding [RecoverAction], Source={x:Static language:LanguageManager.Instance}}" 
                                                    TextAlignment="Center" 

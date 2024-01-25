@@ -9,7 +9,7 @@
                 <ControlTemplate TargetType="Button">
                     <Border Name="border" 
                             BorderBrush="#FF2F9EF3" 
-                            Background="{TemplateBinding Background}">  
+                            Background="{TemplateBinding Background}">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                 </ControlTemplate>
@@ -61,6 +61,42 @@
                 <Setter Property="Background" Value="Gray"/>
                 <Setter Property="Foreground" Value="LightGray"/>
                 <Setter Property="Opacity" Value="0.5"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="DataGridRow" x:Key="CommonDataGridRow">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <RadialGradientBrush>
+                            <GradientStop Color="White"/>
+                            <GradientStop Color="#FFF5DCCD" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="DataGridCell" x:Key="DataGridTextCellWithTooltip">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="ToolTip"   
+            Value="{Binding Content.Text, RelativeSource={RelativeSource Mode=Self}}" />
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="DataGridCell" x:Key="CommonDataGridCell">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="Transparent" />
             </Trigger>
         </Style.Triggers>
     </Style>
