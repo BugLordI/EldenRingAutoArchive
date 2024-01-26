@@ -274,4 +274,19 @@
   <data name="OpenPathTip" xml:space="preserve">
     <value>单击打开路径</value>
   </data>
+  <data name="AutomaticallyCheckStartProgram" xml:space="preserve">
+    <value>自动勾选“并启动程序”</value>
+  </data>
+  <data name="AlwaysAskWhenExits" xml:space="preserve">
+    <value>程序退出时总是询问</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>运行</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>保存设置</value>
+  </data>
 </root>

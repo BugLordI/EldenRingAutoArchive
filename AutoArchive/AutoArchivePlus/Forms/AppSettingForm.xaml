@@ -1,0 +1,128 @@
+﻿<Window
+    x:Class="AutoArchivePlus.Forms.AppSettingForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:component="clr-namespace:AutoArchivePlus.Component"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    x:Name="self"
+    Title="AppSettingForm"
+    Width="860"
+    Height="480"
+    MinWidth="860"
+    MinHeight="360"
+    AllowsTransparency="True"
+    Background="Transparent"
+    ResizeMode="NoResize"
+    ShowActivated="False"
+    ShowInTaskbar="False"
+    WindowStartupLocation="CenterOwner"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <vm:AppSettingViewModel />
+    </Window.DataContext>
+    <WindowChrome.WindowChrome>
+        <WindowChrome
+            CaptionHeight="31"
+            CornerRadius="0"
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="10" />
+    </WindowChrome.WindowChrome>
+    <!--  DropShadowEffect 影响GPU,TODO FIX  -->
+    <Window.Effect>
+        <DropShadowEffect
+            BlurRadius="10"
+            Opacity="0.9"
+            ShadowDepth="2"
+            Color="#FFF5DBA3" />
+    </Window.Effect>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid
+        x:Name="grid"
+        Margin="5"
+        Background="Gainsboro">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39" />
+            <RowDefinition />
+            <RowDefinition Height="39" />
+        </Grid.RowDefinitions>
+        <component:FormTitleBar
+            Title="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
+            Grid.Row="0"
+            Background="Gray"
+            ParentWindow="{Binding ElementName=self}"
+            ShowIcon="Collapsed"
+            ShowMaximize="Collapsed"
+            ShowMinimize="Collapsed" />
+        <StackPanel Grid.Row="1">
+            <TextBlock
+                Width="30"
+                Margin="9,5,0,0"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                FontWeight="DemiBold"
+                Text="{Binding [Run], Source={x:Static language:LanguageManager.Instance}}"
+                TextAlignment="Center" />
+            <StackPanel
+                Height="42"
+                Margin="9,6,9,0"
+                Background="White"
+                Orientation="Horizontal">
+                <CheckBox
+                    Margin="6,0,0,0"
+                    BorderBrush="#FFEC6868"
+                    Content="{Binding [AutomaticallyCheckStartProgram], Source={x:Static language:LanguageManager.Instance}}"
+                    Foreground="#FF0C0C0C"
+                    IsChecked="{Binding AppSetting.AutoCheckStartProgram}" />
+            </StackPanel>
+            <TextBlock
+                Width="30"
+                Margin="9,5,0,0"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                FontWeight="DemiBold"
+                Text="{Binding [General], Source={x:Static language:LanguageManager.Instance}}"
+                TextAlignment="Center" />
+            <StackPanel
+                Height="42"
+                Margin="9,6,9,0"
+                Background="White"
+                Orientation="Horizontal">
+                <CheckBox
+                    Margin="6,0,0,0"
+                    BorderBrush="#FFEC6868"
+                    Content="{Binding [AlwaysAskWhenExits], Source={x:Static language:LanguageManager.Instance}}"
+                    Foreground="#FF0C0C0C"
+                    IsChecked="{Binding AppSetting.AlwaysAskWhenExits}" />
+            </StackPanel>
+        </StackPanel>
+        <Canvas
+            Grid.Row="1"
+            Width="210"
+            HorizontalAlignment="Right">
+            <ScrollViewer>
+                <StackPanel x:Name="MessagePanel" Margin="0,2,0,10" />
+            </ScrollViewer>
+        </Canvas>
+        <DockPanel Grid.Row="2">
+            <Button
+                Margin="0,0,9,0"
+                HorizontalAlignment="Right"
+                Command="{Binding SaveSettings}"
+                CommandParameter="{Binding ElementName=MessagePanel}"
+                Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}" />
+        </DockPanel>
+    </Grid>
+</Window>

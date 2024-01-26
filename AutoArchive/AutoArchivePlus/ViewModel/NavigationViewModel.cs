@@ -1,5 +1,6 @@
 ﻿using AutoArchivePlus.Command;
 using AutoArchivePlus.Component;
+using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Model;
 using System;
@@ -83,6 +84,13 @@ namespace AutoArchivePlus.ViewModel
                     }
                 }
             }
+        });
+
+        public ICommand Setting => new ControlCommand(obj =>
+        {
+            AppSettingForm appSettingForm = new AppSettingForm();
+            appSettingForm.Owner = App.GetMainWindow();
+            appSettingForm.ShowDialog();
         });
 
         #endregion

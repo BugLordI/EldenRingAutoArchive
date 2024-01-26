@@ -74,6 +74,7 @@ namespace AutoArchivePlus.Forms
         {
             ProjectFormViewModel dc = DataContext as ProjectFormViewModel;
             System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "可运行程序|*.exe";
             var result = openFileDialog.ShowDialog(this.GetIWin32Window());
             if (result == System.Windows.Forms.DialogResult.OK)
             {

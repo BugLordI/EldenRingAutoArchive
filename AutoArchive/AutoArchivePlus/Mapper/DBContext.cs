@@ -25,6 +25,11 @@ namespace AutoArchivePlus.Mapper
             optionsBuilder.UseSqlite(connStr ?? "Data Source=save.db");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<T>();
+        }
+
         public void RemoveAll(Func<T, bool> func)
         {
             foreach (var item in Entity)

@@ -294,4 +294,19 @@
   <data name="OpenPathTip" xml:space="preserve">
     <value>Click to open path</value>
   </data>
+  <data name="AutomaticallyCheckStartProgram" xml:space="preserve">
+    <value>Automatically check "And start the program"</value>
+  </data>
+  <data name="AlwaysAskWhenExits" xml:space="preserve">
+    <value>Always ask when program exits</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
 </root>

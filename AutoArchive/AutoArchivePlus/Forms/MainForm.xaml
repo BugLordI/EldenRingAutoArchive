@@ -1,129 +1,147 @@
-﻿<Window x:Class="AutoArchivePlus.Forms.MainForm"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:language="clr-namespace:AutoArchivePlus.Language"
-        xmlns:component="clr-namespace:AutoArchivePlus.Component"
-        xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
-        xmlns:page="clr-namespace:AutoArchivePlus.Forms"
-        xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
-        mc:Ignorable="d"
-        Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
-        AllowsTransparency="True"
-        IsHitTestVisible="True"
-        Background="Transparent"
-        WindowStyle="None"
-        Height="613" 
-        Width="1006" 
-        WindowStartupLocation="CenterScreen" 
-        MinHeight="583" 
-        MinWidth="996"
-        MaxWidth="1426"
-        MaxHeight="837"
-        Icon="/Resources/img/xinwang-ds3-ico.jpg" 
-        SizeChanged="mainWindow_SizeChanged" 
-        Loaded="mainWindow_Loaded"
-        Closing="mainWindow_Closing"
-        x:Name="mainWindow">
+﻿<Window
+    x:Class="AutoArchivePlus.Forms.MainForm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:component="clr-namespace:AutoArchivePlus.Component"
+    xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:page="clr-namespace:AutoArchivePlus.Forms"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    x:Name="mainWindow"
+    Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
+    Width="1006"
+    Height="613"
+    MinWidth="996"
+    MinHeight="583"
+    MaxWidth="1426"
+    MaxHeight="837"
+    AllowsTransparency="True"
+    Background="Transparent"
+    Closing="mainWindow_Closing"
+    Icon="/Resources/img/xinwang-ds3-ico.jpg"
+    IsHitTestVisible="True"
+    Loaded="mainWindow_Loaded"
+    SizeChanged="mainWindow_SizeChanged"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
     <Window.DataContext>
-        <vm:MainFormViewModel x:Name="dc"/>
+        <vm:MainFormViewModel x:Name="dc" />
     </Window.DataContext>
     <Window.Resources>
         <ResourceDictionary>
-            <converter:ShowProjectInfoConvert x:Key="mconvert"/>
+            <converter:ShowProjectInfoConvert x:Key="mconvert" />
             <WindowChrome x:Key="WindowChromeKey">
                 <WindowChrome.ResizeBorderThickness>
                     <Thickness>5</Thickness>
                 </WindowChrome.ResizeBorderThickness>
             </WindowChrome>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
-                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     <WindowChrome.WindowChrome>
-        <WindowChrome 
-            GlassFrameThickness="0" 
-            CaptionHeight="31" 
-            NonClientFrameEdges="None"    
+        <WindowChrome
+            CaptionHeight="31"
             CornerRadius="0"
-            ResizeBorderThickness="10"/>
+            GlassFrameThickness="0"
+            NonClientFrameEdges="None"
+            ResizeBorderThickness="10" />
     </WindowChrome.WindowChrome>
     <Window.Effect>
-        <DropShadowEffect ShadowDepth="0" BlurRadius="10" Opacity="0.9" Color="#FFF5DBA3" />
+        <DropShadowEffect
+            BlurRadius="10"
+            Opacity="0.9"
+            ShadowDepth="0"
+            Color="#FFF5DBA3" />
     </Window.Effect>
-    <Grid x:Name="grid" Margin="5" Background="White">
-        <DockPanel LastChildFill="False" IsHitTestVisible="True">
+    <Grid
+        x:Name="grid"
+        Margin="5"
+        Background="White">
+        <DockPanel IsHitTestVisible="True" LastChildFill="False">
             <DockPanel.Background>
-                <SolidColorBrush Color="White" Opacity="0.95"/>
+                <SolidColorBrush Opacity="0.95" Color="White" />
             </DockPanel.Background>
             <component:FormTitleBar
-                Width="{Binding ActualWidth,ElementName=grid}"
-                Background="Gray"
-                IsHitTestVisible="True"
-                DockPanel.Dock="Top" 
-                x:Name="titleBar" 
+                x:Name="titleBar"
                 Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
+                Width="{Binding ActualWidth, ElementName=grid}"
+                Background="Gray"
+                BorderBrush="LightGray"
+                BorderThickness="0,0,0,1"
                 CloseButtonClick="titleBar_CloseButtonClick"
-                ParentWindow="{Binding ElementName=mainWindow}" Icon="/Resources/img/xinwang-ds3-ico.jpg" 
-                BorderBrush="LightGray" 
-                BorderThickness="0,0,0,1" 
-                ShowMaximize="Collapsed"
-               />
-            <Grid Height="Auto" Width="{Binding ActualWidth,ElementName=grid}" x:Name="navigation">
+                DockPanel.Dock="Top"
+                Icon="/Resources/img/xinwang-ds3-ico.jpg"
+                IsHitTestVisible="True"
+                ParentWindow="{Binding ElementName=mainWindow}"
+                ShowMaximize="Collapsed" />
+            <Grid
+                x:Name="navigation"
+                Width="{Binding ActualWidth, ElementName=grid}"
+                Height="Auto">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="196"></ColumnDefinition>
-                    <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                    <ColumnDefinition Width="196" />
+                    <ColumnDefinition Width="0.8*" />
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Column="0">
-                    <page:Navigation  BorderBrush="NavajoWhite" 
-                                      BorderThickness="0,0,1,0" 
-                                      Height="{Binding ActualHeight,ElementName=navigation}"
-                                      />
+                    <page:Navigation
+                        Height="{Binding ActualHeight, ElementName=navigation}"
+                        BorderBrush="NavajoWhite"
+                        BorderThickness="0,0,1,0" />
                 </DockPanel>
                 <Border Grid.Column="1">
                     <Grid>
-                        <page:HomePage 
-                                   x:Name="homePage"
-                                   ParentWindow="{Binding ElementName=mainWindow}"
-                                   Background="#FFEAEAEA"
-                                   Visibility="{Binding ShowHomePage,Converter={StaticResource mconvert},ElementName=dc}"
-                                   />
-                        <page:ProjectInfoPage Grid.Column="1"
-                                              Background="#FFEAEAEA"
-                                              Visibility="{Binding ShowProjectInfo,Converter={StaticResource mconvert},ElementName=dc}"
-                                              ProjectName="{Binding CurrentProject.Name,ElementName=dc}"
-                                              BackupPath="{Binding CurrentProject.BackupPath,ElementName=dc}"
-                                              ArchivePath="{Binding CurrentProject.ArchivePath,ElementName=dc}"
-                                              ProjectIcon="{Binding CurrentProject.Ico,ElementName=dc}"
-                                              ProjectId="{Binding CurrentProject.Id,ElementName=dc}"
-                                              Backups="{Binding Backups,ElementName=dc}"
-                                              BackupButtonCommand="{Binding BackupCommand,ElementName=dc}"
-                                              RecoverButtonCommand="{Binding RecoverCommand}"
-                                              OpenPathButtonCommand="{Binding OpenBackupPathCommand}"
-                                              DeleteButtonCommand="{Binding DeleteBackupCommand}"
-                                              />
+                        <page:HomePage
+                            x:Name="homePage"
+                            Background="#FFEAEAEA"
+                            ParentWindow="{Binding ElementName=mainWindow}"
+                            Visibility="{Binding ShowHomePage, Converter={StaticResource mconvert}, ElementName=dc}" />
+                        <page:ProjectInfoPage
+                            Grid.Column="1"
+                            ArchivePath="{Binding CurrentProject.ArchivePath, ElementName=dc}"
+                            Background="#FFEAEAEA"
+                            BackupButtonCommand="{Binding BackupCommand, ElementName=dc}"
+                            BackupPath="{Binding CurrentProject.BackupPath, ElementName=dc}"
+                            Backups="{Binding Backups, ElementName=dc}"
+                            DeleteButtonCommand="{Binding DeleteBackupCommand}"
+                            OpenPathButtonCommand="{Binding OpenBackupPathCommand}"
+                            ProjectIcon="{Binding CurrentProject.Ico, ElementName=dc}"
+                            ProjectId="{Binding CurrentProject.Id, ElementName=dc}"
+                            ProjectName="{Binding CurrentProject.Name, ElementName=dc}"
+                            RecoverButtonCommand="{Binding RecoverCommand}"
+                            Visibility="{Binding ShowProjectInfo, Converter={StaticResource mconvert}, ElementName=dc}" />
                     </Grid>
                 </Border>
-                <Canvas Grid.Column="1" 
-                        Width="230" 
-                        HorizontalAlignment="Right"
-                        x:Name="msgPanel"
-                       >
-                    <Grid Height="{Binding ActualHeight,ElementName=msgPanel}"
-                          Width="{Binding ActualWidth,ElementName=msgPanel}">
+                <Canvas
+                    x:Name="msgPanel"
+                    Grid.Column="1"
+                    Width="230"
+                    HorizontalAlignment="Right">
+                    <Grid Width="{Binding ActualWidth, ElementName=msgPanel}" Height="{Binding ActualHeight, ElementName=msgPanel}">
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="130"/>
+                            <RowDefinition />
+                            <RowDefinition Height="130" />
                         </Grid.RowDefinitions>
-                        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
-                            <StackPanel x:Name="globalMessagePanel" VerticalAlignment="Top" Margin="0,10,0,10"/>
+                        <ScrollViewer
+                            Grid.Row="0"
+                            HorizontalAlignment="Right"
+                            VerticalScrollBarVisibility="Hidden">
+                            <StackPanel
+                                x:Name="globalMessagePanel"
+                                Margin="0,10,0,10"
+                                VerticalAlignment="Top" />
                         </ScrollViewer>
                         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
-                            <StackPanel x:Name="globalErrorMessagePanel" VerticalAlignment="Top" Margin="0,10,0,10"/>
+                            <StackPanel
+                                x:Name="globalErrorMessagePanel"
+                                Margin="0,10,0,10"
+                                VerticalAlignment="Top" />
                         </ScrollViewer>
                     </Grid>
                 </Canvas>

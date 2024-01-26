@@ -8,6 +8,9 @@
     <Compile Update="Component\ProjectItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Forms\AppSettingForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Forms\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -29,6 +32,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Component\ProjectItem.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Forms\AppSettingForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Forms\HomePage.xaml">

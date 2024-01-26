@@ -1,19 +1,20 @@
-﻿<UserControl x:Class="AutoArchivePlus.Forms.Navigation"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:language="clr-namespace:AutoArchivePlus.Language"
-             xmlns:component="clr-namespace:AutoArchivePlus.Component"
-             xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="196" 
-             Loaded="UserControl_Loaded">
+﻿<UserControl
+    x:Class="AutoArchivePlus.Forms.Navigation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:component="clr-namespace:AutoArchivePlus.Component"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    d:DesignHeight="450"
+    d:DesignWidth="196"
+    Loaded="UserControl_Loaded"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -22,41 +23,43 @@
     </UserControl.DataContext>
     <Grid x:Name="root">
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition />
             <RowDefinition Height="0.078*" MaxHeight="34" />
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Height="Auto" x:Name="menu" >
+        <StackPanel
+            x:Name="menu"
+            Grid.Row="0"
+            Height="Auto">
             <ItemsControl ItemsSource="{Binding Projects}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <component:NavigationMenuItem 
-                            ItemName="{Binding Name}"
-                            ItemIcon="{Binding Ico}"
-                            ItemClickedCommand="{Binding ItemClicked,ElementName=dc}"
-                            CloseMenuCommand="{Binding ClosePeoject,ElementName=dc}"
-                            TypeName="{Binding Name}"
-                            ItemIconHeight="21" 
-                            ItemIconWidth="21"
+                        <component:NavigationMenuItem
+                            CloseMenuCommand="{Binding ClosePeoject, ElementName=dc}"
                             IsSelect="{Binding IsSelect}"
-                            />
+                            ItemClickedCommand="{Binding ItemClicked, ElementName=dc}"
+                            ItemIcon="{Binding Ico}"
+                            ItemIconHeight="21"
+                            ItemIconWidth="21"
+                            ItemName="{Binding Name}"
+                            TypeName="{Binding Name}" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-        <StackPanel 
-                    Grid.Row="1" 
-                    Width="{Binding ActualWidth,ElementName=root}" 
-                    HorizontalAlignment="Center" VerticalAlignment="Top">
+        <StackPanel
+            Grid.Row="1"
+            Width="{Binding ActualWidth, ElementName=root}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
             <component:NavigationMenuItem
-                 ItemName="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
-                 ItemIcon="../Resources/img/setup.png"
-                 ItemClickedCommand="{Binding ItemClicked,ElementName=dc}"
-                 x:Name="setting"
-                 TypeName="setting"
-                 ItemIconHeight="21" 
-                 ItemIconWidth="21"
-                 MaxHeight="33"
-                />
+                x:Name="setting"
+                MaxHeight="33"
+                ItemClickedCommand="{Binding Setting, ElementName=dc}"
+                ItemIcon="../Resources/img/setup.png"
+                ItemIconHeight="21"
+                ItemIconWidth="21"
+                ItemName="{Binding [Setting], Source={x:Static language:LanguageManager.Instance}}"
+                TypeName="setting" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -20,7 +20,7 @@ namespace AutoArchivePlus
 
         private static String iconPath = "Icons";
 
-        private static MainForm mainForm = new MainForm();
+        private static MainForm mainForm;
 
         public static string ICON_PATH { get => iconPath; }
 
@@ -32,13 +32,13 @@ namespace AutoArchivePlus
             {
                 Directory.CreateDirectory(iconPath);
             }
-            dbInit();
             setLanguage(args);
             Boolean ret;
             Mutex mutex = new Mutex(true, PRODUCT_NAME, out ret);
             if (ret)
             {
                 Application app = new Application();
+                mainForm = new MainForm();
                 app.Run(mainForm);
                 mutex.ReleaseMutex();
             }
@@ -70,13 +70,6 @@ namespace AutoArchivePlus
                     break;
                 }
             }
-        }
-
-        static void dbInit()
-        {
-            using BaseContext<Project> baseContext = new DBContext<Project>();
-            var data = baseContext.Entity.ToList();
-            Trace.WriteLine(data);
         }
     }
 }
