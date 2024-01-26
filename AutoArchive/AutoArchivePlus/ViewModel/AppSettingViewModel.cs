@@ -19,31 +19,9 @@ namespace AutoArchivePlus.ViewModel
 
         public AppSettingViewModel()
         {
-            initSettings();
+            AppSetting = App.AppSetting;
         }
 
-        private void initSettings()
-        {
-            using DBContext<Config> dBContext = new DBContext<Config>();
-            Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
-            if (config == null)
-            {
-                AppSetting = new AppSetting();
-                config = new Config()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    Type = Constant.APP_CONFIG_TYPE,
-                    Content = JsonConvert.SerializeObject(AppSetting)
-                };
-                dBContext.Entity.Add(config);
-                dBContext.SaveChanges();
-            }
-            else
-            {
-                String content = config.Content;
-                AppSetting = JsonConvert.DeserializeObject<AppSetting>(content);
-            }
-        }
 
         public AppSetting AppSetting
         {

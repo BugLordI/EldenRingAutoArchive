@@ -4,6 +4,7 @@ using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -22,7 +23,11 @@ namespace AutoArchivePlus
 
         private static MainForm mainForm;
 
+        private static AppSetting appSetting = new AppSetting();
+
         public static string ICON_PATH { get => iconPath; }
+
+        public static AppSetting AppSetting { get => appSetting;}
 
         [STAThread]
         static void Main(string[] args)
@@ -33,6 +38,7 @@ namespace AutoArchivePlus
                 Directory.CreateDirectory(iconPath);
             }
             setLanguage(args);
+            loadSetting();
             Boolean ret;
             Mutex mutex = new Mutex(true, PRODUCT_NAME, out ret);
             if (ret)
@@ -69,6 +75,30 @@ namespace AutoArchivePlus
                     LanguageManager.Instance.ChangeLanguage(new CultureInfo(lan));
                     break;
                 }
+            }
+        }
+
+        static void loadSetting()
+        {
+
+            using DBContext<Config> dBContext = new DBContext<Config>();
+            Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
+            if (config == null)
+            {
+                appSetting = new AppSetting();
+                config = new Config()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Type = Constant.APP_CONFIG_TYPE,
+                    Content = JsonConvert.SerializeObject(AppSetting)
+                };
+                dBContext.Entity.Add(config);
+                dBContext.SaveChanges();
+            }
+            else
+            {
+                String content = config.Content;
+                appSetting = JsonConvert.DeserializeObject<AppSetting>(content);
             }
         }
     }

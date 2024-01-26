@@ -27,7 +27,7 @@ namespace AutoArchivePlus.ViewModel
 
         private ProjectItem selected;
 
-        private bool startAndOpen = true;
+        private bool startAndOpen = App.AppSetting.AutoCheckStartProgram;
 
         private bool isRunning;
 

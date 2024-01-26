@@ -71,10 +71,13 @@ namespace AutoArchivePlus.Forms
 
         private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (ret == MessageBoxResult.No)
+            if (App.AppSetting.AlwaysAskWhenExits)
             {
-                e.Cancel = true;
+                MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (ret == MessageBoxResult.No)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 

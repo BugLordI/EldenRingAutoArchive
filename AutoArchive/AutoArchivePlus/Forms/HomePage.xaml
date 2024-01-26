@@ -1,132 +1,152 @@
-﻿<UserControl x:Class="AutoArchivePlus.Forms.HomePage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
-      xmlns:language="clr-namespace:AutoArchivePlus.Language"
-      xmlns:component="clr-namespace:AutoArchivePlus.Component"
-      xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      x:Name="zmy"
-     >
+﻿<UserControl
+    x:Class="AutoArchivePlus.Forms.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:component="clr-namespace:AutoArchivePlus.Component"
+    xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    x:Name="zmy"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:HomePageRunBtnConvert x:Key="convert"/>
+            <converter:HomePageRunBtnConvert x:Key="convert" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/CommonStyle.xaml" />
                 <ResourceDictionary Source="../Resources/Styles/ScrollerViewerStyle.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <vm:HomePageViewModel x:Name="dc"/>
+        <vm:HomePageViewModel x:Name="dc" />
     </UserControl.DataContext>
     <DockPanel>
-        <Grid DockPanel.Dock="Top" MinHeight="145" Height="121" x:Name="PCInfoPanel" VerticalAlignment="Top">
+        <Grid
+            x:Name="PCInfoPanel"
+            Height="121"
+            MinHeight="145"
+            VerticalAlignment="Top"
+            DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <DockPanel Grid.Column="1" 
-                       Width="Auto" 
-                       Height="{Binding ActualHeight, ElementName=PCInfoPanel}"
-                       >
-                <StackPanel Height="75" Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Image Width="74"
-                           Height="74" Source="{Binding GetUserPicture}"
-                         >
+            <DockPanel
+                Grid.Column="1"
+                Width="Auto"
+                Height="{Binding ActualHeight, ElementName=PCInfoPanel}">
+                <StackPanel
+                    Height="75"
+                    HorizontalAlignment="Left"
+                    Orientation="Horizontal">
+                    <Image
+                        Width="74"
+                        Height="74"
+                        Source="{Binding GetUserPicture}">
                         <Image.Clip>
-                            <EllipseGeometry Center="37,37" RadiusX="37" RadiusY="37" />
+                            <EllipseGeometry
+                                Center="37,37"
+                                RadiusX="37"
+                                RadiusY="37" />
                         </Image.Clip>
                     </Image>
                     <StackPanel Height="56">
-                        <TextBlock DockPanel.Dock="Right" 
-                                   VerticalAlignment="Center" 
-                                   Margin="12,4,0,0"
-                                   TextTrimming="WordEllipsis"
-                                   Text="{Binding GetGreeting}"/>
-                        <TextBlock DockPanel.Dock="Right"
-                                   TextTrimming="WordEllipsis"
-                                   VerticalAlignment="Center" 
-                                   Margin="12,9,0,0"
-                                   Text="{Binding GetUserName}"
-                         />
+                        <TextBlock
+                            Margin="12,4,0,0"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right"
+                            Text="{Binding GetGreeting}"
+                            TextTrimming="WordEllipsis" />
+                        <TextBlock
+                            Margin="12,9,0,0"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right"
+                            Text="{Binding GetUserName}"
+                            TextTrimming="WordEllipsis" />
                     </StackPanel>
                 </StackPanel>
             </DockPanel>
-            <DockPanel Grid.Column="2" Width="Auto" Height="{Binding ActualHeight, ElementName=PCInfoPanel}" HorizontalAlignment="Center">
-                <Button Style="{StaticResource CommonBtnWithBorder}" 
-                        Content="{Binding IsRunning,Converter={StaticResource convert}}" 
-                        Width="90" 
-                        Height="37"
-                        IsEnabled="{Binding OpenButtonIsEnabled}"
-                        Command="{Binding OpenProject}"
-                        />
-                <CheckBox Width="Auto" 
-                          HorizontalAlignment="Center" 
-                          HorizontalContentAlignment="Center" 
-                          VerticalAlignment="Center" 
-                          VerticalContentAlignment="Center" 
-                          Margin="4,0,0,0" 
-                          IsChecked="{Binding StartAndOpen}">
+            <DockPanel
+                Grid.Column="2"
+                Width="Auto"
+                Height="{Binding ActualHeight, ElementName=PCInfoPanel}"
+                HorizontalAlignment="Center">
+                <Button
+                    Width="90"
+                    Height="37"
+                    Command="{Binding OpenProject}"
+                    Content="{Binding IsRunning, Converter={StaticResource convert}}"
+                    IsEnabled="{Binding OpenButtonIsEnabled}"
+                    Style="{StaticResource CommonBtnWithBorder}" />
+                <CheckBox
+                    Width="Auto"
+                    Margin="4,0,0,0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    IsChecked="{Binding StartAndOpen}">
                     <CheckBox.Content>
-                        <TextBlock x:Name="startProgramTogetherCBX"
-                                   Text="{Binding [StartProgramTogether],Source={x:Static language:LanguageManager.Instance}}"
-                                   TextTrimming="WordEllipsis"
-                                   ToolTip="{Binding Text,ElementName=startProgramTogetherCBX,Mode=TwoWay}"/>
+                        <TextBlock
+                            x:Name="startProgramTogetherCBX"
+                            Text="{Binding [StartProgramTogether], Source={x:Static language:LanguageManager.Instance}}"
+                            TextTrimming="WordEllipsis"
+                            ToolTip="{Binding Text, ElementName=startProgramTogetherCBX, Mode=TwoWay}" />
                     </CheckBox.Content>
                 </CheckBox>
             </DockPanel>
         </Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="46"/>
-                <RowDefinition/>
+                <RowDefinition Height="46" />
+                <RowDefinition />
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" VerticalAlignment="Center">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <TextBlock FontSize="13" 
-                               Grid.Column="0" 
-                               Padding="10,0,0,0"
-                               Text="{Binding [ListOfSupported],Source={x:Static language:LanguageManager.Instance}}"/>
+                    <TextBlock
+                        Grid.Column="0"
+                        Padding="10,0,0,0"
+                        FontSize="13"
+                        Text="{Binding [ListOfSupported], Source={x:Static language:LanguageManager.Instance}}" />
                 </Grid>
             </StackPanel>
             <ScrollViewer Grid.Row="1">
-                <WrapPanel HorizontalAlignment="Center" x:Name="projectItemPanel">
+                <WrapPanel x:Name="projectItemPanel" HorizontalAlignment="Center">
                     <ItemsControl ItemsSource="{Binding Projects}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel HorizontalAlignment="Center"></WrapPanel>
+                                <WrapPanel HorizontalAlignment="Center" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <component:ProjectItem MaxWidth="200" 
-                                                       MaxHeight="65" 
-                                                       Width="200"
-                                                       Height="65"
-                                                       NewProjectCommand="{Binding NewProject,ElementName=dc}"
-                                                       NewProjectCommandParams="{Binding ParentWindow,ElementName=zmy}"
-                                                       ProjectBackupLocation="{Binding BackupPath}"
-                                                       ProjectTitle="{Binding Name}"
-                                                       ProjectIconLocation="{Binding Ico}"
-                                                       SelectedCommand="{Binding ProjectSelected,ElementName=dc}"
-                                                       DeleteCommand="{Binding DeleteProject ,ElementName=dc}"
-                                                       OpenInstallPathCommand="{Binding OpenInstallPath ,ElementName=dc}"
-                                                       OpenArchivePathCommand="{Binding OpenArchivePath ,ElementName=dc}"
-                                                       OpenBackupPathCommand="{Binding OpenBackupPath ,ElementName=dc}"
-                                                       >
-                                </component:ProjectItem>
+                                <component:ProjectItem
+                                    Width="200"
+                                    Height="65"
+                                    MaxWidth="200"
+                                    MaxHeight="65"
+                                    DeleteCommand="{Binding DeleteProject, ElementName=dc}"
+                                    NewProjectCommand="{Binding NewProject, ElementName=dc}"
+                                    NewProjectCommandParams="{Binding ParentWindow, ElementName=zmy}"
+                                    OpenArchivePathCommand="{Binding OpenArchivePath, ElementName=dc}"
+                                    OpenBackupPathCommand="{Binding OpenBackupPath, ElementName=dc}"
+                                    OpenInstallPathCommand="{Binding OpenInstallPath, ElementName=dc}"
+                                    ProjectBackupLocation="{Binding BackupPath}"
+                                    ProjectIconLocation="{Binding Ico}"
+                                    ProjectTitle="{Binding Name}"
+                                    SelectedCommand="{Binding ProjectSelected, ElementName=dc}" />
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
