@@ -45,4 +45,9 @@
         老贼盒子Plusv 1.0
     </a>   
 </li>
+<li>
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.1/AutoArchivePlusSetupV1.1.exe">
+        老贼盒子Plusv 1.1
+    </a>   
+</li>
 </ul>
