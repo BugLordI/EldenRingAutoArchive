@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{36244959-1B33-496A-B73B-E9FA819A6EC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamTool", "SteamTool\SteamTool.csproj", "{745BC86F-A07F-41B1-BAF0-571CD47169F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,14 +44,20 @@ Global
 		{36244959-1B33-496A-B73B-E9FA819A6EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{36244959-1B33-496A-B73B-E9FA819A6EC6}.x64|Any CPU.ActiveCfg = Debug|Any CPU
 		{36244959-1B33-496A-B73B-E9FA819A6EC6}.x64|Any CPU.Build.0 = Debug|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|Any CPU.ActiveCfg = Debug|Any CPU
+		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
-		RESX_NeutralResourcesLanguage = zh-CN
-		RESX_ConfirmAddLanguageFile = True
 		RESX_CultureCountyOverrides = en=en-BI
+		RESX_ConfirmAddLanguageFile = True
+		RESX_NeutralResourcesLanguage = zh-CN
+		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 	EndGlobalSection
 EndGlobal

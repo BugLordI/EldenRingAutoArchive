@@ -1,12 +1,11 @@
-﻿using AutoArchive.DataBase;
-using AutoArchivePlus.Common;
+﻿using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using Newtonsoft.Json;
+using SteamTool;
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -32,6 +31,7 @@ namespace AutoArchivePlus
         [STAThread]
         static void Main(string[] args)
         {
+            Steam.GetInstalledApps();
             iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconPath);
             if (!Directory.Exists(iconPath))
             {
