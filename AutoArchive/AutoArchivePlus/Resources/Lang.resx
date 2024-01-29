@@ -289,4 +289,16 @@
   <data name="SaveSettings" xml:space="preserve">
     <value>保存设置</value>
   </data>
+  <data name="Performance" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="ShowEffectShadow" xml:space="preserve">
+    <value>显示窗口阴影</value>
+  </data>
+  <data name="SettingRestartTip" xml:space="preserve">
+    <value>设置已经更新，是否重启程序?</value>
+  </data>
+  <data name="ShowEffectShadowHelpInfo" xml:space="preserve">
+    <value>显示主窗口的阴影会占用大量GPU，根据需要选择开启</value>
+  </data>
 </root>

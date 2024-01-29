@@ -107,6 +107,35 @@
                     Foreground="#FF0C0C0C"
                     IsChecked="{Binding AppSetting.AlwaysAskWhenExits}" />
             </StackPanel>
+            <TextBlock
+                Width="30"
+                Margin="9,5,0,0"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                FontWeight="DemiBold"
+                Text="{Binding [Performance], Source={x:Static language:LanguageManager.Instance}}"
+                TextAlignment="Center" />
+            <StackPanel
+                Height="42"
+                Margin="9,6,9,0"
+                Background="White"
+                Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox
+                        Margin="6,0,0,0"
+                        BorderBrush="#FFEC6868"
+                        Content="{Binding [ShowEffectShadow], Source={x:Static language:LanguageManager.Instance}}"
+                        Foreground="#FF0C0C0C"
+                        IsChecked="{Binding AppSetting.ShowEffectShadow}" />
+                    <Image
+                        Width="14"
+                        Height="14"
+                        Margin="3,0,0,0"
+                        Cursor="Hand"
+                        Source="/Resources/img/help.png"
+                        ToolTip="{Binding [ShowEffectShadowHelpInfo], Source={x:Static language:LanguageManager.Instance}}" />
+                </StackPanel>
+            </StackPanel>
         </StackPanel>
         <Canvas
             Grid.Row="1"
@@ -122,7 +151,8 @@
                 HorizontalAlignment="Right"
                 Command="{Binding SaveSettings}"
                 CommandParameter="{Binding ElementName=MessagePanel}"
-                Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}" />
+                Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}"
+                IsEnabled="{Binding IsEnable}" />
         </DockPanel>
     </Grid>
 </Window>

@@ -2,12 +2,12 @@
 using System;
 using System.Windows;
 using System.Windows.Interop;
-using Tools;
 using AutoArchivePlus.WindowTools;
-using HandyControl.Controls;
 using Window = System.Windows.Window;
 using MessageBox = System.Windows.MessageBox;
 using AutoArchivePlus.Common;
+using System.Windows.Media.Effects;
+using System.Windows.Media;
 
 namespace AutoArchivePlus.Forms
 {
@@ -39,6 +39,17 @@ namespace AutoArchivePlus.Forms
 
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            if(App.AppSetting.ShowEffectShadow)
+            {
+                DropShadowEffect effect = new DropShadowEffect()
+                {
+                    BlurRadius = 10,
+                    Opacity = 0.9,
+                    ShadowDepth = 0,
+                    Color = Color.FromRgb(245, 219, 163)
+                };
+                this.Effect = effect;
+            }
             IntPtr hwnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hwnd).AddHook(new HwndSourceHook(WndProc));
         }

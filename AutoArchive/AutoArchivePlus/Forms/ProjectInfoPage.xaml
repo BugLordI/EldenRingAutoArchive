@@ -21,13 +21,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <UserControl.Effect>
-        <DropShadowEffect
-            BlurRadius="10"
-            Opacity="0.9"
-            ShadowDepth="1"
-            Color="#FFE3EDE4" />
-    </UserControl.Effect>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="133" />

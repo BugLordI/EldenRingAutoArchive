@@ -309,4 +309,16 @@
   <data name="SaveSettings" xml:space="preserve">
     <value>Save Settings</value>
   </data>
+  <data name="Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="ShowEffectShadow" xml:space="preserve">
+    <value>ShowEffectShadow</value>
+  </data>
+  <data name="SettingRestartTip" xml:space="preserve">
+    <value>The settings have been updated. Do you want to restart the program?</value>
+  </data>
+  <data name="ShowEffectShadowHelpInfo" xml:space="preserve">
+    <value>Displaying the shadow of the main window will occupy a lot of GPU, choose to turn it on as needed</value>
+  </data>
 </root>

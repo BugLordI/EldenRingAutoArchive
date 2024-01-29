@@ -85,7 +85,6 @@ namespace AutoArchivePlus
             Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
             if (config == null)
             {
-                appSetting = new AppSetting();
                 config = new Config()
                 {
                     Id = Guid.NewGuid().ToString(),

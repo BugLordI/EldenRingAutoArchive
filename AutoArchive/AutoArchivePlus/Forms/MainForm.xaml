@@ -53,13 +53,6 @@
             NonClientFrameEdges="None"
             ResizeBorderThickness="10" />
     </WindowChrome.WindowChrome>
-    <Window.Effect>
-        <DropShadowEffect
-            BlurRadius="10"
-            Opacity="0.9"
-            ShadowDepth="0"
-            Color="#FFF5DBA3" />
-    </Window.Effect>
     <Grid
         x:Name="grid"
         Margin="5"
