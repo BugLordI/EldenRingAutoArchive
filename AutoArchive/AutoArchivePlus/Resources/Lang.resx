@@ -301,4 +301,7 @@
   <data name="ShowEffectShadowHelpInfo" xml:space="preserve">
     <value>显示主窗口的阴影会占用大量GPU，根据需要选择开启</value>
   </data>
+  <data name="InputOrSelect" xml:space="preserve">
+    <value>输入或选择</value>
+  </data>
 </root>

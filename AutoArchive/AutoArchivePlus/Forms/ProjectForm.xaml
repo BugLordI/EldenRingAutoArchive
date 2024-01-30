@@ -5,6 +5,7 @@
     xmlns:component="clr-namespace:AutoArchivePlus.Component"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:language="clr-namespace:AutoArchivePlus.Language"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
@@ -83,18 +84,26 @@
                 FontSize="14"
                 Text="{Binding [GameName], Source={x:Static language:LanguageManager.Instance}}"
                 TextAlignment="Right" />
-            <hc:TextBox
+            <hc:ComboBox
                 x:Name="gameName"
                 Grid.Row="0"
                 Grid.Column="2"
                 Height="26"
                 Margin="10,0,14,0"
-                VerticalAlignment="Center"
-                VerticalContentAlignment="Center"
-                BorderBrush="LightGray"
-                BorderThickness="2,2,2,2"
+                hc:InfoElement.Placeholder="{Binding [InputOrSelect], Source={x:Static language:LanguageManager.Instance}}"
+                AutoComplete="True"
+                IsEditable="True"
+                IsTextSearchEnabled="True"
+                ItemsSource="{Binding DataList}"
+                ShowClearButton="True"
                 Text="{Binding GameName, Mode=TwoWay}"
-                ToolTip="{Binding Text, ElementName=gameName}" />
+                ToolTip="{Binding Text, ElementName=gameName}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ProjectSeletionChanged}" CommandParameter="{Binding ElementName=gameName, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </hc:ComboBox>
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
@@ -168,12 +177,16 @@
                 FontSize="12"
                 FontStyle="Italic"
                 Foreground="#409EFF"
-                MouseDown="chooseGamePath_MouseDown"
                 MouseEnter="commonLink_MouseEnter"
                 MouseLeave="commonLink_MouseLeave">
                 <Underline>
                     <Run Text="{Binding [ChooseGamePath], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
                 </Underline>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding ChooseGamePath}" CommandParameter="{Binding ElementName=projectForm}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </TextBlock>
             <TextBlock
                 x:Name="chooseArchivePath"
@@ -186,12 +199,16 @@
                 FontSize="12"
                 FontStyle="Italic"
                 Foreground="#409EFF"
-                MouseDown="chooseArchivePath_MouseDown"
                 MouseEnter="commonLink_MouseEnter"
                 MouseLeave="commonLink_MouseLeave">
                 <Underline>
                     <Run Text="{Binding [ChooseArchivePath], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
                 </Underline>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding ChooseArchivePath}" CommandParameter="{Binding ElementName=projectForm}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </TextBlock>
             <TextBlock
                 x:Name="chooseBackupPath"
@@ -204,12 +221,16 @@
                 FontSize="12"
                 FontStyle="Italic"
                 Foreground="#409EFF"
-                MouseDown="chooseBackupPath_MouseDown"
                 MouseEnter="commonLink_MouseEnter"
                 MouseLeave="commonLink_MouseLeave">
                 <Underline>
                     <Run Text="{Binding [ChooseBackupPath], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
                 </Underline>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding ChooseBackupPath}" CommandParameter="{Binding ElementName=projectForm}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </TextBlock>
             <Button
                 Grid.Row="4"

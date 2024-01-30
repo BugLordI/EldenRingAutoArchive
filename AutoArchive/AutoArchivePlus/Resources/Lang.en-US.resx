@@ -321,4 +321,7 @@
   <data name="ShowEffectShadowHelpInfo" xml:space="preserve">
     <value>Displaying the shadow of the main window will occupy a lot of GPU, choose to turn it on as needed</value>
   </data>
+  <data name="InputOrSelect" xml:space="preserve">
+    <value>Input Or Select One Item</value>
+  </data>
 </root>

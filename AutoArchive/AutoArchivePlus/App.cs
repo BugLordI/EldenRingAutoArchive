@@ -6,6 +6,7 @@ using AutoArchivePlus.Model;
 using Newtonsoft.Json;
 using SteamTool;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -24,19 +25,22 @@ namespace AutoArchivePlus
 
         private static AppSetting appSetting = new AppSetting();
 
+        public static List<SteamAppInfo> InstalledApps { get; private set; } = new List<SteamAppInfo>();
+
         public static string ICON_PATH { get => iconPath; }
 
         public static AppSetting AppSetting { get => appSetting;}
 
+
         [STAThread]
         static void Main(string[] args)
         {
-            Steam.GetInstalledApps();
             iconPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconPath);
             if (!Directory.Exists(iconPath))
             {
                 Directory.CreateDirectory(iconPath);
             }
+            loadInstalledApps();
             setLanguage(args);
             loadSetting();
             Boolean ret;
@@ -99,6 +103,15 @@ namespace AutoArchivePlus
                 String content = config.Content;
                 appSetting = JsonConvert.DeserializeObject<AppSetting>(content);
             }
+        }
+
+        static void loadInstalledApps()
+        {
+            Thread thread = new Thread(() =>
+            {
+                InstalledApps = Steam.GetInstalledApps();
+            });
+            thread.Start();
         }
     }
 }

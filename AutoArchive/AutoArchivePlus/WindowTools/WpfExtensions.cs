@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AutoArchivePlus.WindowTools
+﻿namespace AutoArchivePlus.WindowTools
 {
     public static class WpfExtensions
     {
@@ -16,17 +12,16 @@ namespace AutoArchivePlus.WindowTools
         private class OldWindow : System.Windows.Forms.IWin32Window
         {
             private readonly System.IntPtr _handle;
+
             public OldWindow(System.IntPtr handle)
             {
                 _handle = handle;
             }
 
-            #region IWin32Window Members
             System.IntPtr System.Windows.Forms.IWin32Window.Handle
             {
                 get { return _handle; }
             }
-            #endregion
         }
     }
 }

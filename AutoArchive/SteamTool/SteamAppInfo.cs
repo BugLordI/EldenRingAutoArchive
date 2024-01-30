@@ -10,8 +10,11 @@ namespace SteamTool
 
         private String installdir;
 
+        private String executablePath;
+
         public string Appid { get => appid; set => appid = value; }
         public string Name { get => name; set => name = value; }
         public string Installdir { get => installdir; set => installdir = value; }
+        public string ExecutablePath { get => executablePath; set => executablePath = value; }
     }
 }

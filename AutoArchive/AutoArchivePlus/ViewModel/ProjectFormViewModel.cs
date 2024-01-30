@@ -5,13 +5,19 @@ using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
+using AutoArchivePlus.WindowTools;
+using SteamTool;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace AutoArchivePlus.ViewModel
@@ -26,8 +32,13 @@ namespace AutoArchivePlus.ViewModel
 
         private String gameBackupPath;
 
+        private ObservableCollection<String> dataList;
+
+        private SteamAppInfo selected;
+
         public ProjectFormViewModel()
         {
+            DataList = new ObservableCollection<String>(App.InstalledApps.Select(e=>e.Name));
         }
 
         #region Commands
@@ -54,7 +65,63 @@ namespace AutoArchivePlus.ViewModel
             }
         });
 
-        public String extraIcon(String installPath, String name)
+        public ICommand ProjectSeletionChanged => new ControlCommand(selectedItem =>
+        {
+            if (selectedItem is String item)
+            {
+                selected = App.InstalledApps.Where(e => e.Name.Contains(item)).FirstOrDefault();
+                if (File.Exists(selected.ExecutablePath))
+                {
+                    GameInstallPath = new FileInfo(selected.ExecutablePath).FullName;
+                }
+            }
+        });
+
+
+        public ICommand ChooseGamePath => new ControlCommand(obj =>
+        {
+            Window window = obj as Window;
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            openFileDialog.Filter = "可运行程序|*.exe";
+            if (selected != null)
+            {
+                openFileDialog.InitialDirectory = new DirectoryInfo(selected.Installdir).FullName;
+                openFileDialog.FileName = new FileInfo(selected.ExecutablePath).Name;
+            }
+            var result = openFileDialog.ShowDialog(window.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                GameInstallPath = openFileDialog.FileName;
+            }
+        });
+
+        public ICommand ChooseArchivePath => new ControlCommand(obj =>
+        {
+            Window window = obj as Window;
+            System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            var result = folderBrowser.ShowDialog(window.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                GameArchivePath = folderBrowser.SelectedPath;
+            }
+        });
+
+        public ICommand ChooseBackupPath => new ControlCommand(obj =>
+        {
+            Window window = obj as Window;
+            System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            var result = folderBrowser.ShowDialog(window.GetIWin32Window());
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                GameBackupPath = folderBrowser.SelectedPath;
+            }
+        });
+
+
+        #endregion
+
+
+        private String extraIcon(String installPath, String name)
         {
             if (installPath == null)
                 return null;
@@ -64,8 +131,6 @@ namespace AutoArchivePlus.ViewModel
                 icon.Save(fs);
             return iconLocation;
         }
-
-        #endregion
 
         private bool dataCheck()
         {
@@ -134,6 +199,16 @@ namespace AutoArchivePlus.ViewModel
             set
             {
                 gameBackupPath = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<String> DataList
+        {
+            get => dataList;
+            set
+            {
+                dataList = value;
                 OnPropertyChanged();
             }
         }
