@@ -1,0 +1,56 @@
+[
+  {
+    "AppId": "1245620",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/EldenRing/",
+    "SavedFileName": "ER0000.sl2",
+    "Executable": "/Game/start_protected_game.exe"
+  },
+  {
+    "AppId": "3590",
+    "SavedPath": "%CommonApplicationData%/PopCap Games/PlantsVsZombies/userdata/",
+    "SavedFileName": null,
+    "Executable": "/PlantsVsZombies.exe"
+  },
+  {
+    "AppId": "1501750",
+    "SavedPath": "%USERPROFILE%/AppData/Local/LOTF2/Saved/SaveGames/",
+    "SavedFileName": "*.sav",
+    "Executable": "/LOTF2.exe"
+  },
+  {
+    "AppId": "570940",
+    "SavedPath": "%USERPROFILE%/Documents/NBGI/DARK SOULS REMASTERED/",
+    "SavedFileName": "*.sl2",
+    "Executable": "/DarkSoulsRemastered.exe"
+  },
+  {
+    "AppId": "335300",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/DarkSoulsII/",
+    "SavedFileName": "*.sl2",
+    "Executable": "/Game/DarkSoulsII.exe"
+  },
+  {
+    "AppId": "374320",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/DarkSoulsIII/",
+    "SavedFileName": "*.sl2",
+    "Executable": "/Game/DarkSoulsIII.exe"
+  },
+  {
+    "AppId": "814380",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/Sekiro/",
+    "SavedFileName": "S0000.sl2",
+    "Executable": "/sekiro.exe"
+  },
+  {
+    "AppId": "701160",
+    "SavedPath": "%USERPROFILE%/AppData/LocalLow/noio/KingdomTwoCrowns/Release/",
+    "SavedFileName": null,
+    "Executable": "/KingdomTwoCrowns.exe"
+  },
+  {
+    "AppId": "388080",
+    "SavedPath": null,
+    "SavedFileName": null,
+    "Executable": "/BorderlessGaming.exe"
+  }
+]

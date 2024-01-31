@@ -30,7 +30,7 @@ namespace AutoArchivePlus.Forms
             ProjectFormViewModel dc = DataContext as ProjectFormViewModel;
             if (String.IsNullOrEmpty(gameBackupPath.Text))
             {
-                String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AutoArchive");
+                String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AutoArchive");
                 dc.GameBackupPath = des;
             }
         }

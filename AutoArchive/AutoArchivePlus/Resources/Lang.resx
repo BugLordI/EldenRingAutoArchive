@@ -304,4 +304,7 @@
   <data name="InputOrSelect" xml:space="preserve">
     <value>输入或选择</value>
   </data>
+  <data name="RunnableProgram" xml:space="preserve">
+    <value>可运行程序</value>
+  </data>
 </root>

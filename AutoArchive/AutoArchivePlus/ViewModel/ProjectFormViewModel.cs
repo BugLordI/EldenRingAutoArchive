@@ -74,6 +74,15 @@ namespace AutoArchivePlus.ViewModel
                 {
                     GameInstallPath = new FileInfo(selected.ExecutablePath).FullName;
                 }
+                if (Directory.Exists(selected.ArchivePath))
+                {
+                    GameArchivePath = new DirectoryInfo(selected.ArchivePath).FullName;
+                }
+            }
+            else
+            {
+                GameInstallPath = null;
+                GameArchivePath = null;
             }
         });
 
@@ -82,7 +91,7 @@ namespace AutoArchivePlus.ViewModel
         {
             Window window = obj as Window;
             System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            openFileDialog.Filter = "可运行程序|*.exe";
+            openFileDialog.Filter = $"{LanguageManager.Instance["RunnableProgram"]}|*.exe";
             if (selected != null)
             {
                 openFileDialog.InitialDirectory = new DirectoryInfo(selected.Installdir).FullName;
@@ -99,6 +108,7 @@ namespace AutoArchivePlus.ViewModel
         {
             Window window = obj as Window;
             System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+            folderBrowser.SelectedPath = new DirectoryInfo(selected.ArchivePath).FullName;
             var result = folderBrowser.ShowDialog(window.GetIWin32Window());
             if (result == System.Windows.Forms.DialogResult.OK)
             {

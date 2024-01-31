@@ -92,6 +92,8 @@
                 Margin="10,0,14,0"
                 hc:InfoElement.Placeholder="{Binding [InputOrSelect], Source={x:Static language:LanguageManager.Instance}}"
                 AutoComplete="True"
+                BorderBrush="LightGray"
+                BorderThickness="2,2,2,2"
                 IsEditable="True"
                 IsTextSearchEnabled="True"
                 ItemsSource="{Binding DataList}"
@@ -112,7 +114,7 @@
                 FontSize="14"
                 Text="{Binding [GameInstallPath], Source={x:Static language:LanguageManager.Instance}}"
                 TextAlignment="Right" />
-            <TextBox
+            <hc:TextBox
                 x:Name="gameInstallPath"
                 Grid.Row="1"
                 Grid.Column="2"

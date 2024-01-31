@@ -324,4 +324,7 @@
   <data name="InputOrSelect" xml:space="preserve">
     <value>Input Or Select One Item</value>
   </data>
+  <data name="RunnableProgram" xml:space="preserve">
+    <value>Runnable program</value>
+  </data>
 </root>
