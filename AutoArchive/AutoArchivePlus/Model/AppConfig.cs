@@ -4,7 +4,7 @@ using System;
 namespace AutoArchivePlus.Model
 {
     [Serializable]
-    public class AppSetting: BaseEntity
+    public class AppConfig: BaseEntity
     {
         private bool autoCheckStartProgram;
         private bool alwaysAskWhenExits;
@@ -42,7 +42,7 @@ namespace AutoArchivePlus.Model
 
         public override bool Equals(object obj)
         {
-            if (obj != null && obj is AppSetting that)
+            if (obj != null && obj is AppConfig that)
             {
                 if (that.AutoCheckStartProgram == this.AutoCheckStartProgram
                     && that.AlwaysAskWhenExits == this.AlwaysAskWhenExits

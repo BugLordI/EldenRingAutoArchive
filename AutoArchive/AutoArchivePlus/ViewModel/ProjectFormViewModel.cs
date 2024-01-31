@@ -1,4 +1,5 @@
 ﻿using AutoArchive.DataBase;
+using AutoArchive.Tools;
 using AutoArchivePlus.Command;
 using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
@@ -11,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -26,9 +28,15 @@ namespace AutoArchivePlus.ViewModel
     {
         private String gameName;
 
+        private String gameNameErrorTip;
+
         private String gameInstallPath;
 
+        private String gameInstallPathErrorTip;
+
         private String gameArchivePath;
+
+        private String gameArchivePathErrorTip;
 
         private String gameBackupPath;
 
@@ -67,6 +75,9 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand ProjectSeletionChanged => new ControlCommand(selectedItem =>
         {
+            GameNameErrorTip = String.Empty;
+            GameInstallPath = null;
+            GameArchivePath = null;
             if (selectedItem is String item)
             {
                 selected = App.InstalledApps.Where(e => e.Name.Contains(item)).FirstOrDefault();
@@ -78,11 +89,6 @@ namespace AutoArchivePlus.ViewModel
                 {
                     GameArchivePath = new DirectoryInfo(selected.ArchivePath).FullName;
                 }
-            }
-            else
-            {
-                GameInstallPath = null;
-                GameArchivePath = null;
             }
         });
 
@@ -108,7 +114,10 @@ namespace AutoArchivePlus.ViewModel
         {
             Window window = obj as Window;
             System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
-            folderBrowser.SelectedPath = new DirectoryInfo(selected.ArchivePath).FullName;
+            if (selected != null && selected.ArchivePath != null)
+            {
+                folderBrowser.SelectedPath = new DirectoryInfo(selected.ArchivePath).FullName;
+            }
             var result = folderBrowser.ShowDialog(window.GetIWin32Window());
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -127,6 +136,40 @@ namespace AutoArchivePlus.ViewModel
             }
         });
 
+        public ICommand TextChanged => new ControlCommand(obj =>
+        {
+            TextBox textBox = obj as TextBox;
+            if (!String.IsNullOrEmpty(textBox.Text))
+            {
+                if (textBox.Name == "gameArchivePath")
+                {
+                    GameArchivePathErrorTip = String.Empty;
+                }
+                else if (textBox.Name == "gameInstallPath")
+                {
+                    GameInstallPathErrorTip = String.Empty;
+                    if (!File.Exists(textBox.Text))
+                    {
+                        GameInstallPathErrorTip = LanguageManager.Instance["GameInstallPathNotExistTip"];
+                    }
+                }
+            }
+        });
+
+
+        public ICommand GameArchivePathHelp => new ControlCommand(_ =>
+        {
+            AppSetting appSetting = new AppSetting("AppConfig.json");
+            String url = appSetting["GameArchivePathHelpUrl"];
+            if (url != null)
+            {
+                try
+                {
+                    Process.Start("explorer.exe", url);
+                }
+                catch { }
+            }
+        });
 
         #endregion
 
@@ -144,28 +187,23 @@ namespace AutoArchivePlus.ViewModel
 
         private bool dataCheck()
         {
-            StringBuilder msg = new StringBuilder();
+            bool result = true;
             if (string.IsNullOrEmpty(gameName))
             {
-                msg.Append(LanguageManager.Instance["ProjectNameCannotEmpty"]).Append("\n");
+                GameNameErrorTip = LanguageManager.Instance["ProjectNameCannotEmpty"];
+                result = false;
             }
             if (string.IsNullOrEmpty(gameInstallPath))
             {
-                msg.Append(LanguageManager.Instance["ProjectInstallPathCannotEmpty"]).Append("\n");
+                GameInstallPathErrorTip = LanguageManager.Instance["ProjectInstallPathCannotEmpty"];
+                result = false;
             }
             if (string.IsNullOrEmpty(gameArchivePath))
             {
-                msg.Append(LanguageManager.Instance["ChooseDataSourcePath"]).Append("\n");
+                GameArchivePathErrorTip = LanguageManager.Instance["ChooseDataSourcePath"];
+                result = false;
             }
-            if (String.IsNullOrEmpty(gameBackupPath))
-            {
-                msg.Append(LanguageManager.Instance["ChooseBackupSavePath"]).Append("\n");
-            }
-            if (msg.Length > 0)
-            {
-                App.GlobalMessage(msg.ToString(), MessageTypeEnum.ERROR);
-            }
-            return msg.Length == 0;
+            return result;
         }
 
         #region Propertites
@@ -219,6 +257,36 @@ namespace AutoArchivePlus.ViewModel
             set
             {
                 dataList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GameArchivePathErrorTip
+        {
+            get => gameArchivePathErrorTip;
+            set
+            {
+                gameArchivePathErrorTip = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GameInstallPathErrorTip
+        {
+            get => gameInstallPathErrorTip;
+            set
+            {
+                gameInstallPathErrorTip = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string GameNameErrorTip
+        {
+            get => gameNameErrorTip;
+            set
+            {
+                gameNameErrorTip = value;
                 OnPropertyChanged();
             }
         }

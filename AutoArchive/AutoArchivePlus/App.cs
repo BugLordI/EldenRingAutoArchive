@@ -23,13 +23,13 @@ namespace AutoArchivePlus
 
         private static MainForm mainForm;
 
-        private static AppSetting appSetting = new AppSetting();
+        private static AppConfig appSetting = new AppConfig();
 
         public static List<SteamAppInfo> InstalledApps { get; private set; } = new List<SteamAppInfo>();
 
         public static string ICON_PATH { get => iconPath; }
 
-        public static AppSetting AppSetting { get => appSetting;}
+        public static AppConfig AppSetting { get => appSetting;}
 
 
         [STAThread]
@@ -101,7 +101,7 @@ namespace AutoArchivePlus
             else
             {
                 String content = config.Content;
-                appSetting = JsonConvert.DeserializeObject<AppSetting>(content);
+                appSetting = JsonConvert.DeserializeObject<AppConfig>(content);
             }
         }
 

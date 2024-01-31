@@ -59,5 +59,15 @@ namespace AutoArchive.Tools
             }
             return ret;
         }
+
+        public static string SanitizePath(string path)
+        {
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            foreach (char invalidChar in invalidChars)
+            {
+                path = path.Replace(invalidChar.ToString(), " ");
+            }
+            return path;
+        }
     }
 }

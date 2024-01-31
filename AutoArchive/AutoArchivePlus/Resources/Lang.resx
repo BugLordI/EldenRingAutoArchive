@@ -307,4 +307,10 @@
   <data name="RunnableProgram" xml:space="preserve">
     <value>可运行程序</value>
   </data>
+  <data name="GameInstallPathNotExistTip" xml:space="preserve">
+    <value>游戏路径错误：路径不存在</value>
+  </data>
+  <data name="GameArchivePathHelpInfoTip" xml:space="preserve">
+    <value>不知道存档路径?点击查看</value>
+  </data>
 </root>

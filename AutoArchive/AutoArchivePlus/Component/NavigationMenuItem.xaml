@@ -1,61 +1,63 @@
-﻿<UserControl x:Class="AutoArchivePlus.Component.NavigationMenuItem"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
-             xmlns:language="clr-namespace:AutoArchivePlus.Language"
-             mc:Ignorable="d" 
-             d:DesignHeight="38" 
-             d:DesignWidth="196"
-             x:Name="self" Loaded="self_Loaded"
-             >
+﻿<UserControl
+    x:Class="AutoArchivePlus.Component.NavigationMenuItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converter="clr-namespace:AutoArchivePlus.Converter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:language="clr-namespace:AutoArchivePlus.Language"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="self"
+    d:DesignHeight="38"
+    d:DesignWidth="196"
+    Loaded="self_Loaded"
+    mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
-            <converter:NavigationMenuItemConvert x:Key="convert"/>
+            <converter:NavigationMenuItemConvert x:Key="convert" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml"/>
+                <ResourceDictionary Source="../Resources/Styles/NavigationBarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
     <UserControl.Background>
-        <SolidColorBrush Color="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"/>
+        <SolidColorBrush Color="{Binding ElementName=self, Path=IsSelect, Converter={StaticResource convert}}" />
     </UserControl.Background>
-    <Button Style="{StaticResource NavigationBtn}" 
-            Height="38"
-            x:Name="defaultMenu"
-            Command="{Binding ItemClickedCommand,ElementName=self}"
-            CommandParameter="{Binding DataContext,ElementName=self}" 
-            ContextMenuOpening="defaultMenu_ContextMenuOpening"
-            >
+    <Button
+        x:Name="defaultMenu"
+        Height="38"
+        Command="{Binding ItemClickedCommand, ElementName=self}"
+        CommandParameter="{Binding DataContext, ElementName=self}"
+        ContextMenuOpening="defaultMenu_ContextMenuOpening"
+        Style="{StaticResource NavigationBtn}">
         <Button.ContextMenu>
             <ContextMenu>
-                <MenuItem Width="160" 
-                          Header="{Binding [CloseProjectTab],Source={x:Static language:LanguageManager.Instance}}"
-                          x:Name="closeProgramMenu"
-                         />
+                <MenuItem
+                    x:Name="closeProgramMenu"
+                    Width="160"
+                    Header="{Binding [CloseProjectTab], Source={x:Static language:LanguageManager.Instance}}" />
             </ContextMenu>
         </Button.ContextMenu>
         <Button.Content>
-            <Border
-                    BorderThickness="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"
-                    BorderBrush="#409EFF">
-                <StackPanel Orientation="Horizontal" 
-                            Background="Transparent"
-                            Width="{Binding ActualWidth,ElementName=defaultMenu}"
-                            Height="{Binding ActualHeight,ElementName=defaultMenu}"
-                            >
-                    <Image Source="{Binding ItemIcon,ElementName=self}" 
-                           Style="{StaticResource NavigationIcon}"
-                           Width="{Binding ItemIconWidth,ElementName=self}"
-                           Height="{Binding ItemIconHeight,ElementName=self}"
-                           x:Name="icon"
-                     />
-                    <TextBlock Text="{Binding ItemName,ElementName=self}" 
-                               Style="{StaticResource NavigationText}" 
-                               FontSize="13"
-                               Foreground="{Binding ElementName=self,Path=IsSelect,Converter={StaticResource convert}}"
-                     />
+            <Border BorderBrush="#409EFF" BorderThickness="{Binding ElementName=self, Path=IsSelect, Converter={StaticResource convert}}">
+                <StackPanel
+                    Width="{Binding ActualWidth, ElementName=defaultMenu}"
+                    Height="{Binding ActualHeight, ElementName=defaultMenu}"
+                    Background="Transparent"
+                    Orientation="Horizontal">
+                    <Image
+                        x:Name="icon"
+                        Width="{Binding ItemIconWidth, ElementName=self}"
+                        Height="{Binding ItemIconHeight, ElementName=self}"
+                        Source="{Binding ItemIcon, ElementName=self}"
+                        Style="{StaticResource NavigationIcon}" />
+                    <TextBlock
+                        MaxWidth="163"
+                        FontSize="13"
+                        Foreground="{Binding ElementName=self, Path=IsSelect, Converter={StaticResource convert}}"
+                        Style="{StaticResource NavigationText}"
+                        Text="{Binding ItemName, ElementName=self}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{Binding ItemName, ElementName=self}" />
                 </StackPanel>
             </Border>
         </Button.Content>

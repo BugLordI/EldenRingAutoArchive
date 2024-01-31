@@ -327,4 +327,10 @@
   <data name="RunnableProgram" xml:space="preserve">
     <value>Runnable program</value>
   </data>
+  <data name="GameInstallPathNotExistTip" xml:space="preserve">
+    <value>Game path error: path does not exist</value>
+  </data>
+  <data name="GameArchivePathHelpInfoTip" xml:space="preserve">
+    <value>Don’t know the archive path? Click to view</value>
+  </data>
 </root>

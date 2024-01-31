@@ -20,7 +20,7 @@ namespace AutoArchivePlus.ViewModel
     public class AppSettingViewModel : BaseViewModel
     {
 
-        private AppSetting appSetting;
+        private AppConfig appSetting;
 
         private bool isEnable;
 
@@ -35,7 +35,7 @@ namespace AutoArchivePlus.ViewModel
             IsEnable = !AppSetting.Equals(App.AppSetting);
         }
 
-        public AppSetting AppSetting
+        public AppConfig AppSetting
         {
             get
             {

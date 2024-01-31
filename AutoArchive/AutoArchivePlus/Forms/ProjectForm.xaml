@@ -11,8 +11,8 @@
     xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
     x:Name="projectForm"
     Title="ProjectForm"
-    Width="650"
-    Height="350"
+    Width="666"
+    Height="370"
     AllowsTransparency="True"
     Background="Transparent"
     Loaded="projectForm_Loaded"
@@ -107,6 +107,14 @@
                 </i:Interaction.Triggers>
             </hc:ComboBox>
             <TextBlock
+                Grid.Row="0"
+                Grid.Column="2"
+                Height="16"
+                Margin="10,48,0,0"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="{Binding GameNameErrorTip}" />
+            <TextBlock
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -122,10 +130,25 @@
                 Margin="10,0,14,0"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
+                hc:InfoElement.ShowClearButton="True"
                 BorderBrush="LightGray"
                 BorderThickness="2,2,2,2"
                 Text="{Binding GameInstallPath, Mode=TwoWay}"
-                ToolTip="{Binding Text, ElementName=gameInstallPath}" />
+                ToolTip="{Binding Text, ElementName=gameInstallPath}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding TextChanged}" CommandParameter="{Binding ElementName=gameInstallPath}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </hc:TextBox>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="2"
+                Height="16"
+                Margin="10,48,0,0"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="{Binding GameInstallPathErrorTip}" />
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="0"
@@ -146,7 +169,21 @@
                 BorderThickness="2,2,2,2"
                 IsReadOnly="True"
                 Text="{Binding GameArchivePath, Mode=TwoWay}"
-                ToolTip="{Binding Text, ElementName=gameArchivePath}" />
+                ToolTip="{Binding Text, ElementName=gameArchivePath}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding TextChanged}" CommandParameter="{Binding ElementName=gameArchivePath}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="2"
+                Height="16"
+                Margin="10,48,0,0"
+                VerticalAlignment="Center"
+                Foreground="Red"
+                Text="{Binding GameArchivePathErrorTip}" />
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="0"
@@ -212,6 +249,21 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBlock>
+            <Image
+                Grid.Row="2"
+                Grid.Column="3"
+                Width="14"
+                Height="14"
+                Margin="74,6,0,0"
+                Cursor="Hand"
+                Source="/Resources/img/help.png"
+                ToolTip="{Binding [GameArchivePathHelpInfoTip], Source={x:Static language:LanguageManager.Instance}}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonUp">
+                        <i:InvokeCommandAction Command="{Binding GameArchivePathHelp}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Image>
             <TextBlock
                 x:Name="chooseBackupPath"
                 Grid.Row="3"
