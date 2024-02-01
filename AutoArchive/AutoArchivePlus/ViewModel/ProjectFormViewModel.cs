@@ -179,9 +179,21 @@ namespace AutoArchivePlus.ViewModel
             if (installPath == null)
                 return null;
             Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
-            String iconLocation = App.ICON_PATH + $"\\{name}.ico";
-            using (FileStream fs = new FileStream(iconLocation, FileMode.Create))
-                icon.Save(fs);
+            //Icon icon = Icon.ExtractAssociatedIcon(installPath);
+            String iconLocation = App.ICON_PATH + $"\\{name}.Png";
+            //using (FileStream fs = new FileStream(iconLocation, FileMode.Create))
+            //    icon.Save(fs);
+            Bitmap originalImage = icon.ToBitmap();
+            Bitmap resizedImage = new Bitmap(100, 100);
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                //resizedImage.SetResolution(300, 300);
+                graphics.DrawImage(originalImage, 0, 0, 100, 100);
+            }
+            resizedImage.Save(iconLocation, System.Drawing.Imaging.ImageFormat.Png);
             return iconLocation;
         }
 
