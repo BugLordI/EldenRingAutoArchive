@@ -36,7 +36,7 @@
     </a>   
 </li>
 <li>
-    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.2/AuroArchivePlusSetupV1.2.exe">
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.2/AutoArchivePlusV1.2.exe">
         老贼盒子Plusv 1.2
     </a>   
 </li>
