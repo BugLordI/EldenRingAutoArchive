@@ -25,8 +25,6 @@ namespace AutoArchivePlus.ViewModel
 
         private ObservableCollection<Object> backups;
 
-        private Timer timer;
-
         public MainFormViewModel()
         {
             RunningProjectsManager.OnRunningSubscribe(OnRunningProject);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoArchivePlus.Language;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -64,7 +65,7 @@ namespace AutoArchivePlus.Forms
         {
             if (timing == taskInterval)
             {
-                BackupButtonCommand?.Execute("自动备份");
+                BackupButtonCommand?.Execute(LanguageManager.Instance["AutoBackupRemark"]);
                 timing = 0;
             }
             else

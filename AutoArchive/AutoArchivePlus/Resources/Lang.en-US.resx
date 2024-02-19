@@ -354,4 +354,7 @@
   <data name="UpdateGameInfoLiabaryTip" xml:space="preserve">
     <value>The game information database will be updated soon. Do you want to continue?</value>
   </data>
+  <data name="AutoBackupRemark" xml:space="preserve">
+    <value>AutoBackup</value>
+  </data>
 </root>

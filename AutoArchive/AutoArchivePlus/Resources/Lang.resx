@@ -334,4 +334,7 @@
   <data name="UpdateGameInfoLiabaryTip" xml:space="preserve">
     <value>即将更新游戏信息库，是否继续？</value>
   </data>
+  <data name="AutoBackupRemark" xml:space="preserve">
+    <value>自动备份</value>
+  </data>
 </root>
