@@ -313,4 +313,25 @@
   <data name="GameArchivePathHelpInfoTip" xml:space="preserve">
     <value>不知道存档路径?点击查看</value>
   </data>
+  <data name="QuickBackup" xml:space="preserve">
+    <value>快捷备份</value>
+  </data>
+  <data name="EnableQuickBackup" xml:space="preserve">
+    <value>开启快捷备份</value>
+  </data>
+  <data name="ShortcutKeyTip" xml:space="preserve">
+    <value>快捷键：/</value>
+  </data>
+  <data name="QuickBackupRemark" xml:space="preserve">
+    <value>快捷备份</value>
+  </data>
+  <data name="UpdateGameInfoLibary" xml:space="preserve">
+    <value>更新游戏信息库</value>
+  </data>
+  <data name="UpdateGameInfoLibaryToolTip" xml:space="preserve">
+    <value>当游戏安装路径无法自动填充或者填充错误时，点此进行更新修复</value>
+  </data>
+  <data name="UpdateGameInfoLiabaryTip" xml:space="preserve">
+    <value>即将更新游戏信息库，是否继续？</value>
+  </data>
 </root>

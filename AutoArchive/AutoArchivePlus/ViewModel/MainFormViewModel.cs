@@ -90,24 +90,27 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand BackupCommand => new ControlCommand(obj =>
         {
-            DateTime now = DateTime.Now;
-            String dirName = FileUtil.SanitizePath(CurrentProject.Name);
-            String desPath = Path.Combine(CurrentProject.BackupPath, dirName, now.ToString("yyyyMMddHHmmss"));
-            Backup backup = new Backup()
+            if (CurrentProject != null)
             {
-                Id = Guid.NewGuid().ToString(),
-                Path = desPath,
-                Remark = obj as string,
-                ProjectId = CurrentProject.Id,
-                DateTimeStamp = DateUtil.toUnixTimestamp(now),
-            };
-            if (FileUtil.copyDirectory(CurrentProject.ArchivePath, desPath))
-            {
-                using DBContext<Backup> dbContext = new DBContext<Backup>();
-                dbContext.Entity.Add(backup);
-                dbContext.SaveChanges();
+                DateTime now = DateTime.Now;
+                String dirName = FileUtil.SanitizePath(CurrentProject.Name);
+                String desPath = Path.Combine(CurrentProject.BackupPath, dirName, now.ToString("yyyyMMddHHmmss"));
+                Backup backup = new Backup()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Path = desPath,
+                    Remark = obj as string,
+                    ProjectId = CurrentProject.Id,
+                    DateTimeStamp = DateUtil.toUnixTimestamp(now),
+                };
+                if (FileUtil.copyDirectory(CurrentProject.ArchivePath, desPath))
+                {
+                    using DBContext<Backup> dbContext = new DBContext<Backup>();
+                    dbContext.Entity.Add(backup);
+                    dbContext.SaveChanges();
+                }
+                readBackups(CurrentProject.Id);
             }
-            readBackups(CurrentProject.Id);
         });
 
         public ICommand RecoverCommand => new ControlCommand(obj =>

@@ -17,10 +17,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Policy;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Tools;
 
 namespace AutoArchivePlus.ViewModel
 {
@@ -89,6 +91,26 @@ namespace AutoArchivePlus.ViewModel
                 {
                     GameArchivePath = new DirectoryInfo(selected.ArchivePath).FullName;
                 }
+            }
+        });
+
+        public ICommand UpdateGameInfoLibary => new ControlCommand(_ =>
+        {
+            MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["UpdateGameInfoLiabaryTip"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (ret == MessageBoxResult.Yes)
+            {
+                NetWorkTool.CrawlInformation("https://raw.githubusercontent.com/BugLordI/EldenRingAutoArchive/master/AutoArchive/SteamTool/GamesSaveDirectory.json"
+                    , content =>
+                    {
+                        Steam.SaveGameInfos(content);
+                        var result = MessageBox.Show(LanguageManager.Instance["SettingRestartTip"],
+               LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            Process.Start(Process.GetCurrentProcess().MainModule.FileName);
+                            Application.Current.Shutdown();
+                        }
+                    });
             }
         });
 

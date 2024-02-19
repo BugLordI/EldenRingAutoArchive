@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:component="clr-namespace:AutoArchivePlus.Component"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:language="clr-namespace:AutoArchivePlus.Language"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
@@ -136,6 +137,29 @@
                         ToolTip="{Binding [ShowEffectShadowHelpInfo], Source={x:Static language:LanguageManager.Instance}}" />
                 </StackPanel>
             </StackPanel>
+            <TextBlock
+                Margin="9,5,0,0"
+                HorizontalAlignment="Left"
+                FontSize="15"
+                FontWeight="DemiBold"
+                Text="{Binding [QuickBackup], Source={x:Static language:LanguageManager.Instance}}"
+                TextAlignment="Center" />
+            <StackPanel
+                Height="42"
+                Margin="9,6,9,0"
+                Background="White"
+                Orientation="Horizontal">
+                <CheckBox
+                    Margin="6,0,0,0"
+                    BorderBrush="#FFEC6868"
+                    Content="{Binding [EnableQuickBackup], Source={x:Static language:LanguageManager.Instance}}"
+                    Foreground="#FF0C0C0C"
+                    IsChecked="{Binding AppSetting.EnableQuickBackup}" />
+                <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Text="{Binding [ShortcutKeyTip], Source={x:Static language:LanguageManager.Instance}}" />
+            </StackPanel>
         </StackPanel>
         <Canvas
             Grid.Row="1"
@@ -146,13 +170,39 @@
             </ScrollViewer>
         </Canvas>
         <DockPanel Grid.Row="2">
-            <Button
-                Margin="0,0,9,0"
-                HorizontalAlignment="Right"
-                Command="{Binding SaveSettings}"
-                CommandParameter="{Binding ElementName=MessagePanel}"
-                Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}"
-                IsEnabled="{Binding IsEnable}" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="1"
+                    Margin="0,0,9,0"
+                    HorizontalAlignment="Right"
+                    Command="{Binding SaveSettings}"
+                    CommandParameter="{Binding ElementName=MessagePanel}"
+                    Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}"
+                    IsEnabled="{Binding IsEnable}" />
+                <TextBlock
+                    x:Name="chooseArchivePath"
+                    Grid.Column="0"
+                    Margin="5,0,0,3"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Cursor="Hand"
+                    FontSize="12"
+                    FontStyle="Italic"
+                    Foreground="#409EFF">
+                    <Underline>
+                        <Run Text="Version 1.2.1" />
+                    </Underline>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                            <i:InvokeCommandAction Command="{Binding VersionClicked}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>

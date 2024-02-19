@@ -2,5 +2,6 @@
   "ConnectionStrings": {
     "DBConnection": "Data Source=data.db"
   },
-  "GameArchivePathHelpUrl": "https://github.com/BugLordI/EldenRingAutoArchive/wiki/%E5%85%B3%E4%BA%8E%E8%80%81%E8%B4%BC%E6%B8%B8%E6%88%8F%E7%9A%84%E5%AD%98%E6%A1%A3%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86"
+  "GameArchivePathHelpUrl": "https://github.com/BugLordI/EldenRingAutoArchive/wiki/%E5%85%B3%E4%BA%8E%E8%80%81%E8%B4%BC%E6%B8%B8%E6%88%8F%E7%9A%84%E5%AD%98%E6%A1%A3%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%86",
+  "AppVersionListUrl": "https://github.com/BugLordI/EldenRingAutoArchive/releases"
 }

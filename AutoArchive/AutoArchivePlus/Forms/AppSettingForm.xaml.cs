@@ -21,6 +21,5 @@ namespace AutoArchivePlus.Forms
         {
             InitializeComponent();
         }
-
     }
 }

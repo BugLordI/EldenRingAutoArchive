@@ -1,4 +1,5 @@
-﻿using AutoArchivePlus.Command;
+﻿using AutoArchive.Tools;
+using AutoArchivePlus.Command;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
@@ -90,6 +91,20 @@ namespace AutoArchivePlus.ViewModel
                 Application.Current.Shutdown();
             }
         });
-       
+
+        public ICommand VersionClicked => new ControlCommand(_ =>
+        {
+            AppSetting appSetting = new AppSetting("AppConfig.json");
+            String url = appSetting["AppVersionListUrl"];
+            if (url != null)
+            {
+                try
+                {
+                    Process.Start("explorer.exe", url);
+                }
+                catch { }
+            }
+        });
+
     }
 }

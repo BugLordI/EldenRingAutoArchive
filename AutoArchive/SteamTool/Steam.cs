@@ -65,6 +65,14 @@ namespace SteamTool
             return steamAppInfos;
         }
 
+        public static void SaveGameInfos(String content)
+        {
+            using (StreamWriter writer = new StreamWriter("GamesSaveDirectory.json",false))
+            {
+                writer.Write(content);
+            }
+        }
+
         private static void infoFix(AppConfiguration appSaveInfo, ref SteamAppInfo steamAppInfo)
         {
             if (appSaveInfo != null)

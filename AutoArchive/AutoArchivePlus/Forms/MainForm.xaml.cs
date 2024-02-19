@@ -8,6 +8,9 @@ using MessageBox = System.Windows.MessageBox;
 using AutoArchivePlus.Common;
 using System.Windows.Media.Effects;
 using System.Windows.Media;
+using System.Diagnostics;
+using AutoArchivePlus.ViewModel;
+using System.Runtime.CompilerServices;
 
 namespace AutoArchivePlus.Forms
 {
@@ -17,6 +20,8 @@ namespace AutoArchivePlus.Forms
     public partial class MainForm : Window
     {
         private const int WM_SETCURSOR = 0x20;
+
+        private const int QuickBackupKeyEventId = 7135;
 
         public MainForm()
         {
@@ -52,6 +57,10 @@ namespace AutoArchivePlus.Forms
             }
             IntPtr hwnd = new WindowInteropHelper(this).Handle;
             HwndSource.FromHwnd(hwnd).AddHook(new HwndSourceHook(WndProc));
+            if (App.AppSetting.EnableQuickBackup)
+            {
+                this.RegisterHotKey(QuickBackupKeyEventId, System.Windows.Input.Key.Divide, System.Windows.Input.ModifierKeys.None, HwndHook);
+            }
         }
 
         IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -64,6 +73,19 @@ namespace AutoArchivePlus.Forms
                     {
                         child.Blink();
                     }
+                }
+            }
+            return IntPtr.Zero;
+        }
+
+        private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            const int wmHotkey = 0x0312;
+            if (msg == wmHotkey)
+            {
+                if (wParam.ToInt32() == QuickBackupKeyEventId)
+                {
+                    dc.BackupCommand.Execute(LanguageManager.Instance["QuickBackupRemark"]);
                 }
             }
             return IntPtr.Zero;
@@ -82,6 +104,7 @@ namespace AutoArchivePlus.Forms
 
         private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            this.UnregisterHotKey(QuickBackupKeyEventId);
             if (App.AppSetting.AlwaysAskWhenExits)
             {
                 MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);

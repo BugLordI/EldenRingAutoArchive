@@ -333,4 +333,25 @@
   <data name="GameArchivePathHelpInfoTip" xml:space="preserve">
     <value>Don’t know the archive path? Click to view</value>
   </data>
+  <data name="QuickBackup" xml:space="preserve">
+    <value>QuickBackup</value>
+  </data>
+  <data name="EnableQuickBackup" xml:space="preserve">
+    <value>EnableQuickBackup</value>
+  </data>
+  <data name="ShortcutKeyTip" xml:space="preserve">
+    <value>ShortcutKey: / </value>
+  </data>
+  <data name="QuickBackupRemark" xml:space="preserve">
+    <value>QuickBackup</value>
+  </data>
+  <data name="UpdateGameInfoLibary" xml:space="preserve">
+    <value>UpdateGameInfoLibary</value>
+  </data>
+  <data name="UpdateGameInfoLibaryToolTip" xml:space="preserve">
+    <value>When the game installation path cannot be automatically filled in or is filled incorrectly, click here to update and fix it.</value>
+  </data>
+  <data name="UpdateGameInfoLiabaryTip" xml:space="preserve">
+    <value>The game information database will be updated soon. Do you want to continue?</value>
+  </data>
 </root>

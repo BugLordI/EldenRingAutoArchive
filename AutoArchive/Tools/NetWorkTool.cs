@@ -6,12 +6,12 @@ namespace Tools
 {
     public class NetWorkTool
     {
-        public static async void CrawlInformation(String url)
+        public static async void CrawlInformation(String url, Action<String> action)
         {
             try
             {
                 string content = await GetWebPageContent(url);
-                Console.WriteLine(content);
+                action.Invoke(content);
             }
             catch (Exception ex)
             {
@@ -19,12 +19,11 @@ namespace Tools
             }
         }
 
-        static async Task<string> GetWebPageContent(string url)
+        public static async Task<string> GetWebPageContent(string url)
         {
             using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage response = await httpClient.GetAsync(url);
-
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();

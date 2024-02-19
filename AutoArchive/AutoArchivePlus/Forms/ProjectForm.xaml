@@ -206,6 +206,29 @@
                 Text="{Binding GameBackupPath, Mode=TwoWay}"
                 ToolTip="{Binding Text, ElementName=gameBackupPath}" />
             <TextBlock
+                x:Name="updateGameInfoLibray"
+                Grid.Row="0"
+                Grid.Column="3"
+                Margin="0,6,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Cursor="Hand"
+                FontSize="12"
+                FontStyle="Italic"
+                Foreground="#409EFF"
+                MouseEnter="commonLink_MouseEnter"
+                MouseLeave="commonLink_MouseLeave"
+                ToolTip="{Binding [UpdateGameInfoLibaryToolTip], Source={x:Static language:LanguageManager.Instance}}">
+                <Underline>
+                    <Run Text="{Binding [UpdateGameInfoLibary], Source={x:Static language:LanguageManager.Instance}, Mode=OneWay}" />
+                </Underline>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{Binding UpdateGameInfoLibary}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBlock>
+            <TextBlock
                 x:Name="chooseGamePath"
                 Grid.Row="1"
                 Grid.Column="3"
