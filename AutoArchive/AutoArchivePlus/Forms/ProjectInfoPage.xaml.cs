@@ -61,6 +61,16 @@ namespace AutoArchivePlus.Forms
             timer.Tick += Timer_Tick;
         }
 
+        private void self_Loaded(object sender, RoutedEventArgs e)
+        {
+        }
+
+
+        private void backupInfoPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            dg.Height = backupInfoPanel.ActualHeight - 32 - 9;
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             if (timing == taskInterval)
@@ -273,6 +283,5 @@ namespace AutoArchivePlus.Forms
         }
 
         #endregion
-
     }
 }

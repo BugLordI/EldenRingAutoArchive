@@ -10,6 +10,7 @@
     x:Name="self"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    Loaded="self_Loaded"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -127,7 +128,7 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <StackPanel Grid.Row="1">
+        <StackPanel x:Name="backupInfoPanel" Grid.Row="1" SizeChanged="backupInfoPanel_SizeChanged">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="32" />
@@ -166,6 +167,7 @@
                     </DockPanel>
                 </DockPanel>
                 <DataGrid
+                    x:Name="dg"
                     Grid.Row="1"
                     Margin="0,5,0,0"
                     AutoGenerateColumns="False"
