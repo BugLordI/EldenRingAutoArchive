@@ -35,7 +35,7 @@ namespace AutoArchivePlus.Forms
         {
             switch (messageType)
             {
-                case MessageTypeEnum.ERROR: globalErrorMessagePanel.ShowErrorMessage(message); break;
+                case MessageTypeEnum.ERROR: globalMessagePanel.ShowErrorMessage(message); break;
                 case MessageTypeEnum.WARNING: globalMessagePanel.ShowSuccessMessage(message); break;
                 case MessageTypeEnum.INFO:
                 default: globalMessagePanel.ShowSuccessMessage(message); break;
