@@ -19,6 +19,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Policy;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -55,23 +56,41 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand SaveProject => new ControlCommand(_ =>
         {
-            if (dataCheck())
+            if (_ is ProjectForm projectForm)
             {
-                using BaseContext<Project> baseContext = new DBContext<Project>();
-                Project project = new Project()
+                if (dataCheck())
                 {
-                    Id = Guid.NewGuid().ToString(),
-                    Name = gameName,
-                    InstallPath = gameInstallPath,
-                    ArchivePath = gameArchivePath,
-                    BackupPath = gameBackupPath,
-                    ImageLocation = extraIcon(gameInstallPath, gameName)
-                };
-                baseContext.Entity.Add(project);
-                baseContext.SaveChanges();
-                App.GlobalMessage(LanguageManager.Instance["DataSavedSuccess"]);
-                ((ProjectForm)_).dataHasChanged = true;
-                ((ProjectForm)_).Close();
+                    if (projectForm.isEditModel)
+                    {
+                        String projectId = projectForm.Tag as String;
+                        using BaseContext<Project> baseContext = new DBContext<Project>();
+                        var project = baseContext.Entity.FirstOrDefault(e => e.Id.Equals(projectId));
+                        project.Name = GameName;
+                        project.InstallPath = GameInstallPath;
+                        project.ArchivePath = GameArchivePath;
+                        project.BackupPath = GameBackupPath;
+                        project.ImageLocation = extraIcon(GameInstallPath, GameName);
+                        baseContext.SaveChanges();
+                    }
+                    else
+                    {
+                        using BaseContext<Project> baseContext = new DBContext<Project>();
+                        Project project = new Project()
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            Name = gameName,
+                            InstallPath = gameInstallPath,
+                            ArchivePath = gameArchivePath,
+                            BackupPath = gameBackupPath,
+                            ImageLocation = extraIcon(gameInstallPath, gameName)
+                        };
+                        baseContext.Entity.Add(project);
+                        baseContext.SaveChanges();
+                    }
+                    App.GlobalMessage(LanguageManager.Instance["DataSavedSuccess"]);
+                    projectForm.dataHasChanged = true;
+                    projectForm.Close();
+                }
             }
         });
 
@@ -324,7 +343,6 @@ namespace AutoArchivePlus.ViewModel
                 OnPropertyChanged();
             }
         }
-
         #endregion
     }
 }

@@ -337,4 +337,10 @@
   <data name="AutoBackupRemark" xml:space="preserve">
     <value>自动备份</value>
   </data>
+  <data name="RightClickToSeeMore" xml:space="preserve">
+    <value>右键查看更多</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
 </root>

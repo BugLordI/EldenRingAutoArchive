@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoArchivePlus.Language;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -25,6 +26,7 @@ namespace AutoArchivePlus.Component
         public static readonly DependencyProperty openArchivePathCommandProperty;
         public static readonly DependencyProperty openBackupPathCommandProperty;
         public static readonly DependencyProperty deleteCommandProperty;
+        public static readonly DependencyProperty editCommandProperty;
 
         #endregion
 
@@ -43,6 +45,7 @@ namespace AutoArchivePlus.Component
             openArchivePathCommandProperty = DependencyProperty.Register("OpenArchivePathCommand", typeof(ICommand), typeof(ProjectItem));
             openBackupPathCommandProperty = DependencyProperty.Register("OpenBackupPathCommand", typeof(ICommand), typeof(ProjectItem));
             deleteCommandProperty = DependencyProperty.Register("DeleteCommand", typeof(ICommand), typeof(ProjectItem));
+            editCommandProperty = DependencyProperty.Register("EditCommand", typeof(ICommand), typeof(ProjectItem));
         }
 
         public ProjectItem()
@@ -63,7 +66,9 @@ namespace AutoArchivePlus.Component
                 defaultShow.Visibility = Visibility.Collapsed;
                 projectIcon.Visibility = Visibility.Visible;
                 projectInfo.Visibility = Visibility.Visible;
-                self.ToolTip = ProjectTitle + "\n" + ProjectBackupLocation;
+                self.ToolTip = $"{LanguageManager.Instance["RightClickToSeeMore"]}\n" +
+                               $"{LanguageManager.Instance["GameName"]}  {ProjectTitle}\n" +
+                               $"{LanguageManager.Instance["GameBackupPath"]}  {ProjectBackupLocation}";
             }
             deleteMenu.Command = DeleteCommand;
             deleteMenu.CommandParameter = this.DataContext;
@@ -73,6 +78,8 @@ namespace AutoArchivePlus.Component
             openArchivMenu.CommandParameter = this.DataContext;
             openProgramMenu.Command = OpenInstallPathCommand;
             openProgramMenu.CommandParameter = this.DataContext;
+            editMenu.Command = EditCommand;
+            editMenu.CommandParameter = this.DataContext;
         }
 
         #region properties
@@ -196,6 +203,18 @@ namespace AutoArchivePlus.Component
             set
             {
                 SetValue(deleteCommandProperty, value);
+            }
+        }
+
+        public ICommand EditCommand
+        {
+            get
+            {
+                return (ICommand)GetValue(editCommandProperty);
+            }
+            set
+            {
+                SetValue(editCommandProperty, value);
             }
         }
 

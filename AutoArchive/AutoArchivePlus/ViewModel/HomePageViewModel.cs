@@ -216,6 +216,29 @@ namespace AutoArchivePlus.ViewModel
             }
         });
 
+        public ICommand EditProject => new ControlCommand(obj =>
+        {
+            if (obj is Project project)
+            {
+                ProjectForm projectForm = new ProjectForm(true);
+                projectForm.Owner = App.GetMainWindow();
+                projectForm.loadData = () =>
+                {
+                    projectForm.Tag = project.Id;
+                    projectForm.dc.GameName = project.Name;
+                    projectForm.dc.GameInstallPath = project.InstallPath;
+                    projectForm.dc.GameArchivePath = project.ArchivePath;
+                    projectForm.dc.GameBackupPath = project.BackupPath;
+                    projectForm.gameName.Focus();
+                };
+                if (projectForm.ShowDialog())
+                {
+                    initList();
+                }
+                GC.Collect();
+            }
+        });
+
         public ICommand OpenInstallPath => new ControlCommand(obj =>
         {
             if (obj is Project project)

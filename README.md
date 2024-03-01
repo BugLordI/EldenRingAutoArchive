@@ -36,8 +36,8 @@
     </a>   
 </li>
 <li>
-    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.2.2/AutoArchivePlusSetupV1.2.2.msi">
-        老贼盒子Plusv 1.2.2
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.3.0/AutoArchivePlusSetupV1.3.0.msi">
+        老贼盒子Plusv 1.3.0
     </a>   
 </li>
 </ul>

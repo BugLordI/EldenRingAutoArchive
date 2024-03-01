@@ -63,7 +63,7 @@
             </DockPanel.Background>
             <component:FormTitleBar
                 x:Name="titleBar"
-                Title="{Binding [MainFormTitle], Source={x:Static language:LanguageManager.Instance}}"
+                Title="{Binding MainFormTitle}"
                 Width="{Binding ActualWidth, ElementName=grid}"
                 Background="Gray"
                 BorderBrush="LightGray"

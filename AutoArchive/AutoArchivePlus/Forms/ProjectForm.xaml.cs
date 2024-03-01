@@ -1,5 +1,6 @@
-﻿using AutoArchivePlus.ViewModel;
+﻿using AutoArchivePlus.Language;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,9 +15,18 @@ namespace AutoArchivePlus.Forms
     {
         public bool dataHasChanged;
 
+        public bool isEditModel;
+
+        public Action loadData;
+
         public ProjectForm()
         {
             InitializeComponent();
+        }
+
+        public ProjectForm(bool isEdit) : this()
+        {
+            this.isEditModel = isEdit;
         }
 
         public new bool ShowDialog()
@@ -27,12 +37,20 @@ namespace AutoArchivePlus.Forms
 
         private void projectForm_Loaded(object sender, RoutedEventArgs e)
         {
-            ProjectFormViewModel dc = DataContext as ProjectFormViewModel;
             if (String.IsNullOrEmpty(gameBackupPath.Text))
             {
                 String des = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "AutoArchive");
                 dc.GameBackupPath = des;
             }
+            if (isEditModel)
+            {
+                titleBar.Title = LanguageManager.Instance["Edit"];
+            }
+            else
+            {
+                titleBar.Title = LanguageManager.Instance["NewProject"];
+            }
+            loadData?.Invoke();
         }
 
         private void commonLink_MouseEnter(object sender, MouseEventArgs e)

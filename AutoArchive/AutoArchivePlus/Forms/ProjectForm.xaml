@@ -47,7 +47,7 @@
             Color="#FFF5DBA3" />
     </Window.Effect>
     <Window.DataContext>
-        <vm:ProjectFormViewModel />
+        <vm:ProjectFormViewModel x:Name="dc" />
     </Window.DataContext>
     <Grid Margin="10" Background="White">
         <Grid.RowDefinitions>
@@ -55,6 +55,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <component:FormTitleBar
+            x:Name="titleBar"
             Title="{Binding [NewProject], Source={x:Static language:LanguageManager.Instance}}"
             Grid.Row="0"
             Background="Gray"

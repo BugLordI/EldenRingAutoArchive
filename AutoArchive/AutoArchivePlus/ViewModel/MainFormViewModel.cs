@@ -21,6 +21,8 @@ namespace AutoArchivePlus.ViewModel
 
         private bool showHomePage = true;
 
+        private string mainFormTitle;
+
         private Project currentProject;
 
         private ObservableCollection<Object> backups;
@@ -29,6 +31,7 @@ namespace AutoArchivePlus.ViewModel
         {
             RunningProjectsManager.OnRunningSubscribe(OnRunningProject);
             RunningProjectsManager.OnChangedSubscribe(OnChangedProject);
+            MainFormTitle = LanguageManager.Instance["MainFormTitle"];
         }
 
         #region Propertites
@@ -78,6 +81,16 @@ namespace AutoArchivePlus.ViewModel
             set
             {
                 backups = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string MainFormTitle
+        {
+            get => mainFormTitle;
+            set
+            {
+                mainFormTitle = value;
                 OnPropertyChanged();
             }
         }
@@ -154,7 +167,6 @@ namespace AutoArchivePlus.ViewModel
                 }
             }
         });
-
         #endregion
 
         #region private Methods
@@ -163,6 +175,7 @@ namespace AutoArchivePlus.ViewModel
         {
             ShowProjectInfo = true;
             CurrentProject = project;
+            MainFormTitle = LanguageManager.Instance["MainFormTitle"] + $"--{project.Name}";
             readBackups(project.Id);
         }
 
@@ -170,6 +183,7 @@ namespace AutoArchivePlus.ViewModel
         {
             ShowProjectInfo = project.Name != LanguageManager.Instance["Home"];
             CurrentProject = project;
+            MainFormTitle = LanguageManager.Instance["MainFormTitle"] + $"--{project.Name}";
             readBackups(project.Id);
         }
 

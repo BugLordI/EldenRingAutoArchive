@@ -34,6 +34,7 @@
     <None Remove="Resources\img\backup.png" />
     <None Remove="Resources\img\default-project.png" />
     <None Remove="Resources\img\delete.png" />
+    <None Remove="Resources\img\edit.png" />
     <None Remove="Resources\img\help.png" />
     <None Remove="Resources\img\home.png" />
     <None Remove="Resources\img\install.png" />
@@ -72,6 +73,7 @@
     <Resource Include="Resources\img\delete.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\img\edit.png" />
     <Resource Include="Resources\img\help.png" />
     <Resource Include="Resources\img\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

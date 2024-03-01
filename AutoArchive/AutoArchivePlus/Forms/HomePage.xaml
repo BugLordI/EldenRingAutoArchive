@@ -138,6 +138,7 @@
                                     MaxWidth="200"
                                     MaxHeight="65"
                                     DeleteCommand="{Binding DeleteProject, ElementName=dc}"
+                                    EditCommand="{Binding EditProject, ElementName=dc}"
                                     NewProjectCommand="{Binding NewProject, ElementName=dc}"
                                     NewProjectCommandParams="{Binding ParentWindow, ElementName=zmy}"
                                     OpenArchivePathCommand="{Binding OpenArchivePath, ElementName=dc}"

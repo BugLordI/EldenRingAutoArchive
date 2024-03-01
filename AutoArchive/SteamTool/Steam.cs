@@ -17,7 +17,6 @@ namespace SteamTool
         public const String STEAM_APPS = @"\steamapps\";
         public const String ACF_FILE = "*.acf";
         public const String VDF_FILE = "*.vdf";
-        public const String LIBRARYFOLDERS_VDF= "libraryfolders.vdf";
         public static List<String> EXCLUDE = new List<String>() { "Steamworks Common Redistributables" };
 
         public static String GetSteamPath()
@@ -94,7 +93,6 @@ namespace SteamTool
                         specialFolder = specialFolder.Replace("%MyDocuments%", Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments));
                     }
                 }
-                //TODO others folder
                 steamAppInfo.ArchivePath = specialFolder;
                 steamAppInfo.ExecutablePath += appSaveInfo.Executable;
             }

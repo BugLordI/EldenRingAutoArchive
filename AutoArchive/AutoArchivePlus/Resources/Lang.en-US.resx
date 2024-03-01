@@ -357,4 +357,10 @@
   <data name="AutoBackupRemark" xml:space="preserve">
     <value>AutoBackup</value>
   </data>
+  <data name="RightClickToSeeMore" xml:space="preserve">
+    <value>Right click to see more</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
 </root>
