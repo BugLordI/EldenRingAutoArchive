@@ -363,4 +363,7 @@
   <data name="Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="UnexpectedErrorTip" xml:space="preserve">
+    <value>Unexpected Error</value>
+  </data>
 </root>

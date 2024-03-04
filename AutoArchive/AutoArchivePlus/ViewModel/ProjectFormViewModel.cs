@@ -1,7 +1,6 @@
 ﻿using AutoArchive.DataBase;
 using AutoArchive.Tools;
 using AutoArchivePlus.Command;
-using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
@@ -9,17 +8,11 @@ using AutoArchivePlus.Model;
 using AutoArchivePlus.WindowTools;
 using SteamTool;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Security.Policy;
-using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -214,16 +207,16 @@ namespace AutoArchivePlus.ViewModel
 
         #endregion
 
-
         private String extraIcon(String installPath, String name)
         {
             if (installPath == null)
                 return null;
             Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
-            //Icon icon = Icon.ExtractAssociatedIcon(installPath);
             String iconLocation = App.ICON_PATH + $"\\{name}.Png";
-            //using (FileStream fs = new FileStream(iconLocation, FileMode.Create))
-            //    icon.Save(fs);
+            if (File.Exists(iconLocation))
+            {
+                File.Delete(iconLocation);
+            }
             Bitmap originalImage = icon.ToBitmap();
             Bitmap resizedImage = new Bitmap(100, 100);
             using (Graphics graphics = Graphics.FromImage(resizedImage))

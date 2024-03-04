@@ -343,4 +343,7 @@
   <data name="Edit" xml:space="preserve">
     <value>编辑</value>
   </data>
+  <data name="UnexpectedErrorTip" xml:space="preserve">
+    <value>预料之外的错误</value>
+  </data>
 </root>

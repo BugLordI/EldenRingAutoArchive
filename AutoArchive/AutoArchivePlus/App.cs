@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace AutoArchivePlus
 {
@@ -31,7 +32,6 @@ namespace AutoArchivePlus
 
         public static AppConfig AppSetting { get => appSetting;}
 
-
         [STAThread]
         static void Main(string[] args)
         {
@@ -48,6 +48,8 @@ namespace AutoArchivePlus
             if (ret)
             {
                 Application app = new Application();
+                app.DispatcherUnhandledException += App_DispatcherUnhandledException;
+                AppDomain.CurrentDomain.UnhandledException += App_DispatcherUnhandledException;
                 mainForm = new MainForm();
                 app.Run(mainForm);
                 mutex.ReleaseMutex();
@@ -56,6 +58,17 @@ namespace AutoArchivePlus
             {
                 MessageBox.Show(LanguageManager.Instance["LaunchFailed"], LanguageManager.Instance["Tip"], MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private static void App_DispatcherUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(LanguageManager.Instance["UnexpectedErrorTip"]);
+        }
+
+        private static void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            MessageBox.Show(LanguageManager.Instance["UnexpectedErrorTip"]);
         }
 
         public static Window GetMainWindow()
