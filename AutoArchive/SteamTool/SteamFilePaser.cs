@@ -1,12 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using Gameloop.Vdf;
+using Gameloop.Vdf.JsonConverter;
+using Gameloop.Vdf.Linq;
 
 namespace SteamTool
 {
-    internal class VDFPaser
+    internal class SteamFilePaser
     {
-        public static Dictionary<string, object> parseVdf(string filePath)
+        public static Dictionary<string, object> parseACF(string filePath)
         {
             var result = new Dictionary<string, object>();
             var currentDict = result;
@@ -33,5 +37,18 @@ namespace SteamTool
             }
             return result;
         }
+
+        public static List<LibraryFolder> parseVDF(string filePath)
+        {
+            VProperty volvo = VdfConvert.Deserialize(File.ReadAllText(filePath));
+            Newtonsoft.Json.Linq.JProperty property = volvo.ToJson();
+            List<LibraryFolder> folders = new List<LibraryFolder>();
+            foreach (Newtonsoft.Json.Linq.JProperty item in property.Value)
+            {
+                folders.Add(item.Value.ToObject<LibraryFolder>());
+            }
+            return folders;
+        }
+
     }
 }

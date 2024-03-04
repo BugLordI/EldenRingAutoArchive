@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,51 +12,66 @@ namespace SteamTool
     {
         public const String STEAM_REGISTRY_KEY_PATH = @"HKEY_CURRENT_USER\SOFTWARE\Valve\Steam";
         public const String STEAM_PATH_KEY = "SteamPath";
-        public const String STEAM_APPS_INSTALL_PATH = @"\steamapps\common\";
+        public const String STEAM_APPS_INSTALL_PATH = @"\common\";
         public const String STEAM_APPS = @"\steamapps\";
         public const String ACF_FILE = "*.acf";
-        public const String VDF_FILE = "*.vdf";
+        public const String LIBRARY_FOLDERS_VDF_FILE = "libraryfolders.vdf";
         public static List<String> EXCLUDE = new List<String>() { "Steamworks Common Redistributables" };
 
-        public static String GetSteamPath()
+        static String GetSteamPath()
         {
             return (String)Registry.GetValue(STEAM_REGISTRY_KEY_PATH, STEAM_PATH_KEY, "");
         }
 
+        static List<LibraryFolder> GetAppInstalledPath()
+        {
+            String steamPath = Steam.GetSteamPath();
+            String appPath = steamPath + STEAM_APPS;
+            if (File.Exists(appPath + LIBRARY_FOLDERS_VDF_FILE))
+            {
+                return SteamFilePaser.parseVDF(appPath + LIBRARY_FOLDERS_VDF_FILE);
+            }
+            return null;
+        }
+
         public static List<SteamAppInfo> GetInstalledApps()
         {
+            GetAppInstalledPath();
             List<AppConfiguration> appSaveInfos = readJson("GamesSaveDirectory.json", Encoding.UTF8);
             List<SteamAppInfo> steamAppInfos = new List<SteamAppInfo>();
             String steamPath = Steam.GetSteamPath();
             if (!String.IsNullOrEmpty(steamPath))
             {
-                String appPath = steamPath + STEAM_APPS;
-                if (Directory.Exists(appPath))
+                List<LibraryFolder> Installfolders = GetAppInstalledPath();
+                foreach (LibraryFolder folder in Installfolders)
                 {
-                    var fileList = Directory.EnumerateFiles(appPath, ACF_FILE, SearchOption.TopDirectoryOnly);
-                    // .Union(Directory.EnumerateFiles(appPath, VDF_FILE, SearchOption.TopDirectoryOnly));
-                    foreach (var file in fileList)
+                    String appPath = folder.Path + STEAM_APPS;
+                    if (Directory.Exists(appPath))
                     {
-                        var dic = VDFPaser.parseVdf(file);
-                        try
+                        var fileList = Directory.EnumerateFiles(appPath, ACF_FILE, SearchOption.TopDirectoryOnly);
+                        foreach (var file in fileList)
                         {
-                            if (EXCLUDE.Contains(dic["name"]))
+                            var dic = SteamFilePaser.parseACF(file);
+                            try
                             {
-                                continue;
-                            }
-                            String installDir = dic["installdir"] as String;
-                            SteamAppInfo steamAppInfo = new SteamAppInfo()
-                            {
-                                Appid = dic["appid"] as String,
-                                Name = dic["name"] as String,
-                                Installdir = steamPath + STEAM_APPS_INSTALL_PATH + installDir,
-                                ExecutablePath = steamPath + STEAM_APPS_INSTALL_PATH + installDir,
-                            };
-                            infoFix(appSaveInfos.FirstOrDefault(e => e.AppId == steamAppInfo.Appid), ref steamAppInfo);
-                            steamAppInfos.Add(steamAppInfo);
+                                if (EXCLUDE.Contains(dic["name"]))
+                                {
+                                    continue;
+                                }
+                                String installDir = dic["installdir"] as String;
+                                SteamAppInfo steamAppInfo = new SteamAppInfo()
+                                {
+                                    Appid = dic["appid"] as String,
+                                    Name = dic["name"] as String,
+                                    Installdir = appPath + STEAM_APPS_INSTALL_PATH + installDir,
+                                    ExecutablePath = appPath + STEAM_APPS_INSTALL_PATH + installDir,
+                                };
+                                infoFix(appSaveInfos.FirstOrDefault(e => e.AppId == steamAppInfo.Appid), ref steamAppInfo);
+                                steamAppInfos.Add(steamAppInfo);
 
+                            }
+                            catch { }
                         }
-                        catch { }
                     }
                 }
             }
