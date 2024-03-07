@@ -58,5 +58,17 @@
     "SavedPath": null,
     "SavedFileName": null,
     "Executable": "/launcher.exe"
+  },
+  {
+    "AppId": "322330",
+    "SavedPath": "%USERPROFILE%/Documents/Klei/DoNotStarveTogether/",
+    "SavedFileName": null,
+    "Executable": "/bin64/dontstarve_steam_x64.exe"
+  },
+  {
+    "AppId": "1086940",
+    "SavedPath": "%STEAMINSTALL%/userdata/%Steam3AccountID%/1086940/",
+    "SavedFileName": null,
+    "Executable": "/Launcher/LariLauncher.exe"
   }
 ]
