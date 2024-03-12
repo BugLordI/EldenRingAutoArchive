@@ -205,6 +205,14 @@ namespace AutoArchivePlus.ViewModel
             }
         });
 
+        public ICommand CloseWindow => new ControlCommand(_ =>
+        {
+            if (_ is ProjectForm projectForm)
+            {
+                projectForm.Close();
+            }
+        });
+
         #endregion
 
         private String extraIcon(String installPath, String name)

@@ -49,6 +49,12 @@
     <Window.DataContext>
         <vm:ProjectFormViewModel x:Name="dc" />
     </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding
+            Key="Esc"
+            Command="{Binding CloseWindow}"
+            CommandParameter="{Binding ElementName=projectForm}" />
+    </Window.InputBindings>
     <Grid Margin="10" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="39" />
