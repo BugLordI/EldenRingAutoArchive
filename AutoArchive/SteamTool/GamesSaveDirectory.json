@@ -70,5 +70,11 @@
     "SavedPath": "%STEAMINSTALL%/userdata/%Steam3AccountID%/1086940/",
     "SavedFileName": null,
     "Executable": "/Launcher/LariLauncher.exe"
+  },
+  {
+    "AppId": "413150",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/StardewValley/Saves",
+    "SavedFileName": null,
+    "Executable": "/Stardew Valley.exe"
   }
 ]
