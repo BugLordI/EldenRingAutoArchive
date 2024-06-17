@@ -41,8 +41,8 @@ Gameloop.Vdf
     </a>   
 </li>
 <li>
-    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.3.1/AutoArchivePlusSetupV1.3.1.msi">
-        老贼盒子Plusv 1.3.1
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.4.0/AutoArchivePlusSetupV1.4.0.msi">
+        老贼盒子Plus v1.4.0
     </a>   
 </li>
 </ul>
