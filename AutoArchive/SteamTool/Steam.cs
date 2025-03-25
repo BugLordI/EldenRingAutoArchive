@@ -80,7 +80,12 @@ namespace SteamTool
 
         private static int GetSteamActiveUserId()
         {
-            return (int)Registry.GetValue(STEAM_ACTIVE_PROCESS_PATH, STEAM_ACTIVE_USER_KEY, "");
+            var userId = Registry.GetValue(STEAM_ACTIVE_PROCESS_PATH, STEAM_ACTIVE_USER_KEY, "");
+            if (userId == null || !int.TryParse(userId.ToString(), out int result))
+            {
+                result = 0;
+            }
+            return result;
         }
 
         private static List<LibraryFolder> GetAppInstalledPath()

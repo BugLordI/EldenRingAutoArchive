@@ -1,32 +1,34 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Interop;
+﻿using KeyboardTool.Enums;
+using KeyboardTool;
+using System;
+using System.Collections.Generic;
 
 namespace AutoArchivePlus.WindowTools
 {
-    internal static class KeyListener
+    internal class KeyListener
     {
-        [DllImport("user32.dll")]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+        static List<String> hookIds = new List<String>();
 
-        [DllImport("user32.dll")]
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-
-        public static void RegisterHotKey(this Window window, int keyEventId, Key key, ModifierKeys modifierKeys
-            , HwndSourceHook hook)
+        public static String RegisterHotKey(KeysEnum key, Action<object, object> callback)
         {
-            var handle = new WindowInteropHelper(window).Handle;
-            var source = HwndSource.FromHwnd(handle);
-            source?.AddHook(hook);
-            RegisterHotKey(handle, keyEventId, (uint)modifierKeys, (uint)KeyInterop.VirtualKeyFromKey(key));
+            var hookId = KeyboardFactory.RegisterKey(key, callback);
+            hookIds.Add(hookId);
+            return hookId;
         }
 
-        public static void UnregisterHotKey(this Window window, int keyEventId)
+        public static void RemoveKeyListener(String hookId)
         {
-            var handle = new WindowInteropHelper(window).Handle;
-            UnregisterHotKey(handle, keyEventId);
+            if (hookId == null)
+            {
+                foreach (var item in hookIds)
+                {
+                    KeyboardFactory.UnRegisterKey(item);
+                }
+            }
+            else
+            {
+                KeyboardFactory.UnRegisterKey(hookId);
+            }
         }
     }
 }

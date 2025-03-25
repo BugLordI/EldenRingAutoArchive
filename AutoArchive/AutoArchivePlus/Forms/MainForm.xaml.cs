@@ -1,16 +1,14 @@
 ﻿using AutoArchivePlus.Language;
 using System;
 using System.Windows;
-using System.Windows.Interop;
 using AutoArchivePlus.WindowTools;
 using Window = System.Windows.Window;
 using MessageBox = System.Windows.MessageBox;
 using AutoArchivePlus.Common;
 using System.Windows.Media.Effects;
 using System.Windows.Media;
-using System.Diagnostics;
-using AutoArchivePlus.ViewModel;
-using System.Runtime.CompilerServices;
+using KeyboardTool.Enums;
+using KeyboardTool;
 
 namespace AutoArchivePlus.Forms
 {
@@ -19,9 +17,8 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class MainForm : Window
     {
-        private const int WM_SETCURSOR = 0x20;
 
-        private const int QuickBackupKeyEventId = 7135;
+        private static String hookId = "QuickBackUp";
 
         public MainForm()
         {
@@ -55,40 +52,18 @@ namespace AutoArchivePlus.Forms
                 };
                 this.Effect = effect;
             }
-            IntPtr hwnd = new WindowInteropHelper(this).Handle;
-            HwndSource.FromHwnd(hwnd).AddHook(new HwndSourceHook(WndProc));
             if (App.AppSetting.EnableQuickBackup)
             {
-                this.RegisterHotKey(QuickBackupKeyEventId, System.Windows.Input.Key.Divide, System.Windows.Input.ModifierKeys.None, HwndHook);
+                KeysEnum key = (KeysEnum)App.AppSetting.QuickBackupKeyCode;
+                hookId = KeyListener.RegisterHotKey(key, onKeyDown);
             }
         }
 
-        IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        private void onKeyDown(Object sender, Object o)
         {
-            if (msg == WM_SETCURSOR)
-            {
-                if (lParam.ToInt32() == 0x202fffe || lParam.ToInt32() == 0x201fffe)
-                {
-                    foreach (Window child in this.OwnedWindows)
-                    {
-                        child.Blink();
-                    }
-                }
-            }
-            return IntPtr.Zero;
-        }
-
-        private IntPtr HwndHook(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
-        {
-            const int wmHotkey = 0x0312;
-            if (msg == wmHotkey)
-            {
-                if (wParam.ToInt32() == QuickBackupKeyEventId)
-                {
-                    dc.BackupCommand.Execute(LanguageManager.Instance["QuickBackupRemark"]);
-                }
-            }
-            return IntPtr.Zero;
+            KeysEvent keysEvent = (KeysEvent)sender;
+            Message($"{keysEvent.Key.ToString()}");
+            dc.BackupCommand.Execute(LanguageManager.Instance["QuickBackupRemark"]);
         }
 
 
@@ -104,7 +79,7 @@ namespace AutoArchivePlus.Forms
 
         private void mainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.UnregisterHotKey(QuickBackupKeyEventId);
+            KeyListener.RemoveKeyListener(hookId);
             if (App.AppSetting.AlwaysAskWhenExits)
             {
                 MessageBoxResult ret = MessageBox.Show(LanguageManager.Instance["CloseAppConfirmation"], LanguageManager.Instance["Tip"], MessageBoxButton.YesNo, MessageBoxImage.Question);

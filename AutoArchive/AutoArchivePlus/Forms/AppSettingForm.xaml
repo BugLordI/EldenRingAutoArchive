@@ -7,7 +7,7 @@
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:language="clr-namespace:AutoArchivePlus.Language"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel" xmlns:hc="https://handyorg.github.io/handycontrol"
     x:Name="self"
     Title="AppSettingForm"
     Width="860"
@@ -156,9 +156,27 @@
                     Foreground="#FF0C0C0C"
                     IsChecked="{Binding AppSetting.EnableQuickBackup}" />
                 <TextBlock
-                    Margin="10,0,0,0"
+                    Margin="60,0,0,0"
                     VerticalAlignment="Center"
-                    Text="{Binding [ShortcutKeyTip], Source={x:Static language:LanguageManager.Instance}}" />
+                    Text="{Binding [ShortcutKeyTip], Source={x:Static language:LanguageManager.Instance}}" HorizontalAlignment="Center" />
+                <hc:TextBox
+                    Margin="5,0,0,0"
+                    VerticalAlignment="Center"
+                    MinWidth="55"
+                    Text="{Binding AppSetting.QuickBackupKeyString}" 
+                    TextAlignment="Center"
+                    hc:InfoElement.ShowClearButton="True"
+                    x:Name="ShortcutKeyTB"
+                    >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="GotFocus">
+                            <i:InvokeCommandAction Command="{Binding SetShortcutKey}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding RemoveShortcutKey}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </hc:TextBox>
             </StackPanel>
         </StackPanel>
         <Canvas
@@ -194,7 +212,7 @@
                     FontStyle="Italic"
                     Foreground="#409EFF">
                     <Underline>
-                        <Run Text="Version 1.4.0" />
+                        <Run Text="Version 1.5.0" />
                     </Underline>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonUp">

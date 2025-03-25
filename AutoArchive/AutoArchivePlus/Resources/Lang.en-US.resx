@@ -340,7 +340,7 @@
     <value>EnableQuickBackup</value>
   </data>
   <data name="ShortcutKeyTip" xml:space="preserve">
-    <value>ShortcutKey: / </value>
+    <value>ShortcutKey: </value>
   </data>
   <data name="QuickBackupRemark" xml:space="preserve">
     <value>QuickBackup</value>

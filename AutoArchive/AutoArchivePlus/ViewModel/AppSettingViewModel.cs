@@ -4,11 +4,14 @@ using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using AutoArchivePlus.WindowTools;
+using KeyboardTool;
+using KeyboardTool.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows;
@@ -25,9 +28,17 @@ namespace AutoArchivePlus.ViewModel
 
         private bool isEnable;
 
+        private String shortcutKeyValue;
+
+        private String hookId;
+
         public AppSettingViewModel()
         {
             AppSetting = App.AppSetting.DeepCopyByBinary();
+            if (Enum.TryParse<KeysEnum>(AppSetting.QuickBackupKeyCode.ToString(), out KeysEnum res))
+            {
+                AppSetting.QuickBackupKeyString = res.ToString();
+            }
             AppSetting.PropertyChanged += AppSetting_PropertyChanged;
         }
 
@@ -66,8 +77,21 @@ namespace AutoArchivePlus.ViewModel
         {
             using DBContext<Config> dBContext = new DBContext<Config>();
             Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
+            if (String.IsNullOrEmpty(AppSetting.QuickBackupKeyString))
+            {
+                AppSetting.EnableQuickBackup = false;
+                AppSetting.QuickBackupKeyCode = (int)KeysEnum.NONE;
+                AppSetting.QuickBackupKeyString = null;
+            }
+            else
+            {
+                AppSetting.QuickBackupKeyCode = (int)Enum.Parse(typeof(KeysEnum), AppSetting.QuickBackupKeyString);
+            }
             if (config == null)
             {
+                AppSetting.EnableQuickBackup = true;
+                AppSetting.QuickBackupKeyCode = (int)KeysEnum.F12;
+                AppSetting.QuickBackupKeyString = KeysEnum.F12.ToString();
                 config = new Config()
                 {
                     Id = Guid.NewGuid().ToString(),
@@ -104,6 +128,25 @@ namespace AutoArchivePlus.ViewModel
                 }
                 catch { }
             }
+        });
+
+        public ICommand SetShortcutKey => new ControlCommand(o =>
+        {
+            if (hookId == null)
+            {
+                hookId = KeyboardFactory.OnKeyPressed(o =>
+                {
+                    KeysEvent keysEvent = o as KeysEvent;
+                    AppSetting.QuickBackupKeyString = keysEvent.Key.ToString();
+                    AppSetting.QuickBackupKeyCode = (int)keysEvent.Key;
+                });
+            }
+        });
+
+        public ICommand RemoveShortcutKey => new ControlCommand(_ =>
+        {
+            KeyboardFactory.UnRegisterKey(hookId);
+            hookId = null;
         });
 
     }

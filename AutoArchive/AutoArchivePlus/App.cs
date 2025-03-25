@@ -1,8 +1,10 @@
-﻿using AutoArchivePlus.Common;
+﻿using AutoArchive.Tools;
+using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
+using KeyboardTool.Enums;
 using Newtonsoft.Json;
 using SteamTool;
 using System;
@@ -102,6 +104,9 @@ namespace AutoArchivePlus
             Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
             if (config == null)
             {
+                appSetting.EnableQuickBackup = true;
+                appSetting.QuickBackupKeyCode = (int)KeysEnum.F12;
+                appSetting.QuickBackupKeyString = KeysEnum.F12.ToString();
                 config = new Config()
                 {
                     Id = Guid.NewGuid().ToString(),

@@ -10,6 +10,8 @@ namespace AutoArchivePlus.Model
         private bool alwaysAskWhenExits;
         private bool showEffectShadow;
         private bool enableQuickBackup;
+        private int quickBackupKeyCode;
+        private String quickBackupKeyString;
 
         public bool AutoCheckStartProgram
         {
@@ -51,6 +53,26 @@ namespace AutoArchivePlus.Model
             }
         }
 
+        public int QuickBackupKeyCode
+        {
+            get => quickBackupKeyCode;
+            set
+            {
+                quickBackupKeyCode = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public String QuickBackupKeyString
+        {
+            get => quickBackupKeyString;
+            set
+            {
+                quickBackupKeyString = value;
+                OnPropertyChanged();
+            }
+        }
+
         public override bool Equals(object obj)
         {
             if (obj != null && obj is AppConfig that)
@@ -58,7 +80,9 @@ namespace AutoArchivePlus.Model
                 if (that.autoCheckStartProgram == this.autoCheckStartProgram
                     && that.alwaysAskWhenExits == this.alwaysAskWhenExits
                     && that.showEffectShadow == this.showEffectShadow
-                    && that.enableQuickBackup == this.enableQuickBackup)
+                    && that.enableQuickBackup == this.enableQuickBackup
+                    && that.quickBackupKeyCode==this.quickBackupKeyCode
+                    && that.quickBackupKeyString==this.quickBackupKeyString)
                 {
                     return true;
                 }

@@ -320,7 +320,7 @@
     <value>开启快捷备份</value>
   </data>
   <data name="ShortcutKeyTip" xml:space="preserve">
-    <value>快捷键：/</value>
+    <value>快捷按键：</value>
   </data>
   <data name="QuickBackupRemark" xml:space="preserve">
     <value>快捷备份</value>
