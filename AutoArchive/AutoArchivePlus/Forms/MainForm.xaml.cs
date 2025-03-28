@@ -9,6 +9,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media;
 using KeyboardTool.Enums;
 using KeyboardTool;
+using System.Windows.Interop;
 
 namespace AutoArchivePlus.Forms
 {
@@ -17,7 +18,7 @@ namespace AutoArchivePlus.Forms
     /// </summary>
     public partial class MainForm : Window
     {
-
+        private const int WM_SETCURSOR = 0x20;
         private static String hookId = "QuickBackUp";
 
         public MainForm()
@@ -52,11 +53,28 @@ namespace AutoArchivePlus.Forms
                 };
                 this.Effect = effect;
             }
+            IntPtr hwnd = new WindowInteropHelper(this).Handle;
+            HwndSource.FromHwnd(hwnd).AddHook(new HwndSourceHook(WndProc));
             if (App.AppSetting.EnableQuickBackup)
             {
                 KeysEnum key = (KeysEnum)App.AppSetting.QuickBackupKeyCode;
                 hookId = KeyListener.RegisterHotKey(key, onKeyDown);
             }
+        }
+
+        IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == WM_SETCURSOR)
+            {
+                if (lParam.ToInt32() == 0x202fffe || lParam.ToInt32() == 0x201fffe)
+                {
+                    foreach (Window child in this.OwnedWindows)
+                    {
+                        child.Blink();
+                    }
+                }
+            }
+            return IntPtr.Zero;
         }
 
         private void onKeyDown(Object sender, Object o)
