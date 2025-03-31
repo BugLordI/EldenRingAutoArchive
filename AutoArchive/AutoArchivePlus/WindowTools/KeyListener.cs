@@ -9,9 +9,9 @@ namespace AutoArchivePlus.WindowTools
     {
         static List<String> hookIds = new List<String>();
 
-        public static String RegisterHotKey(KeysEnum key, Action<object, object> callback)
+        public static String RegisterHotKey(KeysEnum key, Action<object, object> callback, ModifierKeysEnum modifierKeys = ModifierKeysEnum.NONE)
         {
-            var hookId = KeyboardFactory.RegisterKey(key, callback);
+            var hookId = KeyboardFactory.RegisterKey(key, callback, modifierKeyCode: modifierKeys);
             hookIds.Add(hookId);
             return hookId;
         }

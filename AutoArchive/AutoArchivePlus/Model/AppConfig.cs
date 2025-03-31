@@ -1,4 +1,5 @@
 ﻿using AutoArchive.DataBase;
+using KeyboardTool;
 using System;
 
 namespace AutoArchivePlus.Model
@@ -12,6 +13,7 @@ namespace AutoArchivePlus.Model
         private bool enableQuickBackup;
         private int quickBackupKeyCode;
         private String quickBackupKeyString;
+        private int quickBackupModifierKeyCode;
 
         public bool AutoCheckStartProgram
         {
@@ -69,6 +71,16 @@ namespace AutoArchivePlus.Model
             set
             {
                 quickBackupKeyString = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int QuickBackupModifierKeyCode
+        {
+            get => quickBackupModifierKeyCode;
+            set
+            {
+                quickBackupModifierKeyCode = value;
                 OnPropertyChanged();
             }
         }

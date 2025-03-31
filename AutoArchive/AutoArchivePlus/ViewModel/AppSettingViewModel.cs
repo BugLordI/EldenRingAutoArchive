@@ -39,6 +39,11 @@ namespace AutoArchivePlus.ViewModel
             {
                 AppSetting.QuickBackupKeyString = res.ToString();
             }
+            if (Enum.TryParse<ModifierKeysEnum>(AppSetting.QuickBackupModifierKeyCode.ToString(), out ModifierKeysEnum mk)
+                && mk != ModifierKeysEnum.NONE)
+            {
+                AppSetting.QuickBackupKeyString = mk.ToString() + "+" + AppSetting.QuickBackupKeyString;
+            }
             AppSetting.PropertyChanged += AppSetting_PropertyChanged;
         }
 
@@ -82,10 +87,6 @@ namespace AutoArchivePlus.ViewModel
                 AppSetting.EnableQuickBackup = false;
                 AppSetting.QuickBackupKeyCode = (int)KeysEnum.NONE;
                 AppSetting.QuickBackupKeyString = null;
-            }
-            else
-            {
-                AppSetting.QuickBackupKeyCode = (int)Enum.Parse(typeof(KeysEnum), AppSetting.QuickBackupKeyString);
             }
             if (config == null)
             {
@@ -137,8 +138,17 @@ namespace AutoArchivePlus.ViewModel
                 hookId = KeyboardFactory.OnKeyPressed(o =>
                 {
                     KeysEvent keysEvent = o as KeysEvent;
-                    AppSetting.QuickBackupKeyString = keysEvent.Key.ToString();
-                    AppSetting.QuickBackupKeyCode = (int)keysEvent.Key;
+                    if (keysEvent.KeysAction == KeysActionEnum.KEYDOWN
+                    || (keysEvent.KeysAction == KeysActionEnum.WM_SYSKEYDOWN))
+                    {
+                        AppSetting.QuickBackupKeyString = keysEvent.Key.ToString();
+                        AppSetting.QuickBackupKeyCode = (int)keysEvent.Key;
+                        if (keysEvent.ModifierKey != ModifierKeysEnum.NONE)
+                        {
+                            AppSetting.QuickBackupKeyString = $"{keysEvent.ModifierKey}+{keysEvent.Key}";
+                        }
+                        AppSetting.QuickBackupModifierKeyCode = (int)keysEvent.ModifierKey;
+                    }
                 });
             }
         });

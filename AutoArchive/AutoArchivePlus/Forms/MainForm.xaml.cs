@@ -58,7 +58,8 @@ namespace AutoArchivePlus.Forms
             if (App.AppSetting.EnableQuickBackup)
             {
                 KeysEnum key = (KeysEnum)App.AppSetting.QuickBackupKeyCode;
-                hookId = KeyListener.RegisterHotKey(key, onKeyDown);
+                ModifierKeysEnum modifierKeys = (ModifierKeysEnum)App.AppSetting.QuickBackupModifierKeyCode;
+                hookId = KeyListener.RegisterHotKey(key, onKeyDown, modifierKeys);
             }
         }
 
@@ -80,7 +81,6 @@ namespace AutoArchivePlus.Forms
         private void onKeyDown(Object sender, Object o)
         {
             KeysEvent keysEvent = (KeysEvent)sender;
-            Message($"{keysEvent.Key.ToString()}");
             dc.BackupCommand.Execute(LanguageManager.Instance["QuickBackupRemark"]);
         }
 

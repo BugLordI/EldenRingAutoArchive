@@ -106,7 +106,6 @@ namespace AutoArchivePlus
             {
                 appSetting.EnableQuickBackup = true;
                 appSetting.QuickBackupKeyCode = (int)KeysEnum.F12;
-                appSetting.QuickBackupKeyString = KeysEnum.F12.ToString();
                 config = new Config()
                 {
                     Id = Guid.NewGuid().ToString(),

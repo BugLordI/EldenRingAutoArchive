@@ -27,13 +27,24 @@
 <a href="https://dotnet.microsoft.com/zh-cn/download/dotnet/thank-you/runtime-desktop-3.1.28-windows-x64-installer" target="_blank">NetCore 3.1.28(64位)</a>
 <p>Windows10 21H1(19043) 以上版本自带NetCore3.1和.NetFramework4.8运行环境</p>
 <h3>依赖控件（Plus版本）：</h3>
+<ol>
+<li>
 <a href="https://github.com/HandyOrg/HandyControl" target="_blank">
-<img src="https://avatars.githubusercontent.com/u/46532717?s=48&v=4" style="width: 16px;height: 16px">HandyControl
+<img src="https://avatars.githubusercontent.com/u/46532717?s=48&v=4" style="width: 16px;height: 16px">
+HandyControl
 </a>
-<p>
+</li>
+<li>
 <a href="https://github.com/shravan2x/Gameloop.Vdf" target="_blank">
 Gameloop.Vdf
 </a>
+</li>
+<li>
+<a href="https://github.com/BugLordI/KeyboardTool" target="_blank">
+KeyboardTool
+</a>
+</li>
+</ol>
 <h3>下载地址：</h3>
 <li>
     <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90/Setup.msi">
