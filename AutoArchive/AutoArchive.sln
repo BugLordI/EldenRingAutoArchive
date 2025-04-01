@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamTool", "SteamTool\SteamTool.csproj", "{745BC86F-A07F-41B1-BAF0-571CD47169F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppInstaller", "AppInstaller\AppInstaller.csproj", "{C39480BD-139B-4034-B4DF-78E1DCA33ECE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,14 +85,26 @@ Global
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|Any CPU.Build.0 = Debug|Any CPU
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|x64.ActiveCfg = Debug|x64
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|x64.Build.0 = Debug|x64
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Debug|x64.Build.0 = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Release|x64.ActiveCfg = Release|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.Release|x64.Build.0 = Release|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.x64|Any CPU.ActiveCfg = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.x64|Any CPU.Build.0 = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.x64|x64.ActiveCfg = Debug|Any CPU
+		{C39480BD-139B-4034-B4DF-78E1DCA33ECE}.x64|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
-		RESX_NeutralResourcesLanguage = zh-CN
-		RESX_ConfirmAddLanguageFile = True
 		RESX_CultureCountyOverrides = en=en-BI
+		RESX_ConfirmAddLanguageFile = True
+		RESX_NeutralResourcesLanguage = zh-CN
+		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 	EndGlobalSection
 EndGlobal
