@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>xinwang-ds3-ico.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -10,10 +10,10 @@
 	 <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	 <UseWindowsForms>True</UseWindowsForms>
 	 <Platforms>AnyCPU;x64</Platforms>
-	 <Version>1.5.0</Version>
+	 <Version>2.0.0</Version>
 	 <Authors>BugLordI</Authors>
 	 <Company>BugLordI</Company>
-	 <Copyright>Copyright (c) 2025 BugZhang(BugLordl). All rights reserved.</Copyright>
+	 <Copyright>Copyright (c) 2023-2025 BugZhang(BugLordl). All rights reserved.</Copyright>
 	 <PackageProjectUrl>https://github.com/BugLordI/EldenRingAutoArchive</PackageProjectUrl>
   </PropertyGroup>
 

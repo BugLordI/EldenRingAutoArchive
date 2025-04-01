@@ -5,8 +5,7 @@
  * Author:  BugZhang(BugLordl)
  * Url:     https://github.com/BugLordI/EldenRingAutoArchive
  */
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 namespace Tools
 {
@@ -14,17 +13,12 @@ namespace Tools
     {
         public static T DeepCopyByBinary<T>(this T obj)
         {
-            object retval;
-            using (MemoryStream ms = new MemoryStream())
+            if (obj == null)
             {
-                BinaryFormatter bf = new BinaryFormatter();
-                bf.Serialize(ms, obj);
-                ms.Seek(0, SeekOrigin.Begin);
-                retval = bf.Deserialize(ms);
-                ms.Close();
+                return default(T);
             }
-            return (T)retval;
+            string json = JsonSerializer.Serialize(obj);
+            return JsonSerializer.Deserialize<T>(json);
         }
-
     }
 }
