@@ -1,17 +1,10 @@
-﻿/*************************************************************************************
- *
- * 文 件 名:   CreateProjectDialog.cs
- * 描    述:   CreateProjectDialog
- * 
- * 版    本：  V1.0
- * 创 建 者：  BugLord 
- * 创建时间：  2022/6/18 17:06:28
- * ======================================
- * 历史更新记录
- * 版本：          修改时间：         修改人：
- * 修改内容：
- * ======================================
-*************************************************************************************/
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
 using AutoArchive.Entity;
 using AutoArchive.Tools;
 using System;

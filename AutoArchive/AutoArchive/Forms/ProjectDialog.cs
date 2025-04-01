@@ -1,26 +1,14 @@
-﻿/*************************************************************************************
- *
- * 文 件 名:   ProjectDialog.cs
- * 描    述:   ProjectDialog
- * 
- * 版    本：  V1.0
- * 创 建 者：  BugLord 
- * 创建时间：  2022/6/18 15:42:55
- * ======================================
- * 历史更新记录
- * 版本：          修改时间：         修改人：
- * 修改内容：
- * ======================================
-*************************************************************************************/
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
 using AutoArchive.Entity;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace AutoArchive.Forms
 {

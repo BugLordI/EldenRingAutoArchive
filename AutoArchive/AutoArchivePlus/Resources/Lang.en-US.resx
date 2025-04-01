@@ -121,7 +121,7 @@
     <value>Tips</value>
   </data>
   <data name="LaunchFailed" xml:space="preserve">
-    <value>Launch failed, app already started!!</value>
+    <value>Launch failed, app already started!</value>
   </data>
   <data name="MainFormTitle" xml:space="preserve">
     <value>Archive Automatic Backup</value>
@@ -130,7 +130,7 @@
     <value>TilteBar</value>
   </data>
   <data name="CloseAppConfirmation" xml:space="preserve">
-    <value>Are you sure you want to exit the Application?!</value>
+    <value>Are you sure you want to exit the Application?</value>
   </data>
   <data name="MaximizeBtnName" xml:space="preserve">
     <value>Maximize</value>
@@ -235,7 +235,7 @@
     <value>Delete</value>
   </data>
   <data name="DeleteProjectTip" xml:space="preserve">
-    <value>Are you sure to delete this item? The data will not be recoverable after deletion.</value>
+    <value>Are you sure to delete this item? The data will not be recoverable after deletion</value>
   </data>
   <data name="DeleteSuccessTip" xml:space="preserve">
     <value>Deleted Success</value>
@@ -340,7 +340,7 @@
     <value>EnableQuickBackup</value>
   </data>
   <data name="ShortcutKeyTip" xml:space="preserve">
-    <value>ShortcutKey: </value>
+    <value>ShortcutKey:</value>
   </data>
   <data name="QuickBackupRemark" xml:space="preserve">
     <value>QuickBackup</value>
@@ -349,7 +349,7 @@
     <value>UpdateGameInfoLibary</value>
   </data>
   <data name="UpdateGameInfoLibaryToolTip" xml:space="preserve">
-    <value>When the game installation path cannot be automatically filled in or is filled incorrectly, click here to update and fix it.</value>
+    <value>When the game installation path cannot be automatically filled in or is filled incorrectly, click here to update and fix it</value>
   </data>
   <data name="UpdateGameInfoLiabaryTip" xml:space="preserve">
     <value>The game information database will be updated soon. Do you want to continue?</value>

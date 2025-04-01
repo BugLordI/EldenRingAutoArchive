@@ -1,9 +1,13 @@
+/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
 using AutoArchive.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AutoArchive
@@ -16,8 +20,7 @@ namespace AutoArchive
         [STAThread]
         static void Main()
         {
-            Boolean ret;
-            Mutex mutex = new Mutex(true, Application.ProductName, out ret);
+            Mutex mutex = new Mutex(true, Application.ProductName, out bool ret);
             if (ret)
             {
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);

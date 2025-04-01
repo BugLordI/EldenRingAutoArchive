@@ -1,4 +1,11 @@
-﻿using AutoArchive.Tools;
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
+using AutoArchive.Tools;
 using AutoArchivePlus.Command;
 using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
@@ -8,12 +15,8 @@ using KeyboardTool;
 using KeyboardTool.Enums;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,8 +30,6 @@ namespace AutoArchivePlus.ViewModel
         private AppConfig appSetting;
 
         private bool isEnable;
-
-        private String shortcutKeyValue;
 
         private String hookId;
 
@@ -133,9 +134,7 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand SetShortcutKey => new ControlCommand(o =>
         {
-            if (hookId == null)
-            {
-                hookId = KeyboardFactory.OnKeyPressed(o =>
+            hookId ??= KeyboardFactory.OnKeyPressed(o =>
                 {
                     KeysEvent keysEvent = o as KeysEvent;
                     if (keysEvent.KeysAction == KeysActionEnum.KEYDOWN
@@ -150,7 +149,6 @@ namespace AutoArchivePlus.ViewModel
                         AppSetting.QuickBackupModifierKeyCode = (int)keysEvent.ModifierKey;
                     }
                 });
-            }
         });
 
         public ICommand RemoveShortcutKey => new ControlCommand(_ =>

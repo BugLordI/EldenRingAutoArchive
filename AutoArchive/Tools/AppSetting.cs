@@ -1,11 +1,10 @@
-﻿/*************************************************************************************
- *
- * 文 件 名:   AppSetting.cs
- * 描    述:   工程配置文件工具类
- * 
- * 创 建 者：  BugLord 
- * 创建时间：  2022/06/18 13:03:52
-*************************************************************************************/
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;

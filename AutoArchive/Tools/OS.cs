@@ -1,6 +1,12 @@
-﻿using System;
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
+using System;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -14,7 +20,7 @@ namespace Tools
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        public static string CreateUserTilePath(string username)
+        public static string CreateUserTilePath()
         {   
             var sb = new StringBuilder(1000);
             GetUserTilePath(null, 0x80000000, sb, sb.Capacity);

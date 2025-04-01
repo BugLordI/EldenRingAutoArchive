@@ -1,4 +1,11 @@
-﻿using AutoArchive.DataBase;
+﻿/*
+ * Copyright (c) 2023-2026 BugZhang(BugLordl). All rights reserved.
+ * Licensed under the Apache License(Version 2.0). See LICENSE file in the project root for full license information.
+ * Version: v1.0.0
+ * Author:  BugZhang(BugLordl)
+ * Url:     https://github.com/BugLordI/EldenRingAutoArchive
+ */
+using AutoArchive.DataBase;
 using AutoArchivePlus.Command;
 using AutoArchivePlus.Component;
 using AutoArchivePlus.Forms;
@@ -8,9 +15,7 @@ using AutoArchivePlus.Model;
 using ProjectAutoManagement.Utils;
 using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -54,7 +59,7 @@ namespace AutoArchivePlus.ViewModel
         {
             get
             {
-                OS.CreateUserTilePath(null);
+                OS.CreateUserTilePath();
                 var p = OS.GetCurrentUserPicturePath();
                 if (File.Exists(p))
                 {
