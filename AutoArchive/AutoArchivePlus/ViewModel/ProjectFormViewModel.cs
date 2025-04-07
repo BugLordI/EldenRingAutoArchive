@@ -224,7 +224,7 @@ namespace AutoArchivePlus.ViewModel
 
         private String extraIcon(String installPath, String name)
         {
-            if (installPath == null)
+            if (installPath == null || !File.Exists(installPath))
                 return null;
             Icon icon = IconUtilities.ExtractIcon(installPath, IconSize.Jumbo);
             String iconLocation = App.ICON_PATH + $"\\{name}.Png";

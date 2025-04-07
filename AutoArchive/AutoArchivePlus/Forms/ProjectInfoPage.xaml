@@ -15,6 +15,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <converter:LongTimeDateConvert x:Key="pconvert" />
+            <converter:InverseBooleanConvert x:Key="boolConvert" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
@@ -152,6 +153,7 @@
                         Style="{StaticResource ButtonPrimary}" />
                     <DockPanel HorizontalAlignment="Right">
                         <hc:TextBox
+                            IsEnabled="{Binding ElementName=startScheduledTask,Path=IsChecked,Converter={StaticResource boolConvert}}"
                             x:Name="intervalText"
                             Width="120"
                             Height="22"
@@ -160,6 +162,7 @@
                             hc:TitleElement.TitlePlacement="Left"
                             Text="180" />
                         <CheckBox
+                            x:Name="startScheduledTask"
                             Margin="9,0,0,0"
                             Checked="scheduledTask_Checked"
                             Content="{Binding [StartTask], Source={x:Static language:LanguageManager.Instance}}"

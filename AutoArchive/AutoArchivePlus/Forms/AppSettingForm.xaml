@@ -202,6 +202,7 @@
                     Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}"
                     IsEnabled="{Binding IsEnable}" />
                 <TextBlock
+                    ToolTip="{Binding [VersionCheckTip], Source={x:Static language:LanguageManager.Instance}}"
                     x:Name="chooseArchivePath"
                     Grid.Column="0"
                     Margin="5,0,0,3"
@@ -212,7 +213,7 @@
                     FontStyle="Italic"
                     Foreground="#409EFF">
                     <Underline>
-                        <Run Text="Version 1.5.0" />
+                        <Run Text="Version 2.0.0" />
                     </Underline>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonUp">

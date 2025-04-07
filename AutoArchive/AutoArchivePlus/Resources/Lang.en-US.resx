@@ -366,4 +366,7 @@
   <data name="UnexpectedErrorTip" xml:space="preserve">
     <value>Unexpected Error</value>
   </data>
+  <data name="VersionCheckTip" xml:space="preserve">
+    <value>Click to download the new version</value>
+  </data>
 </root>

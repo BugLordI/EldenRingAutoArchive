@@ -284,10 +284,13 @@ namespace AutoArchivePlus.ViewModel
         private void onProjectClosed(Project project)
         {
             Project pro = selected.DataContext as Project;
-            if (pro.Equals(project))
+            if (pro != null)
             {
-                OpenButtonIsEnabled = true;
-                IsRunning = false;
+                if (pro.Equals(project))
+                {
+                    OpenButtonIsEnabled = true;
+                    IsRunning = false;
+                }
             }
         }
         #endregion
