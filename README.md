@@ -55,7 +55,7 @@ KeyboardTool
 </li>
 <li>
     <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/AutoArchivePlus-V2.0.0%E7%BB%BF%E8%89%B2%E7%89%88/AutoArchivePlus-V2.0.0-DotNet8.zip">
-        老贼盒子Plus v2.0.0 (次版本需要.net8.0支持，点击运行进行下载)
+        老贼盒子Plus v2.0.0 (次版本需要.net8.0支持，点击运行环境进行下载)
     </a>   
 </li>
 </ul>
