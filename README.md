@@ -54,8 +54,8 @@ KeyboardTool
     </a>   
 </li>
 <li>
-    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/%E8%80%81%E8%B4%BC%E7%9B%92%E5%AD%90PlusV1.4.0/AutoArchivePlusSetupV1.4.0.msi">
-        老贼盒子Plus v1.4.0
+    <a href="https://github.com/BugLordI/EldenRingAutoArchive/releases/download/AutoArchivePlus-V2.0.0%E7%BB%BF%E8%89%B2%E7%89%88/AutoArchivePlus-V2.0.0-DotNet8.zip">
+        老贼盒子Plus v2.0.0 (次版本需要.net8.0支持，点击运行进行下载)
     </a>   
 </li>
 </ul>
