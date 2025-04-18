@@ -3,3 +3,5 @@ bin
 obj
 /AutoArchive/data.db
 /AutoArchive/AutoArchivePlus/NuGet.Config
+/AutoArchive/AutoArchivePlus/*.db-shm
+/AutoArchive/AutoArchivePlus/*.db-wal
