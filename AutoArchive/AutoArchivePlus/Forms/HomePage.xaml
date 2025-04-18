@@ -8,6 +8,7 @@
     xmlns:language="clr-namespace:AutoArchivePlus.Language"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     x:Name="zmy"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -50,13 +51,21 @@
                     <Image
                         Width="74"
                         Height="74"
-                        Source="{Binding GetUserPicture}">
+                        Source="{Binding GetUserPicture}" 
+                        ToolTip="{Binding UserIconTip}" 
+                        Cursor="Hand">
                         <Image.Clip>
                             <EllipseGeometry
                                 Center="37,37"
                                 RadiusX="37"
                                 RadiusY="37" />
                         </Image.Clip>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding UserIconClicked}"
+                                       PassEventArgsToCommand="True"                />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Image>
                     <StackPanel Height="56">
                         <TextBlock

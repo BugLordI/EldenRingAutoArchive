@@ -120,8 +120,7 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand VersionClicked => new ControlCommand(_ =>
         {
-            AppSetting appSetting = new AppSetting("AppConfig.json");
-            String url = appSetting["AppVersionListUrl"];
+            String url = App.ConfigReader["AppVersionListUrl"];
             if (url != null)
             {
                 try

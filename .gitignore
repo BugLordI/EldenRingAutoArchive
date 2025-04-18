@@ -5,3 +5,5 @@ obj
 /AutoArchive/AutoArchivePlus/NuGet.Config
 /AutoArchive/AutoArchivePlus/*.db-shm
 /AutoArchive/AutoArchivePlus/*.db-wal
+*.db-shm
+*.db-wal

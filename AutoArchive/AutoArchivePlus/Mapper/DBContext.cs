@@ -24,9 +24,7 @@ namespace AutoArchivePlus.Mapper
         {
             if (connStr == null)
             {
-                string path = AppDomain.CurrentDomain.BaseDirectory;
-                AppSetting appSetting = new AppSetting(Path.Combine(path, "AppConfig.json"));
-                connStr = appSetting["ConnectionStrings:DBConnection"];
+                connStr = App.ConfigReader["ConnectionStrings:DBConnection"];
             }
             optionsBuilder.UseSqlite(connStr ?? "Data Source=save.db");
         }

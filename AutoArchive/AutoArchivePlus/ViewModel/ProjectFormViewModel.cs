@@ -200,8 +200,7 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand GameArchivePathHelp => new ControlCommand(_ =>
         {
-            AppSetting appSetting = new AppSetting("AppConfig.json");
-            String url = appSetting["GameArchivePathHelpUrl"];
+            String url = App.ConfigReader["GameArchivePathHelpUrl"];
             if (url != null)
             {
                 try

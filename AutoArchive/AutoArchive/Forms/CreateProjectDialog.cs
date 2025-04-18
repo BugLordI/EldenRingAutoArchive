@@ -127,7 +127,7 @@ namespace AutoArchive.Forms
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             String path = Path.Combine(Application.StartupPath, "appsettings.json");
-            AppSetting appSetting = new AppSetting(path);
+            JsonConfigReader appSetting = new JsonConfigReader(path);
             String url = appSetting["Help:Url"];
             System.Diagnostics.Process.Start("explorer.exe", url);
         }

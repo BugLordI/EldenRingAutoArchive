@@ -5,6 +5,7 @@
  * Author:  BugZhang(BugLordl)
  * Url:     https://github.com/BugLordI/EldenRingAutoArchive
  */
+using AutoArchive.Tools;
 using AutoArchivePlus.Common;
 using AutoArchivePlus.Forms;
 using AutoArchivePlus.Language;
@@ -34,11 +35,17 @@ namespace AutoArchivePlus
 
         private static AppConfig appSetting = new AppConfig();
 
+        private static JsonConfigReader configReader = new JsonConfigReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppConfig.json"));
+
+        private static String projectUrl;
+
         public static List<SteamAppInfo> InstalledApps { get; private set; } = new List<SteamAppInfo>();
 
         public static string ICON_PATH { get => iconPath; }
 
         public static AppConfig AppSetting { get => appSetting;}
+
+        public static JsonConfigReader ConfigReader { get  => configReader; }
 
         [STAThread]
         static void Main(string[] args)

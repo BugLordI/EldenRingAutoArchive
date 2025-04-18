@@ -8,6 +8,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -16,7 +17,7 @@ namespace AutoArchive.Tools
     /// <summary>
     /// 项目配置文件
     /// </summary>
-    public class AppSetting
+    public class JsonConfigReader
     {
         private JToken token;
 
@@ -24,7 +25,7 @@ namespace AutoArchive.Tools
         /// 初始化配置文件实例
         /// </summary>
         /// <param name="configFile">配置文件名(JSON)</param>
-        public AppSetting(String configFile)
+        public JsonConfigReader(String configFile)
         {
             token = readJson(configFile, Encoding.UTF8);
         }
@@ -39,7 +40,7 @@ namespace AutoArchive.Tools
             get
             {
                 String result = String.Empty;
-                if (token != null && key.Contains(":"))
+                if (token != null && !String.IsNullOrEmpty(key))
                 {
                     String[] keys = key.Split(':');
                     JToken jToken = token.DeepClone();
@@ -47,14 +48,7 @@ namespace AutoArchive.Tools
                     {
                         jToken = jToken[p];
                     }
-                    result = jToken.ToString();
-                }
-                else
-                {
-                    if (token != null)
-                    {
-                        result = token[key].ToString();
-                    }
+                    result = jToken?.ToString();
                 }
                 return result;
             }

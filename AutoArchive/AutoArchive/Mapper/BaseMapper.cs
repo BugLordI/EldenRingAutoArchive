@@ -18,7 +18,7 @@ namespace AutoArchive.Mapper
 
         public override void Configuring(DbContextOptionsBuilder optionsBuilder)
         {
-            AppSetting appSetting = new AppSetting("appsettings.json");
+            JsonConfigReader appSetting = new JsonConfigReader("appsettings.json");
             String connStr = appSetting["ConnectionStrings:DBConnection"];
             optionsBuilder.UseSqlite(connStr ?? "Data Source=save.db");
         }

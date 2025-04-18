@@ -6,6 +6,7 @@
  * Url:     https://github.com/BugLordI/EldenRingAutoArchive
  */
 using AutoArchive.DataBase;
+using AutoArchive.Tools;
 using AutoArchivePlus.Command;
 using AutoArchivePlus.Component;
 using AutoArchivePlus.Forms;
@@ -15,6 +16,7 @@ using AutoArchivePlus.Model;
 using ProjectAutoManagement.Utils;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
@@ -137,6 +139,15 @@ namespace AutoArchivePlus.ViewModel
             {
                 isRunning = value;
                 OnPropertyChanged();
+            }
+        }
+
+        public String UserIconTip
+        {
+            get
+            {
+                String url = App.ConfigReader["ProjectUrl"];
+                return url;
             }
         }
 
@@ -265,6 +276,25 @@ namespace AutoArchivePlus.ViewModel
             if (obj is Project project)
             {
                 OS.OpenAndSelect(project.BackupPath);
+            }
+        });
+
+        public ICommand UserIconClicked => new ControlCommand(_ =>
+        {
+            if (_ is MouseButtonEventArgs e)
+            {
+                if (e.ClickCount == 2)
+                {
+                    String url = App.ConfigReader["ProjectUrl"];
+                    if (url != null)
+                    {
+                        try
+                        {
+                            Process.Start("explorer.exe", url);
+                        }
+                        catch { }
+                    }
+                }
             }
         });
 
