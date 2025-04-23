@@ -32,7 +32,6 @@
 <ol>
 <li>
 <a href="https://github.com/HandyOrg/HandyControl" target="_blank">
-<img src="https://avatars.githubusercontent.com/u/46532717?s=48&v=4" style="width: 16px;height: 16px">
 HandyControl
 </a>
 </li>
