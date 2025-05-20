@@ -213,7 +213,7 @@
                     FontStyle="Italic"
                     Foreground="#409EFF">
                     <Underline>
-                        <Run Text="Version 2.0.0" />
+                        <Run Text="Version 2.0.1" />
                     </Underline>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonUp">
