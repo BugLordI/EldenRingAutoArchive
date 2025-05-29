@@ -1,5 +1,6 @@
 <h2 style="text-align: center">老贼的游戏盒</h2>
 <p align="center">
+    <img src="https://img.shields.io/badge/%E8%89%BE%E5%B0%94%E7%99%BB%E6%B3%95%E7%8E%AF%E9%BB%91%E5%A4%9C%E5%90%9B%E4%B8%B4-%20ELDEN%20RING%20NIGHTREIGN-lightgray?color=rgb(64%2C%20105%2C%20224)" alt="vue">
     <img src="https://img.shields.io/badge/黑神话悟空-Black Myth: Wukong-lightgray" alt="vue">
     <img src="https://img.shields.io/badge/Elden Ring-艾尔登法环-gold" alt="vue">
     <img src="https://img.shields.io/badge/Dark Soul-黑暗之魂-black" alt="vue">
