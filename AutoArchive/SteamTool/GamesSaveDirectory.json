@@ -76,5 +76,11 @@
     "SavedPath": "%USERPROFILE%/AppData/Roaming/StardewValley/Saves",
     "SavedFileName": null,
     "Executable": "/Stardew Valley.exe"
+  },
+  {
+    "AppId": "2622380",
+    "SavedPath": "%USERPROFILE%/AppData/Roaming/Nightreign/",
+    "SavedFileName": "NR0000.sl2",
+    "Executable": "/Game/start_protected_game.exe"
   }
 ]
