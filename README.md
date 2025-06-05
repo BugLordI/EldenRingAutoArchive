@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/badge/Sekiro Shadows Die Twice-只狼影逝二度-orange" alt="vue">
     <img src="https://img.shields.io/badge/The%20Lords%20of%20the%20Fallen-%E5%A0%95%E8%90%BD%E4%B9%8B%E4%B8%BB-darkblue" alt="vue">
 </p>
-<p style="text-indent: 2em">Yes indeed,你是否还在为魂1的十万八千里路而烦恼？是否在为没有黑骑士戟而烦恼？是否在为魂2的半条血而烦恼？
+<p style="text-indent: 2em">Yes indeed,你是否还在为黑夜君临抽不到好的遗物而烦恼？你是否还在为魂1的十万八千里路而烦恼？是否在为没有黑骑士戟而烦恼？是否在为魂2的半条血而烦恼？
 是否还在为魂3没有699而烦恼？是否还在为苇名的龙咳而烦恼？即刻起拥有老贼的游戏盒，这些都不再是问题!!!
 </p>
 <p><strong>带存档的游戏都支持，甚至用来一键备份其他文件……</strong></p>
