@@ -75,13 +75,14 @@ namespace AutoArchivePlus
 
         private static void App_DispatcherUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBox.Show(LanguageManager.Instance["UnexpectedErrorTip"]);
+            var exception = e.ExceptionObject as Exception;
+            MessageBox.Show(exception?.Message, LanguageManager.Instance["UnexpectedErrorTip"]);
         }
 
         private static void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             e.Handled = true;
-            MessageBox.Show(LanguageManager.Instance["UnexpectedErrorTip"]);
+            MessageBox.Show(e.Exception.Message, LanguageManager.Instance["UnexpectedErrorTip"]);
         }
 
         public static Window GetMainWindow()

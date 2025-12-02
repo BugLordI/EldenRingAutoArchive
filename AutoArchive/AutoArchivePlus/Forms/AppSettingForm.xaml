@@ -214,7 +214,7 @@
                     Foreground="#409EFF"
                     ToolTip="{Binding [VersionCheckTip], Source={x:Static language:LanguageManager.Instance}}">
                     <Underline>
-                        <Run Text="Version 2.0.2.0" />
+                        <Run Text="Version 2.0.2.1" />
                     </Underline>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonUp">
