@@ -4,10 +4,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:component="clr-namespace:AutoArchivePlus.Component"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:language="clr-namespace:AutoArchivePlus.Language"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel" xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:vm="clr-namespace:AutoArchivePlus.ViewModel"
     x:Name="self"
     Title="AppSettingForm"
     Width="860"
@@ -157,20 +158,20 @@
                     IsChecked="{Binding AppSetting.EnableQuickBackup}" />
                 <TextBlock
                     Margin="60,0,0,0"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Text="{Binding [ShortcutKeyTip], Source={x:Static language:LanguageManager.Instance}}" HorizontalAlignment="Center" />
+                    Text="{Binding [ShortcutKeyTip], Source={x:Static language:LanguageManager.Instance}}" />
                 <hc:TextBox
+                    x:Name="ShortcutKeyTB"
+                    MinWidth="55"
                     Margin="5,0,0,0"
                     VerticalAlignment="Center"
-                    MinWidth="55"
-                    Text="{Binding AppSetting.QuickBackupKeyString}" 
-                    TextAlignment="Center"
                     hc:InfoElement.ShowClearButton="True"
-                    x:Name="ShortcutKeyTB"
-                    >
+                    Text="{Binding AppSetting.QuickBackupKeyString}"
+                    TextAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="GotFocus">
-                            <i:InvokeCommandAction Command="{Binding SetShortcutKey}"/>
+                            <i:InvokeCommandAction Command="{Binding SetShortcutKey}" />
                         </i:EventTrigger>
                         <i:EventTrigger EventName="LostFocus">
                             <i:InvokeCommandAction Command="{Binding RemoveShortcutKey}" />
@@ -202,7 +203,6 @@
                     Content="{Binding [SaveSettings], Source={x:Static language:LanguageManager.Instance}}"
                     IsEnabled="{Binding IsEnable}" />
                 <TextBlock
-                    ToolTip="{Binding [VersionCheckTip], Source={x:Static language:LanguageManager.Instance}}"
                     x:Name="chooseArchivePath"
                     Grid.Column="0"
                     Margin="5,0,0,3"
@@ -211,9 +211,10 @@
                     Cursor="Hand"
                     FontSize="12"
                     FontStyle="Italic"
-                    Foreground="#409EFF">
+                    Foreground="#409EFF"
+                    ToolTip="{Binding [VersionCheckTip], Source={x:Static language:LanguageManager.Instance}}">
                     <Underline>
-                        <Run Text="Version 2.0.1" />
+                        <Run Text="Version 2.0.2.0" />
                     </Underline>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseLeftButtonUp">

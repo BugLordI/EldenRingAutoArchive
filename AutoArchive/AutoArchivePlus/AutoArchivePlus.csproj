@@ -10,7 +10,7 @@
 	 <RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	 <UseWindowsForms>True</UseWindowsForms>
 	 <Platforms>AnyCPU;x64</Platforms>
-	 <Version>2.0.1</Version>
+	 <Version>2.0.2.0</Version>
 	 <Authors>BugLordI</Authors>
 	 <Company>BugLordI</Company>
 	 <Copyright>Copyright (c) 2023-2025 BugZhang(BugLordl). All rights reserved.</Copyright>
@@ -32,6 +32,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DebugType>none</DebugType>
   </PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DebugType>portable</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
 
   <ItemGroup>
     <None Remove="data.db-shm" />
