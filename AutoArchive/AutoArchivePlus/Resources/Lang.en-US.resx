@@ -369,4 +369,13 @@
   <data name="VersionCheckTip" xml:space="preserve">
     <value>Click to download the new version</value>
   </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>No updates available for the software</value>
+  </data>
+  <data name="UpdateCheck" xml:space="preserve">
+    <value>UpdateCheck</value>
+  </data>
+  <data name="UpdateCheckFail" xml:space="preserve">
+    <value>Update Checked Failed</value>
+  </data>
 </root>

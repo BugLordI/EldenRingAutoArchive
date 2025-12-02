@@ -11,11 +11,13 @@ using AutoArchivePlus.Language;
 using AutoArchivePlus.Mapper;
 using AutoArchivePlus.Model;
 using AutoArchivePlus.WindowTools;
+using AutoUpdaterDotNET;
 using KeyboardTool;
 using KeyboardTool.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -120,14 +122,75 @@ namespace AutoArchivePlus.ViewModel
 
         public ICommand VersionClicked => new ControlCommand(_ =>
         {
-            String url = App.ConfigReader["AppVersionListUrl"];
+            String url = App.ConfigReader["UpdateUrl"];
             if (url != null)
             {
                 try
                 {
-                    Process.Start("explorer.exe", url);
+                    AutoUpdater.RunUpdateAsAdmin = false;
+                    AutoUpdater.OpenDownloadPage = false;
+                    AutoUpdater.ShowSkipButton = true;
+                    AutoUpdater.ShowRemindLaterButton = true;
+                    AutoUpdater.LetUserSelectRemindLater = true;
+                    AutoUpdater.Synchronous = true; // 同步模式，等待更新检查完成
+                    AutoUpdater.UpdateMode = Mode.ForcedDownload; // 强制下载模式
+                    AutoUpdater.CheckForUpdateEvent += (args) =>
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            if (args.Error != null)
+                            {
+                                MessageBox.Show(
+                                    $"{args.Error.Message}",
+                                    LanguageManager.Instance["UnexpectedErrorTip"],
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Error
+                                );
+                                return;
+                            }
+
+                            if (args.IsUpdateAvailable)
+                            {
+                                // 有更新可用
+                                AutoUpdater.ShowUpdateForm(args);
+                            }
+                            else
+                            {
+                                // 无更新
+                                MessageBox.Show(
+                                    LanguageManager.Instance["NoUpdatesAvailable"],
+                                    LanguageManager.Instance["UpdateCheck"],
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information
+                                );
+                            }
+                        });
+                    };
+                    AutoUpdater.Start(url);
                 }
-                catch { }
+                catch
+                {
+                    MessageBox.Show(
+                                   LanguageManager.Instance["UpdateCheckFail"],
+                                   LanguageManager.Instance["UpdateCheck"],
+                                   MessageBoxButton.OK,
+                                   MessageBoxImage.Information
+                               );
+                    // 出错时回退到打开版本列表 URL
+                    string fallbackUrl = App.ConfigReader["AppVersionListUrl"];
+                    if (!string.IsNullOrEmpty(fallbackUrl))
+                    {
+                        try
+                        {
+                            Process.Start(new ProcessStartInfo
+                            {
+                                FileName = fallbackUrl,
+                                UseShellExecute = true
+                            });
+                        }
+                        catch { }
+                    }
+                }
             }
         });
 

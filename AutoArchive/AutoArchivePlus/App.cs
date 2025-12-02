@@ -33,11 +33,9 @@ namespace AutoArchivePlus
 
         private static MainForm mainForm;
 
-        private static AppConfig appSetting = new AppConfig();
+        private static AppConfig appSetting = new();
 
-        private static JsonConfigReader configReader = new JsonConfigReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppConfig.json"));
-
-        private static String projectUrl;
+        private static readonly JsonConfigReader configReader = new(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AppConfig.json"));
 
         public static List<SteamAppInfo> InstalledApps { get; private set; } = new List<SteamAppInfo>();
 
@@ -55,9 +53,9 @@ namespace AutoArchivePlus
             {
                 Directory.CreateDirectory(iconPath);
             }
-            loadInstalledApps();
-            setLanguage(args);
-            loadSetting();
+            LoadInstalledApps();
+            SetLanguage(args);
+            LoadSetting();
             Boolean ret;
             Mutex mutex = new Mutex(true, PRODUCT_NAME, out ret);
             if (ret)
@@ -96,7 +94,7 @@ namespace AutoArchivePlus
             mainForm?.Message(msg, messageType);
         }
 
-        static void setLanguage(string[] args)
+        static void SetLanguage(string[] args)
         {
             var local = "--local:";
             foreach (var item in args)
@@ -110,10 +108,9 @@ namespace AutoArchivePlus
             }
         }
 
-        static void loadSetting()
+        static void LoadSetting()
         {
-
-            using DBContext<Config> dBContext = new DBContext<Config>();
+            using DBContext<Config> dBContext = new();
             Config config = dBContext.Entity.Where(e => e.Type == Constant.APP_CONFIG_TYPE).FirstOrDefault();
             if (config == null)
             {
@@ -136,9 +133,9 @@ namespace AutoArchivePlus
             }
         }
 
-        static void loadInstalledApps()
+        static void LoadInstalledApps()
         {
-            Thread thread = new Thread(() =>
+            Thread thread = new(() =>
             {
                 InstalledApps = Steam.GetInstalledApps();
             });

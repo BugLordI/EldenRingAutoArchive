@@ -88,9 +88,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
-		RESX_NeutralResourcesLanguage = zh-CN
 		RESX_ConfirmAddLanguageFile = True
-		RESX_CultureCountyOverrides = en=en-BI
+		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 	EndGlobalSection
 EndGlobal
