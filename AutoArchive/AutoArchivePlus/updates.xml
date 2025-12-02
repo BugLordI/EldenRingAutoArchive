@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<item>
+	<version>2.0.2</version>
+	<url>https://github.com/BugLordI/EldenRingAutoArchive/releases/download/v2.0.2/AutoArchivePlus-2.0.2-setup.exe</url>
+	<changelog>https://github.com/BugLordI/EldenRingAutoArchive/releases/tag/v2.0.2</changelog>
+	<mandatory>false</mandatory>
+	<description>
+		<![CDATA[
+        <ul>
+			<li>新增在线更新功能</li>
+        </ul>
+        ]]>
+	</description>
+</item>

@@ -349,4 +349,13 @@
   <data name="VersionCheckTip" xml:space="preserve">
     <value>点击下载新版本</value>
   </data>
+  <data name="NoUpdatesAvailable" xml:space="preserve">
+    <value>软件暂无更新</value>
+  </data>
+  <data name="UpdateCheck" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="UpdateCheckFail" xml:space="preserve">
+    <value>检查更新失败</value>
+  </data>
 </root>

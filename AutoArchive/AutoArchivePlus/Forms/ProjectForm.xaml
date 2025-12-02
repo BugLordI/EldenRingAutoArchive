@@ -104,7 +104,6 @@
                 IsEditable="True"
                 IsTextSearchEnabled="True"
                 ItemsSource="{Binding DataList}"
-                ShowClearButton="True"
                 Text="{Binding GameName, Mode=TwoWay}"
                 ToolTip="{Binding Text, ElementName=gameName}">
                 <i:Interaction.Triggers>
