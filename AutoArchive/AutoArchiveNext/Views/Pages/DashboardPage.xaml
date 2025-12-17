@@ -16,22 +16,50 @@
     ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
-
-    <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <ui:Button
-            Grid.Column="0"
-            Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}"
-            Content="Click me!"
-            Icon="Fluent24" />
-        <TextBlock
-            Grid.Column="1"
-            Margin="12,0,0,0"
-            VerticalAlignment="Center"
-            Text="{Binding ViewModel.Counter, Mode=OneWay}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22*" />
+            <RowDefinition Height="78*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="1" Width="Auto">
+                <StackPanel
+                    Height="75"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Image
+                        Width="74"
+                        Height="74"
+                        Cursor="Hand"
+                        Source="{Binding ViewModel.UserPicture}">
+                        <Image.Clip>
+                            <EllipseGeometry
+                                Center="37,37"
+                                RadiusX="37"
+                                RadiusY="37" />
+                        </Image.Clip>
+                    </Image>
+                    <StackPanel Height="56">
+                        <ui:TextBlock
+                            Margin="12,4,0,0"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right"
+                            Text="{Binding ViewModel.Greeting}"
+                            TextTrimming="WordEllipsis" />
+                        <ui:TextBlock
+                            Margin="12,9,0,0"
+                            VerticalAlignment="Center"
+                            DockPanel.Dock="Right"
+                            Text="{Binding ViewModel.UserName}"
+                            TextTrimming="WordEllipsis" />
+                    </StackPanel>
+                </StackPanel>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Page>

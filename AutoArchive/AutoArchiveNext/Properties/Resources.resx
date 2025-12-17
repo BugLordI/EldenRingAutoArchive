@@ -123,7 +123,25 @@
   <data name="HomeViewTitle" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>Personalization</value>
+  </data>
   <data name="SettingsViewTitle" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>Good Morning!</value>
+  </data>
+  <data name="Evening" xml:space="preserve">
+    <value>Good Evening!</value>
+  </data>
+  <data name="Noon" xml:space="preserve">
+    <value>It's time for lunch!</value>
+  </data>
+  <data name="MidNight" xml:space="preserve">
+    <value>It's getting late, time to rest!</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>Good Afternoon!</value>
   </data>
 </root>

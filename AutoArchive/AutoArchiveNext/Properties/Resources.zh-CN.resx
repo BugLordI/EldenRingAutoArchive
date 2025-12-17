@@ -123,7 +123,25 @@
   <data name="HomeViewTitle" xml:space="preserve">
     <value>首页</value>
   </data>
+  <data name="Personalization" xml:space="preserve">
+    <value>个性化</value>
+  </data>
   <data name="SettingsViewTitle" xml:space="preserve">
     <value>设置</value>
+  </data>
+  <data name="Morning" xml:space="preserve">
+    <value>上午好!</value>
+  </data>
+  <data name="Evening" xml:space="preserve">
+    <value>晚上好!</value>
+  </data>
+  <data name="Noon" xml:space="preserve">
+    <value>该吃午饭了!</value>
+  </data>
+  <data name="MidNight" xml:space="preserve">
+    <value>夜深了,该休息了!</value>
+  </data>
+  <data name="Afternoon" xml:space="preserve">
+    <value>下午好!</value>
   </data>
 </root>

@@ -26,8 +26,7 @@ namespace AutoArchiveNext.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
-
+            AppVersion = $"V{GetAssemblyVersion()}";
             _isInitialized = true;
         }
 

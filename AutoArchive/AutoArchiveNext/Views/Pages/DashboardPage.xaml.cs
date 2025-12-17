@@ -11,7 +11,6 @@ namespace AutoArchiveNext.Views.Pages
         {
             ViewModel = viewModel;
             DataContext = this;
-
             InitializeComponent();
         }
     }

@@ -21,9 +21,10 @@ namespace AutoArchiveNext.ViewModels.Windows
             },
             new NavigationViewItem()
             {
-                Content = "Data",
+                Content = "Data test asd asdhuw asihi wpoj",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(DataPage)
+                TargetPageType = typeof(DataPage),
+                ToolTip = "Data test asd asdhuw asihi wpoj"
             }
         ];
 
