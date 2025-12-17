@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="WPF-UI" Version="4.1.0" />
     <PackageReference Include="WPF-UI.DependencyInjection" Version="4.1.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.1" />
