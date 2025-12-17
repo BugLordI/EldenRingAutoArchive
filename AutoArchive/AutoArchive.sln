@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32825.248
+# Visual Studio Version 18
+VisualStudioVersion = 18.1.11304.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoArchive", "AutoArchive\AutoArchive.csproj", "{B3AB1C35-28E5-4A21-8275-2FA9FF998360}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBase", "DataBase\DataBase.csproj", "{36244959-1B33-496A-B73B-E9FA819A6EC6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SteamTool", "SteamTool\SteamTool.csproj", "{745BC86F-A07F-41B1-BAF0-571CD47169F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoArchiveNext", "AutoArchiveNext\AutoArchiveNext.csproj", "{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,12 +85,24 @@ Global
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|Any CPU.Build.0 = Debug|Any CPU
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|x64.ActiveCfg = Debug|x64
 		{745BC86F-A07F-41B1-BAF0-571CD47169F4}.x64|x64.Build.0 = Debug|x64
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Debug|x64.Build.0 = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Release|x64.ActiveCfg = Release|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.Release|x64.Build.0 = Release|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.x64|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.x64|Any CPU.Build.0 = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.x64|x64.ActiveCfg = Debug|Any CPU
+		{1FFACE88-7C7F-4E59-90AC-C74A628C7ABB}.x64|x64.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 		RESX_ConfirmAddLanguageFile = True
+		SolutionGuid = {7F9F7889-035E-46E3-B48A-8A2806EE9842}
 	EndGlobalSection
 EndGlobal
