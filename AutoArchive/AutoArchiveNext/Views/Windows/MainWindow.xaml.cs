@@ -1,64 +1,27 @@
-﻿using AutoArchiveNext.ViewModels.Windows;
-using Wpf.Ui;
-using Wpf.Ui.Abstractions;
-using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace AutoArchiveNext.Views.Windows
 {
-    public partial class MainWindow : INavigationWindow
+    /// <summary>
+    /// MainWindow.xaml 的交互逻辑
+    /// </summary>
+    public partial class MainWindow : HandyControl.Controls.Window
     {
-        public MainWindowViewModel ViewModel { get; }
-
-        public MainWindow(
-            MainWindowViewModel viewModel,
-            INavigationViewPageProvider navigationViewPageProvider,
-            INavigationService navigationService
-        )
+        public MainWindow()
         {
-            ViewModel = viewModel;
-            DataContext = this;
-
-            SystemThemeWatcher.Watch(this);
-
             InitializeComponent();
-            SetPageService(navigationViewPageProvider);
-
-            navigationService.SetNavigationControl(RootNavigation);
-        }
-
-        #region INavigationWindow methods
-
-        public INavigationView GetNavigation() => RootNavigation;
-
-        public bool Navigate(Type pageType) => RootNavigation.Navigate(pageType);
-
-        public void SetPageService(INavigationViewPageProvider navigationViewPageProvider) => RootNavigation.SetPageProviderService(navigationViewPageProvider);
-
-        public void ShowWindow() => Show();
-
-        public void CloseWindow() => Close();
-
-        #endregion INavigationWindow methods
-
-        /// <summary>
-        /// Raises the closed event.
-        /// </summary>
-        protected override void OnClosed(EventArgs e)
-        {
-            base.OnClosed(e);
-            // Make sure that closing this window will begin the process of closing the application.
-            Application.Current.Shutdown();
-        }
-
-        INavigationView INavigationWindow.GetNavigation()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetServiceProvider(IServiceProvider serviceProvider)
-        {
-            throw new NotImplementedException();
         }
     }
 }
